@@ -24,7 +24,17 @@ export default function HomePage() {
                     </div>
                 </div>
             </section>
-
+            <section className="featured-products">
+                <div className="container">
+                    <h2>Prodotti in evidenza</h2>
+                    <div className="products-grid">
+                        <div className="product-card">Prodotto 1</div>
+                        <div className="product-card">Prodotto 2</div>
+                        <div className="product-card">Prodotto 3</div>
+                        <div className="product-card">Prodotto 4</div>
+                    </div>
+                </div>
+            </section>
         </>
     )
 }
