@@ -35,6 +35,16 @@ export default function HomePage() {
                     </div>
                 </div>
             </section>
+            <section className="shop-benefits">
+                <div className="container">
+                    <h2>Perché scegliere noi</h2>
+                    <div className="benefits-grid">
+                        <div className="benefit-card">Spedizione veloce</div>
+                        <div className="benefit-card">Carte selezionate</div>
+                        <div className="benefit-card">Pagamenti sicuri</div>
+                    </div>
+                </div>
+            </section>
         </>
     )
 }
