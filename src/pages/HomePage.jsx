@@ -13,6 +13,18 @@ export default function HomePage() {
                     </div>
                 </div>
             </section>
+            <section className="categories">
+                <div className="container">
+                    <h2>Esplora per categoria</h2>
+                    <div className="categories-grid">
+                        <div className="category-card">Pokemon</div>
+                        <div className="category-card">Yu-Gi-Oh!</div>
+                        <div className="category-card">Magic</div>
+                        <div className="category-card">One Piece</div>
+                    </div>
+                </div>
+            </section>
+
         </>
     )
 }
