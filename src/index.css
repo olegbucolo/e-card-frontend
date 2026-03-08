@@ -30,3 +30,9 @@ button {
     max-width: 1200px;
     margin: 0 auto;
 }
+
+@media (min-width: 768px) {
+    .navbar-expand-md .none-at-768 {
+        display: none !important;
+    }
+}
