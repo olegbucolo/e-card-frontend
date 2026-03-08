@@ -1,6 +1,7 @@
 import { products } from "../data/products";
 
 export default function HomePage() {
+    const featuredProducts = products.filter(p => p.product_id <= 4);
     return (
         <>
             <section className="hero">
@@ -34,7 +35,7 @@ export default function HomePage() {
                     <h2>Prodotti in evidenza</h2>
 
                     <div className="products-grid">
-                        {products.map((product) => (
+                        {featuredProducts.map((product) => (
                             <div className="product-card" key={product.product_id}>
                                 <div className="product-image">
                                     <span>{product.image}</span>
@@ -49,6 +50,7 @@ export default function HomePage() {
                             </div>
                         ))}
                     </div>
+
                 </div>
             </section>
 
