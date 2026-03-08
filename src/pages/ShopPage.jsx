@@ -1,7 +1,7 @@
 export default function ShopPage(){
     return (
         <>
-            <div>shop page</div>
+            <div >shop page</div>
         </>
     )
 }
