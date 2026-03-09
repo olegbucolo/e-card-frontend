@@ -54,7 +54,6 @@ export default function HeaderComp() {
                                 ))}
                             </div>
                         </form>
-
                     )}
                     <div className="none-at-768 flex-grow-1 d-flex justify-content-end">
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,6 +68,7 @@ export default function HeaderComp() {
                             <li className="nav-item">
                                 <NavLink to="/shop" className="nav-link" >Shop</NavLink>
                             </li>
+                            
                         </ul>
                     </div>
                 </div>
