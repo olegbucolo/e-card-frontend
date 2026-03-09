@@ -69,6 +69,9 @@ export default function HeaderComp() {
                                 <NavLink to="/shop" className="nav-link" >Shop</NavLink>
                             </li>
                             
+                            <li className="nav-item">
+                                <NavLink to="/Dectail" className="nav-link" >Dectail</NavLink>
+                            </li>
                         </ul>
                     </div>
                 </div>
