@@ -38,10 +38,15 @@ button {
     }
 }
 
+/* effects */
 .hover-card:hover {
     background-color: #efefef;
     transition: all .2s ease;
     cursor: pointer;
+}
+
+.hover-button:hover{
+    transform: scale(105%);
 }
 
 /* DECTAILPAGE */
