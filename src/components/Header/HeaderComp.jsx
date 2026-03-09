@@ -16,6 +16,7 @@ export default function HeaderComp() {
 
     // function that handles change when searching a product
     const handleChange = (e) => {
+        setIsTyping(true)
         setQuery(e.target.value.toLowerCase())
     }
 
