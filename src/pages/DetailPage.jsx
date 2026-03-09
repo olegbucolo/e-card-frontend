@@ -1,6 +1,6 @@
 import dragon from "../imgs/dragoBianco.png"
 
-export default function DectailPage() {
+export default function DetailPage() {
     return (
         <>
             <h2>Info prodotto</h2>
