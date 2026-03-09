@@ -6,14 +6,15 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: black;
-    color: white;
+    /* background-color: black; */
+    /* color: white; */
 }
 
-img {
+/* HOMEPAGE */
+/* img {
     max-width: 100%;
     display: flex;
-}
+} */
 
 a {
     color: inherit;
@@ -36,3 +37,20 @@ button {
         display: none !important;
     }
 }
+
+
+
+/* DECTAILPAGE */
+
+.img-dectail-page {
+    width: 240px;
+    height: auto;
+}
+
+.l-box-d {
+    padding-right: 20px;
+}
+
+/* .r-box-d {
+
+} */
