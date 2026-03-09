@@ -5,7 +5,7 @@ export default function DetailPage() {
         <>
             <h2>Info prodotto</h2>
 
-            <div className="container mt-3">
+            <div className="container mt-3 mb-4">
                 <div className="d-flex">
 
                     <div className="l-box-d">
@@ -26,7 +26,7 @@ export default function DetailPage() {
 
                         <p>prezzo: 1€</p>
 
-                        <div><button className="btn btn-warning">Inserisci nel carrello</button></div>
+                        <div><button className="btn btn-warning">Add to cart</button></div>
                     </div>
 
 
