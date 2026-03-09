@@ -38,7 +38,11 @@ button {
     }
 }
 
-
+.hover-card:hover {
+    background-color: #efefef;
+    transition: all .2s ease;
+    cursor: pointer;
+}
 
 /* DETAILPAGE */
 
