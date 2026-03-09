@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { products } from '../../data/products'
 
 export default function HeaderComp() {
-    
+
     // location used to determine if we are on the shop page therefore we render the search bar
     const location = useLocation();
     const showSearch = location.pathname.startsWith("/shop");
@@ -16,16 +16,15 @@ export default function HeaderComp() {
 
     // function that handles change when searching a product
     const handleChange = (e) => {
-        setQuery(e.target.value)
-        if(!isTyping) setIsTyping(true)
+        setQuery(e.target.value.toLowerCase())
     }
 
     // function that handles submit when searching a product
     const handleSubmit = (e) => {
         e.preventDefault();
-        setIsTyping(false)
         // at the press of the search button, we navigate to shop?search=${query}
         navigate(`/shop?search=${query}`)
+        setIsTyping(false)
     }
 
     return (
@@ -34,19 +33,27 @@ export default function HeaderComp() {
                 <div className="container-xxl">
                     <div className="flex-grow-1"><NavLink to="/" className="navbar-brand" ><span className="text-warning">e</span>-card</NavLink></div>
                     {showSearch && (
-                        <form onSubmit={handleSubmit} className="d-flex " role="search">
+                        <form onSubmit={handleSubmit} className="d-flex position-relative" role="search">
                             {/* Controlled input for searching product */}
                             <input
-                                className="form-control me-2"
+                                className=" form-control me-2"
                                 value={query}
                                 onChange={handleChange}
+                                onFocus={() => setIsTyping(true)}
+                                onBlur={() => setIsTyping(false)}
                                 type="search"
                                 placeholder="Search"
                                 aria-label="Search" />
                             <button
-                                className="btn btn-outline-success"
+                                className="btn btn-outline-success "
                                 type="submit">Search</button>
+                            <div className="position-absolute top-100 start-0">
+                                {isTyping && products.filter(p => p.name.toLowerCase().includes(query)).map(p => (
+                                    <div key={p.id}>{p.name}</div>
+                                ))}
+                            </div>
                         </form>
+
                     )}
                     <div className="none-at-768 flex-grow-1 d-flex justify-content-end">
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
