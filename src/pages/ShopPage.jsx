@@ -24,7 +24,7 @@ export default function ShopPage() {
 
                                     <div className="buttons d-flex justify-content-between mt-auto">
                                         <button className="hover-button btn btn-success w-50 me-2">
-                                            Buy
+                                            Add to Cart
                                         </button>
                                         <button className="hover-button btn btn-warning w-50">
                                             Wishlist
