@@ -1,18 +1,29 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useState } from 'react';
+import { products } from '../../data/products'
 
 export default function HeaderComp() {
+    
     // location used to determine if we are on the shop page therefore we render the search bar
     const location = useLocation();
     const showSearch = location.pathname.startsWith("/shop");
+
     // Search bar query used for internal filtering and as value for navigate in /shop?search=${query}
     const [query, setQuery] = useState('');
     const navigate = useNavigate();
+    const [isTyping, setIsTyping] = useState(false)
 
-    // function that handles submit when searching for a product
+    // function that handles change when searching a product
+    const handleChange = (e) => {
+        setQuery(e.target.value)
+        if(!isTyping) setIsTyping(true)
+    }
+
+    // function that handles submit when searching a product
     const handleSubmit = (e) => {
         e.preventDefault();
+        setIsTyping(false)
         // at the press of the search button, we navigate to shop?search=${query}
         navigate(`/shop?search=${query}`)
     }
@@ -28,7 +39,7 @@ export default function HeaderComp() {
                             <input
                                 className="form-control me-2"
                                 value={query}
-                                onChange={(e) => setQuery(e.target.value)}
+                                onChange={handleChange}
                                 type="search"
                                 placeholder="Search"
                                 aria-label="Search" />

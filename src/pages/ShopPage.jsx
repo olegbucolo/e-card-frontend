@@ -1,4 +1,4 @@
-export default function ShopPage(){
+export default function ShopPage() {
     return (
         <>
             <div >shop page</div>
