@@ -4,23 +4,15 @@
     box-sizing: border-box;
 }
 
-.social-icons img {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-}
+
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    /* background-color: black; */
-    /* color: white; */
+   
 }
 
+
 /* HOMEPAGE */
-/* img {
-    max-width: 100%;
-    display: flex;
-} */
 
 a {
     color: inherit;
@@ -51,12 +43,12 @@ button {
     cursor: pointer;
 }
 
-/* DETAILPAGE */
 .hover-button:hover{
     transform: scale(105%);
 }
 
-/* DECTAILPAGE */
+/* DETAILPAGE */
+
 
 .img-dectail-page {
     width: 240px;
@@ -70,3 +62,13 @@ button {
 /* .r-box-d {
 
 } */
+
+
+
+/* FOOTER */
+
+.social-icons img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
