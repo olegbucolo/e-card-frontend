@@ -15,6 +15,10 @@ export default function ShopPage() {
                                         <h5 className="card-title">{p.name}</h5>
                                         <p className="card-text">{p.description}</p>
                                     </div>
+                                    <div className="buttons d-flex justify-content-between g-2">
+                                        <button type="button" className="hover-button btn btn-success w-50 me-2">Buy</button>
+                                        <button type="button" className="hover-button btn btn-warning w-50">Wishlist</button>
+                                    </div>
                                 </div>
                             </div>
                         ))}

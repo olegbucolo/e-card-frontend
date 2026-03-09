@@ -44,6 +44,7 @@ button {
     }
 }
 
+/* effects */
 .hover-card:hover {
     background-color: #efefef;
     transition: all .2s ease;
@@ -51,6 +52,11 @@ button {
 }
 
 /* DETAILPAGE */
+.hover-button:hover{
+    transform: scale(105%);
+}
+
+/* DECTAILPAGE */
 
 .img-dectail-page {
     width: 240px;
