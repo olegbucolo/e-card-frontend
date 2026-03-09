@@ -13,7 +13,7 @@ export default function Toast() {
 
                     <div>Benvenuto</div>
                     <span>inserisci la tua email</span>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"></input>
+                    <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com"></input>
                 </div>
             </div>
 
