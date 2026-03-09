@@ -1,9 +1,15 @@
 import { products } from "../data/products";
+import Toast from "../components/Toast";
 
 export default function HomePage() {
     const featuredProducts = products.filter(p => p.product_id <= 4);
     return (
         <>
+            <div className="d-flex justify-content-center">
+                <Toast />
+            </div>
+
+
             <section className="hero">
                 <div className="container">
                     <div className="hero-content">
