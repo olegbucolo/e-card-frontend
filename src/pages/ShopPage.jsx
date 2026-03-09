@@ -8,7 +8,7 @@ export default function ShopPage() {
                 <div className="col">
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-2">
                         {products.map(p => (
-                            <div className="col">
+                            <div key={p.slug} className="col">
                                 <div className="card hover-card h-100 p-2">
                                     <img src={drago} className="card-img-top" alt="..." />
                                     <div className="card-body px-0">
