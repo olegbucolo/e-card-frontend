@@ -29,7 +29,7 @@ export default function HeaderComp() {
     }
 
     return (
-        <header>
+        <header className="z-2 w-100 top-0 position-fixed">
             <nav className="navbar navbar-expand-md bg-body-tertiary">
 
                 <div className="container-xxl d-flex align-items-center">
