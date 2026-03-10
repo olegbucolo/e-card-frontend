@@ -92,7 +92,7 @@ export default function HeaderComp() {
                             </li>
 
                             <li className="nav-item">
-                                <NavLink to="/DectailPage" className="nav-link" >Dectail</NavLink>
+                                <NavLink to="/detailpage" className="nav-link" >Dectail</NavLink>
                             </li>
                         </ul>
                     </div>

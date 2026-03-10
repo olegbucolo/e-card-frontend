@@ -1,6 +1,12 @@
 import dragon from "../imgs/dragoBianco.png"
+import { products } from "../data/products"
+import { useParams } from "react-router-dom"
 
 export default function DetailPage() {
+
+    const { id } = useParams()
+    const singleProduct = products.find(product => product.product_id === Number(id))
+    
     return (
         <>
             <h2>Info prodotto</h2>
@@ -20,11 +26,15 @@ export default function DetailPage() {
 
                     <div className="r-box-d">
 
-                        <h4>Drago Bianco Occhi Blu</h4>
+                        <h4>{singleProduct.name}</h4>
 
-                        <p>stato: nuovo</p>
+                        <p>Condition: {singleProduct.condition_id}</p>
 
-                        <p>prezzo: 1€</p>
+                        <p>Price:{singleProduct.price}</p>
+
+                        <p>Description:{singleProduct.condition_id}</p>
+
+
 
                         <div><button className="btn btn-warning">Add to cart</button></div>
                     </div>

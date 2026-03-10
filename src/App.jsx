@@ -11,7 +11,7 @@ function App() {
       <Route element={<DefaultLayout />}>
         <Route index element={<HomePage />} />
         <Route path="shop" element={<ShopPage/>}/>
-        <Route path="DectailPage" element={<DetailPage/>}/>
+        <Route path="detailpage/:id" element={<DetailPage/>}/>
       </Route>
     </Routes>
   );
