@@ -60,7 +60,7 @@ export default function HeaderComp() {
                             <div className="position-absolute bg-light top-100 start-0 end-0 search-dropdown">
                                 {isTyping && products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())).map(p => (
                                     <div
-                                        key={p.id}
+                                        key={p.product_id}
                                         className="p-2 d-block hover-card"
                                         onMouseDown={(e) => {
                                             setQuery(p.name)

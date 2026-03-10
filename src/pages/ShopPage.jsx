@@ -13,8 +13,8 @@ export default function ShopPage() {
             <div className="container-lg my-5 pt-3">
                 <div className="col">
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-2">
-                        {products.map(p => (
-                            <div key={p.slug} className="col">
+                        {filteredProducts.map(p => (
+                            <div key={p.product_id} className="col">
 
                                 <div className="card hover-card h-100 p-2 d-flex flex-column">
 
