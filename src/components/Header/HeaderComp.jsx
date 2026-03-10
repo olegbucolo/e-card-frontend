@@ -28,6 +28,8 @@ export default function HeaderComp() {
         setIsTyping(false)
     }
 
+   
+
     return (
         <header className="z-2 w-100 top-0 position-fixed">
             <nav className="navbar navbar-expand-md bg-body-tertiary">
@@ -48,15 +50,26 @@ export default function HeaderComp() {
                                 onChange={handleChange}
                                 onFocus={() => setIsTyping(true)}
                                 onBlur={() => setIsTyping(false)}
+
                                 type="search"
                                 placeholder="Search"
                                 aria-label="Search" />
                             <button
                                 className="btn btn-outline-success "
                                 type="submit">Search</button>
-                            <div className="position-absolute top-100 start-0">
-                                {isTyping && products.filter(p => p.name.toLowerCase().includes(query)).map(p => (
-                                    <div key={p.id}>{p.name}</div>
+                            <div className="position-absolute bg-light top-100 start-0 end-0 search-dropdown">
+                                {isTyping && products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())).map(p => (
+                                    <div
+                                        key={p.id}
+                                        className="p-2 d-block hover-card"
+                                        onMouseDown={(e) => {
+                                            setQuery(p.name)
+                                            navigate(`/shop?search=${p.name}`)
+                                            setIsTyping(false)
+                                        }}
+                                    >
+                                        {p.name}
+                                    </div>
                                 ))}
                             </div>
                         </form>
@@ -78,9 +91,6 @@ export default function HeaderComp() {
                                 <NavLink to="/shop" className="nav-link" >Shop</NavLink>
                             </li>
 
-                            <li className="nav-item">
-                                <NavLink to="/DectailPage" className="nav-link" >Dectail</NavLink>
-                            </li>
                         </ul>
                     </div>
                 </div>
