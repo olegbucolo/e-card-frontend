@@ -10,8 +10,8 @@ function App() {
     <Routes>
       <Route element={<DefaultLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="shop" element={<ShopPage/>}/>
-        <Route path="DectailPage" element={<DetailPage/>}/>
+        <Route path="shop" element={<ShopPage />} />
+        <Route path="DetailPage" element={<DetailPage />} />
       </Route>
     </Routes>
   );
