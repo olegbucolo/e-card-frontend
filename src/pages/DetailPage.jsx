@@ -13,11 +13,6 @@ export default function DetailPage() {
 
                     </div>
 
-
-
-
-
-
                     <div className="r-box-d">
 
                         <h4>Drago Bianco Occhi Blu</h4>
@@ -29,12 +24,8 @@ export default function DetailPage() {
                         <div><button className="btn btn-warning">Add to cart</button></div>
                     </div>
 
-
                 </div>
             </div>
-
-
-
         </>
     )
 }
