@@ -6,15 +6,17 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    /* background-color: black; */
-    /* color: white; */
+   
+}
+
+/* HEADER */
+
+.search-dropdown{
+    max-height: 50vh;
+    overflow: auto
 }
 
 /* HOMEPAGE */
-/* img {
-    max-width: 100%;
-    display: flex;
-} */
 
 a {
     color: inherit;
@@ -38,9 +40,19 @@ button {
     }
 }
 
+/* effects */
+.hover-card:hover {
+    background-color: #efefef !important;
+    transition: all .2s ease;
+    cursor: pointer;
+}
 
+.hover-button:hover{
+    transform: scale(105%);
+}
 
-/* DECTAILPAGE */
+/* DETAILPAGE */
+
 
 .img-dectail-page {
     width: 240px;
@@ -54,3 +66,13 @@ button {
 /* .r-box-d {
 
 } */
+
+
+
+/* FOOTER */
+
+.social-icons img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}

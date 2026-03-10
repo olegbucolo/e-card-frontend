@@ -28,13 +28,21 @@ export default function HeaderComp() {
         setIsTyping(false)
     }
 
+   
+
     return (
-        <header>
+        <header className="z-2 w-100 top-0 position-fixed">
             <nav className="navbar navbar-expand-md bg-body-tertiary">
-                <div className="container-xxl">
-                    <div className="flex-grow-1"><NavLink to="/" className="navbar-brand" ><span className="text-warning">e</span>-card</NavLink></div>
+
+                <div className="container-xxl d-flex align-items-center">
+                    {/* LEFT */}
+                    <div className="flex-grow-1">
+                        <NavLink to="/" className="navbar-brand" ><span className="text-warning">e</span>-card</NavLink>
+                    </div>
+
+                    {/* CENTER */}
                     {showSearch && (
-                        <form onSubmit={handleSubmit} className="d-flex position-relative" role="search">
+                        <form onSubmit={handleSubmit} className="d-flex position-relative mx-auto" role="search">
                             {/* Controlled input for searching product */}
                             <input
                                 className=" form-control me-2"
@@ -42,24 +50,38 @@ export default function HeaderComp() {
                                 onChange={handleChange}
                                 onFocus={() => setIsTyping(true)}
                                 onBlur={() => setIsTyping(false)}
+
                                 type="search"
                                 placeholder="Search"
                                 aria-label="Search" />
                             <button
                                 className="btn btn-outline-success "
                                 type="submit">Search</button>
-                            <div className="position-absolute top-100 start-0">
-                                {isTyping && products.filter(p => p.name.toLowerCase().includes(query)).map(p => (
-                                    <div key={p.id}>{p.name}</div>
+                            <div className="position-absolute bg-light top-100 start-0 end-0 search-dropdown">
+                                {isTyping && products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())).map(p => (
+                                    <div
+                                        key={p.id}
+                                        className="p-2 d-block hover-card"
+                                        onMouseDown={(e) => {
+                                            setQuery(p.name)
+                                            navigate(`/shop?search=${p.name}`)
+                                            setIsTyping(false)
+                                        }}
+                                    >
+                                        {p.name}
+                                    </div>
                                 ))}
                             </div>
                         </form>
                     )}
+
+                    {/* RIGHT */}
                     <div className="none-at-768 flex-grow-1 d-flex justify-content-end">
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
                     </div>
+                    {/* RIGHT */}
                     <div className="collapse navbar-collapse justify-content-end flex-grow-1" id="navbarSupportedContent">
                         <ul className="navbar-nav mb-2 mb-lg-0">
                             <li className="nav-item">
@@ -68,10 +90,7 @@ export default function HeaderComp() {
                             <li className="nav-item">
                                 <NavLink to="/shop" className="nav-link" >Shop</NavLink>
                             </li>
-                            
-                            <li className="nav-item">
-                                <NavLink to="/DectailPage" className="nav-link" >Dectail</NavLink>
-                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -79,3 +98,4 @@ export default function HeaderComp() {
         </header>
     )
 }
+
