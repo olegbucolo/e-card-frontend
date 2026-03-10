@@ -19,11 +19,6 @@ export default function DetailPage() {
 
                     </div>
 
-
-
-
-
-
                     <div className="r-box-d">
 
                         <h4>{singleProduct.name}</h4>
@@ -32,19 +27,15 @@ export default function DetailPage() {
 
                         <p>Price:{singleProduct.price}</p>
 
-                        <p>Description:{singleProduct.condition_id}</p>
+                        <p>Description:{singleProduct.description}</p>
 
 
 
                         <div><button className="btn btn-warning">Add to cart</button></div>
                     </div>
 
-
                 </div>
             </div>
-
-
-
         </>
     )
 }
