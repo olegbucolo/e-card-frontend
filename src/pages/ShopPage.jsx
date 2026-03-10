@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 export default function ShopPage() {
     return (
         <>
-            <div className="container-lg my-3">
+            <div className="container-lg my-5 pt-3">
                 <div className="col">
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-2">
                         {products.map(p => (
