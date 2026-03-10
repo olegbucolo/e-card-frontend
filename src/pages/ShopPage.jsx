@@ -1,8 +1,13 @@
 import drago from '../imgs/dragoBianco.png'
 import { products } from '../data/products'
 import { NavLink } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 
 export default function ShopPage() {
+    const [searchParams] = useSearchParams();
+    const search = searchParams.get("search")
+    const filteredProducts = products.filter(p => p.name.toLowerCase().includes(search?.toLowerCase() || ""))
+    console.log(filteredProducts)
     return (
         <>
             <div className="container-lg my-5 pt-3">
