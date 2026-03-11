@@ -1,13 +1,9 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useState } from 'react';
 import { products } from '../../data/products'
 
 export default function HeaderComp() {
-
-    // location used to determine if we are on the shop page therefore we render the search bar
-    const location = useLocation();
-    const showSearch = location.pathname.startsWith("/shop");
 
     // Search bar query used for internal filtering and as value for navigate in /shop?search=${query}
     const [query, setQuery] = useState('');
@@ -28,7 +24,7 @@ export default function HeaderComp() {
         setIsTyping(false)
     }
 
-   
+
 
     return (
         <header className="z-2 w-100 top-0 position-fixed">
@@ -41,39 +37,37 @@ export default function HeaderComp() {
                     </div>
 
                     {/* CENTER */}
-                    {showSearch && (
-                        <form onSubmit={handleSubmit} className="d-flex position-relative mx-auto" role="search">
-                            {/* Controlled input for searching product */}
-                            <input
-                                className=" form-control me-2"
-                                value={query}
-                                onChange={handleChange}
-                                onFocus={() => setIsTyping(true)}
-                                onBlur={() => setIsTyping(false)}
+                    <form onSubmit={handleSubmit} className="d-flex position-relative mx-auto" role="search">
+                        {/* Controlled input for searching product */}
+                        <input
+                            className=" form-control me-2"
+                            value={query}
+                            onChange={handleChange}
+                            onFocus={() => setIsTyping(true)}
+                            onBlur={() => setIsTyping(false)}
 
-                                type="search"
-                                placeholder="Search"
-                                aria-label="Search" />
-                            <button
-                                className="btn btn-outline-success "
-                                type="submit">Search</button>
-                            <div className="position-absolute bg-light top-100 start-0 end-0 search-dropdown">
-                                {isTyping && products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())).map(p => (
-                                    <div
-                                        key={p.product_id}
-                                        className="p-2 d-block hover-card"
-                                        onMouseDown={(e) => {
-                                            setQuery(p.name)
-                                            navigate(`/shop?search=${p.name}`)
-                                            setIsTyping(false)
-                                        }}
-                                    >
-                                        {p.name}
-                                    </div>
-                                ))}
-                            </div>
-                        </form>
-                    )}
+                            type="search"
+                            placeholder="Search"
+                            aria-label="Search" />
+                        <button
+                            className="btn btn-outline-success "
+                            type="submit">Search</button>
+                        <div className="position-absolute bg-light top-100 start-0 end-0 search-dropdown">
+                            {isTyping && products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())).map(p => (
+                                <div
+                                    key={p.product_id}
+                                    className="p-2 d-block hover-card"
+                                    onMouseDown={(e) => {
+                                        setQuery(p.name)
+                                        navigate(`/shop?search=${p.name}`)
+                                        setIsTyping(false)
+                                    }}
+                                >
+                                    {p.name}
+                                </div>
+                            ))}
+                        </div>
+                    </form>
 
                     {/* RIGHT */}
                     <div className="none-at-768 flex-grow-1 d-flex justify-content-end">
