@@ -1,3 +1,4 @@
+import dragon from "../imgs/dragoBianco.png"
 import { products } from "../data/products";
 import Toast from "../components/Toast";
 
@@ -13,6 +14,7 @@ export default function HomePage() {
             <section className="hero">
                 <div className="container">
                     <div className="hero-content">
+                        <h1>Le migliori carte collezionabili per veri appassionati</h1>
                         <h1>Le migliori carte collezionabili per veri appassionati</h1>
                         <p>
                             Scopri carte rare, edizioni speciali e prodotti selezionati per
@@ -43,15 +45,19 @@ export default function HomePage() {
                     <div className="products-grid">
                         {featuredProducts.map((product) => (
                             <div className="product-card" key={product.product_id}>
-                                <div className="product-image">
-                                    <span>{product.image}</span>
+                                <div className="l-box-d">
+                                    <img src={dragon} alt="" className="img-dectail-page" />
                                 </div>
 
                                 <div className="product-info">
                                     <h3>{product.name}</h3>
                                     <p>{product.description}</p>
                                     <span className="product-price">€ {product.price}</span>
-                                    <button>Aggiungi al carrello</button>
+                                    <div className="buttons d-flex justify-content-between mt-auto">
+                                        <button className="hover-button btn btn-success w-50 me-2">
+                                            Add to Cart
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         ))}
