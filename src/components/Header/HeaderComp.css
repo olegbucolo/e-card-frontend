@@ -1,15 +1,19 @@
-.filters-header-styles{
+.filters-header-styles {
     background-color: rgb(56, 56, 56);
     height: 3rem;
     padding-top: .3rem;
     top: 3rem;
     width: 100vw;
-    left:50%;
+    left: 50%;
     transform: translateX(-50%);
 }
 
-.search-dropdown{
-    top: 240% ;
+.search-dropdown {
+    top: 240%;
     background-color: rgb(56, 56, 56);
-    color:white
+    color: white
+}
+
+.hover-dark:hover {
+    color: black !important
 }
