@@ -8,6 +8,9 @@ import yugioh from "../imgs/categories/yugioh-logo.png";
 import magic from "../imgs/categories/magic-logo.png";
 import onepiece from "../imgs/categories/op-logo.png";
 
+import { FaTruckFast } from "react-icons/fa6";
+import { FaShieldAlt } from "react-icons/fa";
+import { FaGem } from "react-icons/fa";
 import { products } from "../data/products";
 import Toast from "../components/Toast";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -174,6 +177,33 @@ export default function HomePage() {
                         ))}
 
                     </Swiper>
+
+                </div>
+            </section>
+            <section className="shop-benefits">
+                <div className="container">
+
+                    <div className="benefits-grid">
+
+                        <div className="benefit-card">
+                            <FaTruckFast className="benefit-icon" />
+                            <h3>Spedizione veloce</h3>
+                            <p>Consegna rapida e tracciata su tutti gli ordini.</p>
+                        </div>
+
+                        <div className="benefit-card">
+                            <FaGem className="benefit-icon" />
+                            <h3>Carte selezionate</h3>
+                            <p>Solo carte originali e verificate dai nostri esperti.</p>
+                        </div>
+
+                        <div className="benefit-card">
+                            <FaShieldAlt className="benefit-icon" />
+                            <h3>Pagamenti sicuri</h3>
+                            <p>Transazioni protette con sistemi di pagamento affidabili.</p>
+                        </div>
+
+                    </div>
 
                 </div>
             </section>
