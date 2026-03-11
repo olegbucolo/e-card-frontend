@@ -1,7 +1,7 @@
 import dragon from "../imgs/dragoBianco.png"
 import { products } from "../data/products"
 import { useEffect, useState } from "react";
-
+import "../pages/pages-css/cartpage.css"
 // Fake cart in local storage
 // localStorage.setItem(
 //   "cart",
@@ -31,8 +31,8 @@ export default function CartPage() {
 
     return (
         <>
-            <div className="my-5">
-                <h2>carrello</h2>
+            <div className="cart-page-title">
+                <h2>Cart</h2>
             </div>
 
 
@@ -57,6 +57,8 @@ export default function CartPage() {
                                 prodotto id: {item.id} quantità: {item.quantity}
                             </div>
                         ))}
+
+                        <button className="btn btn-success">Add to cart</button>
 
 
                     </div>
