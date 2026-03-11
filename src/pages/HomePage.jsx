@@ -24,21 +24,20 @@ export default function HomePage() {
 
     return (
         <>
-            <div className="d-flex justify-content-center">
-                <Toast />
-            </div>
-
             <section className="hero">
                 <div className="container">
                     <div className="hero-content">
-                        <h1>Le migliori carte collezionabili per veri appassionati</h1>
-                        <p>
-                            Scopri carte rare, edizioni speciali e prodotti selezionati per
-                            collezionisti e giocatori.
-                        </p>
+                        <div className="hero-text">
+                            <span className="hero-badge">Competenza • Affidabilità • Precisione</span>
+                            <h1>Le migliori carte collezionabili per veri appassionati</h1>
+                            <p>
+                                Scopri carte rare, edizioni speciali e prodotti selezionati per
+                                collezionisti e giocatori.
+                            </p>
+                        </div>
 
-                        <section className="hero-swiper">
-                            <div className="container">
+                        <div className="hero-slider-box">
+                            <section className="hero-swiper">
                                 <Swiper
                                     modules={[Navigation]}
                                     navigation
@@ -60,8 +59,8 @@ export default function HomePage() {
                                         <img src={lotus} alt="Black Lotus" />
                                     </SwiperSlide>
                                 </Swiper>
-                            </div>
-                        </section>
+                            </section>
+                        </div>
                     </div>
                 </div>
             </section>
