@@ -57,7 +57,7 @@ export default function HeaderComp() {
                             {isTyping && products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())).map(p => (
                                 <div
                                     key={p.product_id}
-                                    className="p-2 d-block hover-card"
+                                    className="p-2 d-block hover-card hover-dark"
                                     onMouseDown={(e) => {
                                         setQuery(p.name)
                                         navigate(`/shop?search=${p.name}`)
