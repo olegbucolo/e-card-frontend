@@ -52,6 +52,46 @@ button {
     width: auto;
 }
 
+/*CATEGORIES*/
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.category-card {
+    height: 130px;
+
+    background: rgba(0, 0, 0, 0.04);
+
+    border-radius: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.25s ease;
+
+    cursor: pointer;
+}
+
+.category-card img {
+    max-width: 150px;
+    opacity: 0.85;
+    transition: transform 0.25s ease;
+}
+
+.category-card:hover {
+    background: rgba(0, 0, 0, 0.08);
+    transform: translateY(-5px);
+}
+
+.category-card:hover img {
+    transform: scale(1.1);
+}
+
 /* effects */
 .hover-card:hover {
     background-color: #efefef !important;
