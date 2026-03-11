@@ -1,4 +1,4 @@
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useState } from 'react';
 import { products } from '../../data/products'
@@ -10,6 +10,7 @@ export default function HeaderComp() {
     const [query, setQuery] = useState('');
     const navigate = useNavigate();
     const [isTyping, setIsTyping] = useState(false)
+    const [filterShow, setFilterShow] = useState(false)
 
     // function that handles change when searching a product
     const handleChange = (e) => {
@@ -23,26 +24,27 @@ export default function HeaderComp() {
         // at the press of the search button, we navigate to shop?search=${query}
         navigate(`/shop?search=${query}`)
         setIsTyping(false)
+        setFilterShow(false);
     }
 
     return (
         <header className="z-2 w-100 top-0 position-fixed">
             <nav className="navbar navbar-expand-md bg-body-tertiary">
 
-                <div className="container-xxl d-flex align-items-center">
+                <div className="container-xxl d-flex align-items-center position-relative">
                     {/* LEFT */}
                     <div className="flex-grow-1">
                         <NavLink to="/" className="navbar-brand" ><span className="text-warning">e</span>-card</NavLink>
                     </div>
 
                     {/* CENTER */}
-                    <form onSubmit={handleSubmit} className="d-flex position-relative mx-auto" role="search">
+                    <form onSubmit={handleSubmit} className="d-flex position-relative ms-5" role="search">
                         {/* Controlled input for searching product */}
                         <input
                             className=" form-control me-2"
                             value={query}
                             onChange={handleChange}
-                            onFocus={() => setIsTyping(true)}
+                            onFocus={() => { setIsTyping(true); setFilterShow(true) }}
                             onBlur={() => setIsTyping(false)}
 
                             type="search"
@@ -51,7 +53,7 @@ export default function HeaderComp() {
                         <button
                             className="btn btn-outline-success "
                             type="submit">Search</button>
-                        <div className="position-absolute bg-light top-100 start-0 end-0 search-dropdown">
+                        <div className="position-absolute start-0 end-0 search-dropdown">
                             {isTyping && products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())).map(p => (
                                 <div
                                     key={p.product_id}
@@ -60,6 +62,7 @@ export default function HeaderComp() {
                                         setQuery(p.name)
                                         navigate(`/shop?search=${p.name}`)
                                         setIsTyping(false)
+                                        setFilterShow(false)
                                     }}
                                 >
                                     {p.name}
@@ -86,6 +89,36 @@ export default function HeaderComp() {
 
                         </ul>
                     </div>
+                    {filterShow && (<div className="position-absolute filters-header-styles d-flex justify-content-center">
+                        <div class="dropdown mx-2">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Price
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item active" href="#">Low to High</a></li>
+                                <li><a class="dropdown-item" href="#">High to Low</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown mx-2">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Name
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item active" href="#">Alphabetical</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown ms-2">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Recent
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item active" href="#">1 year</a></li>
+                                <li><a class="dropdown-item" href="#">2 years</a></li>
+                            </ul>
+                        </div>
+
+
+                    </div>)}
                 </div>
             </nav>
         </header>
