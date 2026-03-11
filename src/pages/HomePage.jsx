@@ -1,7 +1,13 @@
-import dragon from "../imgs/dragoBianco.png"
+import lotus from "../imgs/img-hero/black-lotus-hero.png";
+import dragon from "../imgs/img-hero/dragoBianco.png";
+import drowzee from "../imgs/img-hero/drowzee-hero.png";
+import luffy from "../imgs/img-hero/luffy-hero.png";
 import { products } from "../data/products";
 import Toast from "../components/Toast";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 export default function HomePage() {
     const featuredProducts = products.filter(p => p.product_id <= 4);
@@ -21,18 +27,37 @@ export default function HomePage() {
                             Scopri carte rare, edizioni speciali e prodotti selezionati per
                             collezionisti e giocatori.
                         </p>
-                        <Swiper
-                            spaceBetween={50}
-                            slidesPerView={3}
-                            onSlideChange={() => console.log('slide change')}
-                            onSwiper={(swiper) => console.log(swiper)}
-                        >
-                            <SwiperSlide></SwiperSlide>
-                            <SwiperSlide></SwiperSlide>
-                            <SwiperSlide></SwiperSlide>
-                            <SwiperSlide></SwiperSlide>
-                            ...
-                        </Swiper>
+                        <section className="hero-swiper">
+                            <div className="container">
+
+                                <Swiper
+                                    modules={[Navigation]}
+                                    navigation
+                                    slidesPerView={1}
+                                    spaceBetween={20}
+                                    grabCursor={true}
+                                >
+
+                                    <SwiperSlide>
+                                        <img src={dragon} alt="Blue Eyes" />
+                                    </SwiperSlide>
+
+                                    <SwiperSlide>
+                                        <img src={drowzee} alt="Drowzee" />
+                                    </SwiperSlide>
+
+                                    <SwiperSlide>
+                                        <img src={luffy} alt="Luffy" />
+                                    </SwiperSlide>
+
+                                    <SwiperSlide>
+                                        <img src={lotus} alt="Black Lotus" />
+                                    </SwiperSlide>
+
+                                </Swiper>
+
+                            </div>
+                        </section>
 
                         <button>Scopri i prodotti</button>
                     </div>
