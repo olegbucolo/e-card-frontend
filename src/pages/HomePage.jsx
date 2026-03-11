@@ -4,19 +4,19 @@ import drowzee from "../imgs/img-hero/drowzee-hero.png";
 import luffy from "../imgs/img-hero/luffy-hero.png";
 import { products } from "../data/products";
 import Toast from "../components/Toast";
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
 export default function HomePage() {
-    const featuredProducts = products.filter(p => p.product_id <= 4);
+    const featuredProducts = products.filter((p) => p.product_id <= 4);
+
     return (
         <>
             <div className="d-flex justify-content-center">
                 <Toast />
             </div>
-
 
             <section className="hero">
                 <div className="container">
@@ -27,9 +27,9 @@ export default function HomePage() {
                             Scopri carte rare, edizioni speciali e prodotti selezionati per
                             collezionisti e giocatori.
                         </p>
+
                         <section className="hero-swiper">
                             <div className="container">
-
                                 <Swiper
                                     modules={[Navigation]}
                                     navigation
@@ -37,7 +37,6 @@ export default function HomePage() {
                                     spaceBetween={20}
                                     grabCursor={true}
                                 >
-
                                     <SwiperSlide>
                                         <img src={dragon} alt="Blue Eyes" />
                                     </SwiperSlide>
@@ -53,13 +52,9 @@ export default function HomePage() {
                                     <SwiperSlide>
                                         <img src={lotus} alt="Black Lotus" />
                                     </SwiperSlide>
-
                                 </Swiper>
-
                             </div>
                         </section>
-
-                        <button>Scopri i prodotti</button>
                     </div>
                 </div>
             </section>
@@ -92,6 +87,7 @@ export default function HomePage() {
                                     <h3>{product.name}</h3>
                                     <p>{product.description}</p>
                                     <span className="product-price">€ {product.price}</span>
+
                                     <div className="buttons d-flex justify-content-between mt-auto">
                                         <button className="hover-button btn btn-success w-50 me-2">
                                             Add to Cart
@@ -101,7 +97,6 @@ export default function HomePage() {
                             </div>
                         ))}
                     </div>
-
                 </div>
             </section>
 
