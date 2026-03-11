@@ -6,12 +6,12 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-   
+
 }
 
 /* HEADER */
 
-.search-dropdown{
+.search-dropdown {
     max-height: 50vh;
     overflow: auto
 }
@@ -40,6 +40,18 @@ button {
     }
 }
 
+/* HERO */
+.hero-swiper .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-swiper img {
+    height: 420px;
+    width: auto;
+}
+
 /* effects */
 .hover-card:hover {
     background-color: #efefef !important;
@@ -47,7 +59,7 @@ button {
     cursor: pointer;
 }
 
-.hover-button:hover{
+.hover-button:hover {
     transform: scale(105%);
 }
 
