@@ -2,6 +2,7 @@ import {useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useState } from 'react';
 import { products } from '../../data/products'
+import './HeaderComp.css'
 
 export default function HeaderComp() {
 
@@ -23,8 +24,6 @@ export default function HeaderComp() {
         navigate(`/shop?search=${query}`)
         setIsTyping(false)
     }
-
-
 
     return (
         <header className="z-2 w-100 top-0 position-fixed">
