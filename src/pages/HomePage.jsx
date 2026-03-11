@@ -2,6 +2,10 @@ import lotus from "../imgs/img-hero/black-lotus-hero.png";
 import dragon from "../imgs/img-hero/dragoBianco.png";
 import drowzee from "../imgs/img-hero/drowzee-hero.png";
 import luffy from "../imgs/img-hero/luffy-hero.png";
+import pokemon from "../imgs/categories/pokemon-logo.png";
+import yugioh from "../imgs/categories/yugioh-logo.png";
+import magic from "../imgs/categories/magic-logo.png";
+import onepiece from "../imgs/categories/op-logo.png";
 import { products } from "../data/products";
 import Toast from "../components/Toast";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,6 +15,13 @@ import "swiper/css/navigation";
 
 export default function HomePage() {
     const featuredProducts = products.filter((p) => p.product_id <= 4);
+
+    const categories = [
+        { name: "Pokemon", slug: "pokemon", img: pokemon },
+        { name: "Yu-Gi-Oh", slug: "yugioh", img: yugioh },
+        { name: "Magic", slug: "magic", img: magic },
+        { name: "One Piece", slug: "onepiece", img: onepiece }
+    ];
 
     return (
         <>
@@ -61,13 +72,26 @@ export default function HomePage() {
 
             <section className="categories">
                 <div className="container">
-                    <h2>Esplora per categoria</h2>
+                    <h2 className="text-center mb-5">Categorie</h2>
 
                     <div className="categories-grid">
-                        <div className="category-card">Pokémon</div>
-                        <div className="category-card">Yu-Gi-Oh!</div>
-                        <div className="category-card">Magic</div>
-                        <div className="category-card">One Piece</div>
+
+                        <div className="category-card">
+                            <img src={pokemon} alt="pokemon" />
+                        </div>
+
+                        <div className="category-card">
+                            <img src={yugioh} alt="yugioh" />
+                        </div>
+
+                        <div className="category-card">
+                            <img src={magic} alt="magic" />
+                        </div>
+
+                        <div className="category-card">
+                            <img src={onepiece} alt="onepiece" />
+                        </div>
+
                     </div>
                 </div>
             </section>
