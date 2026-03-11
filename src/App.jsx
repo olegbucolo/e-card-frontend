@@ -5,15 +5,17 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import ShopPage from "./pages/ShopPage";
 import DetailPage from "./pages/DetailPage";
 import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
 
 function App() {
   return (
     <Routes>
       <Route element={<DefaultLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="shop" element={<ShopPage/>}/>
-        <Route path="detailpage/:id" element={<DetailPage/>}/>
-        <Route path="cartpage" element={<CartPage/>}/>
+        <Route path="shop" element={<ShopPage />} />
+        <Route path="detailpage/:id" element={<DetailPage />} />
+        <Route path="cartpage" element={<CartPage />} />
+        <Route path="checkout_page" element={<CheckoutPage />} />
       </Route>
     </Routes>
   );
