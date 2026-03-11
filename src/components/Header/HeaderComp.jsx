@@ -1,7 +1,8 @@
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useState } from 'react';
 import { products } from '../../data/products'
+import './HeaderComp.css'
 
 export default function HeaderComp() {
 
@@ -9,6 +10,7 @@ export default function HeaderComp() {
     const [query, setQuery] = useState('');
     const navigate = useNavigate();
     const [isTyping, setIsTyping] = useState(false)
+    const [isFilterOpen, setIsFilterOpen] = useState(false)
 
     // function that handles change when searching a product
     const handleChange = (e) => {
@@ -22,28 +24,27 @@ export default function HeaderComp() {
         // at the press of the search button, we navigate to shop?search=${query}
         navigate(`/shop?search=${query}`)
         setIsTyping(false)
+        setIsFilterOpen(false)
     }
-
-
 
     return (
         <header className="z-2 w-100 top-0 position-fixed">
             <nav className="navbar navbar-expand-md bg-body-tertiary">
 
-                <div className="container-xxl d-flex align-items-center">
+                <div className="position-relative container-xxl d-flex align-items-center">
                     {/* LEFT */}
                     <div className="flex-grow-1">
                         <NavLink to="/" className="navbar-brand" ><span className="text-warning">e</span>-card</NavLink>
                     </div>
 
                     {/* CENTER */}
-                    <form onSubmit={handleSubmit} className="d-flex position-relative mx-auto" role="search">
+                    <form onSubmit={handleSubmit} className="d-flex mx-auto" role="search">
                         {/* Controlled input for searching product */}
                         <input
                             className=" form-control me-2"
                             value={query}
                             onChange={handleChange}
-                            onFocus={() => setIsTyping(true)}
+                            onFocus={() => { setIsTyping(true); setIsFilterOpen(true) }}
                             onBlur={() => setIsTyping(false)}
 
                             type="search"
@@ -52,7 +53,7 @@ export default function HeaderComp() {
                         <button
                             className="btn btn-outline-success "
                             type="submit">Search</button>
-                        <div className="position-absolute bg-light top-100 start-0 end-0 search-dropdown">
+                        <div className="search-bar-styles position-absolute bg-light search-dropdown">
                             {isTyping && products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())).map(p => (
                                 <div
                                     key={p.product_id}
@@ -61,12 +62,26 @@ export default function HeaderComp() {
                                         setQuery(p.name)
                                         navigate(`/shop?search=${p.name}`)
                                         setIsTyping(false)
-                                    }}
-                                >
+                                    }}> 
                                     {p.name}
                                 </div>
                             ))}
                         </div>
+                        {isFilterOpen && (<div className="filter-bar-styles position-absolute bg-light search-dropdown d-flex">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Dropdown button
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item active" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        )}
+
                     </form>
 
                     {/* RIGHT */}

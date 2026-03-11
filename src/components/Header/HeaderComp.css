@@ -1,0 +1,11 @@
+.filter-bar-styles {
+    top: 110%;
+    width: 100vw;
+    padding: .8rem .8rem 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.search-bar-styles {
+    top:200%;
+}
