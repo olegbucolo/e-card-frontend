@@ -9,8 +9,6 @@ export default function HomePage() {
             <div className="d-flex justify-content-center">
                 <Toast />
             </div>
-
-
             <section className="hero">
                 <div className="container">
                     <div className="hero-content">
