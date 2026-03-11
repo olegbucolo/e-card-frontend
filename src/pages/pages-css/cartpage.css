@@ -2,3 +2,20 @@
     margin-top: 60px;
     text-align: center;
 }
+
+.order-container-left {
+    width: 60%;
+
+}
+
+.price-box {
+    width: 40%;
+}
+
+.border-cart {
+    border-style: groove;
+}
+
+.product-detail {
+    margin-left: 20px;
+}

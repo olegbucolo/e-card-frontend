@@ -37,35 +37,98 @@ export default function CartPage() {
 
 
 
-            {/* CONTAINER IMMAGINE E DETTAGLI PRODOTTI NEL CARRELLO */}
 
-            <div className="container my-5">
+            <div className="d-flex">
+                <div className="order-container-left">
 
-                <div className="d-flex">
-
-                    <div className="card" style={{ width: "18rem" }}>
-
-                        <img src={dragon} className="card-img-top" alt="" />
-
-                    </div>
+                    {/* CONTAINER CARD E DETTAGLI PRODOTTI NEL CARRELLO */}
 
 
-                    <div className="product-detail">
 
-                        {cart.map(item => (
+
+                    <div className="d-flex border-cart">
+
+                        <div className="card" style={{ width: "10rem" }}>
+
+                            <img src={dragon} className="card-img-top" alt="" />
+                        </div>
+
+                        <div className="product-detail">
+
+                            {/* {cart.map(item => (
                             <div key={item.id}>
                                 prodotto id: {item.id} quantità: {item.quantity}
                             </div>
-                        ))}
+                        ))} */}
 
-                        <button className="btn btn-success">Add to cart</button>
+                            <h3>Nome</h3>
 
+                            <p>stato</p>
+
+                            <p>Quantità</p>
+
+                            <p>prezzo</p>
+
+
+                        </div>
 
                     </div>
 
+
+
+
+                    <div className="d-flex border-cart">
+
+                        <div className="card" style={{ width: "10rem" }}>
+
+                            <img src={dragon} className="card-img-top" alt="" />
+                        </div>
+
+                        <div className="product-detail">
+
+                            <h3>Nome</h3>
+
+                            <p>stato</p>
+
+                            <p>Quantità</p>
+
+                            <p>prezzo</p>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                <div className="price-box container my-5">
+                    <p>Prezzo totale</p>
+
+                    <button className="btn btn-success"> Procedi all'ordine</button>
                 </div>
 
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         </>
