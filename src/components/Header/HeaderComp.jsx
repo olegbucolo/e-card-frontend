@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { useState } from 'react';
 import { products } from '../../data/products'
 import './HeaderComp.css'
+import { BsFilterLeft } from "react-icons/bs";
+import { IoClose } from "react-icons/io5";
 
 export default function HeaderComp() {
 
@@ -88,7 +90,6 @@ export default function HeaderComp() {
                                     <IoClose className="p-1 fs-2 hover-bg-red"></IoClose>
                                 </button>
 
-
                             </div>)}
                             <div className="search-dropdown">
                                 {isTyping && products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())).map(p => (
@@ -108,20 +109,6 @@ export default function HeaderComp() {
                             </div>
 
                         </div>
-                        {isFilterOpen && (<div className="filter-bar-styles position-absolute bg-light search-dropdown d-flex">
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropdown button
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item active" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        )}
 
                     </form>
 
