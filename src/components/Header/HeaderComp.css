@@ -1,11 +1,42 @@
-.filter-bar-styles {
-    top: 110%;
-    width: 100vw;
-    padding: .8rem .8rem 0;
-    left: 50%;
-    transform: translateX(-50%);
+/* HEADER */
+
+
+.filters-header-styles {
+    background-color: rgb(56, 56, 56);
+    height: 3rem;
+    top: 0;
 }
 
-.search-bar-styles {
-    top:200%;
+.hover-bg-red:hover{
+    background-color: red;
+    color: white
+}
+
+.hover-bg-green:hover{
+    background-color: green;
+    color: white
+}
+
+.overflow-auto{
+    overflow: auto;
+}
+
+.search-dropdown-wrapper{
+    top: 120%;
+
+}
+
+.search-dropdown {
+    max-height: 50vh;
+    overflow: auto;
+    background-color: rgb(56, 56, 56);
+    color: white
+}
+
+.hover-dark:hover {
+    color: black !important
+}
+
+.hover-dark:hover {
+    background-color: rgb(181, 181, 181);
 }

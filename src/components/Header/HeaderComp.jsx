@@ -10,7 +10,7 @@ export default function HeaderComp() {
     const [query, setQuery] = useState('');
     const navigate = useNavigate();
     const [isTyping, setIsTyping] = useState(false)
-    const [isFilterOpen, setIsFilterOpen] = useState(false)
+    const [filterShow, setFilterShow] = useState(false)
 
     // function that handles change when searching a product
     const handleChange = (e) => {
@@ -24,7 +24,7 @@ export default function HeaderComp() {
         // at the press of the search button, we navigate to shop?search=${query}
         navigate(`/shop?search=${query}`)
         setIsTyping(false)
-        setIsFilterOpen(false)
+        setFilterShow(false);
     }
 
     return (
@@ -38,34 +38,75 @@ export default function HeaderComp() {
                     </div>
 
                     {/* CENTER */}
-                    <form onSubmit={handleSubmit} className="d-flex mx-auto" role="search">
+                    <form onSubmit={handleSubmit} className="d-flex position-relative ms-5" role="search">
                         {/* Controlled input for searching product */}
                         <input
                             className=" form-control me-2"
                             value={query}
                             onChange={handleChange}
-                            onFocus={() => { setIsTyping(true); setIsFilterOpen(true) }}
+                            onFocus={() => { setIsTyping(true); }}
                             onBlur={() => setIsTyping(false)}
-
                             type="search"
                             placeholder="Search"
                             aria-label="Search" />
                         <button
                             className="btn btn-outline-success "
                             type="submit">Search</button>
-                        <div className="search-bar-styles position-absolute bg-light search-dropdown">
-                            {isTyping && products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())).map(p => (
-                                <div
-                                    key={p.product_id}
-                                    className="p-2 d-block hover-card"
-                                    onMouseDown={(e) => {
-                                        setQuery(p.name)
-                                        navigate(`/shop?search=${p.name}`)
-                                        setIsTyping(false)
-                                    }}> 
-                                    {p.name}
+                        <button className="ms-2 hover-bg-green rounded-2" type="button" onMouseDown={(e) => e.preventDefault()}
+                            onClick={() => setFilterShow(prev => !prev)}>
+                            <BsFilterLeft className="p-1 fs-2"></BsFilterLeft>
+                        </button>
+                        <div className="position-absolute start-0 end-0 search-dropdown-wrapper">
+                            {filterShow && (<div className="filters-header-styles d-flex justify-content-between align-items-center px-2">
+                                <div className="dropdown ">
+                                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Price
+                                    </button>
+                                    <ul className="dropdown-menu dropdown-menu-dark" >
+                                        <li><a className="dropdown-item active" href="#">Low to High</a></li>
+                                        <li><a className="dropdown-item" href="#">High to Low</a></li>
+                                    </ul>
                                 </div>
-                            ))}
+                                <div className="dropdown ">
+                                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Name
+                                    </button>
+                                    <ul className="dropdown-menu dropdown-menu-dark">
+                                        <li><a className="dropdown-item active" href="#">Alphabetical</a></li>
+                                    </ul>
+                                </div>
+                                <div className="dropdown ">
+                                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Recent
+                                    </button>
+                                    <ul className="dropdown-menu dropdown-menu-dark">
+                                        <li><a className="dropdown-item active" href="#">1 year</a></li>
+                                        <li><a className="dropdown-item" href="#">2 years</a></li>
+                                    </ul>
+                                </div>
+                                <button type="button" onClick={() => setFilterShow(false)}>
+                                    <IoClose className="p-1 fs-2 hover-bg-red"></IoClose>
+                                </button>
+
+
+                            </div>)}
+                            <div className="search-dropdown">
+                                {isTyping && products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())).map(p => (
+                                    <div
+                                        key={p.product_id}
+                                        className="p-2 d-block hover-card hover-dark"
+                                        onMouseDown={(e) => {
+                                            setQuery(p.name)
+                                            navigate(`/shop?search=${p.name}`)
+                                            setIsTyping(false)
+                                            setFilterShow(false)
+                                        }}
+                                    >
+                                        {p.name}
+                                    </div>
+                                ))}
+                            </div>
+
                         </div>
                         {isFilterOpen && (<div className="filter-bar-styles position-absolute bg-light search-dropdown d-flex">
                             <div class="dropdown">
@@ -102,6 +143,7 @@ export default function HeaderComp() {
 
                         </ul>
                     </div>
+
                 </div>
             </nav>
         </header>
