@@ -67,7 +67,7 @@ export default function HomePage() {
 
             <section className="categories">
                 <div className="container">
-                    <h2 className="text-center mb-5">Categorie</h2>
+                    <h2 className="section-title">Categorie</h2>
 
                     <div className="categories-grid">
                         <div className="category-card">
