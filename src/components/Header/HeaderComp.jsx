@@ -4,6 +4,11 @@ import { useState } from 'react';
 import { products } from '../../data/products'
 import './HeaderComp.css'
 
+import { BsFilterLeft } from "react-icons/bs";
+import { IoClose } from "react-icons/io5";
+
+
+
 export default function HeaderComp() {
 
     // Search bar query used for internal filtering and as value for navigate in /shop?search=${query}
@@ -44,30 +49,69 @@ export default function HeaderComp() {
                             className=" form-control me-2"
                             value={query}
                             onChange={handleChange}
-                            onFocus={() => { setIsTyping(true); setFilterShow(true) }}
+                            onFocus={() => { setIsTyping(true); }}
                             onBlur={() => setIsTyping(false)}
-
                             type="search"
                             placeholder="Search"
                             aria-label="Search" />
                         <button
                             className="btn btn-outline-success "
                             type="submit">Search</button>
-                        <div className="position-absolute start-0 end-0 search-dropdown">
-                            {isTyping && products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())).map(p => (
-                                <div
-                                    key={p.product_id}
-                                    className="p-2 d-block hover-card hover-dark"
-                                    onMouseDown={(e) => {
-                                        setQuery(p.name)
-                                        navigate(`/shop?search=${p.name}`)
-                                        setIsTyping(false)
-                                        setFilterShow(false)
-                                    }}
-                                >
-                                    {p.name}
+                        <button className="ms-2 hover-bg-green rounded-2" type="button" onMouseDown={(e) => e.preventDefault()}
+                            onClick={() => setFilterShow(prev => !prev)}>
+                            <BsFilterLeft className="p-1 fs-2"></BsFilterLeft>
+                        </button>
+                        <div className="position-absolute start-0 end-0 search-dropdown-wrapper">
+                            {filterShow && (<div className="filters-header-styles d-flex justify-content-between align-items-center px-2">
+                                <div className="dropdown ">
+                                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Price
+                                    </button>
+                                    <ul className="dropdown-menu dropdown-menu-dark" >
+                                        <li><a className="dropdown-item active" href="#">Low to High</a></li>
+                                        <li><a className="dropdown-item" href="#">High to Low</a></li>
+                                    </ul>
                                 </div>
-                            ))}
+                                <div className="dropdown ">
+                                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Name
+                                    </button>
+                                    <ul className="dropdown-menu dropdown-menu-dark">
+                                        <li><a className="dropdown-item active" href="#">Alphabetical</a></li>
+                                    </ul>
+                                </div>
+                                <div className="dropdown ">
+                                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Recent
+                                    </button>
+                                    <ul className="dropdown-menu dropdown-menu-dark">
+                                        <li><a className="dropdown-item active" href="#">1 year</a></li>
+                                        <li><a className="dropdown-item" href="#">2 years</a></li>
+                                    </ul>
+                                </div>
+                                <button type="button" onClick={() => setFilterShow(false)}>
+                                    <IoClose className="p-1 fs-2 hover-bg-red"></IoClose>
+                                </button>
+
+
+                            </div>)}
+                            <div className="search-dropdown">
+                                {isTyping && products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())).map(p => (
+                                    <div
+                                        key={p.product_id}
+                                        className="p-2 d-block hover-card hover-dark"
+                                        onMouseDown={(e) => {
+                                            setQuery(p.name)
+                                            navigate(`/shop?search=${p.name}`)
+                                            setIsTyping(false)
+                                            setFilterShow(false)
+                                        }}
+                                    >
+                                        {p.name}
+                                    </div>
+                                ))}
+                            </div>
+
                         </div>
                     </form>
 
@@ -89,36 +133,7 @@ export default function HeaderComp() {
 
                         </ul>
                     </div>
-                    {filterShow && (<div className="position-absolute filters-header-styles d-flex justify-content-center">
-                        <div class="dropdown mx-2">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Price
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item active" href="#">Low to High</a></li>
-                                <li><a class="dropdown-item" href="#">High to Low</a></li>
-                            </ul>
-                        </div>
-                        <div class="dropdown mx-2">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Name
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item active" href="#">Alphabetical</a></li>
-                            </ul>
-                        </div>
-                        <div class="dropdown ms-2">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Recent
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item active" href="#">1 year</a></li>
-                                <li><a class="dropdown-item" href="#">2 years</a></li>
-                            </ul>
-                        </div>
 
-
-                    </div>)}
                 </div>
             </nav>
         </header>
