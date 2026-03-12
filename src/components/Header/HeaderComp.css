@@ -1,5 +1,8 @@
 /* HEADER */
 
+nav{
+    background-color: black !important;
+}
 
 .filters-header-styles {
     background-color: rgb(56, 56, 56);
@@ -43,17 +46,31 @@
 
 .pika-style {
     background-image: url('../../assets/GIFs/pikachu-surprise.gif');
-    /* path relative to CSS file */
     background-size: 80%;
     background-repeat: no-repeat;
     background-position: 50% 80%;
     width: 3rem;
     height: 2rem;
     transform: scale(1.5);
-    /* scale(150%) → scale(1.5) */
     display: flex;
     margin: -1rem 0 -1rem 0;
 }
+
+.navbar-brand{
+    padding:0 !important;
+}
+
+.logo-style {
+    background-image: url('../../imgs/Logo-header/header-logo.png');
+    background-size: 180%;
+    background-repeat: no-repeat;
+    background-position: 50% 45%;
+    filter:saturate(100%) hue-rotate(150deg);
+    width: 6rem;
+    height: 2.5rem;
+    display: flex;
+}
+
 
 .header-cart-style {
     padding: .4rem;

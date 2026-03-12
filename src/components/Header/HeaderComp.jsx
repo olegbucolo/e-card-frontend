@@ -7,9 +7,6 @@ import { LuHeart } from "react-icons/lu";
 
 import { FiShoppingCart } from "react-icons/fi";
 
-import pikaGif from '../../assets/GIFs/pikachu-surprise.gif'
-
-
 // OLEG TI HO MESSO IL LOGO PER L'HEADER NELLA CARTELLA IMMAGINI, NON TI VOGLIO TOCCARE IL CODICE, FAI PURE TU
 
 export default function HeaderComp({ indexProducts }) {
@@ -41,7 +38,7 @@ export default function HeaderComp({ indexProducts }) {
                 <div className="position-relative container-xxl d-flex align-items-center">
                     {/* LEFT */}
                     <div className="flex-grow-1">
-                        <NavLink to="/" className="navbar-brand pika-style" ></NavLink>
+                        <NavLink to="/" className="navbar-brand logo-style" ></NavLink>
                     </div>
 
                     {/* CENTER */}
