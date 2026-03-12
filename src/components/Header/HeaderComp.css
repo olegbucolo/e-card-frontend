@@ -65,7 +65,7 @@ p{
 }
 
 .header-cart-style:hover {
-    background-color: black
+    background-color: rgb(25, 135, 84);
 }
 
 .header-cart-style:hover svg {
@@ -78,7 +78,7 @@ p{
 }
 
 .header-wish-style:hover {
-    background-color: black
+    background-color: rgb(25, 135, 84);
 }
 
 .header-wish-style:hover svg {
