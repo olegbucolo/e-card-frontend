@@ -70,7 +70,7 @@ nav {
     background-size: 180%;
     background-repeat: no-repeat;
     background-position: 50% 45%;
-    filter: saturate(100%) hue-rotate(150deg);
+    filter: brightness(1%);
     width: 6rem;
     height: 2.5rem;
     display: flex;
