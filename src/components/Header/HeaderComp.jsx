@@ -3,8 +3,9 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { useState } from 'react';
 import { BsFilterLeft } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
+import pikaGif from '../../assets/GIFs/pikachu-surprise.gif'
 
-export default function HeaderComp({indexProducts}) {
+export default function HeaderComp({ indexProducts }) {
 
     // Search bar query used for internal filtering and as value for navigate in /shop?search=${query}
     const [query, setQuery] = useState('');
@@ -29,12 +30,11 @@ export default function HeaderComp({indexProducts}) {
 
     return (
         <header className="z-2 w-100 top-0 position-fixed">
-            <nav className="navbar navbar-expand-md bg-body-tertiary">
-
+            <nav className="position-relative navbar navbar-expand-md bg-body-tertiary">
                 <div className="position-relative container-xxl d-flex align-items-center">
                     {/* LEFT */}
                     <div className="flex-grow-1">
-                        <NavLink to="/" className="navbar-brand" ><span className="text-warning">e</span>-card</NavLink>
+                        <NavLink to="/"  className="navbar-brand pika-style" ></NavLink>
                     </div>
 
                     {/* CENTER */}
