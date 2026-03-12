@@ -14,6 +14,10 @@ export default function DetailPage() {
         return <p>Prodotto non trovato</p>
     }
 
+    const availability = singleProduct.is_featured == 1
+        ? "Disponibile"
+        : "Non disponibile"
+
     return (
         <>
             <h2>Info prodotto</h2>
@@ -30,9 +34,11 @@ export default function DetailPage() {
 
                         <h4>{singleProduct.title}</h4>
 
-                        <p>Condition: {singleProduct.condition_id}</p>
+                        <p>Availability: {availability}</p>
 
-                        <p>Price:{singleProduct.price}</p>
+                        <p>Description: {singleProduct.description} </p>
+
+                        <p>Price: {singleProduct.price}</p>
 
                         <div>
                             <button className="btn btn-warning">Add to Wishlist</button>
