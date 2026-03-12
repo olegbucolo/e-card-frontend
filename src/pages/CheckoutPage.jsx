@@ -167,7 +167,7 @@ function CheckoutPage() {
 
                         <button
                             onClick={() => setShowSuccess(false)}
-                            className="btn btn-success"
+                            className="btn btn-pop-up-mail"
                         >
                             Chiudi
                         </button>
