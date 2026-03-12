@@ -1,12 +1,17 @@
 import { NavLink } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
 import { useOutletContext } from 'react-router-dom'
-import { addToCart } from '../utils/cartUtils';
+import { addToLocalStorage } from '../utils/localStorage';
 
 export default function ShopPage() {
     const [searchParams] = useSearchParams();
     const search = searchParams.get("search")
-    const { indexProducts, cartProducts, setCartProducts } = useOutletContext();
+    const {
+        indexProducts,
+        cartProducts,
+        setCartProducts,
+        wishlistProducts,
+        setWishlistProducts } = useOutletContext();
     const filteredProducts = indexProducts?.filter(p => p.title.toLowerCase().includes(search?.toLowerCase() || ""))
 
     return (
@@ -30,10 +35,14 @@ export default function ShopPage() {
                                         </NavLink>
 
                                         <div className="buttons d-flex justify-content-between mt-auto">
-                                            <button className="hover-button btn btn-success w-50 me-2" onClick={() => addToCart(setCartProducts, p.id)}>
+                                            <button
+                                                className="hover-button btn btn-success w-50 me-2"
+                                                onClick={() => addToLocalStorage(setCartProducts, p.id)}>
                                                 Add to Cart
                                             </button>
-                                            <button className="hover-button btn btn-warning w-50">
+                                            <button 
+                                            className="hover-button btn btn-warning w-50"
+                                            onClick={() => addToLocalStorage(setWishlistProducts, p.id)}>
                                                 Wishlist
                                             </button>
                                         </div>

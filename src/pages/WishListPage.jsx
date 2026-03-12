@@ -1,16 +1,11 @@
-import dragon from "../imgs/dragoBianco.png"
 import { useOutletContext } from "react-router-dom";
-import { addToCart } from "../utils/cartUtils";
-import { removeFromCart } from "../utils/cartUtils";
+import { addToLocalStorage, removeFromLocalStorage } from "../utils/localStorage";
 
 import "../pages/pages-css/cartpage.css"
 
+export default function WishlistPage() {
 
-
-export default function WishListPage(){
-    
-    const { indexProducts, cartProducts, setCartProducts } = useOutletContext()
-
+    const { indexProducts, cartProducts, setCartProducts, wishlistProducts, setWishlistProducts } = useOutletContext()
 
     return (
         <>
@@ -26,7 +21,7 @@ export default function WishListPage(){
                     <div className="order-container-left">
 
                         {
-                            cartProducts.map(item => {
+                            wishlistProducts.map(item => {
 
                                 const product = indexProducts.find(
                                     p => p.id == item.id
@@ -55,12 +50,12 @@ export default function WishListPage(){
 
                                             <p>Price: {product.price}</p>
 
-                                            <button onClick={() => addToCart(setCartProducts, item.id, 1)}
+                                            <button onClick={() => addToLocalStorage(setCartProducts, item.id, 1)}
                                                 className=" btn btn-outline-success me-2">
                                                 add
                                             </button>
 
-                                            <button onClick={() => removeFromCart(setCartProducts, item.id, 1)}
+                                            <button onClick={() => removeFromLocalStorage(setCartProducts, item.id, 1)}
                                                 className="btn btn-outline-danger me-2">
                                                 remove
                                             </button>

@@ -1,6 +1,6 @@
 
-export function addToCart(setCartProducts, productId, quantity = 1) {
-    setCartProducts(prev => {
+export function addToLocalStorage(setterFunction, productId, quantity = 1) {
+    setterFunction(prev => {
         const existingProduct = prev.find(p => p.id === productId);
         if (existingProduct) {
             return prev.map(p => p.id === productId ? { ...p, quantity: p.quantity + quantity } : p);
@@ -9,8 +9,8 @@ export function addToCart(setCartProducts, productId, quantity = 1) {
     })
 }
 
-export function removeFromCart(setCartProducts, productId, quantity = 1) {
-    setCartProducts(prev => {
+export function removeFromLocalStorage(setterFunction, productId, quantity = 1) {
+    setterFunction(prev => {
         const existingProduct = prev.find(p => p.id === productId);
 
         if (!existingProduct) return prev;

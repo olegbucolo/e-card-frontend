@@ -8,14 +8,33 @@ const indexProductsAPI = 'http://localhost:3000/products/'
 
 export default function DefaultLayout() {
 
+    // state for the cart from localStorage
     const [cartProducts, setCartProducts] = useState(() => {
         const stored = localStorage.getItem('cart');
-        
+
         return stored ? JSON.parse(stored) : [];
     })
 
+    // effect that updates cart in localStorage
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cartProducts))
+    }, [cartProducts])
+
+    // state for the wishlist from localStorage
+    const [wishlistProducts, setWishlistProducts] = useState(() => {
+        const stored = localStorage.getItem('wishlist');
+        return stored ? JSON.parse(stored) : [];
+    })
+    
+    // effect that updates wishlist in localStorage
+    useEffect(() => {
+        localStorage.setItem('wishlist', JSON.stringify(wishlistProducts))
+    }, [wishlistProducts])
+
+    // state that holds products from db
     const [indexProducts, setIndexProducts] = useState([])
 
+    // GET query for index products
     useEffect(() => {
         async function fetchProducts() {
             try {
@@ -29,15 +48,17 @@ export default function DefaultLayout() {
 
     }, [])
 
-    useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cartProducts))
-    }, [cartProducts])
-
     return (
         <>
             <HeaderComp indexProducts={indexProducts} />
             <main>
-                <Outlet context={{ indexProducts, cartProducts, setCartProducts }} />
+                <Outlet context={{
+                    indexProducts,
+                    cartProducts,
+                    setCartProducts,
+                    wishlistProducts,
+                    setWishlistProducts
+                }} />
             </main>
             <FooterComp />
         </>

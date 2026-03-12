@@ -1,5 +1,5 @@
 import './pages-css/detailpage.css'
-import { addToCart } from "../utils/cartUtils";
+import { addToLocalStorage } from "../utils/localStorage";
 import { useOutletContext, useParams } from "react-router-dom"
 
 export default function DetailPage() {
@@ -50,7 +50,7 @@ export default function DetailPage() {
                         <div className="mt-3">
                             <button
                                 className="btn btn-success"
-                                onClick={() => addToCart(setCartProducts, singleProduct.id, 1)}
+                                onClick={() => addToLocalStorage(setCartProducts, singleProduct.id, 1)}
                             >
                                 Add to cart
                             </button>

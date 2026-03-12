@@ -141,7 +141,7 @@ export default function HeaderComp({ indexProducts }) {
                         </div>
                         <FiShoppingCart className='text-dark fs-5' />
                     </NavLink>
-                    <NavLink to='checkout_page' className='position-relative header-wish-style ms-1 d-flex'>
+                    <NavLink to='wishlist_page' className='position-relative header-wish-style ms-1 d-flex'>
                         <div className='position-absolute start-50 rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
                             <p>5</p>
                         </div>

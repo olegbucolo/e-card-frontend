@@ -1,8 +1,7 @@
 import dragon from "../imgs/dragoBianco.png"
 import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { addToCart } from "../utils/cartUtils";
-import { removeFromCart } from "../utils/cartUtils";
+import { addToLocalStorage, removeFromLocalStorage } from "../utils/localStorage";
 
 import "../pages/pages-css/cartpage.css"
 
@@ -57,12 +56,12 @@ export default function CartPage() {
 
                                             <p>Price: {product.price}</p>
 
-                                            <button onClick={() => addToCart(setCartProducts, item.id, 1)}
+                                            <button onClick={() => addToLocalStorage(setCartProducts, item.id, 1)}
                                                 className=" btn btn-outline-success me-2">
                                                 add
                                             </button>
 
-                                            <button onClick={() => removeFromCart(setCartProducts, item.id, 1)}
+                                            <button onClick={() => removeFromLocalStorage(setCartProducts, item.id, 1)}
                                                 className="btn btn-outline-danger me-2">
                                                 remove
                                             </button>
