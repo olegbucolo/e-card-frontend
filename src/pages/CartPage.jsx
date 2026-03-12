@@ -16,93 +16,98 @@ export default function CartPage() {
     return (
         <>
             <div className="cart-page-title">
-                <h2>Cart</h2>
+                <h2 className="cart-title-text">Cart</h2>
             </div>
 
 
+            {/* CONTAINER CARD E DETTAGLI PRODOTTI NEL CARRELLO */}
+
+            <div className="container">
+
+                <div className="d-flex">
+                    <div className="order-container-left">
+
+                        {
+                            cartProducts.map(item => {
+
+                                const product = indexProducts.find(
+                                    p => p.id == item.id
+                                )
 
 
-            <div className="d-flex">
-                <div className="order-container-left">
+                                if (!product) return null
+                                return (
 
-                    {/* CONTAINER CARD E DETTAGLI PRODOTTI NEL CARRELLO */}
+                                    <div className="d-flex border-cart my-5" key={item.id}>
+
+                                        <div className="card" style={{ width: "10rem" }}>
+
+                                            <img src={product.image} className="card-img-top" alt="" />
+
+                                        </div>
+
+                                        <div className="product-detail">
 
 
+                                            <h3>Name: {product.title}</h3>
+
+                                            <p className="avaible-text">{product.is_featured === 1 ? "Disponibile" : "Non disponibile"}</p>
+
+                                            <p>Quantity: {item.quantity}</p>
+
+                                            <p>Price: {product.price}</p>
+
+                                            <button onClick={() => addToCart(setCartProducts, item.id, 1)}
+                                                className=" btn btn-outline-success me-2">
+                                                add
+                                            </button>
+
+                                            <button onClick={() => removeFromCart(setCartProducts, item.id, 1)}
+                                                className="btn btn-outline-danger me-2">
+                                                remove
+                                            </button>
 
 
-                    {
-                        cartProducts.map(item => {
-
-                            const product = indexProducts.find(
-                                p => p.id == item.id
+                                        </div>
+                                    </div>
+                                )
+                            }
                             )
 
-
-                            if (!product) return null
-                            return (
-
-
-
-                                <div className="d-flex border-cart" key={item.id}>
-
-                                    <div className="card" style={{ width: "10rem" }}>
-
-                                        <img src={product.image} className="card-img-top" alt="" />
-
-                                    </div>
-
-                                    <div className="product-detail">
-
-
-                                        <h3>Name: {product.title}</h3>
-
-                                        <p>Avaiable: {product.is_featured}</p>
-
-                                        <p>Quantity: {item.quantity}</p>
-
-                                        <p>price: {product.price}</p>
-
-                                        <button onClick={() => addToCart(setCartProducts, item.id, 1)}>
-                                            add
-                                        </button>
-
-                                        <button onClick={() => removeFromCart(setCartProducts, item.id, 1)}>
-                                            remove
-                                        </button>
-
-
-                                    </div>
-
-
-
-
-                                </div>
-                            )
                         }
-                        )
 
-                    }
+                    </div>
 
-                </div>
+                    <div className="price-box container my-5">
+                        <p>Prezzo totale</p>
 
+                        <button className="btn btn-success"> Procedi all'ordine</button>
+                    </div>
 
-
-
-
-
-
-
-
-
-
-
-                <div className="price-box container my-5">
-                    <p>Prezzo totale</p>
-
-                    <button className="btn btn-success"> Procedi all'ordine</button>
                 </div>
 
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
