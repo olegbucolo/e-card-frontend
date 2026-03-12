@@ -10,13 +10,31 @@ popup-overlay {
   justify-content: center;
   align-items: center;
 
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+
   z-index: 1000;
 }
 
 .popup {
   background: white;
-  padding: 30px;
-  border-radius: 10px;
+  padding: 30px 40px;
+  border-radius: 12px;
   text-align: center;
-  width: 300px;
+  width: 350px;
+
+  box-shadow: 0px 10px 40px rgba(0,0,0,0.2);
+
+  animation: popupFade 0.3s ease;
+}
+
+@keyframes popupFade {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
