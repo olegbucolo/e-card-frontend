@@ -1,12 +1,12 @@
-import drago from '../imgs/dragoBianco.png'
-import { products } from '../data/products'
 import { NavLink } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
+import { useOutletContext } from 'react-router-dom'
 
 export default function ShopPage() {
     const [searchParams] = useSearchParams();
     const search = searchParams.get("search")
-    const filteredProducts = products.filter(p => p.name.toLowerCase().includes(search?.toLowerCase() || ""))
+    const {indexProducts} = useOutletContext();
+    const filteredProducts = indexProducts?.filter(p => p.title.toLowerCase().includes(search?.toLowerCase() || ""))
     return (
         <>
             <div className="container-lg my-5 pt-3">
@@ -19,10 +19,10 @@ export default function ShopPage() {
                                     <div className="card hover-card h-100 p-2 d-flex flex-column">
 
                                         <NavLink to={`/detailpage/${p.product_id}`} className="text-decoration-none text-dark">
-                                            <img src={drago} className="card-img-top" alt="" />
+                                            <img src={p.image} className="card-img-top" alt="" />
 
                                             <div className="card-body px-0">
-                                                <h5 className="card-title fs-5">{p.name}</h5>
+                                                <h5 className="card-title fs-5">{p.title}</h5>
                                                 <p className="card-text ">{p.description}</p>
                                             </div>
                                         </NavLink>
