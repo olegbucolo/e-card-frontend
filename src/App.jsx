@@ -13,7 +13,7 @@ function App() {
       <Route element={<DefaultLayout />}>
         <Route index element={<HomePage />} />
         <Route path="shop" element={<ShopPage />} />
-        <Route path="detailpage/:id" element={<DetailPage />} />
+        <Route path="detailpage/:slug" element={<DetailPage />} />
         <Route path="cartpage" element={<CartPage />} />
         <Route path="checkout_page" element={<CheckoutPage />} />
       </Route>

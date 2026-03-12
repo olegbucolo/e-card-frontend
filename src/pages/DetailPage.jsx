@@ -4,10 +4,10 @@ import { useOutletContext, useParams } from "react-router-dom"
 export default function DetailPage() {
 
     const { indexProducts } = useOutletContext();
-    const { id } = useParams()
+    const { slug } = useParams()
 
     const singleProduct = indexProducts.find(
-        product => product.id == id
+        product => product.slug == slug
     )
 
     if (!singleProduct) {
