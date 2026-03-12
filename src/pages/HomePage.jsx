@@ -20,7 +20,7 @@ export default function HomePage() {
     const { indexProducts = [], cartProducts, setCartProducts } = useOutletContext();
 
     const featuredProducts = indexProducts
-        .filter((p) => Number(is_featured) === 1)
+        .filter((p) => Number(p.is_featured) === 1)
         .slice(0, 8);
 
     const bestSellerProducts = [...indexProducts]
@@ -98,6 +98,7 @@ export default function HomePage() {
                     <Swiper
                         modules={[Navigation]}
                         navigation
+                        loop={true}
                         spaceBetween={20}
                         slidesPerView={4}
                         grabCursor={true}
@@ -147,6 +148,7 @@ export default function HomePage() {
                     <Swiper
                         modules={[Navigation]}
                         navigation
+                        loop={true}
                         spaceBetween={20}
                         slidesPerView={4}
                         grabCursor={true}
