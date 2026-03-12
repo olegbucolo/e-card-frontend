@@ -9,7 +9,7 @@ import { FiShoppingCart } from "react-icons/fi";
 
 // OLEG TI HO MESSO IL LOGO PER L'HEADER NELLA CARTELLA IMMAGINI, NON TI VOGLIO TOCCARE IL CODICE, FAI PURE TU
 
-export default function HeaderComp({ indexProducts }) {
+export default function HeaderComp({ indexProducts, wishlistProducts, cartProducts }) {
 
     // Search bar query used for internal filtering and as value for navigate in /shop?search=${query}
     const [query, setQuery] = useState('');
@@ -30,6 +30,14 @@ export default function HeaderComp({ indexProducts }) {
         navigate(`/shop?search=${query}`)
         setIsTyping(false)
         setFilterShow(false);
+    }
+
+    const totalCartProducts = () => {
+        let count = 0
+        if (cartProducts) {
+            cartProducts.forEach(p => count += p.quantity)
+            return count;
+        }else return count
     }
 
     return (
@@ -138,13 +146,13 @@ export default function HeaderComp({ indexProducts }) {
                     </div>
                     <NavLink to='cartpage' className='position-relative header-button-style call-to-action ms-2 d-flex'>
                         <div className='position-absolute start-50 rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
-                            <p>5</p>
+                            <p>{totalCartProducts()}</p>
                         </div>
                         <FiShoppingCart className='text-dark fs-5' />
                     </NavLink>
                     <NavLink to='wishlist_page' className='position-relative header-button-style ms-1 call-to-action d-flex'>
                         <div className='position-absolute start-50 rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
-                            <p>5</p>
+                            <p>{wishlistProducts.length}</p>
                         </div>
                         <LuHeart className='text-dark fs-5' />
                     </NavLink>
