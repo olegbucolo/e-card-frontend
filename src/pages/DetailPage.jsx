@@ -1,4 +1,4 @@
-
+import './pages-css/detailpage.css'
 import { useOutletContext, useParams } from "react-router-dom"
 
 export default function DetailPage() {
@@ -15,14 +15,14 @@ export default function DetailPage() {
     }
 
     const availability = singleProduct.is_featured == 1
-        ? "Disponibile"
-        : "Non disponibile"
+        ? "Available"
+        : "Not available"
 
     return (
         <>
-            <h2>Info prodotto</h2>
+           
 
-            <div className="container my-5">
+            <div className="container margin-card">
                 <div className="d-flex bg-detail-color">
 
                     <div className="l-box-d">
