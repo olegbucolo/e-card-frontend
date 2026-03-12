@@ -1,37 +1,47 @@
-import dragon from "../imgs/dragoBianco.png"
-import { products } from "../data/products"
-import { useParams } from "react-router-dom"
+
+import { useOutletContext, useParams } from "react-router-dom"
 
 export default function DetailPage() {
 
+    const { indexProducts } = useOutletContext();
     const { id } = useParams()
-    const singleProduct = products.find(product => product.product_id === Number(id))
-    
+
+    const singleProduct = indexProducts.find(
+        product => product.id == id
+    )
+
+    if (!singleProduct) {
+        return <p>Prodotto non trovato</p>
+    }
+
     return (
         <>
             <h2>Info prodotto</h2>
 
-            <div className="container mt-3 mb-4">
-                <div className="d-flex">
+            <div className="container my-5">
+                <div className="d-flex bg-detail-color">
 
                     <div className="l-box-d">
-                        <img src={dragon} alt="" className="img-dectail-page" />
+                        <img src={singleProduct.image} alt="" className="img-dectail-page" />
 
                     </div>
 
                     <div className="r-box-d">
 
-                        <h4>{singleProduct.name}</h4>
+                        <h4>{singleProduct.title}</h4>
 
                         <p>Condition: {singleProduct.condition_id}</p>
 
                         <p>Price:{singleProduct.price}</p>
 
-                        <p>Description:{singleProduct.description}</p>
+                        <div>
+                            <button className="btn btn-warning">Add to Wishlist</button>
+                        </div>
+                        <div className="mt-3">
+                            <button className="btn btn-success">Add to cart</button>
+                        </div>
 
 
-
-                        <div><button className="btn btn-warning">Add to cart</button></div>
                     </div>
 
                 </div>
@@ -39,3 +49,5 @@ export default function DetailPage() {
         </>
     )
 }
+
+
