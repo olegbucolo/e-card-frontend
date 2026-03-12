@@ -15,8 +15,8 @@ export default function DetailPage() {
     }
 
     const availability = singleProduct.is_featured == 1
-        ? "Disponibile"
-        : "Non disponibile"
+        ? "Available"
+        : "Not available"
 
     return (
         <>
