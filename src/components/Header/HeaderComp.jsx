@@ -1,12 +1,10 @@
-import { useNavigate } from "react-router-dom";
-import { NavLink } from "react-router-dom";
-import { useState } from 'react';
-import { products } from '../../data/products'
 import './HeaderComp.css'
+import { useNavigate, NavLink } from "react-router-dom";
+import { useState } from 'react';
 import { BsFilterLeft } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 
-export default function HeaderComp() {
+export default function HeaderComp({indexProducts}) {
 
     // Search bar query used for internal filtering and as value for navigate in /shop?search=${query}
     const [query, setQuery] = useState('');
@@ -92,18 +90,18 @@ export default function HeaderComp() {
 
                             </div>)}
                             <div className="search-dropdown">
-                                {isTyping && products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())).map(p => (
+                                {isTyping && indexProducts?.filter(p => p.title.toLowerCase().includes(query.toLowerCase())).map(p => (
                                     <div
-                                        key={p.product_id}
+                                        key={p.id}
                                         className="p-2 d-block hover-card hover-dark"
                                         onMouseDown={(e) => {
-                                            setQuery(p.name)
-                                            navigate(`/shop?search=${p.name}`)
+                                            setQuery(p.title)
+                                            navigate(`/shop?search=${p.title}`)
                                             setIsTyping(false)
                                             setFilterShow(false)
                                         }}
                                     >
-                                        {p.name}
+                                        {p.title}
                                     </div>
                                 ))}
                             </div>
