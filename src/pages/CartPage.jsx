@@ -1,14 +1,16 @@
 import dragon from "../imgs/dragoBianco.png"
 import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { addToCart } from "../utils/cartUtils";
+import { removeFromCart } from "../utils/cartUtils";
+
 import "../pages/pages-css/cartpage.css"
 
 
 export default function CartPage() {
 
 
-    const { indexProducts, cartProducts } = useOutletContext()
-
+    const { indexProducts, cartProducts, setCartProducts } = useOutletContext()
 
 
     return (
@@ -34,18 +36,19 @@ export default function CartPage() {
                             const product = indexProducts.find(
                                 p => p.id == item.id
                             )
-                            
+
 
                             if (!product) return null
                             return (
 
-                                
+
 
                                 <div className="d-flex border-cart" key={item.id}>
 
                                     <div className="card" style={{ width: "10rem" }}>
 
                                         <img src={product.image} className="card-img-top" alt="" />
+
                                     </div>
 
                                     <div className="product-detail">
@@ -55,9 +58,17 @@ export default function CartPage() {
 
                                         <p>Avaiable: {product.is_featured}</p>
 
-                                        <p>Quantity: {product.quantity}</p>
+                                        <p>Quantity: {item.quantity}</p>
 
                                         <p>price: {product.price}</p>
+
+                                        <button onClick={() => addToCart(setCartProducts, item.id, 1)}>
+                                            add
+                                        </button>
+
+                                        <button onClick={() => removeFromCart(setCartProducts, item.id, 1)}>
+                                            remove
+                                        </button>
 
 
                                     </div>
