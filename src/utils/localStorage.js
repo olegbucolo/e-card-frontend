@@ -1,4 +1,8 @@
 
+export function isPresentInStorage(state, productId){
+    return state.some(s => s.id === productId);
+}
+
 export function addToLocalStorage(setterFunction, productId, quantity = 1) {
     setterFunction(prev => {
         const existingProduct = prev.find(p => p.id === productId);

@@ -1,7 +1,11 @@
 import { NavLink } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
 import { useOutletContext } from 'react-router-dom'
-import { addToLocalStorage } from '../utils/localStorage';
+import { LuHeart } from "react-icons/lu";
+import { FaHeart } from "react-icons/fa6";
+import { FiShoppingCart } from "react-icons/fi";
+
+import { addToLocalStorage, isPresentInStorage, removeFromLocalStorage } from '../utils/localStorage';
 
 export default function ShopPage() {
     const [searchParams] = useSearchParams();
@@ -13,6 +17,15 @@ export default function ShopPage() {
         wishlistProducts,
         setWishlistProducts } = useOutletContext();
     const filteredProducts = indexProducts?.filter(p => p.title.toLowerCase().includes(search?.toLowerCase() || ""))
+
+    const handleWishlist = (id) => {
+        let alreadyInStorage = isPresentInStorage(wishlistProducts, id);
+        if (alreadyInStorage) {
+            removeFromLocalStorage(setWishlistProducts, id)
+        } else {
+            addToLocalStorage(setWishlistProducts, id)
+        }
+    }
 
     return (
         <>
@@ -36,14 +49,20 @@ export default function ShopPage() {
 
                                         <div className="buttons d-flex justify-content-between mt-auto">
                                             <button
-                                                className="hover-button btn btn-success w-50 me-2"
+                                                className="hover-button btn btn-success w-50 me-2 d-flex
+                                                justify-content-center align-items-center"
                                                 onClick={() => addToLocalStorage(setCartProducts, p.id)}>
-                                                Add to Cart
+                                                Cart
+                                                <FiShoppingCart className='ms-1' />
                                             </button>
-                                            <button 
-                                            className="hover-button btn btn-warning w-50"
-                                            onClick={() => addToLocalStorage(setWishlistProducts, p.id)}>
-                                                Wishlist
+                                            <button
+                                                className="hover-button btn btn-warning w-50 d-flex bg-light
+                                                justify-content-center align-items-center"
+                                                onClick={() => handleWishlist(p.id)}>
+                                                Wish
+                                                {isPresentInStorage(wishlistProducts, p.id)
+                                                    ? <FaHeart className='text-danger ms-1' />
+                                                    : <LuHeart className='text-danger ms-1' />}
                                             </button>
                                         </div>
 
