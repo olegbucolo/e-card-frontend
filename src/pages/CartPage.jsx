@@ -49,9 +49,9 @@ export default function CartPage() {
                                         <div className="product-detail">
 
 
-                                            <h3>Name: {product.title}</h3>
+                                            <h3>{product.title}</h3>
 
-                                            <p className="avaible-text">{product.is_featured === 1 ? "Disponibile" : "Non disponibile"}</p>
+                                            <p className="avaible-text">{product.is_featured === 1 ? "Avaiable" : "Not avaible"}</p>
 
                                             <p>Quantity: {item.quantity}</p>
 
@@ -79,9 +79,9 @@ export default function CartPage() {
                     </div>
 
                     <div className="price-box container my-5">
-                        <p>Prezzo totale</p>
+                        <p>Total Price</p>
 
-                        <button className="btn btn-success"> Procedi all'ordine</button>
+                        <button className="btn btn-success"> Proceed to order</button>
                     </div>
 
                 </div>
