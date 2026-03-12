@@ -5,9 +5,6 @@ function CheckoutPage() {
 
     const endpoint = "http://localhost:3000/order"
 
-    const [showSuccess, setShowSuccess] = useState(false);
-    const [orderId, setOrderId] = useState(null);
-
     const [order, setOrder] = useState({
         orderSlug: "",
         customerName: "",
@@ -44,10 +41,7 @@ function CheckoutPage() {
 
         try {
             const res = await axios.post(endpoint, order)
-            // alert(`Ordine inviato! ID ordine: ${res.data.ordineId}`);
-
-            setOrderId(res.data.ordineId);
-            setShowSuccess(true);
+            alert(`Ordine inviato! ID ordine: ${res.data.ordineId}`);
         }
         catch (err) {
             console.error(err)
@@ -157,7 +151,7 @@ function CheckoutPage() {
                 </form>
             </div>
 
-            {/* pop-up di conferma dell'ordine */}
+            {/* pop-up di conferma dell'ordine
             {showSuccess && (
                 <div className="popup-overlay">
                     <div className="popup">
@@ -173,7 +167,7 @@ function CheckoutPage() {
                         </button>
                     </div>
                 </div>
-            )}
+            )} */}
         </>
     )
 
