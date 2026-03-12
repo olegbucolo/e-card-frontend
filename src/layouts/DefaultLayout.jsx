@@ -10,6 +10,7 @@ export default function DefaultLayout() {
 
     const [cartProducts, setCartProducts] = useState(() => {
         const stored = localStorage.getItem('cart');
+        
         return stored ? JSON.parse(stored) : [];
     })
 
@@ -30,6 +31,7 @@ export default function DefaultLayout() {
     }, [])
 
     useEffect(() => {
+        console.log(localStorage.getItem('cart'))
         localStorage.setItem('cart', JSON.stringify(cartProducts))
     }, [cartProducts])
 

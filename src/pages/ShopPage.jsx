@@ -5,7 +5,7 @@ import { useOutletContext } from 'react-router-dom'
 export default function ShopPage() {
     const [searchParams] = useSearchParams();
     const search = searchParams.get("search")
-    const {indexProducts} = useOutletContext();
+    const { indexProducts, cartProducts, setCartProducts } = useOutletContext();
     const filteredProducts = indexProducts?.filter(p => p.title.toLowerCase().includes(search?.toLowerCase() || ""))
     return (
         <>
@@ -28,7 +28,9 @@ export default function ShopPage() {
                                         </NavLink>
 
                                         <div className="buttons d-flex justify-content-between mt-auto">
-                                            <button className="hover-button btn btn-success w-50 me-2">
+                                            <button className="hover-button btn btn-success w-50 me-2" onClick={() => {
+                                                setCartProducts(prev => [...prev, { id: p.id, quantity: 1 }])
+                                            }}>
                                                 Add to Cart
                                             </button>
                                             <button className="hover-button btn btn-warning w-50">
