@@ -56,14 +56,14 @@ export default function HeaderComp({ indexProducts }) {
                         <button
                             className="btn btn-outline-success "
                             type="submit">Search</button>
-                        <button className="ms-2 header-button-style w-4-rem rounded-2" type="button" onMouseDown={(e) => e.preventDefault()}
+                        <button className="ms-2 header-button-style w-4-rem rounded-2 border" type="button" onMouseDown={(e) => e.preventDefault()}
                             onClick={() => setFilterShow(prev => !prev)}>
                             <BsFilterLeft className="p-1 fs-2"></BsFilterLeft>
                         </button>
-                        <div className="position-absolute start-0 end-0 search-dropdown-wrapper">
-                            {filterShow && (<div className="filters-header-styles d-flex justify-content-between align-items-center px-2">
-                                <div className="dropdown ">
-                                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div className="position-absolute mx--2 start-0 end-0 search-dropdown-wrapper">
+                            {filterShow && (<div className="bg-green rounded-3 mb-1 filters-header-styles d-flex justify-content-start align-items-center px-2">
+                                <div className="dropdown me-2">
+                                    <button className="bg-dark-green border-0 btn btn-secondary dropdown-toggle dropdown-hover-green" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Price
                                     </button>
                                     <ul className="dropdown-menu dropdown-menu-dark" >
@@ -71,16 +71,16 @@ export default function HeaderComp({ indexProducts }) {
                                         <li><a className="dropdown-item" href="#">High to Low</a></li>
                                     </ul>
                                 </div>
-                                <div className="dropdown ">
-                                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div className="dropdown me-2">
+                                    <button className="bg-dark-green border-0 btn btn-secondary dropdown-toggle dropdown-hover-green" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Name
                                     </button>
                                     <ul className="dropdown-menu dropdown-menu-dark">
                                         <li><a className="dropdown-item active" href="#">Alphabetical</a></li>
                                     </ul>
                                 </div>
-                                <div className="dropdown ">
-                                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div className="dropdown me-2">
+                                    <button className="bg-dark-green border-0 btn btn-secondary dropdown-toggle dropdown-hover-green" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Recent
                                     </button>
                                     <ul className="dropdown-menu dropdown-menu-dark">
@@ -88,27 +88,31 @@ export default function HeaderComp({ indexProducts }) {
                                         <li><a className="dropdown-item" href="#">2 years</a></li>
                                     </ul>
                                 </div>
-                                <button type="button" onClick={() => setFilterShow(false)}>
+                                <button type="button" className="ms-auto rounded-2 overflow-hidden" onClick={() => setFilterShow(false)} >
                                     <IoClose className="p-1 fs-2 hover-bg-red"></IoClose>
                                 </button>
 
                             </div>)}
-                            <div className="search-dropdown">
-                                {isTyping && indexProducts?.filter(p => p.title.toLowerCase().includes(query.toLowerCase())).map(p => (
+                            {isTyping && <div className="search-dropdown bg-scroll-black box-shadow-light">
+                                {indexProducts?.filter(p => p.title.toLowerCase().includes(query.toLowerCase())).map(p => (
                                     <div
                                         key={p.id}
-                                        className="p-2 d-block hover-card hover-dark"
+                                        className="p-2 hover-card hover-dark d-flex border-bottom"
                                         onMouseDown={(e) => {
                                             setQuery(p.title)
                                             navigate(`/shop?search=${p.title}`)
                                             setIsTyping(false)
                                             setFilterShow(false)
-                                        }}
-                                    >
-                                        {p.title}
+                                        }}>
+                                        <div className="search-result-left">
+                                            <img className='h-4-rem scale-120' src={p.image} alt="" />
+                                        </div>
+                                        <div className="search-result-right d-flex align-items-center ms-3">
+                                            <h6>{p.title}</h6>
+                                        </div>
                                     </div>
                                 ))}
-                            </div>
+                            </div>}
 
                         </div>
 
@@ -132,13 +136,13 @@ export default function HeaderComp({ indexProducts }) {
 
                         </ul>
                     </div>
-                    <NavLink to='cartpage' className='position-relative header-button-style ms-2 d-flex'>
+                    <NavLink to='cartpage' className='position-relative header-button-style call-to-action ms-2 d-flex'>
                         <div className='position-absolute start-50 rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
                             <p>5</p>
                         </div>
                         <FiShoppingCart className='text-dark fs-5' />
                     </NavLink>
-                    <NavLink to='wishlist_page' className='position-relative header-button-style ms-1 d-flex'>
+                    <NavLink to='wishlist_page' className='position-relative header-button-style ms-1 call-to-action d-flex'>
                         <div className='position-absolute start-50 rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
                             <p>5</p>
                         </div>
