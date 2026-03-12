@@ -39,6 +39,8 @@ export default function CartPage() {
                             if (!product) return null
                             return (
 
+                                
+
                                 <div className="d-flex border-cart">
 
                                     <div className="card" style={{ width: "10rem" }}>
