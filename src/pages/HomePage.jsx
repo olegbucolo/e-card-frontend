@@ -1,3 +1,4 @@
+import { useOutletContext, Link } from "react-router-dom";
 import lotus from "../imgs/img-hero/black-lotus-hero.png";
 import dragon from "../imgs/img-hero/dragoBianco.png";
 import drowzee from "../imgs/img-hero/drowzee-hero.png";
@@ -9,18 +10,22 @@ import magic from "../imgs/categories/magic-logo.png";
 import onepiece from "../imgs/categories/op-logo.png";
 
 import { FaTruckFast } from "react-icons/fa6";
-import { FaShieldAlt } from "react-icons/fa";
-import { FaGem } from "react-icons/fa";
-import { products } from "../data/products";
-import Toast from "../components/Toast";
+import { FaShieldAlt, FaGem } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
 export default function HomePage() {
-    const featuredProducts = products.filter((p) => p.is_featured).slice(0, 4);
-    const bestSellerProducts = products.filter((p) => !p.is_featured).slice(0, 4);
+    const { indexProducts = [], cartProducts, setCartProducts } = useOutletContext();
+
+    const featuredProducts = indexProducts
+        .filter((p) => Number(p.is_featured) === 1)
+        .slice(0, 4);
+
+    const bestSellerProducts = [...indexProducts]
+        .sort((a, b) => Number(b.sold_quantity) - Number(a.sold_quantity))
+        .slice(0, 4);
 
     return (
         <>
@@ -112,17 +117,23 @@ export default function HomePage() {
                         }}
                     >
                         {featuredProducts.map((product) => (
-                            <SwiperSlide key={product.product_id}>
-                                <div className="product-card">
-                                    <div className="product-image-box">
-                                        <img src={dragon} alt={product.name} className="product-image" />
-                                    </div>
+                            <SwiperSlide key={product.id}>
+                                <Link to={`/detailpage/${product.slug}`} className="product-card-link">
+                                    <div className="product-card">
+                                        <div className="product-image-box">
+                                            <img
+                                                src={product.image}
+                                                alt={product.title}
+                                                className="product-image"
+                                            />
+                                        </div>
 
-                                    <div className="product-info">
-                                        <h3>{product.name}</h3>
-                                        <span className="product-price">€ {product.price}</span>
+                                        <div className="product-info">
+                                            <h3>{product.title}</h3>
+                                            <span className="product-price">€ {product.price}</span>
+                                        </div>
                                     </div>
-                                </div>
+                                </Link>
                             </SwiperSlide>
                         ))}
                     </Swiper>
@@ -131,7 +142,6 @@ export default function HomePage() {
 
             <section className="best-sellers">
                 <div className="container">
-
                     <h2 className="mb-4">Più venduti</h2>
 
                     <Swiper
@@ -155,35 +165,33 @@ export default function HomePage() {
                             },
                         }}
                     >
-
                         {bestSellerProducts.map((product) => (
-                            <SwiperSlide key={product.product_id}>
+                            <SwiperSlide key={product.id}>
+                                <Link to={`/detailpage/${product.slug}`} className="product-card-link">
+                                    <div className="product-card">
+                                        <div className="product-image-box">
+                                            <img
+                                                src={product.image}
+                                                alt={product.title}
+                                                className="product-image"
+                                            />
+                                        </div>
 
-                                <div className="product-card">
-
-                                    <div className="product-image-box">
-                                        <img src={dragon} alt={product.name} className="product-image" />
+                                        <div className="product-info">
+                                            <h3>{product.title}</h3>
+                                            <span className="product-price">€ {product.price}</span>
+                                        </div>
                                     </div>
-
-                                    <div className="product-info">
-                                        <h3>{product.name}</h3>
-                                        <span className="product-price">€ {product.price}</span>
-                                    </div>
-
-                                </div>
-
+                                </Link>
                             </SwiperSlide>
                         ))}
-
                     </Swiper>
-
                 </div>
             </section>
+
             <section className="shop-benefits">
                 <div className="container">
-
                     <div className="benefits-grid">
-
                         <div className="benefit-card">
                             <FaTruckFast className="benefit-icon" />
                             <h3>Spedizione veloce</h3>
@@ -201,12 +209,9 @@ export default function HomePage() {
                             <h3>Pagamenti sicuri</h3>
                             <p>Transazioni protette con sistemi di pagamento affidabili.</p>
                         </div>
-
                     </div>
-
                 </div>
             </section>
         </>
-
     );
 }

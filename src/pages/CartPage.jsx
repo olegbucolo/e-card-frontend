@@ -41,7 +41,7 @@ export default function CartPage() {
 
                                 
 
-                                <div className="d-flex border-cart">
+                                <div className="d-flex border-cart" key={item.id}>
 
                                     <div className="card" style={{ width: "10rem" }}>
 
