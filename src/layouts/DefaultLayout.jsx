@@ -10,6 +10,7 @@ export default function DefaultLayout() {
 
     const [cartProducts, setCartProducts] = useState(() => {
         const stored = localStorage.getItem('cart');
+        
         return stored ? JSON.parse(stored) : [];
     })
 
@@ -20,7 +21,6 @@ export default function DefaultLayout() {
             try {
                 const res = await axios.get(indexProductsAPI)
                 setIndexProducts(res.data);
-                console.log(res.data)
             } catch (err) {
                 console.error(err)
             }
