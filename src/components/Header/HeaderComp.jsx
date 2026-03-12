@@ -9,6 +9,9 @@ import { FiShoppingCart } from "react-icons/fi";
 
 import pikaGif from '../../assets/GIFs/pikachu-surprise.gif'
 
+
+// OLEG TI HO MESSO IL LOGO PER L'HEADER NELLA CARTELLA IMMAGINI, NON TI VOGLIO TOCCARE IL CODICE, FAI PURE TU
+
 export default function HeaderComp({ indexProducts }) {
 
     // Search bar query used for internal filtering and as value for navigate in /shop?search=${query}
