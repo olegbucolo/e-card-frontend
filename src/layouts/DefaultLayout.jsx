@@ -15,7 +15,6 @@ export default function DefaultLayout() {
             try {
                 const res = await axios.get(indexProductsAPI)
                 setIndexProducts(res.data);
-                console.log(res.data)
 
             } catch (err) {
                 console.error(err)
