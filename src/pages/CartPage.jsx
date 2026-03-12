@@ -9,17 +9,7 @@ export default function CartPage() {
 
     const { indexProducts, cartProducts } = useOutletContext()
 
-    // cartProducts.map(item => {
 
-    //     const product = indexProducts.find(
-    //         p => p.id == item.id
-    //     )
-
-    //     if (!product) return null
-
-    // })
-
-    // console.log(product)
 
     return (
         <>
@@ -44,6 +34,7 @@ export default function CartPage() {
                             const product = indexProducts.find(
                                 p => p.id == item.id
                             )
+                            
 
                             if (!product) return null
                             return (
@@ -58,17 +49,19 @@ export default function CartPage() {
                                     <div className="product-detail">
 
 
-                                        <h3>Name: {product.title }</h3>
+                                        <h3>Name: {product.title}</h3>
 
-                                        <p>Quantity: { }</p>
+                                        <p>Avaiable: {product.is_featured}</p>
 
-                                        <p>price: { }</p>
+                                        <p>Quantity: {product.quantity}</p>
 
-
-
+                                        <p>price: {product.price}</p>
 
 
                                     </div>
+
+
+
 
                                 </div>
                             )
