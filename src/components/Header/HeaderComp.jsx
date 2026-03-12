@@ -3,6 +3,10 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { useState } from 'react';
 import { BsFilterLeft } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
+import { LuHeart } from "react-icons/lu";
+
+import { FiShoppingCart } from "react-icons/fi";
+
 import pikaGif from '../../assets/GIFs/pikachu-surprise.gif'
 
 export default function HeaderComp({ indexProducts }) {
@@ -34,7 +38,7 @@ export default function HeaderComp({ indexProducts }) {
                 <div className="position-relative container-xxl d-flex align-items-center">
                     {/* LEFT */}
                     <div className="flex-grow-1">
-                        <NavLink to="/"  className="navbar-brand pika-style" ></NavLink>
+                        <NavLink to="/" className="navbar-brand pika-style" ></NavLink>
                     </div>
 
                     {/* CENTER */}
@@ -128,6 +132,18 @@ export default function HeaderComp({ indexProducts }) {
 
                         </ul>
                     </div>
+                    <NavLink to='cartpage' className='position-relative header-cart-style ms-2 d-flex'>
+                        <div className='position-absolute start-50 rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
+                            <p>5</p>
+                        </div>
+                        <FiShoppingCart className='text-dark fs-5' />
+                    </NavLink>
+                    <NavLink to='checkout_page' className='position-relative header-wish-style ms-1 d-flex'>
+                        <div className='position-absolute start-50 rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
+                            <p>5</p>
+                        </div>
+                        <LuHeart className='text-dark fs-5' />
+                    </NavLink>
 
                 </div>
             </nav>
