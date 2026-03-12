@@ -7,6 +7,17 @@ export default function ShopPage() {
     const search = searchParams.get("search")
     const { indexProducts, cartProducts, setCartProducts } = useOutletContext();
     const filteredProducts = indexProducts?.filter(p => p.title.toLowerCase().includes(search?.toLowerCase() || ""))
+
+    function addToCart(productId, quantity = 1)  {
+        setCartProducts(prev => {
+            const existingProduct = prev.find(p => p.id === productId);
+            if(existingProduct){
+                return prev.map(p => p.id === productId ? {...p, quantity: p.quantity + quantity} : p);
+            }
+            return [...prev, {id: productId, quantity}]
+        })
+    }
+
     return (
         <>
             <div className="container-lg my-5 pt-3">
@@ -28,9 +39,7 @@ export default function ShopPage() {
                                         </NavLink>
 
                                         <div className="buttons d-flex justify-content-between mt-auto">
-                                            <button className="hover-button btn btn-success w-50 me-2" onClick={() => {
-                                                setCartProducts(prev => [...prev, { id: p.id, quantity: 1 }])
-                                            }}>
+                                            <button className="hover-button btn btn-success w-50 me-2" onClick={() => addToCart(p.id)}>
                                                 Add to Cart
                                             </button>
                                             <button className="hover-button btn btn-warning w-50">
