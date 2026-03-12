@@ -10,71 +10,56 @@ export default function WishlistPage() {
     return (
         <>
             <div className="cart-page-title">
-                <h2 className="cart-title-text">Cart</h2>
+                <h2 className="cart-title-text">Wishlist</h2>
             </div>
 
-            {/* CONTAINER CARD E DETTAGLI PRODOTTI NEL CARRELLO */}
+            {/* CONTAINER CARD E DETTAGLI PRODOTTI NEL WISHLIST */}
 
-            <div className="container">
+            <div className="container justify-content-center">
+                {wishlistProducts.map(item => {
 
-                <div className="d-flex">
-                    <div className="order-container-left">
+                    const product = indexProducts.find(
+                        p => p.id == item.id
+                    )
 
-                        {
-                            wishlistProducts.map(item => {
+                    if (!product) return null
+                    return (
 
-                                const product = indexProducts.find(
-                                    p => p.id == item.id
-                                )
+                        <div className="d-flex border mb-2 p-2" key={item.id}>
 
+                            <div className="card" style={{ width: "10rem" }}>
 
-                                if (!product) return null
-                                return (
+                                <img src={product.image} className="card-img-top" alt="" />
 
-                                    <div className="d-flex border-cart my-5" key={item.id}>
+                            </div>
 
-                                        <div className="card" style={{ width: "10rem" }}>
-
-                                            <img src={product.image} className="card-img-top" alt="" />
-
-                                        </div>
-
-                                        <div className="product-detail">
+                            <div className="product-detail">
 
 
-                                            <h3>{product.title}</h3>
+                                <h3>{product.title}</h3>
 
-                                            <p className="avaible-text">{product.is_featured === 1 ? "Avaiable" : "Not avaible"}</p>
+                                <p className="avaible-text">{product.is_featured === 1 ? "Avaiable" : "Not avaible"}</p>
 
-                                            <p>Quantity: {item.quantity}</p>
+                                <p>Quantity: {item.quantity}</p>
 
-                                            <p>Price: {product.price}</p>
+                                <p>Price: {product.price}</p>
 
-                                            <button onClick={() => addToLocalStorage(setCartProducts, item.id, 1)}
-                                                className=" btn btn-outline-success me-2">
-                                                add
-                                            </button>
+                                <button onClick={() => addToLocalStorage(setWishlistProducts, item.id, 1)}
+                                    className=" btn btn-outline-success me-2">
+                                    add
+                                </button>
 
-                                            <button onClick={() => removeFromLocalStorage(setCartProducts, item.id, 1)}
-                                                className="btn btn-outline-danger me-2">
-                                                remove
-                                            </button>
+                                <button onClick={() => removeFromLocalStorage(setWishlistProducts, item.id, 1)}
+                                    className="btn btn-outline-danger me-2">
+                                    remove
+                                </button>
 
 
-                                        </div>
-                                    </div>
-                                )
-                            }
-                            )
+                            </div>
+                        </div>
+                    )
+                })}
 
-                        }
-
-                    </div>
-                    <div className="price-box container my-5">
-                        <p>Total Price</p>
-                        <button className="btn btn-success"> Proceed to order</button>
-                    </div>
-                </div>
             </div>
         </>
     )
