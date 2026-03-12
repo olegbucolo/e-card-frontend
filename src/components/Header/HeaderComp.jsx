@@ -1,15 +1,21 @@
-import {useNavigate } from "react-router-dom";
-import { NavLink } from "react-router-dom";
-import { useState } from 'react';
-import { products } from '../../data/products'
 import './HeaderComp.css'
+import { useNavigate, NavLink } from "react-router-dom";
+import { useState } from 'react';
+import { BsFilterLeft } from "react-icons/bs";
+import { IoClose } from "react-icons/io5";
+import { LuHeart } from "react-icons/lu";
 
-export default function HeaderComp() {
+import { FiShoppingCart } from "react-icons/fi";
+
+import pikaGif from '../../assets/GIFs/pikachu-surprise.gif'
+
+export default function HeaderComp({ indexProducts }) {
 
     // Search bar query used for internal filtering and as value for navigate in /shop?search=${query}
     const [query, setQuery] = useState('');
     const navigate = useNavigate();
     const [isTyping, setIsTyping] = useState(false)
+    const [filterShow, setFilterShow] = useState(false)
 
     // function that handles change when searching a product
     const handleChange = (e) => {
@@ -23,49 +29,89 @@ export default function HeaderComp() {
         // at the press of the search button, we navigate to shop?search=${query}
         navigate(`/shop?search=${query}`)
         setIsTyping(false)
+        setFilterShow(false);
     }
 
     return (
         <header className="z-2 w-100 top-0 position-fixed">
-            <nav className="navbar navbar-expand-md bg-body-tertiary">
-
-                <div className="container-xxl d-flex align-items-center">
+            <nav className="position-relative navbar navbar-expand-md bg-body-tertiary">
+                <div className="position-relative container-xxl d-flex align-items-center">
                     {/* LEFT */}
                     <div className="flex-grow-1">
-                        <NavLink to="/" className="navbar-brand" ><span className="text-warning">e</span>-card</NavLink>
+                        <NavLink to="/" className="navbar-brand pika-style" ></NavLink>
                     </div>
 
                     {/* CENTER */}
-                    <form onSubmit={handleSubmit} className="d-flex position-relative mx-auto" role="search">
+                    <form onSubmit={handleSubmit} className="d-flex position-relative ms-5" role="search">
                         {/* Controlled input for searching product */}
                         <input
                             className=" form-control me-2"
                             value={query}
                             onChange={handleChange}
-                            onFocus={() => setIsTyping(true)}
+                            onFocus={() => { setIsTyping(true); }}
                             onBlur={() => setIsTyping(false)}
-
                             type="search"
                             placeholder="Search"
                             aria-label="Search" />
                         <button
                             className="btn btn-outline-success "
                             type="submit">Search</button>
-                        <div className="position-absolute bg-light top-100 start-0 end-0 search-dropdown">
-                            {isTyping && products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())).map(p => (
-                                <div
-                                    key={p.product_id}
-                                    className="p-2 d-block hover-card"
-                                    onMouseDown={(e) => {
-                                        setQuery(p.name)
-                                        navigate(`/shop?search=${p.name}`)
-                                        setIsTyping(false)
-                                    }}
-                                >
-                                    {p.name}
+                        <button className="ms-2 hover-bg-green rounded-2" type="button" onMouseDown={(e) => e.preventDefault()}
+                            onClick={() => setFilterShow(prev => !prev)}>
+                            <BsFilterLeft className="p-1 fs-2"></BsFilterLeft>
+                        </button>
+                        <div className="position-absolute start-0 end-0 search-dropdown-wrapper">
+                            {filterShow && (<div className="filters-header-styles d-flex justify-content-between align-items-center px-2">
+                                <div className="dropdown ">
+                                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Price
+                                    </button>
+                                    <ul className="dropdown-menu dropdown-menu-dark" >
+                                        <li><a className="dropdown-item active" href="#">Low to High</a></li>
+                                        <li><a className="dropdown-item" href="#">High to Low</a></li>
+                                    </ul>
                                 </div>
-                            ))}
+                                <div className="dropdown ">
+                                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Name
+                                    </button>
+                                    <ul className="dropdown-menu dropdown-menu-dark">
+                                        <li><a className="dropdown-item active" href="#">Alphabetical</a></li>
+                                    </ul>
+                                </div>
+                                <div className="dropdown ">
+                                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Recent
+                                    </button>
+                                    <ul className="dropdown-menu dropdown-menu-dark">
+                                        <li><a className="dropdown-item active" href="#">1 year</a></li>
+                                        <li><a className="dropdown-item" href="#">2 years</a></li>
+                                    </ul>
+                                </div>
+                                <button type="button" onClick={() => setFilterShow(false)}>
+                                    <IoClose className="p-1 fs-2 hover-bg-red"></IoClose>
+                                </button>
+
+                            </div>)}
+                            <div className="search-dropdown">
+                                {isTyping && indexProducts?.filter(p => p.title.toLowerCase().includes(query.toLowerCase())).map(p => (
+                                    <div
+                                        key={p.id}
+                                        className="p-2 d-block hover-card hover-dark"
+                                        onMouseDown={(e) => {
+                                            setQuery(p.title)
+                                            navigate(`/shop?search=${p.title}`)
+                                            setIsTyping(false)
+                                            setFilterShow(false)
+                                        }}
+                                    >
+                                        {p.title}
+                                    </div>
+                                ))}
+                            </div>
+
                         </div>
+
                     </form>
 
                     {/* RIGHT */}
@@ -86,6 +132,19 @@ export default function HeaderComp() {
 
                         </ul>
                     </div>
+                    <NavLink to='cartpage' className='position-relative header-cart-style ms-2 d-flex'>
+                        <div className='position-absolute start-50 rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
+                            <p>5</p>
+                        </div>
+                        <FiShoppingCart className='text-dark fs-5' />
+                    </NavLink>
+                    <NavLink to='checkout_page' className='position-relative header-wish-style ms-1 d-flex'>
+                        <div className='position-absolute start-50 rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
+                            <p>5</p>
+                        </div>
+                        <LuHeart className='text-dark fs-5' />
+                    </NavLink>
+
                 </div>
             </nav>
         </header>

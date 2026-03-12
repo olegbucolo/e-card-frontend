@@ -19,4 +19,5 @@ async function confermaOrdine() {
   } else {
     alert("Errore invio ordine");
   }
+
 }

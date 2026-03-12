@@ -1,0 +1,86 @@
+/* HEADER */
+
+
+.filters-header-styles {
+    background-color: rgb(56, 56, 56);
+    height: 3rem;
+    top: 0;
+}
+
+.hover-bg-red:hover {
+    background-color: red;
+    color: white
+}
+
+.hover-bg-green:hover {
+    background-color: green;
+    color: white
+}
+
+.overflow-auto {
+    overflow: auto;
+}
+
+.search-dropdown-wrapper {
+    top: 120%;
+
+}
+
+.search-dropdown {
+    max-height: 50vh;
+    overflow: auto;
+    background-color: rgb(56, 56, 56);
+    color: white
+}
+
+.hover-dark:hover {
+    color: black !important
+}
+
+.hover-dark:hover {
+    background-color: rgb(181, 181, 181);
+}
+
+.pika-style {
+    background-image: url('../../assets/GIFs/pikachu-surprise.gif');
+    /* path relative to CSS file */
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: 50% 80%;
+    width: 3rem;
+    height: 2rem;
+    transform: scale(1.5);
+    /* scale(150%) → scale(1.5) */
+    display: flex;
+    margin: -1rem 0 -1rem 0;
+}
+
+.header-cart-style {
+    padding: .4rem;
+    border-radius: 1rem;
+}
+
+p{
+    margin-bottom: 0;
+}
+
+.header-cart-style:hover {
+    background-color: black
+}
+
+.header-cart-style:hover svg {
+    color: white !important;
+}
+
+.header-wish-style {
+    padding: .4rem;
+    border-radius: 1rem;
+}
+
+.header-wish-style:hover {
+    background-color: black
+}
+
+.header-wish-style:hover svg {
+    color: white !important;
+}
