@@ -51,7 +51,7 @@ function CheckoutPage() {
 
     return (
         <>
-            <div className="w-30 py-3 px-3">
+            <div className="w-30 mt-5 py-4 px-3">
                 <form onSubmit={handleSubmit}>
 
                     <div className="mb-3">
