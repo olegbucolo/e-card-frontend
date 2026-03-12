@@ -14,11 +14,11 @@ export default function ShopPage() {
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-2">
                         {search ? filteredProducts.map(p => {
                             return (
-                                <div key={p.product_id} className="col">
+                                <div key={p.id} className="col">
 
                                     <div className="card hover-card h-100 p-2 d-flex flex-column">
 
-                                        <NavLink to={`/detailpage/${p.product_id}`} className="text-decoration-none text-dark">
+                                        <NavLink to={`/detailpage/${p.id}`} className="text-decoration-none text-dark">
                                             <img src={p.image} className="card-img-top" alt="" />
 
                                             <div className="card-body px-0">
