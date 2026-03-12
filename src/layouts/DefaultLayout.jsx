@@ -9,12 +9,8 @@ const indexProductsAPI = 'http://localhost:3000/products/'
 export default function DefaultLayout() {
 
     const [cartProducts, setCartProducts] = useState(() => {
-        const localStorageCart = JSON.parse(localStorage.getItem('cart'));
-        if (localStorageCart) {
-            return localStorageCart
-        } else {
-            return []
-        }
+        const stored = localStorage.getItem('cart');
+        return stored ? JSON.parse(stored) : [];
     })
 
     const [indexProducts, setIndexProducts] = useState([])
@@ -32,6 +28,10 @@ export default function DefaultLayout() {
         fetchProducts();
 
     }, [])
+
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cartProducts))
+    }, [cartProducts])
 
     return (
         <>
