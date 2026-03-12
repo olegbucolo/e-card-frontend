@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useOutletContext } from "react-router-dom";
 import HeaderComp from "../components/Header/HeaderComp";
 import FooterComp from "../components/Footer/FooterComp";
 import { useState, useEffect } from 'react';
@@ -7,6 +7,15 @@ import axios from 'axios';
 const indexProductsAPI = 'http://localhost:3000/products/'
 
 export default function DefaultLayout() {
+
+    const [cartProducts, setCartProducts] = useState(() => {
+        const localStorageCart = JSON.parse(localStorage.getItem('cart'));
+        if (localStorageCart) {
+            return localStorageCart
+        } else {
+            return []
+        }
+    })
 
     const [indexProducts, setIndexProducts] = useState([])
 
@@ -28,7 +37,7 @@ export default function DefaultLayout() {
         <>
             <HeaderComp indexProducts={indexProducts} />
             <main>
-                <Outlet context={{ indexProducts }} />
+                <Outlet context={{ indexProducts, cartProducts, setCartProducts }} />
             </main>
             <FooterComp />
         </>
