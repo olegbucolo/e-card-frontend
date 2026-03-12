@@ -1,10 +1,14 @@
 import './pages-css/detailpage.css'
+import { addToCart } from "../utils/cartUtils";
 import { useOutletContext, useParams } from "react-router-dom"
 
 export default function DetailPage() {
 
-    const { indexProducts } = useOutletContext();
+    const { indexProducts, cartProducts, setCartProducts } = useOutletContext()
+
     const { slug } = useParams()
+
+
 
     const singleProduct = indexProducts.find(
         product => product.slug == slug
@@ -20,7 +24,7 @@ export default function DetailPage() {
 
     return (
         <>
-           
+
 
             <div className="container margin-card">
                 <div className="d-flex bg-detail-color">
@@ -44,14 +48,19 @@ export default function DetailPage() {
                             <button className="btn btn-warning">Add to Wishlist</button>
                         </div>
                         <div className="mt-3">
-                            <button className="btn btn-success">Add to cart</button>
+                            <button
+                                className="btn btn-success"
+                                onClick={() => addToCart(setCartProducts, singleProduct.id, 1)}
+                            >
+                                Add to cart
+                            </button>
                         </div>
 
 
                     </div>
 
                 </div>
-            </div>
+            </div >
         </>
     )
 }
