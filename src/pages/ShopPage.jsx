@@ -18,7 +18,7 @@ export default function ShopPage() {
 
                                     <div className="card hover-card h-100 p-2 d-flex flex-column">
 
-                                        <NavLink to={`/detailpage/${p.id}`} className="text-decoration-none text-dark">
+                                        <NavLink to={`/detailpage/${p.slug}`} className="text-decoration-none text-dark">
                                             <img src={p.image} className="card-img-top" alt="" />
 
                                             <div className="card-body px-0">
