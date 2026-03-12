@@ -1,5 +1,4 @@
-/* HEADER */
-
+/* HEADER CSS */
 nav{
     background-color: black !important;
 }
@@ -15,18 +14,12 @@ nav{
     color: white
 }
 
-.hover-bg-green:hover {
-    background-color: green;
-    color: white
-}
-
 .overflow-auto {
     overflow: auto;
 }
 
 .search-dropdown-wrapper {
     top: 120%;
-
 }
 
 .search-dropdown {
@@ -71,33 +64,24 @@ nav{
     display: flex;
 }
 
-
-.header-cart-style {
-    padding: .4rem;
-    border-radius: 1rem;
+.w-4-rem{
+    width: 4rem;
 }
 
 p{
     margin-bottom: 0;
 }
 
-.header-cart-style:hover {
-    background-color: rgb(25, 135, 84);
-}
-
-.header-cart-style:hover svg {
-    color: white !important;
-}
-
-.header-wish-style {
+.header-button-style {
     padding: .4rem;
     border-radius: 1rem;
 }
 
-.header-wish-style:hover {
+.header-button-style:hover {
+    transition: all .4s ease;
     background-color: rgb(25, 135, 84);
 }
 
-.header-wish-style:hover svg {
+.header-button-style:hover svg {
     color: white !important;
 }

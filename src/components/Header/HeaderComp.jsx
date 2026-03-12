@@ -56,7 +56,7 @@ export default function HeaderComp({ indexProducts }) {
                         <button
                             className="btn btn-outline-success "
                             type="submit">Search</button>
-                        <button className="ms-2 hover-bg-green rounded-2" type="button" onMouseDown={(e) => e.preventDefault()}
+                        <button className="ms-2 header-button-style w-4-rem rounded-2" type="button" onMouseDown={(e) => e.preventDefault()}
                             onClick={() => setFilterShow(prev => !prev)}>
                             <BsFilterLeft className="p-1 fs-2"></BsFilterLeft>
                         </button>
@@ -132,13 +132,13 @@ export default function HeaderComp({ indexProducts }) {
 
                         </ul>
                     </div>
-                    <NavLink to='cartpage' className='position-relative header-cart-style ms-2 d-flex'>
+                    <NavLink to='cartpage' className='position-relative header-button-style ms-2 d-flex'>
                         <div className='position-absolute start-50 rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
                             <p>5</p>
                         </div>
                         <FiShoppingCart className='text-dark fs-5' />
                     </NavLink>
-                    <NavLink to='wishlist_page' className='position-relative header-wish-style ms-1 d-flex'>
+                    <NavLink to='wishlist_page' className='position-relative header-button-style ms-1 d-flex'>
                         <div className='position-absolute start-50 rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
                             <p>5</p>
                         </div>
