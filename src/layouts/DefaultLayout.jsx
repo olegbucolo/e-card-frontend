@@ -26,9 +26,9 @@ export default function DefaultLayout() {
 
     return (
         <>
-            <HeaderComp />
+            <HeaderComp indexProducts={indexProducts} />
             <main>
-                <Outlet products={indexProducts} />
+                <Outlet context={{indexProducts}} />
             </main>
             <FooterComp />
         </>
