@@ -1,31 +1,13 @@
 import dragon from "../imgs/dragoBianco.png"
-import { products } from "../data/products"
+import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../pages/pages-css/cartpage.css"
-// Fake cart in local storage
-// localStorage.setItem(
-//   "cart",
-//   JSON.stringify([
-//     { id: 1, quantity: 2 },
-//     { id: 3, quantity: 1 }
-//   ])
-// )
+
 
 export default function CartPage() {
 
-    function addToCart(id) {
-        setCart([...cart, { id, quantity: 1 }])
-    }
 
-    const [cart, setCart] = useState([]);
-
-    useEffect(() => {
-
-        const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-
-        setCart(savedCart);
-
-    }, []);
+    const { indexProducts, cartProducts } = useOutletContext()
 
 
 
@@ -46,58 +28,54 @@ export default function CartPage() {
 
 
 
-                    <div className="d-flex border-cart">
+                    {
+                        cartProducts.map(item => {
 
-                        <div className="card" style={{ width: "10rem" }}>
+                            const product = indexProducts.find(
+                                p => p.id == item.id
+                            )
+                            
 
-                            <img src={dragon} className="card-img-top" alt="" />
-                        </div>
+                            if (!product) return null
+                            return (
 
-                        <div className="product-detail">
+                                <div className="d-flex border-cart">
 
-                            {/* {cart.map(item => (
-                            <div key={item.id}>
-                                prodotto id: {item.id} quantità: {item.quantity}
-                            </div>
-                        ))} */}
+                                    <div className="card" style={{ width: "10rem" }}>
 
-                            <h3>Nome</h3>
+                                        <img src={product.image} className="card-img-top" alt="" />
+                                    </div>
 
-                            <p>stato</p>
-
-                            <p>Quantità</p>
-
-                            <p>prezzo</p>
+                                    <div className="product-detail">
 
 
-                        </div>
+                                        <h3>Name: {product.title}</h3>
 
-                    </div>
+                                        <p>Avaiable: {product.is_featured}</p>
 
+                                        <p>Quantity: {product.quantity}</p>
 
-
-
-                    <div className="d-flex border-cart">
-
-                        <div className="card" style={{ width: "10rem" }}>
-
-                            <img src={dragon} className="card-img-top" alt="" />
-                        </div>
-
-                        <div className="product-detail">
-
-                            <h3>Nome</h3>
-
-                            <p>stato</p>
-
-                            <p>Quantità</p>
-
-                            <p>prezzo</p>
+                                        <p>price: {product.price}</p>
 
 
-                        </div>
-                    </div>
+                                    </div>
+
+
+
+
+                                </div>
+                            )
+                        }
+                        )
+
+                    }
+
                 </div>
+
+
+
+
+
 
 
 
