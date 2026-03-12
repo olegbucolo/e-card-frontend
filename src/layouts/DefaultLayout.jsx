@@ -15,7 +15,7 @@ export default function DefaultLayout() {
             try {
                 const res = await axios.get(indexProductsAPI)
                 setIndexProducts(res.data);
-
+                console.log(res.data)
             } catch (err) {
                 console.error(err)
             }
@@ -28,7 +28,7 @@ export default function DefaultLayout() {
         <>
             <HeaderComp indexProducts={indexProducts} />
             <main>
-                <Outlet context={{indexProducts}} />
+                <Outlet context={{ indexProducts }} />
             </main>
             <FooterComp />
         </>
