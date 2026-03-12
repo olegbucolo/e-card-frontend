@@ -20,12 +20,12 @@ export default function HomePage() {
     const { indexProducts = [], cartProducts, setCartProducts } = useOutletContext();
 
     const featuredProducts = indexProducts
-        .filter((p) => Number(p.is_featured) === 1)
-        .slice(0, 4);
+        .filter((p) => Number(is_featured) === 1)
+        .slice(0, 8);
 
     const bestSellerProducts = [...indexProducts]
         .sort((a, b) => Number(b.sold_quantity) - Number(a.sold_quantity))
-        .slice(0, 4);
+        .slice(0, 8);
 
     return (
         <>
