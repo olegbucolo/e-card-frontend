@@ -74,7 +74,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                     <button className="bg-dark-green border-0 btn btn-secondary dropdown-toggle dropdown-hover-green" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Price
                                     </button>
-                                    <ul className="dropdown-menu dropdown-menu-dark" >
+                                    <ul className="dropdown-menu dropdown-menu" >
                                         <li><a className="dropdown-item active" href="#">Low to High</a></li>
                                         <li><a className="dropdown-item" href="#">High to Low</a></li>
                                     </ul>
@@ -83,7 +83,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                     <button className="bg-dark-green border-0 btn btn-secondary dropdown-toggle dropdown-hover-green" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Name
                                     </button>
-                                    <ul className="dropdown-menu dropdown-menu-dark">
+                                    <ul className="dropdown-menu dropdown-menu">
                                         <li><a className="dropdown-item active" href="#">Alphabetical</a></li>
                                     </ul>
                                 </div>
@@ -91,7 +91,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                     <button className="bg-dark-green border-0 btn btn-secondary dropdown-toggle dropdown-hover-green" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Recent
                                     </button>
-                                    <ul className="dropdown-menu dropdown-menu-dark">
+                                    <ul className="dropdown-menu dropdown-menu">
                                         <li><a className="dropdown-item active" href="#">1 year</a></li>
                                         <li><a className="dropdown-item" href="#">2 years</a></li>
                                     </ul>
