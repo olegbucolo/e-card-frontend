@@ -11,7 +11,7 @@ function CheckoutPage() {
     const secondProduct = "2";
 
     // lasciare ordine pk è riferito al singolo ordine del cliente altrimenti poi nn funziona nel BE
-    const endpoint = "http://localhost:3000/order"
+    const endpoint = "http://localhost:3000/orders"
 
     const endpoint1 = "http://localhost:3000/orderproduct"
 
@@ -75,9 +75,9 @@ function CheckoutPage() {
         }).filter(p => p !== null)
 
         try {
-            const res = await axios.post(endpoint, { order, products })
+            const res = await axios.post(endpoint, order)
             // const res1 = await axios.post(endpoint1, orderData)
-            alert(`Ordine inviato! ID ordine: ${res.data.ordineId}`);
+            alert(`Ordine inviato! ID ordine: ${res.data.id}`);
         }
         catch (err) {
             console.error(err)
