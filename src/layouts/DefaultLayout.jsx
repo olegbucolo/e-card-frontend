@@ -48,7 +48,6 @@ export default function DefaultLayout() {
 
     }, [])
 
-    console.log(indexProducts);
 
 
     return (

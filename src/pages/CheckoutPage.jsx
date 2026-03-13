@@ -1,7 +1,10 @@
 import axios from "axios";
 import { useState } from "react"
+import { Outlet, useOutletContext } from "react-router-dom";
 
 function CheckoutPage() {
+
+    const { indexProducts, cartProducts, setCartProducts } = useOutletContext()
 
     const firstproduct = "1";
     const secondProduct = "2";
@@ -64,6 +67,83 @@ function CheckoutPage() {
 
     return (
         <>
+
+            <div className="container">
+
+                <div className="d-flex">
+                    <div className="order-container-left">
+
+                        {
+                            cartProducts.map(item => {
+
+                                const product = indexProducts.find(
+                                    p => p.id == item.id
+
+
+                                )
+
+
+                                if (!product) return null
+                                return (
+
+                                    <div className="d-flex border-cart my-5" key={item.id}>
+
+                                        <div className="card" style={{ width: "10rem" }}>
+
+                                            <img src={product.image} className="card-img-top" alt="" />
+
+                                        </div>
+
+                                        <div className="product-detail">
+
+
+                                            <h3>{product.title}</h3>
+
+                                            <p className="avaible-text">{product.is_featured === 1 ? "Avaiable" : "Not avaible"}</p>
+
+                                            <p>Quantity: {item.quantity}</p>
+
+                                            <p>Price: {product.price}</p>
+
+
+                                        </div>
+                                    </div>
+                                )
+                            }
+                            )
+
+                        }
+
+                    </div>
+
+                    <div className="price-box container my-5">
+                        <p>
+                            Total Price: {
+                                cartProducts.reduce((total, item) => {
+
+                                    const product = indexProducts.find(
+                                        p => p.id == item.id
+                                    );
+
+                                    if (!product) return total;
+
+                                    return total + (product.price * item.quantity);
+
+                                }, 0)
+                            } €
+                        </p>
+
+                        <button
+                            className="btn btn-success"
+                            onClick={() => navigate("/checkout_page")}
+                        >
+                            Proceed to order
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
             <div className="w-30 mt-5 py-4 px-3 checkout-container">
                 <form onSubmit={handleSubmit} className="checkout-form">
 
