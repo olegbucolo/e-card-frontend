@@ -81,12 +81,20 @@ nav {
     display: flex;
 }
 
+.w-1-rem {
+    width: 1rem !important
+}
+
+.h-1-rem {
+    height: 1rem !important
+}
+
 .w-4-rem {
-    width: 4rem;
+    width: 4rem !important;
 }
 
 .h-4-rem {
-    height: 3rem;
+    height: 3rem !important;
 }
 
 .bg-green {
@@ -96,7 +104,6 @@ nav {
 .bg-dark-green {
     background-color: rgb(16, 92, 57);
 }
-
 
 .search-dropdown {
     max-height: 50vh;
@@ -135,11 +142,6 @@ p {
 
 .header-button-style {
     border-radius: 1rem;
-}
-
-.call-to-action {
-    padding: .4rem;
-
 }
 
 .header-button-style:hover {
