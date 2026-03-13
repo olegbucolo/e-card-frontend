@@ -9,7 +9,7 @@ function CheckoutPage() {
     const firstproduct = "1";
     const secondProduct = "2";
 
-    const endpoint = "http://localhost:3000/orders"
+    const endpoint = "http://localhost:3000/order"
 
     const endpoint1 = "http://localhost:3000/orderproduct"
 
