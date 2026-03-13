@@ -14,6 +14,13 @@ export default function CartPage() {
 
     const navigate = useNavigate();
 
+    const totalPrice = cartProducts.reduce((total, item) => {
+        const product = indexProducts.find(
+            p => p.id == item.id);
+        if (!product) return total;
+        return total + (product.price * item.quantity);
+    }, 0)
+
 
     return (
         <>
@@ -53,7 +60,7 @@ export default function CartPage() {
 
                                             <h3>{product.title}</h3>
 
-                                            <p className="avaible-text">{product.is_featured === 1 ? "Avaiable" : "Not avaible"}</p>
+                                            <p className="avaible-text">{product.is_featured === 1 ? "Available" : "Not avaible"}</p>
 
                                             <p>Quantity: {item.quantity}</p>
 
@@ -81,7 +88,7 @@ export default function CartPage() {
                     </div>
 
                     <div className="price-box container my-5">
-                        <p>Total Price</p>
+                        <p>Total Price: {totalPrice}</p>
 
                         <button className="btn btn-success" onClick={() => navigate(`/checkout_page`)}> Proceed to order</button>
                     </div>
