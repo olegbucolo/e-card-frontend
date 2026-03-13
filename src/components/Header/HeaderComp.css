@@ -81,12 +81,33 @@ nav {
     display: flex;
 }
 
+.navbar-toggler{
+    border-radius: 0 !important;
+
+}
+
+.navbar-toggler:focus{
+    box-shadow: none;
+}
+
+.fs-dot-7{
+    font-size: .7rem !important;
+}
+
 .w-1-rem {
     width: 1rem !important
 }
 
 .h-1-rem {
     height: 1rem !important
+}
+
+.w-2-rem {
+    width: 2rem !important
+}
+
+.h-w-rem {
+    height: 2rem !important
 }
 
 .w-4-rem {
@@ -128,6 +149,10 @@ nav {
     border-radius: 10px;
 }
 
+.call-to-action{
+    padding: .6rem;
+}
+
 .scale-120 {
     transform: scale(120%);
 }
@@ -138,10 +163,6 @@ p {
 
 .box-shadow-light {
     box-shadow: .1rem .1rem 1rem -.5rem black;
-}
-
-.header-button-style {
-    border-radius: 1rem;
 }
 
 .header-button-style:hover {

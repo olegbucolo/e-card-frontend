@@ -3,7 +3,7 @@ import { useNavigate, NavLink, useLocation } from "react-router-dom";
 import { useState } from 'react';
 import { BsFilterLeft } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
-import { LuHeart } from "react-icons/lu";
+import { LuHeart, LuMenu } from "react-icons/lu";
 
 import { FiShoppingCart } from "react-icons/fi";
 
@@ -16,6 +16,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
     const navigate = useNavigate();
     const [isTyping, setIsTyping] = useState(false)
     const [filterShow, setFilterShow] = useState(false)
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     // function that handles change when searching a product
     const handleChange = (e) => {
@@ -63,7 +64,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                     <div className="order-0 order-md-0 flex-grow-1 me-2">
                         <NavLink to="/" className="navbar-brand logo-style me-0" ></NavLink>
                     </div>
-                    
+
                     {/* CENTER */}
                     <form onSubmit={handleSubmit} className="order-4 order-md-1 w-100 mt-2 mt-md-0 d-flex position-relative" role="search">
                         {/* Controlled input for searching product */}
@@ -103,7 +104,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                             <button
                                                 className="dropdown-item"
                                                 type="button"
-                                    
+
                                                 onClick={() => applyFilter({ price: "high-to-low" })}
                                             >
                                                 Alto → Basso
@@ -186,9 +187,21 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                     </form>
 
                     {/* RIGHT */}
+
+
                     <div className="order-3 order-md-2 none-at-768 flex-grow-md-1 d-flex justify-content-end">
-                        <button className="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
+                        <button
+                            className="navbar-toggler p-0 border-0 "
+                            type="button"
+                            data-bs-toggle="collapse"
+                            onClick={() => setIsMobileMenuOpen(prev => !prev)}
+                            data-bs-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            {isMobileMenuOpen
+                                ? <LuMenu className='fs-2 text-dark mt-1'/>
+                                : <IoClose className='fs-2 text-dark mt-1' />}
                         </button>
                     </div>
                     {/* RIGHT */}
@@ -203,16 +216,16 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
 
                         </ul>
                     </div>
-                    <div className='order-1 order-md-4 me-3 me-md-0 d-flex '>
-                        <NavLink to='cartpage' className=' position-relative header-button-style call-to-action ms-2 d-flex'>
-                            <div className=' position-absolute w-1-rem h-1-rem start-50 rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
-                                <p className='' >{totalCartProducts()}</p>
+                    <div className='order-1 order-md-4 me-2 me-md-0 d-flex '>
+                        <NavLink to='cartpage' className=' position-relative rounded-5 header-button-style call-to-action ms-2 d-flex'>
+                            <div className=' position-absolute w-1-rem h-1-rem start-50 rounded-5 bg-danger top-50 text-light bottom-0  d-flex justify-content-center align-items-center'>
+                                <p className='fs-dot-7' >{totalCartProducts()}</p>
                             </div>
                             <FiShoppingCart className='text-dark fs-5' />
                         </NavLink>
-                        <NavLink to='wishlist_page' className=' position-relative header-button-style ms-3 call-to-action d-flex'>
-                            <div className='position-absolute start-50 w-1-rem h-1-rem rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
-                                <p>{wishlistProducts.length}</p>
+                        <NavLink to='wishlist_page' className=' position-relative rounded-5 header-button-style call-to-action d-flex'>
+                            <div className='position-absolute start-50 w-1-rem h-1-rem rounded-5 bg-danger top-50 text-light bottom-0 d-flex justify-content-center align-items-center'>
+                                <p className='fs-dot-7'>{wishlistProducts.length}</p>
                             </div>
                             <LuHeart className='text-dark fs-5' />
                         </NavLink>
