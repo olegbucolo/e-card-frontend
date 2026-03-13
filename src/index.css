@@ -516,9 +516,7 @@ button {
         border-radius: 18px;
     }
 
-    .hero-swiper img {
-        height: 300px;
-    }
+
 
     .hero-swiper .swiper-button-prev,
     .hero-swiper .swiper-button-next {
@@ -580,9 +578,6 @@ button {
         border-radius: 16px;
     }
 
-    .hero-swiper img {
-        height: 240px;
-    }
 
     .hero-swiper .swiper-button-prev,
     .hero-swiper .swiper-button-next {
@@ -682,9 +677,7 @@ button {
         border-radius: 14px;
     }
 
-    .hero-swiper img {
-        height: 170px;
-    }
+
 
     .hero-swiper .swiper-button-prev,
     .hero-swiper .swiper-button-next {
