@@ -1,5 +1,5 @@
 import './HeaderComp.css'
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink, useLocation } from "react-router-dom";
 import { useState } from 'react';
 import { BsFilterLeft } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
@@ -37,8 +37,23 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
         if (cartProducts) {
             cartProducts.forEach(p => count += p.quantity)
             return count;
-        }else return count
+        } else return count
     }
+
+    const location = useLocation();
+
+    const applyFilter = (newFilter) => {
+        // Read current query params
+        const params = new URLSearchParams(location.search);
+
+        // Merge/update new filter
+        Object.keys(newFilter).forEach(key => {
+            params.set(key, newFilter[key]);
+        });
+
+        // Navigate to updated URL
+        navigate(`/shop?${params.toString()}`);
+    };
 
     return (
         <header className="z-2 w-100 top-0 position-fixed">
@@ -59,11 +74,11 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                             onFocus={() => { setIsTyping(true); }}
                             onBlur={() => setIsTyping(false)}
                             type="search"
-                            placeholder="Search"
+                            placeholder="Cerca..."
                             aria-label="Search" />
                         <button
                             className="btn btn-outline-success "
-                            type="submit">Search</button>
+                            type="submit">Cerca</button>
                         <button className="ms-2 header-button-style w-4-rem rounded-2 border" type="button" onMouseDown={(e) => e.preventDefault()}
                             onClick={() => setFilterShow(prev => !prev)}>
                             <BsFilterLeft className="p-1 fs-2"></BsFilterLeft>
@@ -72,28 +87,73 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                             {filterShow && (<div className="bg-green rounded-3 mb-1 filters-header-styles d-flex justify-content-start align-items-center px-2">
                                 <div className="dropdown me-2">
                                     <button className="bg-dark-green border-0 btn btn-secondary dropdown-toggle dropdown-hover-green" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Price
+                                        Prezzo
                                     </button>
                                     <ul className="dropdown-menu dropdown-menu" >
-                                        <li><a className="dropdown-item active" href="#">Low to High</a></li>
-                                        <li><a className="dropdown-item" href="#">High to Low</a></li>
+                                        <li>
+                                            <button
+                                                className="dropdown-item"
+                                                type="button"
+                                                onClick={() => applyFilter({ price: "low-to-high" })}
+                                            >
+                                                 Basso → Alto
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button
+                                                className="dropdown-item"
+                                                type="button"
+                                                onClick={() => applyFilter({ price: "high-to-low" })}
+                                            >
+                                                Alto → Basso
+                                            </button>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div className="dropdown me-2">
                                     <button className="bg-dark-green border-0 btn btn-secondary dropdown-toggle dropdown-hover-green" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Name
+                                        Nome
                                     </button>
                                     <ul className="dropdown-menu dropdown-menu">
-                                        <li><a className="dropdown-item active" href="#">Alphabetical</a></li>
+                                        <li>
+                                            <button
+                                                className="dropdown-item"
+                                                onClick={() => applyFilter({ name: "a-to-z" })}
+                                                type="button">A → Z
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button
+                                                className="dropdown-item "
+                                                onClick={() => applyFilter({ name: "z-to-a" })}
+                                                type="button">Z → A
+                                            </button>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div className="dropdown me-2">
                                     <button className="bg-dark-green border-0 btn btn-secondary dropdown-toggle dropdown-hover-green" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Recent
+                                        Popolari
                                     </button>
                                     <ul className="dropdown-menu dropdown-menu">
-                                        <li><a className="dropdown-item active" href="#">1 year</a></li>
-                                        <li><a className="dropdown-item" href="#">2 years</a></li>
+                                        <li>
+                                            <button
+                                                className="dropdown-item"
+                                                type="button"
+                                                onClick={() => applyFilter({ pop: "more-popular" })}
+                                            >
+                                                Piu' venduti
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button
+                                                className="dropdown-item"
+                                                type="button"
+                                                onClick={() => applyFilter({ pop: "less-pop" })}
+                                            >
+                                                Meno venduti
+                                            </button>
+                                        </li>
                                     </ul>
                                 </div>
                                 <button type="button" className="ms-auto rounded-2 overflow-hidden" onClick={() => setFilterShow(false)} >
