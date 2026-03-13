@@ -58,11 +58,11 @@ function CheckoutPage() {
         setSubmitted(true);
 
         if (!order.customerName || !order.customerSurname || !order.customerMail || !order.streetName || !order.city) {
-        alert("Compila tutti i campi obbligatori!");
-        return;
-    }
+            alert("Compila tutti i campi obbligatori!");
+            return;
+        }
 
-    alert("Form inviato correttamente!");
+        alert("Form inviato correttamente!");
 
         const products = cartProducts.map(item => {
             const product = indexProducts.find(p => p.id == item.id)
@@ -75,7 +75,7 @@ function CheckoutPage() {
         }).filter(p => p !== null)
 
         try {
-            const res = await axios.post(endpoint, {order, products})
+            const res = await axios.post(endpoint, { order, products })
             // const res1 = await axios.post(endpoint1, orderData)
             alert(`Ordine inviato! ID ordine: ${res.data.ordineId}`);
         }
@@ -126,7 +126,7 @@ function CheckoutPage() {
 
                                             <h3>{product.title}</h3>
 
-                                            <p className="avaible-text">{product.is_featured === 1 ? "Avaiable" : "Not avaible"}</p>
+                                            <p className="avaible-text">{product.is_featured === 1 ? "Available" : "Not avaible"}</p>
 
                                             <p>Quantity: {item.quantity}</p>
 
@@ -144,7 +144,7 @@ function CheckoutPage() {
                     </div>
 
                     <div className="price-box container my-5">
-                        
+
                         <button className="btn-checkout-page">Total Price: {totalPrice} €</button>
                     </div>
 
