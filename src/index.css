@@ -9,8 +9,6 @@ body {
 
 }
 
-
-
 /* HOMEPAGE */
 
 a {
@@ -304,6 +302,150 @@ button {
     color: white;
 }
 
+/* WISHLIST */
+.is-disponible {
+  padding: 0px 24px;
+  margin: 5px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: rgba(25, 135, 84, 0.1);
+  color: #198754;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  text-align: center;
+}
+
+.not-disponible {
+  padding: 0px 24px;
+  margin: 5px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: rgba(255, 0, 0, 0.1);
+  color: #ff0000;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  text-align: center;
+}
+
+.btn-remove {
+  padding: 6px 24px;
+  margin-top: 15px;
+  margin-right: 20px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: rgb(255, 0, 0);
+  color: rgb(255, 255, 255);
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  text-align: center;
+}
+
+.btn-remove:hover {
+  background: rgb(219, 3, 3);
+  color: rgb(255, 255, 255);
+}
+
+.btn-cart {
+  padding: 6px 24px;
+  margin-top: 15px;
+  margin-right: 20px;
+
+  background: rgb(2, 148, 27);
+  color: rgb(255, 255, 255);
+
+  border: none;
+  border-radius: 999px;
+}
+
+/* CHECKOUT PAGE */
+.checkout-container {
+  max-width: 1100px;
+  margin: 90px auto;
+  padding: 40px;
+
+  background: white;
+  border-radius: 14px;
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+.btn-checkout-page {
+  display: block;
+  margin: 20px auto;
+
+  padding: 10px 18px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: rgba(25, 135, 84, 0.1);
+  color: #198754;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  text-align: center;
+}
+
+.btn-checkout-page:hover {
+   background: rgba(25, 135, 84, 0.1);
+    color: #198754;
+}
+
+.form-control:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    border-color: rgba(25, 135, 84, 0.3);
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(25, 135, 84, 0.1);
+}
+
+.input-error {
+  border-color: red;
+  box-shadow: 0 0 0 0.25rem rgba(255,0,0,0.2);
+}
+
+.input-error:focus {
+  border-color: red;
+  box-shadow: 0 0 0 0.25rem rgba(255,0,0,0.3);
+  outline: 0;
+}
+
+/* FORM GRID */
+
+.checkout-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+/* LABEL */
+
+.checkout-form label {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+/* INPUT */
+
+.checkout-form input {
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+
 /* SHOP BENEFITS*/
 .shop-benefits {
     padding: 80px 0;
@@ -346,11 +488,7 @@ button {
 }
 
 /* effects */
-.hover-card:hover {
-    background-color: #efefef !important;
-    transition: all .2s ease;
-    cursor: pointer;
-}
+
 
 .hover-button:hover {
     transform: scale(105%);

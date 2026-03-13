@@ -1,0 +1,10 @@
+.hover-card:hover {
+    /* background-color: #efefef !important; */
+    transition: all .2s ease;
+    cursor: pointer;
+    box-shadow: -.5rem -.5rem 2rem -2rem black, inset -.5rem -.5rem 2rem -2rem black;
+}
+
+.hover-card {
+    border: none !important;
+}

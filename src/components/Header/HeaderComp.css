@@ -1,5 +1,7 @@
-/* HEADER */
-
+/* HEADER CSS */
+nav {
+    background-color: black !important;
+}
 
 .filters-header-styles {
     background-color: rgb(56, 56, 56);
@@ -9,12 +11,31 @@
 
 .hover-bg-red:hover {
     background-color: red;
+    transition: all .2s ease;
     color: white
 }
 
-.hover-bg-green:hover {
-    background-color: green;
-    color: white
+.btn:focus {
+    background-color: white;
+    color: black
+}
+
+.btn:focus-visible {
+    background-color: rgb(52, 255, 160);
+    color: black
+}
+
+.dropdown-hover-green:hover {
+    background-color: white;
+    color: black;
+}
+
+.dropdown-hover-green:focus-visible {
+    background-color: white;
+}
+
+.dropdown-hover-green:active {
+    background-color: rgb(52, 255, 160) !important;
 }
 
 .overflow-auto {
@@ -23,14 +44,6 @@
 
 .search-dropdown-wrapper {
     top: 120%;
-
-}
-
-.search-dropdown {
-    max-height: 50vh;
-    overflow: auto;
-    background-color: rgb(56, 56, 56);
-    color: white
 }
 
 .hover-dark:hover {
@@ -43,44 +56,97 @@
 
 .pika-style {
     background-image: url('../../assets/GIFs/pikachu-surprise.gif');
-    /* path relative to CSS file */
     background-size: 80%;
     background-repeat: no-repeat;
     background-position: 50% 80%;
     width: 3rem;
     height: 2rem;
     transform: scale(1.5);
-    /* scale(150%) → scale(1.5) */
     display: flex;
     margin: -1rem 0 -1rem 0;
 }
 
-.header-cart-style {
-    padding: .4rem;
-    border-radius: 1rem;
+.navbar-brand {
+    padding: 0 !important;
 }
 
-p{
+.logo-style {
+    background-image: url('../../imgs/Logo-header/header-logo.png');
+    background-size: 180%;
+    background-repeat: no-repeat;
+    background-position: 50% 45%;
+    filter: brightness(1%);
+    width: 6rem;
+    height: 2.5rem;
+    display: flex;
+}
+
+.w-4-rem {
+    width: 4rem;
+}
+
+.h-4-rem {
+    height: 3rem;
+}
+
+.bg-green {
+    background-color: rgb(25, 135, 84);
+}
+
+.bg-dark-green {
+    background-color: rgb(16, 92, 57);
+}
+
+
+.search-dropdown {
+    max-height: 50vh;
+    overflow: auto;
+    background-color: rgb(25, 135, 84);
+    color: white;
+    border-radius: .6rem;
+}
+
+.bg-scroll-black::-webkit-scrollbar {
+    width: 8px;
+}
+
+.bg-scroll-black::-webkit-scrollbar-track {
+    background: rgb(19, 108, 66);
+    display: none;
+}
+
+.bg-scroll-black::-webkit-scrollbar-thumb {
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.scale-120 {
+    transform: scale(120%);
+}
+
+p {
     margin-bottom: 0;
 }
 
-.header-cart-style:hover {
-    background-color: black
+.box-shadow-light {
+    box-shadow: .1rem .1rem 1rem -.5rem black;
 }
 
-.header-cart-style:hover svg {
-    color: white !important;
-}
-
-.header-wish-style {
-    padding: .4rem;
+.header-button-style {
     border-radius: 1rem;
 }
 
-.header-wish-style:hover {
-    background-color: black
+.call-to-action {
+    padding: .4rem;
+
 }
 
-.header-wish-style:hover svg {
+.header-button-style:hover {
+    transition: all .4s ease;
+    background-color: rgb(25, 135, 84);
+}
+
+.header-button-style:hover svg {
     color: white !important;
 }
