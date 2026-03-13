@@ -133,12 +133,6 @@ function CheckoutPage() {
                             } €
                         </p>
 
-                        <button
-                            className="btn btn-success"
-                            onClick={() => navigate("/checkout_page")}
-                        >
-                            Proceed to order
-                        </button>
                     </div>
 
                 </div>
