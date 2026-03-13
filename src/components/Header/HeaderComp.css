@@ -81,16 +81,24 @@ nav {
     display: flex;
 }
 
-.navbar-toggler{
+.navbar-toggler {
     border-radius: 0 !important;
-
 }
 
-.navbar-toggler:focus{
+.form-control {
+    /* background-color: rgba(var(--bs-tertiary-bg-rgb), var(--bs-bg-opacity)) !important; */
+    border: 1px solid black !important;
+}
+
+.box-shadow-cool {
+    /* box-shadow:  .2rem .2rem .4rem -.5rem black ,  -.2rem -.2rem .4rem -.5rem black !important; */
+}
+
+.navbar-toggler:focus {
     box-shadow: none;
 }
 
-.fs-dot-7{
+.fs-dot-7 {
     font-size: .7rem !important;
 }
 
@@ -149,7 +157,7 @@ nav {
     border-radius: 10px;
 }
 
-.call-to-action{
+.call-to-action {
     padding: .6rem;
 }
 

@@ -69,7 +69,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                     <form onSubmit={handleSubmit} className="order-4 order-md-1 w-100 mt-2 mt-md-0 d-flex position-relative" role="search">
                         {/* Controlled input for searching product */}
                         <input
-                            className=" form-control me-2"
+                            className="box-shadow-cool form-control me-2 shadow-none border-0"
                             value={query}
                             onChange={handleChange}
                             onFocus={() => { setIsTyping(true); }}
@@ -78,7 +78,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                             placeholder="Cerca..."
                             aria-label="Search" />
                         <button
-                            className="btn btn-outline-success "
+                            className="btn btn-outline-dark "
                             type="submit">Cerca</button>
                         {/* <button className="ms-2 header-button-style w-4-rem rounded-2 border" type="button" onMouseDown={(e) => e.preventDefault()}
                             onClick={() => setFilterShow(prev => !prev)}>
