@@ -63,9 +63,9 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                     <div className="flex-grow-1">
                         <NavLink to="/" className="navbar-brand logo-style" ></NavLink>
                     </div>
-
+                    <div className='ms-5 ps-5'></div>
                     {/* CENTER */}
-                    <form onSubmit={handleSubmit} className="d-flex position-relative ms-5" role="search">
+                    <form onSubmit={handleSubmit} className="d-flex position-relative" role="search">
                         {/* Controlled input for searching product */}
                         <input
                             className=" form-control me-2"

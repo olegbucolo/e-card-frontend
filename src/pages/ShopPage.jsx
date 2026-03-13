@@ -1,3 +1,4 @@
+import './ShopPage.css';
 import { NavLink } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
 import { useOutletContext } from 'react-router-dom'
@@ -53,7 +54,6 @@ export default function ShopPage() {
         );
     }
 
-
     const handleWishlist = (id) => {
         let alreadyInStorage = isPresentInStorage(wishlistProducts, id);
         if (alreadyInStorage) {
@@ -65,14 +65,14 @@ export default function ShopPage() {
 
     return (
         <>
-            <div className="container-lg my-5 pt-3">
+            <div className="container-lg my-5 py-5">
                 <div className="col">
-                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-2">
+                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
                         {search ? filteredProducts.map(p => {
                             return (
                                 <div key={p.id} className="col">
 
-                                    <div className="card hover-card h-100 p-2 d-flex flex-column rounded-0">
+                                    <div className="card hover-card h-100 p-2 d-flex flex-column">
 
                                         <NavLink to={`/detailpage/${p.slug}`} className="text-decoration-none text-dark">
                                             <img src={p.image} className="card-img-top" alt="" />

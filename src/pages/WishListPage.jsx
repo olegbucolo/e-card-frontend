@@ -9,13 +9,13 @@ export default function WishlistPage() {
 
     return (
         <>
-            <div className="cart-page-title">
-                <h2 className="cart-title-text">Wishlist</h2>
-            </div>
 
             {/* CONTAINER CARD E DETTAGLI PRODOTTI NEL WISHLIST */}
 
-            <div className="container justify-content-center">
+            <div className="container justify-content-center my-5 py-5">
+                <div className="text-center mb-5">
+                    <h2 className="cart-title-text">Wishlist</h2>
+                </div>
                 {wishlistProducts.map(item => {
 
                     const product = indexProducts.find(
@@ -33,29 +33,32 @@ export default function WishlistPage() {
 
                             </div>
 
-                            <div className="product-detail">
+                            <div className="product-detail d-flex flex-grow-1 flex-column">
 
 
                                 <h3>{product.title}</h3>
 
-                                <p className="avaible-text">{product.is_featured === 1 ? "Avaiable" : "Not avaible"}</p>
+                                {product.quantity > 35 ? <p className="text-light lh-base bg-success">Disponibile</p> : <p className="text-light lh-base bg-danger">Non Disponibile</p>}
 
-                                <p>Quantity: {item.quantity}</p>
 
                                 <p>Price: {product.price}</p>
 
-                                <button onClick={() => addToLocalStorage(setWishlistProducts, item.id, 1)}
-                                    className=" btn btn-outline-success me-2">
-                                    add
-                                </button>
+                                <div className="mt-auto">
+                                    <button onClick={() => addToLocalStorage(setWishlistProducts, item.id, 1)}
+                                        className=" btn btn-outline-success me-2">
+                                        add
+                                    </button>
 
-                                <button onClick={() => removeFromLocalStorage(setWishlistProducts, item.id, 1)}
-                                    className="btn btn-outline-danger me-2">
-                                    remove
-                                </button>
+                                    <button onClick={() => removeFromLocalStorage(setWishlistProducts, item.id, 1)}
+                                        className="btn btn-outline-danger me-2">
+                                        remove
+                                    </button>
+                                </div>
 
 
                             </div>
+
+
                         </div>
                     )
                 })}

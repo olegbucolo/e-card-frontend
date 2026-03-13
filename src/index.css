@@ -411,11 +411,7 @@ button {
 }
 
 /* effects */
-.hover-card:hover {
-    background-color: #efefef !important;
-    transition: all .2s ease;
-    cursor: pointer;
-}
+
 
 .hover-button:hover {
     transform: scale(105%);
