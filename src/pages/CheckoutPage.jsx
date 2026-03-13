@@ -144,10 +144,8 @@ function CheckoutPage() {
                     </div>
 
                     <div className="price-box container my-5">
-                        <p>
-                            Total Price: {totalPrice} €
-                        </p>
-
+                        
+                        <button className="btn-checkout-page">Total Price: {totalPrice} €</button>
                     </div>
 
                 </div>
