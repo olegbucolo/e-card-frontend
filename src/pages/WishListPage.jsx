@@ -38,16 +38,23 @@ export default function WishlistPage() {
 
                                 <h3>{product.title}</h3>
 
-                                {product.quantity > 35 ? <p className="text-light lh-base bg-success">Disponibile</p> : <p className="text-light lh-base bg-danger">Non Disponibile</p>}
+                                {product.quantity > 35
+                                    ? <div>
+                                        <p className="text-light lh-base bg-success">Disponibile</p>
+                                        <p className="">Quantita' disponibile: {product.quantity}</p>
 
+                                    </div>
+                                    : <div>
+                                        <p className="text-light lh-base bg-danger">Non Disponibile</p>
+                                        <p className="">Quantita' disponibile: 0</p>
 
-                                <p>Price: {product.price}</p>
+                                    </div>
+                                }
+
+                                <p>Prezzo: {product.price} €</p>
 
                                 <div className="mt-auto">
-                                    <button onClick={() => addToLocalStorage(setWishlistProducts, item.id, 1)}
-                                        className=" btn btn-outline-success me-2">
-                                        add
-                                    </button>
+
 
                                     <button onClick={() => removeFromLocalStorage(setWishlistProducts, item.id, 1)}
                                         className="btn btn-outline-danger me-2">
