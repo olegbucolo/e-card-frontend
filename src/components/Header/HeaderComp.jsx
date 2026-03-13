@@ -1,5 +1,5 @@
 import './HeaderComp.css'
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink, useLocation } from "react-router-dom";
 import { useState } from 'react';
 import { BsFilterLeft } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
@@ -9,7 +9,7 @@ import { FiShoppingCart } from "react-icons/fi";
 
 // OLEG TI HO MESSO IL LOGO PER L'HEADER NELLA CARTELLA IMMAGINI, NON TI VOGLIO TOCCARE IL CODICE, FAI PURE TU
 
-export default function HeaderComp({ indexProducts }) {
+export default function HeaderComp({ indexProducts, wishlistProducts, cartProducts }) {
 
     // Search bar query used for internal filtering and as value for navigate in /shop?search=${query}
     const [query, setQuery] = useState('');
@@ -32,6 +32,29 @@ export default function HeaderComp({ indexProducts }) {
         setFilterShow(false);
     }
 
+    const totalCartProducts = () => {
+        let count = 0
+        if (cartProducts) {
+            cartProducts.forEach(p => count += p.quantity)
+            return count;
+        } else return count
+    }
+
+    const location = useLocation();
+
+    const applyFilter = (newFilter) => {
+        // Read current query params
+        const params = new URLSearchParams(location.search);
+
+        // Merge/update new filter
+        Object.keys(newFilter).forEach(key => {
+            params.set(key, newFilter[key]);
+        });
+
+        // Navigate to updated URL
+        navigate(`/shop?${params.toString()}`);
+    };
+
     return (
         <header className="z-2 w-100 top-0 position-fixed">
             <nav className="position-relative navbar navbar-expand-md bg-body-tertiary">
@@ -40,9 +63,9 @@ export default function HeaderComp({ indexProducts }) {
                     <div className="flex-grow-1">
                         <NavLink to="/" className="navbar-brand logo-style" ></NavLink>
                     </div>
-
+                    <div className='ms-5 ps-5'></div>
                     {/* CENTER */}
-                    <form onSubmit={handleSubmit} className="d-flex position-relative ms-5" role="search">
+                    <form onSubmit={handleSubmit} className="d-flex position-relative" role="search">
                         {/* Controlled input for searching product */}
                         <input
                             className=" form-control me-2"
@@ -51,11 +74,11 @@ export default function HeaderComp({ indexProducts }) {
                             onFocus={() => { setIsTyping(true); }}
                             onBlur={() => setIsTyping(false)}
                             type="search"
-                            placeholder="Search"
+                            placeholder="Cerca..."
                             aria-label="Search" />
                         <button
                             className="btn btn-outline-success "
-                            type="submit">Search</button>
+                            type="submit">Cerca</button>
                         <button className="ms-2 header-button-style w-4-rem rounded-2 border" type="button" onMouseDown={(e) => e.preventDefault()}
                             onClick={() => setFilterShow(prev => !prev)}>
                             <BsFilterLeft className="p-1 fs-2"></BsFilterLeft>
@@ -64,28 +87,73 @@ export default function HeaderComp({ indexProducts }) {
                             {filterShow && (<div className="bg-green rounded-3 mb-1 filters-header-styles d-flex justify-content-start align-items-center px-2">
                                 <div className="dropdown me-2">
                                     <button className="bg-dark-green border-0 btn btn-secondary dropdown-toggle dropdown-hover-green" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Price
+                                        Prezzo
                                     </button>
-                                    <ul className="dropdown-menu dropdown-menu-dark" >
-                                        <li><a className="dropdown-item active" href="#">Low to High</a></li>
-                                        <li><a className="dropdown-item" href="#">High to Low</a></li>
+                                    <ul className="dropdown-menu dropdown-menu" >
+                                        <li>
+                                            <button
+                                                className="dropdown-item"
+                                                type="button"
+                                                onClick={() => applyFilter({ price: "low-to-high" })}
+                                            >
+                                                 Basso → Alto
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button
+                                                className="dropdown-item"
+                                                type="button"
+                                                onClick={() => applyFilter({ price: "high-to-low" })}
+                                            >
+                                                Alto → Basso
+                                            </button>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div className="dropdown me-2">
                                     <button className="bg-dark-green border-0 btn btn-secondary dropdown-toggle dropdown-hover-green" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Name
+                                        Nome
                                     </button>
-                                    <ul className="dropdown-menu dropdown-menu-dark">
-                                        <li><a className="dropdown-item active" href="#">Alphabetical</a></li>
+                                    <ul className="dropdown-menu dropdown-menu">
+                                        <li>
+                                            <button
+                                                className="dropdown-item"
+                                                onClick={() => applyFilter({ name: "a-to-z" })}
+                                                type="button">A → Z
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button
+                                                className="dropdown-item "
+                                                onClick={() => applyFilter({ name: "z-to-a" })}
+                                                type="button">Z → A
+                                            </button>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div className="dropdown me-2">
                                     <button className="bg-dark-green border-0 btn btn-secondary dropdown-toggle dropdown-hover-green" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Recent
+                                        Popolari
                                     </button>
-                                    <ul className="dropdown-menu dropdown-menu-dark">
-                                        <li><a className="dropdown-item active" href="#">1 year</a></li>
-                                        <li><a className="dropdown-item" href="#">2 years</a></li>
+                                    <ul className="dropdown-menu dropdown-menu">
+                                        <li>
+                                            <button
+                                                className="dropdown-item"
+                                                type="button"
+                                                onClick={() => applyFilter({ pop: "more-popular" })}
+                                            >
+                                                Piu' venduti
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button
+                                                className="dropdown-item"
+                                                type="button"
+                                                onClick={() => applyFilter({ pop: "less-pop" })}
+                                            >
+                                                Meno venduti
+                                            </button>
+                                        </li>
                                     </ul>
                                 </div>
                                 <button type="button" className="ms-auto rounded-2 overflow-hidden" onClick={() => setFilterShow(false)} >
@@ -131,20 +199,20 @@ export default function HeaderComp({ indexProducts }) {
                                 <NavLink to="/" className="nav-link active" aria-current="page" >Home</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/shop" className="nav-link" >Shop</NavLink>
+                                <NavLink to="/shop" className="nav-link" >Negozio</NavLink>
                             </li>
 
                         </ul>
                     </div>
                     <NavLink to='cartpage' className='position-relative header-button-style call-to-action ms-2 d-flex'>
                         <div className='position-absolute start-50 rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
-                            <p>5</p>
+                            <p>{totalCartProducts()}</p>
                         </div>
                         <FiShoppingCart className='text-dark fs-5' />
                     </NavLink>
                     <NavLink to='wishlist_page' className='position-relative header-button-style ms-1 call-to-action d-flex'>
                         <div className='position-absolute start-50 rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
-                            <p>5</p>
+                            <p>{wishlistProducts.length}</p>
                         </div>
                         <LuHeart className='text-dark fs-5' />
                     </NavLink>

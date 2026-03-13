@@ -53,8 +53,11 @@ export default function DefaultLayout() {
 
     return (
         <>
-            <HeaderComp indexProducts={indexProducts} />
-            <main>
+            <HeaderComp
+                indexProducts={indexProducts}
+                wishlistProducts={wishlistProducts}
+                cartProducts={cartProducts} />
+            <main className="mt-5">
                 <Outlet context={{
                     indexProducts,
                     cartProducts,
