@@ -199,7 +199,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                 <NavLink to="/" className="nav-link active" aria-current="page" >Home</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/shop" className="nav-link" >Shop</NavLink>
+                                <NavLink to="/shop" className="nav-link" >Negozio</NavLink>
                             </li>
 
                         </ul>
