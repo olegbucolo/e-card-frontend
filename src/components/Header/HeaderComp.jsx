@@ -60,12 +60,12 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
             <nav className="position-relative navbar navbar-expand-md bg-body-tertiary">
                 <div className="position-relative container-xxl d-flex align-items-center">
                     {/* LEFT */}
-                    <div className="flex-grow-1">
-                        <NavLink to="/" className="navbar-brand logo-style" ></NavLink>
+                    <div className="order-0 order-md-0 flex-grow-1 me-2">
+                        <NavLink to="/" className="navbar-brand logo-style me-0" ></NavLink>
                     </div>
-                    <div className='ms-5 ps-5'></div>
+                    
                     {/* CENTER */}
-                    <form onSubmit={handleSubmit} className="d-flex position-relative" role="search">
+                    <form onSubmit={handleSubmit} className="order-4 order-md-1 w-100 mt-2 mt-md-0 d-flex position-relative" role="search">
                         {/* Controlled input for searching product */}
                         <input
                             className=" form-control me-2"
@@ -79,10 +79,10 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                         <button
                             className="btn btn-outline-success "
                             type="submit">Cerca</button>
-                        <button className="ms-2 header-button-style w-4-rem rounded-2 border" type="button" onMouseDown={(e) => e.preventDefault()}
+                        {/* <button className="ms-2 header-button-style w-4-rem rounded-2 border" type="button" onMouseDown={(e) => e.preventDefault()}
                             onClick={() => setFilterShow(prev => !prev)}>
                             <BsFilterLeft className="p-1 fs-2"></BsFilterLeft>
-                        </button>
+                        </button> */}
                         <div className="position-absolute mx--2 start-0 end-0 search-dropdown-wrapper">
                             {filterShow && (<div className="bg-green rounded-3 mb-1 filters-header-styles d-flex justify-content-start align-items-center px-2">
                                 <div className="dropdown me-2">
@@ -96,13 +96,14 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                                 type="button"
                                                 onClick={() => applyFilter({ price: "low-to-high" })}
                                             >
-                                                 Basso → Alto
+                                                Basso → Alto
                                             </button>
                                         </li>
                                         <li>
                                             <button
                                                 className="dropdown-item"
                                                 type="button"
+                                    
                                                 onClick={() => applyFilter({ price: "high-to-low" })}
                                             >
                                                 Alto → Basso
@@ -181,20 +182,18 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                     </div>
                                 ))}
                             </div>}
-
                         </div>
-
                     </form>
 
                     {/* RIGHT */}
-                    <div className="none-at-768 flex-grow-1 d-flex justify-content-end">
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <div className="order-3 order-md-2 none-at-768 flex-grow-md-1 d-flex justify-content-end">
+                        <button className="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
                     </div>
                     {/* RIGHT */}
-                    <div className="collapse navbar-collapse justify-content-end flex-grow-1" id="navbarSupportedContent">
-                        <ul className="navbar-nav mb-2 mb-lg-0">
+                    <div className="order-5 order-md-3 collapse navbar-collapse justify-content-end flex-grow-1" id="navbarSupportedContent">
+                        <ul className="navbar-nav mb-2 mb-md-0  ms-2">
                             <li className="nav-item">
                                 <NavLink to="/" className="nav-link active" aria-current="page" >Home</NavLink>
                             </li>
@@ -204,18 +203,20 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
 
                         </ul>
                     </div>
-                    <NavLink to='cartpage' className='position-relative header-button-style call-to-action ms-2 d-flex'>
-                        <div className='position-absolute start-50 rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
-                            <p>{totalCartProducts()}</p>
-                        </div>
-                        <FiShoppingCart className='text-dark fs-5' />
-                    </NavLink>
-                    <NavLink to='wishlist_page' className='position-relative header-button-style ms-1 call-to-action d-flex'>
-                        <div className='position-absolute start-50 rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
-                            <p>{wishlistProducts.length}</p>
-                        </div>
-                        <LuHeart className='text-dark fs-5' />
-                    </NavLink>
+                    <div className='order-1 order-md-4 me-3 me-md-0 d-flex '>
+                        <NavLink to='cartpage' className=' position-relative header-button-style call-to-action ms-2 d-flex'>
+                            <div className=' position-absolute w-1-rem h-1-rem start-50 rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
+                                <p className='' >{totalCartProducts()}</p>
+                            </div>
+                            <FiShoppingCart className='text-dark fs-5' />
+                        </NavLink>
+                        <NavLink to='wishlist_page' className=' position-relative header-button-style ms-3 call-to-action d-flex'>
+                            <div className='position-absolute start-50 w-1-rem h-1-rem rounded-4 bg-danger top-50 text-light bottom-0 w-50 h-1 d-flex justify-content-center align-items-center'>
+                                <p>{wishlistProducts.length}</p>
+                            </div>
+                            <LuHeart className='text-dark fs-5' />
+                        </NavLink>
+                    </div>
 
                 </div>
             </nav>

@@ -11,7 +11,7 @@ function CheckoutPage() {
     const secondProduct = "2";
 
     // lasciare ordine pk è riferito al singolo ordine del cliente altrimenti poi nn funziona nel BE
-    const endpoint = "http://localhost:3000/order"
+    const endpoint = "http://localhost:3000/orders"
 
     const endpoint1 = "http://localhost:3000/orderproduct"
 
@@ -33,6 +33,8 @@ function CheckoutPage() {
         countryBilling: "",
         shippingCost: ""
     })
+
+    const [orderId, setOrderId] = useState();
 
     const orderData = {
         orderId: "2",
@@ -58,11 +60,11 @@ function CheckoutPage() {
         setSubmitted(true);
 
         if (!order.customerName || !order.customerSurname || !order.customerMail || !order.streetName || !order.city) {
-        alert("Compila tutti i campi obbligatori!");
-        return;
-    }
+            alert("Compila tutti i campi obbligatori!");
+            return;
+        }
 
-    alert("Form inviato correttamente!");
+        alert("Form inviato correttamente!");
 
         const products = cartProducts.map(item => {
             const product = indexProducts.find(p => p.id == item.id)
@@ -75,15 +77,23 @@ function CheckoutPage() {
         }).filter(p => p !== null)
 
         try {
-            const res = await axios.post(endpoint, {order, products})
+            const res = await axios.post(endpoint, order)
             // const res1 = await axios.post(endpoint1, orderData)
-            alert(`Ordine inviato! ID ordine: ${res.data.ordineId}`);
+            alert(`Ordine inviato! ID ordine: ${res.data.id}`);
+
+            console.log(res.data);
+
+            setOrderId(`${res.data.id}`)
+
+
         }
         catch (err) {
             console.error(err)
             alert("Errore di invio ordine")
         }
     }
+
+    console.log(orderId);
 
     const totalPrice = cartProducts.reduce((total, item) => {
         const product = indexProducts.find(
@@ -126,7 +136,7 @@ function CheckoutPage() {
 
                                             <h3>{product.title}</h3>
 
-                                            <p className="avaible-text">{product.is_featured === 1 ? "Avaiable" : "Not avaible"}</p>
+                                            <p className="avaible-text">{product.is_featured === 1 ? "Available" : "Not avaible"}</p>
 
                                             <p>Quantity: {item.quantity}</p>
 
@@ -144,7 +154,7 @@ function CheckoutPage() {
                     </div>
 
                     <div className="price-box container my-5">
-                        
+
                         <button className="btn-checkout-page">Total Price: {totalPrice} €</button>
                     </div>
 
