@@ -40,7 +40,7 @@ export default function WishlistPage() {
 
                                 {product.is_featured
                                     ? <div>
-                                        <p className="text-light lh-base bg-success">Disponibile</p>
+                                        <button className="is-disponible">Disponibile</button>
                                         <p className="">Quantita' disponibile: {product.quantity}</p>
 
                                     </div>
@@ -57,12 +57,12 @@ export default function WishlistPage() {
 
 
                                     <button onClick={() => removeFromLocalStorage(setWishlistProducts, item.id, 1)}
-                                        className="btn btn-outline-danger me-2">
+                                        className="btn-remove hover-button btn">
                                         Rimuovi
                                     </button>
 
                                     <button
-                                        className="hover-button btn btn-success me-2 d-flex justify-content-center align-items-center"
+                                        className="btn-cart hover-button btn btn-success me-2 d-flex justify-content-center align-items-center"
                                         onClick={() => addToLocalStorage(setCartProducts, product.id)}>
                                         Carrello
                                         <FiShoppingCart className='ms-1' />
