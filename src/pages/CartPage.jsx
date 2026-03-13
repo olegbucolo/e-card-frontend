@@ -1,4 +1,5 @@
 import dragon from "../imgs/dragoBianco.png"
+import { useNavigate } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { addToLocalStorage, removeFromLocalStorage } from "../utils/localStorage";
@@ -10,6 +11,8 @@ export default function CartPage() {
 
 
     const { indexProducts, cartProducts, setCartProducts } = useOutletContext()
+
+    const navigate = useNavigate();
 
 
     return (
@@ -80,49 +83,12 @@ export default function CartPage() {
                     <div className="price-box container my-5">
                         <p>Total Price</p>
 
-                        <button className="btn btn-success"> Proceed to order</button>
+                        <button className="btn btn-success" onClick={() => navigate(`/checkout_page`)}> Proceed to order</button>
                     </div>
 
                 </div>
 
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

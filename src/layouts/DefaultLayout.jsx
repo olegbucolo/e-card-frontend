@@ -25,7 +25,7 @@ export default function DefaultLayout() {
         const stored = localStorage.getItem('wishlist');
         return stored ? JSON.parse(stored) : [];
     })
-    
+
     // effect that updates wishlist in localStorage
     useEffect(() => {
         localStorage.setItem('wishlist', JSON.stringify(wishlistProducts))
@@ -47,6 +47,9 @@ export default function DefaultLayout() {
         fetchProducts();
 
     }, [])
+
+    console.log(indexProducts);
+
 
     return (
         <>

@@ -3,7 +3,12 @@ import { useState } from "react"
 
 function CheckoutPage() {
 
-    const endpoint = "http://localhost:3000/order"
+    const firstproduct = "1";
+    const secondProduct = "2";
+
+    const endpoint = "http://localhost:3000/orders"
+
+    const endpoint1 = "http://localhost:3000/orderproduct"
 
     const [order, setOrder] = useState({
         orderSlug: "",
@@ -24,6 +29,13 @@ function CheckoutPage() {
         shippingCost: ""
     })
 
+    const orderData = {
+        orderId: "2",
+        productId: "12",
+        unitQuantity: "3",
+        unitPrice: "5"
+    }
+
     function handleChange(e) {
 
         const { name, value } = e.target;
@@ -41,6 +53,7 @@ function CheckoutPage() {
 
         try {
             const res = await axios.post(endpoint, order)
+            const res1 = await axios.post(endpoint1, orderData)
             alert(`Ordine inviato! ID ordine: ${res.data.ordineId}`);
         }
         catch (err) {
@@ -51,8 +64,8 @@ function CheckoutPage() {
 
     return (
         <>
-            <div className="w-30 mt-5 py-4 px-3 checkout-container">
-                <form onSubmit={handleSubmit} className="checkout-form">
+            <div className="w-30 mt-5 py-4 px-3">
+                <form onSubmit={handleSubmit}>
 
                     <div className="mb-3">
                         <label htmlFor="order-slug" className="form-label d-flex align-self-start">Slug dell'ordine: </label>
@@ -147,27 +160,9 @@ function CheckoutPage() {
                         <input name="shippingCost" type="text" className="form-control" id="shipping-cost" placeholder='Inserisci il costo di spedizione: ' value={order.shippingCost} onChange={handleChange} />
                     </div>
 
-                    <button type="submit" className="btn btn-checkout-page btn-primary d-flex align-self-start">Submit</button>
+                    <button type="submit" className="btn btn-primary d-flex align-self-start">Submit</button>
                 </form>
             </div>
-
-            {/* pop-up di conferma dell'ordine
-            {showSuccess && (
-                <div className="popup-overlay">
-                    <div className="popup">
-                        <h2>Ordine inviato!</h2>
-                        <p>Il tuo ordine è stato registrato.</p>
-                        <p>ID ordine: <b>{orderId}</b></p>
-
-                        <button
-                            onClick={() => setShowSuccess(false)}
-                            className="btn btn-pop-up-mail"
-                        >
-                            Chiudi
-                        </button>
-                    </div>
-                </div>
-            )} */}
         </>
     )
 
