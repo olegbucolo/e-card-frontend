@@ -56,7 +56,7 @@ function CheckoutPage() {
 
         try {
             const res = await axios.post(endpoint, order)
-            const res1 = await axios.post(endpoint1, orderData)
+            // const res1 = await axios.post(endpoint1, orderData)
             alert(`Ordine inviato! ID ordine: ${res.data.ordineId}`);
         }
         catch (err) {
