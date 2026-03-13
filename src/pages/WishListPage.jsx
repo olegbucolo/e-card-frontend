@@ -45,7 +45,7 @@ export default function WishlistPage() {
 
                                     </div>
                                     : <div>
-                                        <p className="text-light lh-base bg-danger">Non Disponibile</p>
+                                        <button className="not-disponible">Non Disponibile</button>
                                         <p className="">Quantita' disponibile: 0</p>
 
                                     </div>
