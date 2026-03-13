@@ -1,5 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 import { addToLocalStorage, removeFromLocalStorage } from "../utils/localStorage";
+import { FiShoppingCart } from "react-icons/fi";
 
 import "../pages/pages-css/cartpage.css"
 
@@ -17,7 +18,7 @@ export default function WishlistPage() {
                     <h2 className="cart-title-text">Wishlist</h2>
                 </div>
                 {wishlistProducts.map(item => {
-
+                    console.log('index products', indexProducts)
                     const product = indexProducts.find(
                         p => p.id == item.id
                     )
@@ -38,7 +39,7 @@ export default function WishlistPage() {
 
                                 <h3>{product.title}</h3>
 
-                                {product.quantity > 35
+                                {product.is_featured
                                     ? <div>
                                         <p className="text-light lh-base bg-success">Disponibile</p>
                                         <p className="">Quantita' disponibile: {product.quantity}</p>
@@ -53,12 +54,19 @@ export default function WishlistPage() {
 
                                 <p>Prezzo: {product.price} €</p>
 
-                                <div className="mt-auto">
+                                <div className="mt-auto d-flex">
 
 
                                     <button onClick={() => removeFromLocalStorage(setWishlistProducts, item.id, 1)}
                                         className="btn btn-outline-danger me-2">
                                         Rimuovi
+                                    </button>
+
+                                    <button
+                                        className="hover-button btn btn-success me-2 d-flex justify-content-center align-items-center"
+                                        onClick={() => addToLocalStorage(setCartProducts, product.id)}>
+                                        Carrello
+                                        <FiShoppingCart className='ms-1' />
                                     </button>
                                 </div>
 
