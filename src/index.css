@@ -369,6 +369,28 @@ button {
   border-radius: 999px;
 }
 
+.btn-cart:hover {
+  background: rgb(2, 126, 23);
+  color: rgb(255, 255, 255);
+}
+
+.btn-wishlist {
+  padding: 6px 24px;
+  margin-top: 15px;
+  margin-right: 20px;
+
+  background: rgba(255, 201, 4, 0.4);
+  color: rgb(255, 140, 0);
+
+  border: none;
+  border-radius: 999px;
+}
+
+.btn-wishlist:hover {
+    background: rgba(223, 176, 3, 0.7);
+  color: rgb(255, 140, 0);
+}
+
 /* CHECKOUT PAGE */
 .checkout-container {
   max-width: 1100px;

@@ -38,21 +38,21 @@ export default function DetailPage() {
 
                         <h4>{singleProduct.title}</h4>
 
-                        <p>Availability: {availability}</p>
+                        <p>Disponibilità: {availability}</p>
 
-                        <p>Description: {singleProduct.description} </p>
+                        <p>Descrizione: {singleProduct.description} </p>
 
-                        <p>Price: {singleProduct.price}</p>
+                        <p>Prezzo: {singleProduct.price}</p>
 
                         <div>
-                            <button className="btn btn-warning">Add to Wishlist</button>
+                            <button className="btn-wishlist">Aggiungi ai preferiti</button>
                         </div>
                         <div className="mt-3">
                             <button
-                                className="btn btn-success"
+                                className="btn-cart"
                                 onClick={() => addToLocalStorage(setCartProducts, singleProduct.id, 1)}
                             >
-                                Add to cart
+                                Aggiungi al carrello
                             </button>
                         </div>
 
