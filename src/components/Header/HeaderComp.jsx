@@ -218,13 +218,13 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                     </div>
                     <div className='order-1 order-md-4 me-2 me-md-0 d-flex '>
                         <NavLink to='cartpage' className=' position-relative rounded-5 header-button-style call-to-action ms-2 d-flex'>
-                            <div className=' position-absolute w-1-rem h-1-rem start-50 rounded-5 bg-danger top-50 text-light bottom-0  d-flex justify-content-center align-items-center'>
+                            <div className=' position-absolute w-1-rem h-1-rem start-60 top-60 rounded-5 bg-danger text-light bottom-0  d-flex justify-content-center align-items-center'>
                                 <p className='fs-dot-7' >{totalCartProducts()}</p>
                             </div>
                             <FiShoppingCart className='text-dark fs-5' />
                         </NavLink>
                         <NavLink to='wishlist_page' className=' position-relative rounded-5 header-button-style call-to-action d-flex'>
-                            <div className='position-absolute start-50 w-1-rem h-1-rem rounded-5 bg-danger top-50 text-light bottom-0 d-flex justify-content-center align-items-center'>
+                            <div className='position-absolute start-60 top-60 w-1-rem h-1-rem rounded-5 bg-danger text-light bottom-0 d-flex justify-content-center align-items-center'>
                                 <p className='fs-dot-7'>{wishlistProducts.length}</p>
                             </div>
                             <LuHeart className='text-dark fs-5' />

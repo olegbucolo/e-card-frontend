@@ -86,12 +86,7 @@ nav {
 }
 
 .form-control {
-    /* background-color: rgba(var(--bs-tertiary-bg-rgb), var(--bs-bg-opacity)) !important; */
     border: 1px solid black !important;
-}
-
-.box-shadow-cool {
-    /* box-shadow:  .2rem .2rem .4rem -.5rem black ,  -.2rem -.2rem .4rem -.5rem black !important; */
 }
 
 .navbar-toggler:focus {
@@ -173,9 +168,18 @@ p {
     box-shadow: .1rem .1rem 1rem -.5rem black;
 }
 
+.start-60{
+    left: 60% 
+}
+
+.top-60{
+    top: 60% 
+}
+
+
 .header-button-style:hover {
     transition: all .4s ease;
-    background-color: rgb(25, 135, 84);
+    background-color: black;
 }
 
 .header-button-style:hover svg {
