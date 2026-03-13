@@ -18,7 +18,6 @@ export default function WishlistPage() {
                     <h2 className="cart-title-text">Wishlist</h2>
                 </div>
                 {wishlistProducts.map(item => {
-                    console.log('index products', indexProducts)
                     const product = indexProducts.find(
                         p => p.id == item.id
                     )
