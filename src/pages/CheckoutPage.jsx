@@ -68,7 +68,7 @@ function CheckoutPage() {
     return (
         <>
 
-            <div className="container">
+            <div className="container pt-3">
 
                 <div className="d-flex">
                     <div className="order-container-left">

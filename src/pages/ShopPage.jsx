@@ -91,7 +91,7 @@ export default function ShopPage() {
                                                     className="hover-button btn btn-success w-50 me-2 d-flex
                                                     justify-content-center align-items-center"
                                                     onClick={() => addToLocalStorage(setCartProducts, p.id)}>
-                                                    Cart
+                                                    Carrello
                                                     <FiShoppingCart className='ms-1' />
                                                 </button>
                                                 <button
@@ -110,7 +110,7 @@ export default function ShopPage() {
 
                                 </div>
                             )
-                        }) : <div className='w-100'>You haven't searched anything yet</div>}
+                        }) : <h4 className='text-center w-100 border-bottom'>Inserisci la carta che vuoi cercare nella barra di ricerca....</h4>}
                     </div>
                 </div>
             </div>
