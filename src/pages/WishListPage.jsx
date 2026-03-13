@@ -58,7 +58,7 @@ export default function WishlistPage() {
 
                                     <button onClick={() => removeFromLocalStorage(setWishlistProducts, item.id, 1)}
                                         className="btn btn-outline-danger me-2">
-                                        remove
+                                        Rimuovi
                                     </button>
                                 </div>
 
