@@ -85,13 +85,14 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                             <button
                                 className="btn btn-outline-dark "
                                 type="submit">Cerca</button>
-                            <div className="position-absolute mx-2 start-0 end-0 search-dropdown-wrapper">
-                                {isTyping && (
+                            {isTyping && (
+
+                                <div className="z-1 position-fixed top-filter container-lg h-100 mx-2 search-dropdown-wrapper">
                                     <div
                                         className={
                                             location.pathname === '/shop'
-                                                ? `p-2 search-dropdown bg-scroll bg-light mt-5 box-shadow-light`
-                                                : `p-2 search-dropdown bg-scroll bg-light box-shadow-light`}
+                                                ? `p-2 search-dropdown  bg-scroll bg-light mt-5 box-shadow-light border-0`
+                                                : `p-2 search-dropdown bg-scroll bg-light box-shadow-light border-0`}
                                     >
                                         {indexProducts?.filter(p => p.title.toLowerCase().includes(query.toLowerCase())).map(p => (
                                             <div
@@ -111,16 +112,16 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                             </div>
                                         ))}
                                     </div>
-                                )}
-                            </div>
+                                </div>
+                            )}
                         </form>
                         {/* RIGHT */}
                         <div className="order-3 order-md-2 none-at-768 flex-grow-md-1 d-flex justify-content-end">
                             <button
                                 className="navbar-toggler p-0 border-0 "
                                 type="button"
-                                data-bs-toggle="collapse"
                                 onClick={() => setIsMobileMenuOpen(prev => !prev)}
+                                data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent"
                                 aria-controls="navbarSupportedContent"
                                 aria-expanded="false"
@@ -131,13 +132,23 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                             </button>
                         </div>
                         {/* RIGHT */}
-                        <div className="order-5 order-md-3 collapse navbar-collapse justify-content-end flex-grow-1" id="navbarSupportedContent">
+
+                        <div className={`z-2 bg-light order-5 border-bottom order-md-3 collapse navbar-collapse justify-content-end flex-grow-1 ${isMobileMenuOpen && "show"}`} id="navbarSupportedContent">
                             <ul className="navbar-nav mb-2 mb-md-0  ms-2">
                                 <li className="nav-item">
-                                    <NavLink to="/" className="nav-link active" aria-current="page" >Home</NavLink>
+                                    <NavLink
+                                        to="/"
+                                        className="nav-link active"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+
+                                    >Home</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink to="/shop" className="nav-link" >Negozio</NavLink>
+                                    <NavLink
+                                        to="/shop"
+                                        className="nav-link"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >Negozio</NavLink>
                                 </li>
                             </ul>
                         </div>
@@ -158,12 +169,12 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                     </div>
                 </nav>
                 {location.pathname === "/shop" &&
-                    <div className="position-fixed bg-danger top-filter w-100 border-bottom bg-light mb-1 filters-header-styles ">
-                        <div className='container-lg d-flex  px-3'>
-                            <div className="left-filters d-flex justify-content-start">
+                    <div className="position-fixed bg-danger h-100 top-filter w-100 border-bottom border-top pt-1 bg-light  mb-1 filters-header-styles overflow-visible bg-transparent">
+                        <div className="overflow-x-auto h-100">
+                            <div className='container-lg d-flex flex-nowrap align-items-start px-3'>
                                 <div className="dropdown me-2">
                                     <button
-                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green"
+                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green my-1"
                                         type="button"
                                         data-bs-toggle="dropdown"
                                         aria-expanded="false">
@@ -200,7 +211,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                 </div>
                                 <div className="dropdown me-2">
                                     <button
-                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green"
+                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green my-1"
                                         type="button"
                                         onMouseDown={(e) => e.preventDefault()}
                                         data-bs-toggle="dropdown"
@@ -230,16 +241,16 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                         </li>
                                     </ul>
                                 </div>
-                                <div className="dropdown me-2">
+                                <div className="dropdown me-2 ">
                                     <button
-                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green"
+                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green my-1"
                                         type="button"
                                         onMouseDown={(e) => e.preventDefault()}
                                         data-bs-toggle="dropdown"
                                         aria-expanded="false">
                                         Popolari{popFilterButton}
                                     </button>
-                                    <ul className="dropdown-menu dropdown-menu">
+                                    <ul className="dropdown-menu  dropdown-menu my-2">
                                         <li>
                                             <button
                                                 className="dropdown-item"
@@ -266,13 +277,13 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                         </li>
                                     </ul>
                                 </div>
+                                <button
+                                    type="button"
+                                    className="flex-shrink-0 ms-auto btn btn-danger rounded-2  overflow-hidden"
+                                >
+                                    Reset
+                                </button>
                             </div>
-                            <button
-                                type="button"
-                                className="ms-auto btn btn-danger rounded-2 overflow-hidden"
-                            >
-                                Reset Filters
-                            </button>
                         </div>
                     </div>}
             </div>

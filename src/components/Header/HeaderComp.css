@@ -5,7 +5,6 @@ nav {
 
 .filters-header-styles {
     background-color: rgb(56, 56, 56);
-    height: 3rem;
     top: 0;
 }
 
@@ -15,14 +14,25 @@ nav {
     color: white
 }
 
+.dropdown-menu {
+  z-index: 3000 !important;
+}
+
+.top-custom{
+    top: 3.4rem !important;
+}
+
 .top-filter {
-    top: 3.4rem
+    top: 3.4rem !important;
+    transform:translatex(-50%);
+    overflow: visible !important;
+    left: 50%;
 }
 
 /* 768 */
 @media screen and (max-width: 768px) {
     .top-filter {
-        top: 6.2rem
+        top: 6.2rem !important
     }
 
 }
