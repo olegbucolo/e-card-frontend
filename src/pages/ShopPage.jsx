@@ -1,7 +1,5 @@
 import './ShopPage.css';
-import { NavLink } from 'react-router-dom'
-import { useSearchParams } from 'react-router-dom'
-import { useOutletContext } from 'react-router-dom'
+import { NavLink, useOutletContext, useSearchParams } from 'react-router-dom'
 import { LuHeart } from "react-icons/lu";
 import { FaHeart } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
@@ -65,7 +63,7 @@ export default function ShopPage() {
 
     return (
         <>
-            <div className="container-lg my-5 py-5">
+            <div className="container-lg my-5 mt-4-rem py-5">
                 <div className="col">
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
                         {search ? filteredProducts.map(p => {

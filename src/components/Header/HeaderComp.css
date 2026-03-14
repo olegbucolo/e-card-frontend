@@ -85,6 +85,8 @@ nav {
     border: 1px solid black !important;
 }
 
+
+
 .navbar-toggler:focus {
     box-shadow: none;
 }

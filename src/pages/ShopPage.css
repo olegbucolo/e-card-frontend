@@ -5,6 +5,10 @@
     box-shadow: -.5rem -.5rem 2rem -2rem black, inset -.5rem -.5rem 2rem -2rem black;
 }
 
+.mt-4-rem{
+    margin-top: 4rem !important;
+}
+
 .hover-card {
     border: none !important;
 }
