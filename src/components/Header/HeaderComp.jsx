@@ -6,7 +6,7 @@ import { IoClose } from "react-icons/io5";
 import { LuHeart, LuMenu } from "react-icons/lu";
 import { FiShoppingCart } from "react-icons/fi";
 
-import { addFilterToStorage } from '../../utils/localStorage';
+import { addFilterToLocalStorage } from '../../utils/localStorage';
 
 // OLEG TI HO MESSO IL LOGO PER L'HEADER NELLA CARTELLA IMMAGINI, NON TI VOGLIO TOCCARE IL CODICE, FAI PURE TU
 
@@ -49,7 +49,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
     const applyFilter = (newFilter) => {
 
         // doing localStorage thing
-        addFilterToStorage(newFilter)
+        addFilterToLocalStorage(newFilter)
         // Read current query params
         const params = new URLSearchParams(location.search);
 

@@ -31,7 +31,7 @@ export function removeFromLocalStorage(setterFunction, productId, quantity = 1) 
     });
 }
 
-export function addFilterToStorage(data) {
+export function addFilterToLocalStorage(data) {
     let stored = JSON.parse(localStorage.getItem('filters')) || [];
 
     const filterName = Object.keys(data)[0]; 
