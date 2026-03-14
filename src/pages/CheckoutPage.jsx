@@ -34,6 +34,8 @@ function CheckoutPage() {
         shippingCost: ""
     })
 
+    const [orderId, setOrderId] = useState();
+
     const orderData = {
         orderId: "2",
         productId: "12",
@@ -78,12 +80,20 @@ function CheckoutPage() {
             const res = await axios.post(endpoint, order)
             // const res1 = await axios.post(endpoint1, orderData)
             alert(`Ordine inviato! ID ordine: ${res.data.id}`);
+
+            console.log(res.data);
+
+            setOrderId(`${res.data.id}`)
+
+
         }
         catch (err) {
             console.error(err)
             alert("Errore di invio ordine")
         }
     }
+
+    console.log(orderId);
 
     const totalPrice = cartProducts.reduce((total, item) => {
         const product = indexProducts.find(

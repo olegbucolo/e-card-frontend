@@ -1,5 +1,5 @@
 
-export function isPresentInStorage(state, productId){
+export function isPresentInStorage(state, productId) {
     return state.some(s => s.id === productId);
 }
 
@@ -29,4 +29,21 @@ export function removeFromLocalStorage(setterFunction, productId, quantity = 1) 
                 : p
         );
     });
+}
+
+export function addFilterToLocalStorage(data) {
+    let stored = JSON.parse(localStorage.getItem('filters')) || [];
+
+    const filterName = Object.keys(data)[0]; 
+    const filterValue = data[filterName];
+
+    const index = stored.findIndex(obj => obj.hasOwnProperty(filterName));
+
+    if (index >= 0) {
+        stored[index][filterName] = filterValue;
+    } else {
+        stored.push(data);
+    }
+
+    localStorage.setItem('filters', JSON.stringify(stored));
 }

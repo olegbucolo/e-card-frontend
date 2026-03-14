@@ -34,10 +34,6 @@ nav {
     background-color: white;
 }
 
-.dropdown-hover-green:active {
-    background-color: rgb(52, 255, 160) !important;
-}
-
 .overflow-auto {
     overflow: auto;
 }
@@ -81,12 +77,36 @@ nav {
     display: flex;
 }
 
+.navbar-toggler {
+    border-radius: 0 !important;
+}
+
+.form-control {
+    border: 1px solid black !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.fs-dot-7 {
+    font-size: .7rem !important;
+}
+
 .w-1-rem {
     width: 1rem !important
 }
 
 .h-1-rem {
     height: 1rem !important
+}
+
+.w-2-rem {
+    width: 2rem !important
+}
+
+.h-w-rem {
+    height: 2rem !important
 }
 
 .w-4-rem {
@@ -97,19 +117,10 @@ nav {
     height: 3rem !important;
 }
 
-.bg-green {
-    background-color: rgb(25, 135, 84);
-}
-
-.bg-dark-green {
-    background-color: rgb(16, 92, 57);
-}
-
 .search-dropdown {
     max-height: 50vh;
     overflow: auto;
-    background-color: rgb(25, 135, 84);
-    color: white;
+    background-color: white;
     border-radius: .6rem;
 }
 
@@ -128,6 +139,10 @@ nav {
     border-radius: 10px;
 }
 
+.call-to-action {
+    padding: .6rem;
+}
+
 .scale-120 {
     transform: scale(120%);
 }
@@ -140,13 +155,17 @@ p {
     box-shadow: .1rem .1rem 1rem -.5rem black;
 }
 
-.header-button-style {
-    border-radius: 1rem;
+.start-60{
+    left: 60% 
+}
+
+.top-60{
+    top: 60% 
 }
 
 .header-button-style:hover {
     transition: all .4s ease;
-    background-color: rgb(25, 135, 84);
+    background-color: black;
 }
 
 .header-button-style:hover svg {
