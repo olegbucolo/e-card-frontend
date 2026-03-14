@@ -158,112 +158,114 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                     </div>
                 </nav>
                 {location.pathname === "/shop" &&
-                    <div className="position-absolute top-100 w-100 border-bottom bg-light mb-1 filters-header-styles ">
-                        <div className='container-lg d-flex justify-content-start px-4'>
-                            <div className="dropdown me-2">
-                                <button
-                                    className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green"
-                                    type="button"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Prezzo{priceFilterButton}
-                                </button>
-                                <ul className="dropdown-menu" >
-                                    <li>
-                                        <button
-                                            name='price-order'
-                                            className="dropdown-item"
-                                            type="button"
-                                            onClick={() => {
-                                                applyFilter({ price: "low-to-high" })
-                                                setPriceFilterButton(': Basso → Alto')
-                                            }}
-                                        >
-                                            Basso → Alto
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button
-                                            className="dropdown-item"
-                                            type="button"
-                                            name='price-order'
-                                            onClick={() => {
-                                                applyFilter({ price: "high-to-low" });
-                                                setPriceFilterButton(': Alto → Basso')
-                                            }}
-                                        >
-                                            Alto → Basso
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="dropdown me-2">
-                                <button
-                                    className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green"
-                                    type="button"
-                                    onMouseDown={(e) => e.preventDefault()}
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Nome{nameFilterButton}
-                                </button>
-                                <ul className="dropdown-menu dropdown-menu">
-                                    <li>
-                                        <button
-                                            className="dropdown-item"
-                                            onClick={() => {
-                                                applyFilter({ name: "a-to-z" })
-                                                setNameFilterButton(': A → Z')
-                                            }}
-                                            type="button">A → Z
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button
-                                            className="dropdown-item "
-                                            onClick={() => {
-                                                applyFilter({ name: "z-to-a" })
-                                                setNameFilterButton(': Z → A')
-                                            }}
-                                            type="button">Z → A
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="dropdown me-2">
-                                <button
-                                    className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green"
-                                    type="button"
-                                    onMouseDown={(e) => e.preventDefault()}
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Popolari{popFilterButton}
-                                </button>
-                                <ul className="dropdown-menu dropdown-menu">
-                                    <li>
-                                        <button
-                                            className="dropdown-item"
-                                            type="button"
-                                            onClick={() => {
-                                                applyFilter({ pop: "more-pop" })
-                                                setPopFilterButton(`: Piu' venduti`)
-                                            }}
-                                        >
-                                            Piu' venduti
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button
-                                            className="dropdown-item"
-                                            type="button"
-                                            onClick={() => {
-                                                applyFilter({ pop: "less-pop" })
-                                                setPopFilterButton(`: Meno venduti`)
-                                            }}
-                                        >
-                                            Meno venduti
-                                        </button>
-                                    </li>
-                                </ul>
+                    <div className="position-fixed bg-danger top-filter w-100 border-bottom bg-light mb-1 filters-header-styles ">
+                        <div className='container-lg d-flex  px-3'>
+                            <div className="left-filters d-flex justify-content-start">
+                                <div className="dropdown me-2">
+                                    <button
+                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green"
+                                        type="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        Prezzo{priceFilterButton}
+                                    </button>
+                                    <ul className="dropdown-menu" >
+                                        <li>
+                                            <button
+                                                name='price-order'
+                                                className="dropdown-item"
+                                                type="button"
+                                                onClick={() => {
+                                                    applyFilter({ price: "low-to-high" })
+                                                    setPriceFilterButton(': Basso → Alto')
+                                                }}
+                                            >
+                                                Basso → Alto
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button
+                                                className="dropdown-item"
+                                                type="button"
+                                                name='price-order'
+                                                onClick={() => {
+                                                    applyFilter({ price: "high-to-low" });
+                                                    setPriceFilterButton(': Alto → Basso')
+                                                }}
+                                            >
+                                                Alto → Basso
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div className="dropdown me-2">
+                                    <button
+                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green"
+                                        type="button"
+                                        onMouseDown={(e) => e.preventDefault()}
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        Nome{nameFilterButton}
+                                    </button>
+                                    <ul className="dropdown-menu dropdown-menu">
+                                        <li>
+                                            <button
+                                                className="dropdown-item"
+                                                onClick={() => {
+                                                    applyFilter({ name: "a-to-z" })
+                                                    setNameFilterButton(': A → Z')
+                                                }}
+                                                type="button">A → Z
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button
+                                                className="dropdown-item "
+                                                onClick={() => {
+                                                    applyFilter({ name: "z-to-a" })
+                                                    setNameFilterButton(': Z → A')
+                                                }}
+                                                type="button">Z → A
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div className="dropdown me-2">
+                                    <button
+                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green"
+                                        type="button"
+                                        onMouseDown={(e) => e.preventDefault()}
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        Popolari{popFilterButton}
+                                    </button>
+                                    <ul className="dropdown-menu dropdown-menu">
+                                        <li>
+                                            <button
+                                                className="dropdown-item"
+                                                type="button"
+                                                onClick={() => {
+                                                    applyFilter({ pop: "more-pop" })
+                                                    setPopFilterButton(`: Piu' venduti`)
+                                                }}
+                                            >
+                                                Piu' venduti
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button
+                                                className="dropdown-item"
+                                                type="button"
+                                                onClick={() => {
+                                                    applyFilter({ pop: "less-pop" })
+                                                    setPopFilterButton(`: Meno venduti`)
+                                                }}
+                                            >
+                                                Meno venduti
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                             <button
                                 type="button"

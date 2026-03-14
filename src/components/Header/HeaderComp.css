@@ -15,6 +15,19 @@ nav {
     color: white
 }
 
+.top-filter {
+    top: 3.4rem
+}
+
+/* 768 */
+@media screen and (max-width: 768px) {
+    .top-filter {
+        top: 6.2rem
+    }
+
+}
+
+
 .btn:focus {
     background-color: white;
     color: black
@@ -157,12 +170,12 @@ p {
     box-shadow: .1rem .1rem 1rem -.5rem black;
 }
 
-.start-60{
-    left: 60% 
+.start-60 {
+    left: 60%
 }
 
-.top-60{
-    top: 60% 
+.top-60 {
+    top: 60%
 }
 
 .header-button-style:hover {
