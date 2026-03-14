@@ -31,24 +31,19 @@ export function removeFromLocalStorage(setterFunction, productId, quantity = 1) 
     });
 }
 
-export function addFilterToStorage(value) {
-    // value = { price: "low-to-high" } for example
+export function addFilterToStorage(data) {
     let stored = JSON.parse(localStorage.getItem('filters')) || [];
 
-    const filterName = Object.keys(value)[0]; // e.g., "price"
-    const filterValue = value[filterName];
+    const filterName = Object.keys(data)[0]; 
+    const filterValue = data[filterName];
 
-    // Check if filterName already exists in stored array
     const index = stored.findIndex(obj => obj.hasOwnProperty(filterName));
 
     if (index >= 0) {
-        // update existing object
         stored[index][filterName] = filterValue;
     } else {
-        // push new object
-        stored.push(value);
+        stored.push(data);
     }
 
     localStorage.setItem('filters', JSON.stringify(stored));
-    console.log('FILTER STORED:', stored);
 }
