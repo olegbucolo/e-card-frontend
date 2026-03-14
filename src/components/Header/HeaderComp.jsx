@@ -16,10 +16,10 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
     const [query, setQuery] = useState('');
     const navigate = useNavigate();
     const [isTyping, setIsTyping] = useState(false)
-    const [filterShow, setFilterShow] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [priceFilterButton, setPriceFilterButton] = useState('');
     const [nameFilterButton, setNameFilterButton] = useState('');
+    const [popFilterButton, setPopFilterButton] = useState('');
 
     // function that handles change when searching a product
     const handleChange = (e) => {
@@ -33,7 +33,6 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
         // at the press of the search button, we navigate to shop?search=${query}
         navigate(`/shop?search=${query}`)
         setIsTyping(false)
-        setFilterShow(false);
     }
 
     const totalCartProducts = () => {
@@ -90,6 +89,8 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                         <div className="position-absolute mx--2 start-0 end-0 search-dropdown-wrapper">
 
                             {isTyping && (
+
+
                                 <div
                                     className="p-2 search-dropdown bg-scroll-black box-shadow-light"
                                 >
@@ -173,14 +174,17 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                                 onMouseDown={(e) => e.preventDefault()}
                                                 data-bs-toggle="dropdown"
                                                 aria-expanded="false">
-                                                Popolari
+                                                Popolari{popFilterButton}
                                             </button>
                                             <ul className="dropdown-menu dropdown-menu">
                                                 <li>
                                                     <button
                                                         className="dropdown-item"
                                                         type="button"
-                                                        onClick={() => applyFilter({ pop: "more-popular" })}
+                                                        onClick={() => {
+                                                            applyFilter({ pop: "more-pop" })
+                                                            setPopFilterButton(`: Piu' venduti`)
+                                                        }}
                                                     >
                                                         Piu' venduti
                                                     </button>
@@ -189,15 +193,21 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                                     <button
                                                         className="dropdown-item"
                                                         type="button"
-                                                        onClick={() => applyFilter({ pop: "less-pop" })}
+                                                        onClick={() => {
+                                                            applyFilter({ pop: "less-pop" })
+                                                            setPopFilterButton(`: Meno venduti`)
+                                                        }}
                                                     >
                                                         Meno venduti
                                                     </button>
                                                 </li>
                                             </ul>
                                         </div>
-                                        <button type="button" className="ms-auto rounded-2 overflow-hidden" onClick={() => setFilterShow(false)} >
-                                            <IoClose className="p-1 fs-2 hover-bg-red"></IoClose>
+                                        <button
+                                            type="button"
+                                            className="ms-auto btn btn-danger rounded-2 overflow-hidden"
+                                             >
+                                            Reset Filters
                                         </button>
 
                                     </div>
@@ -209,7 +219,6 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                                 setQuery(p.title)
                                                 navigate(`/shop?search=${p.title}`)
                                                 setIsTyping(false)
-                                                setFilterShow(false)
                                             }}>
                                             <div className="search-result-left">
                                                 <img className='h-4-rem scale-120' src={p.image} alt="" />
@@ -219,7 +228,8 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                             </div>
                                         </div>
                                     ))}
-                                </div>)}
+                                </div>
+                            )}
                         </div>
                     </form>
 
@@ -237,8 +247,8 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                             aria-expanded="false"
                             aria-label="Toggle navigation">
                             {isMobileMenuOpen
-                                ? <LuMenu className='fs-2 text-dark mt-1' />
-                                : <IoClose className='fs-2 text-dark mt-1' />}
+                                ? <IoClose className='fs-2 text-dark mt-1' />
+                                : <LuMenu className='fs-2 text-dark mt-1' />}
                         </button>
                     </div>
                     {/* RIGHT */}

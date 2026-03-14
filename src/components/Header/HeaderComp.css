@@ -34,10 +34,6 @@ nav {
     background-color: white;
 }
 
-.dropdown-hover-green:active {
-    background-color: rgb(52, 255, 160) !important;
-}
-
 .overflow-auto {
     overflow: auto;
 }
@@ -121,16 +117,10 @@ nav {
     height: 3rem !important;
 }
 
-
-
-
-
 .search-dropdown {
     max-height: 50vh;
     overflow: auto;
-    /* color: white; */
     background-color: white;
-
     border-radius: .6rem;
 }
 
@@ -172,7 +162,6 @@ p {
 .top-60{
     top: 60% 
 }
-
 
 .header-button-style:hover {
     transition: all .4s ease;

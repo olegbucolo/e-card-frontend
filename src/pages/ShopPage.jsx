@@ -48,7 +48,7 @@ export default function ShopPage() {
 
     if (popFilter) {
         filteredProducts = [...filteredProducts].sort((a, b) =>
-            popFilter === "more-popular"
+            popFilter === "more-pop"
                 ? b.sold_quantity - a.sold_quantity   // most sold first
                 : a.sold_quantity - b.sold_quantity   // least sold first
         );
