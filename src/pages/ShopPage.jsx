@@ -87,13 +87,23 @@ export default function ShopPage() {
                                                 <h5 className='fw-semibold'>{p.price} €</h5>
                                             </div>
                                             <div className="buttons d-flex justify-content-between mt-auto">
-                                                <button
-                                                    className="hover-button btn btn-success w-50 me-2 d-flex
+                                                {
+                                                    p.is_featured ? <button
+                                                        className="hover-button btn btn-success w-50 me-2 d-flex
                                                     justify-content-center align-items-center"
-                                                    onClick={() => addToLocalStorage(setCartProducts, p.id)}>
-                                                    Carrello
-                                                    <FiShoppingCart className='ms-1' />
-                                                </button>
+                                                        onClick={() => addToLocalStorage(setCartProducts, p.id)}>
+                                                        Carrello
+                                                        <FiShoppingCart className='ms-1' />
+                                                    </button>
+                                                        :
+                                                        <button
+                                                            className="hover-button btn  w-50 me-2 d-flex
+                                                    justify-content-center align-items-center"
+                                                        >
+                                                            <del>Carrello</del>
+                                                            <FiShoppingCart className='ms-1' />
+                                                        </button>
+                                                }
                                                 <button
                                                     className="hover-button btn btn-warning w-50 d-flex bg-light
                                                     justify-content-center align-items-center"
