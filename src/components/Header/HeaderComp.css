@@ -121,19 +121,16 @@ nav {
     height: 3rem !important;
 }
 
-.bg-green {
-    background-color: rgb(25, 135, 84);
-}
 
-.bg-dark-green {
-    background-color: rgb(16, 92, 57);
-}
+
+
 
 .search-dropdown {
     max-height: 50vh;
     overflow: auto;
-    background-color: rgb(25, 135, 84);
-    color: white;
+    /* color: white; */
+    background-color: white;
+
     border-radius: .6rem;
 }
 

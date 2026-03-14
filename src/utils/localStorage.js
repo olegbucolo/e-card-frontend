@@ -1,5 +1,5 @@
 
-export function isPresentInStorage(state, productId){
+export function isPresentInStorage(state, productId) {
     return state.some(s => s.id === productId);
 }
 
@@ -29,4 +29,14 @@ export function removeFromLocalStorage(setterFunction, productId, quantity = 1) 
                 : p
         );
     });
+}
+
+export function addFilterToStorage(value) {
+    let stored = localStorage.getItem('filters');
+    if (!stored) {
+        localStorage.setItem('filters', JSON.stringify(value))
+        console.log('STORED INEXISTENT VALUE')
+    }
+    console.log('VALUE EXISTS')
+
 }
