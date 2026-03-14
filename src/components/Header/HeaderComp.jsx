@@ -18,7 +18,8 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
     const [isTyping, setIsTyping] = useState(false)
     const [filterShow, setFilterShow] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [priceFilterName, setPriceFilterName] = useState('');
+    const [priceFilterButton, setPriceFilterButton] = useState('');
+    const [nameFilterButton, setNameFilterButton] = useState('');
 
     // function that handles change when searching a product
     const handleChange = (e) => {
@@ -102,7 +103,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
 
                                                 data-bs-toggle="dropdown"
                                                 aria-expanded="false">
-                                                Prezzo: {priceFilterName}
+                                                Prezzo{priceFilterButton}
                                             </button>
                                             <ul className="dropdown-menu" >
                                                 <li>
@@ -112,7 +113,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                                         type="button"
                                                         onClick={() => {
                                                             applyFilter({ price: "low-to-high" })
-                                                            setPriceFilterName(': Basso → Alto')
+                                                            setPriceFilterButton(': Basso → Alto')
                                                         }}
                                                     >
                                                         Basso → Alto
@@ -125,7 +126,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                                         name='price-order'
                                                         onClick={() => {
                                                             applyFilter({ price: "high-to-low" });
-                                                            setPriceFilterName(': Alto → Basso')
+                                                            setPriceFilterButton(': Alto → Basso')
                                                         }}
                                                     >
                                                         Alto → Basso
@@ -140,20 +141,26 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                                 onMouseDown={(e) => e.preventDefault()}
                                                 data-bs-toggle="dropdown"
                                                 aria-expanded="false">
-                                                Nome
+                                                Nome{nameFilterButton}
                                             </button>
                                             <ul className="dropdown-menu dropdown-menu">
                                                 <li>
                                                     <button
                                                         className="dropdown-item"
-                                                        onClick={() => applyFilter({ name: "a-to-z" })}
+                                                        onClick={() => {
+                                                            applyFilter({ name: "a-to-z" })
+                                                            setNameFilterButton(': A → Z')
+                                                        }}
                                                         type="button">A → Z
                                                     </button>
                                                 </li>
                                                 <li>
                                                     <button
                                                         className="dropdown-item "
-                                                        onClick={() => applyFilter({ name: "z-to-a" })}
+                                                        onClick={() => {
+                                                            applyFilter({ name: "z-to-a" })
+                                                            setNameFilterButton(': Z → A')
+                                                        }}
                                                         type="button">Z → A
                                                     </button>
                                                 </li>
