@@ -6,7 +6,7 @@ import { IoClose } from "react-icons/io5";
 import { LuHeart, LuMenu } from "react-icons/lu";
 import { FiShoppingCart } from "react-icons/fi";
 
-import { addFilterToLocalStorage, getFilterFromLocalStorage, resetFiltersInLocalStorage } from '../../utils/localStorage';
+import {addSorterToLocalStorage, getSorterFromLocalStorage, resetFiltersInLocalStorage } from '../../utils/localStorage';
 
 // OLEG TI HO MESSO IL LOGO PER L'HEADER NELLA CARTELLA IMMAGINI, NON TI VOGLIO TOCCARE IL CODICE, FAI PURE TU
 
@@ -19,21 +19,21 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const [priceFilterButton, setPriceFilterButton] =
-        useState(getFilterFromLocalStorage('price'));
+        useState(getSorterFromLocalStorage('price'));
     const priceLabels = {
         'low-to-high': ': Basso → Alto',
         'high-to-low': ': Alto → Basso'
     }
 
     const [nameFilterButton, setNameFilterButton] =
-        useState(getFilterFromLocalStorage('name'))
+        useState(getSorterFromLocalStorage('name'))
     const nameLabels = {
         "a-to-z": ": A → Z",
         "z-to-a": ": Z → A",
     }
 
     const [popFilterButton, setPopFilterButton] = useState(
-        getFilterFromLocalStorage('pop'));
+        getSorterFromLocalStorage('pop'));
     const popLabels = {
         'more-pop': `: Piu' venduti`,
         'less-pop': ': Meno venduti'
@@ -65,12 +65,11 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
 
     const applyFilter = (newFilter) => {
 
-        addFilterToLocalStorage(newFilter)
+        addSorterToLocalStorage(newFilter)
         const params = new URLSearchParams(location.search);
 
         Object.keys(newFilter).forEach(key => {
             params.set(key, newFilter[key]);
-            console.log(params.toString())
             
         });
 

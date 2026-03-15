@@ -31,6 +31,12 @@ export function removeFromLocalStorage(setterFunction, productId, quantity = 1) 
     });
 }
 
+export function addSorterToLocalStorage(data) {
+    localStorage.setItem('sorters', JSON.stringify(data));
+}
+
+// TODO:
+
 export function addFilterToLocalStorage(data) {
     let stored = JSON.parse(localStorage.getItem('filters')) || [];
 
@@ -48,7 +54,7 @@ export function addFilterToLocalStorage(data) {
     localStorage.setItem('filters', JSON.stringify(stored));
 }
 
-export function getFilterFromLocalStorage(name) {
+export function getSorterFromLocalStorage(name) {
     const stored = JSON.parse(localStorage.getItem('filters'))
     if (!stored) {
         return ''
@@ -60,7 +66,10 @@ export function getFilterFromLocalStorage(name) {
 
 export function resetFiltersInLocalStorage() {
     console.log('running reset')
-    const stored = localStorage.getItem('filters')
-    if(!stored) return 
+    const storedFilters = localStorage.getItem('filters')
+    const storedSorters = localStorage.getItem('sorters')
+
+    if (!storedFilters && !storedSorters) return
     localStorage.setItem('filters', '[]')
+    localStorage.setItem('sorters', '[]')
 }
