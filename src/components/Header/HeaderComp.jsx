@@ -65,17 +65,15 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
 
     const applyFilter = (newFilter) => {
 
-        // doing localStorage thing
         addFilterToLocalStorage(newFilter)
-        // Read current query params
         const params = new URLSearchParams(location.search);
 
-        // Merge/update new filter
         Object.keys(newFilter).forEach(key => {
             params.set(key, newFilter[key]);
+            console.log(params.toString())
+            
         });
 
-        // Navigate to updated URL
         navigate(`/shop?${params.toString()}`);
     };
 
