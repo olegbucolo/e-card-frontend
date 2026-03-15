@@ -63,7 +63,7 @@ export default function ShopPage() {
 
     return (
         <>
-            <div className="container-lg my-5 mt-4-rem py-5 position-relative">
+            <div className="container-lg my-5 py-5 shop-top-space position-relative">
                 <div className="col">
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-3">
                         {search ? filteredProducts.map(p => {

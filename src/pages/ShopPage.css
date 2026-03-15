@@ -4,6 +4,16 @@
     box-shadow: 0rem 0rem 1.5rem -1rem black;
 }
 
+.shop-top-space{
+    margin-top: 4rem !important;
+}
+
+@media screen and (max-width: 768px){
+.shop-top-space{
+    margin-top: 6.8rem !important;
+}
+}
+
 .mt-4-rem{
     margin-top: 4rem !important;
 }
