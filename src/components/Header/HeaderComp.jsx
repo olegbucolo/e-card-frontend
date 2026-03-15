@@ -174,13 +174,13 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                             <div className='container-lg d-flex flex-nowrap align-items-start px-3'>
                                 <div className="dropdown me-2">
                                     <button
-                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green"
+                                        className=" border-0 btn btn-dark dropdown-toggle "
                                         type="button"
                                         data-bs-toggle="dropdown"
                                         aria-expanded="false">
                                         Prezzo{priceFilterButton}
                                     </button>
-                                    <ul className="dropdown-menu" >
+                                    <ul className="dropdown-menu dropdown-menu-dark" >
                                         <li>
                                             <button
                                                 name='price-order'
@@ -211,14 +211,14 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                 </div>
                                 <div className="dropdown me-2">
                                     <button
-                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green"
+                                        className=" border-0 btn btn-dark dropdown-toggle "
                                         type="button"
                                         onMouseDown={(e) => e.preventDefault()}
                                         data-bs-toggle="dropdown"
                                         aria-expanded="false">
                                         Nome{nameFilterButton}
                                     </button>
-                                    <ul className="dropdown-menu dropdown-menu">
+                                    <ul className="dropdown-menu dropdown-menu-dark">
                                         <li>
                                             <button
                                                 className="dropdown-item"
@@ -243,14 +243,14 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                 </div>
                                 <div className="dropdown me-2 ">
                                     <button
-                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green"
+                                        className=" border-0 btn btn-dark dropdown-toggle "
                                         type="button"
                                         onMouseDown={(e) => e.preventDefault()}
                                         data-bs-toggle="dropdown"
                                         aria-expanded="false">
                                         Popolari{popFilterButton}
                                     </button>
-                                    <ul className="dropdown-menu  dropdown-menu">
+                                    <ul className="dropdown-menu dropdown-menu-dark ">
                                         <li>
                                             <button
                                                 className="dropdown-item"
@@ -277,6 +277,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                         </li>
                                     </ul>
                                 </div>
+                                
                                 <button
                                     type="button"
                                     className="flex-shrink-0 ms-auto btn btn-danger rounded-2  overflow-hidden"

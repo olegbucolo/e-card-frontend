@@ -38,24 +38,24 @@ nav {
 }
 
 
-.btn:focus {
+/* .btn:focus {
     background-color: white;
     color: black
-}
+} */
 
-.btn:focus-visible {
+/* .btn:focus-visible {
     background-color: rgb(52, 255, 160);
     color: black
-}
+} */
 
-.dropdown-hover-green:hover {
+/* .dropdown-hover-green:hover {
     background-color: white;
     color: black;
 }
 
 .dropdown-hover-green:focus-visible {
     background-color: white;
-}
+} */
 
 .overflow-auto {
     overflow: auto;
