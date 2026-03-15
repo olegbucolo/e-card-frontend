@@ -34,7 +34,7 @@ export function removeFromLocalStorage(setterFunction, productId, quantity = 1) 
 export function addFilterToLocalStorage(data) {
     let stored = JSON.parse(localStorage.getItem('filters')) || [];
 
-    const filterName = Object.keys(data)[0]; 
+    const filterName = Object.keys(data)[0];
     const filterValue = data[filterName];
 
     const index = stored.findIndex(obj => obj.hasOwnProperty(filterName));
@@ -46,4 +46,21 @@ export function addFilterToLocalStorage(data) {
     }
 
     localStorage.setItem('filters', JSON.stringify(stored));
+}
+
+export function getFilterFromLocalStorage(name) {
+    const stored = JSON.parse(localStorage.getItem('filters'))
+    if (!stored) {
+        return ''
+    }
+
+    const found = stored.find(obj => obj.hasOwnProperty(name))
+    return found ? found[name] : ''
+}
+
+export function resetFiltersInLocalStorage() {
+    console.log('running reset')
+    const stored = localStorage.getItem('filters')
+    if(!stored) return 
+    localStorage.setItem('filters', '[]')
 }

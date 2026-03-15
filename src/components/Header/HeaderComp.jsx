@@ -6,7 +6,7 @@ import { IoClose } from "react-icons/io5";
 import { LuHeart, LuMenu } from "react-icons/lu";
 import { FiShoppingCart } from "react-icons/fi";
 
-import { addFilterToLocalStorage } from '../../utils/localStorage';
+import { addFilterToLocalStorage, getFilterFromLocalStorage, resetFiltersInLocalStorage } from '../../utils/localStorage';
 
 // OLEG TI HO MESSO IL LOGO PER L'HEADER NELLA CARTELLA IMMAGINI, NON TI VOGLIO TOCCARE IL CODICE, FAI PURE TU
 
@@ -17,9 +17,27 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
     const navigate = useNavigate();
     const [isTyping, setIsTyping] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [priceFilterButton, setPriceFilterButton] = useState('');
-    const [nameFilterButton, setNameFilterButton] = useState('');
-    const [popFilterButton, setPopFilterButton] = useState('');
+
+    const [priceFilterButton, setPriceFilterButton] =
+        useState(getFilterFromLocalStorage('price'));
+    const priceLabels = {
+        'low-to-high': ': Basso → Alto',
+        'high-to-low': ': Alto → Basso'
+    }
+
+    const [nameFilterButton, setNameFilterButton] =
+        useState(getFilterFromLocalStorage('name'))
+    const nameLabels = {
+        "a-to-z": ": A → Z",
+        "z-to-a": ": Z → A",
+    }
+
+    const [popFilterButton, setPopFilterButton] = useState(
+        getFilterFromLocalStorage('pop'));
+    const popLabels = {
+        'more-pop': `: Piu' venduti`,
+        'less-pop': ': Meno venduti'
+    }
 
     // function that handles change when searching a product
     const handleChange = (e) => {
@@ -182,8 +200,10 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                 className=" border-0 btn btn-dark dropdown-toggle "
                                 type="button"
                                 data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Prezzo{priceFilterButton}
+                                aria-expanded="false"
+                            >
+
+                                Prezzo{priceLabels[priceFilterButton] || ''}
                             </button>
                             <ul className="dropdown-menu dropdown-menu-dark" >
                                 <li>
@@ -193,7 +213,8 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                         type="button"
                                         onClick={() => {
                                             applyFilter({ price: "low-to-high" })
-                                            setPriceFilterButton(': Basso → Alto')
+                                            setPriceFilterButton('low-to-high')
+
                                         }}
                                     >
                                         Basso → Alto
@@ -206,7 +227,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                         name='price-order'
                                         onClick={() => {
                                             applyFilter({ price: "high-to-low" });
-                                            setPriceFilterButton(': Alto → Basso')
+                                            setPriceFilterButton('high-to-low')
                                         }}
                                     >
                                         Alto → Basso
@@ -221,7 +242,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                 onMouseDown={(e) => e.preventDefault()}
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                Nome{nameFilterButton}
+                                Nome{nameLabels[nameFilterButton]}
                             </button>
                             <ul className="dropdown-menu dropdown-menu-dark">
                                 <li>
@@ -229,7 +250,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                         className="dropdown-item"
                                         onClick={() => {
                                             applyFilter({ name: "a-to-z" })
-                                            setNameFilterButton(': A → Z')
+                                            setNameFilterButton('a-to-z')
                                         }}
                                         type="button">A → Z
                                     </button>
@@ -239,7 +260,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                         className="dropdown-item "
                                         onClick={() => {
                                             applyFilter({ name: "z-to-a" })
-                                            setNameFilterButton(': Z → A')
+                                            setNameFilterButton('z-to-a')
                                         }}
                                         type="button">Z → A
                                     </button>
@@ -253,7 +274,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                 onMouseDown={(e) => e.preventDefault()}
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                Popolari{popFilterButton}
+                                Popolari{popLabels[popFilterButton]}
                             </button>
                             <ul className="dropdown-menu dropdown-menu-dark ">
                                 <li>
@@ -262,7 +283,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                         type="button"
                                         onClick={() => {
                                             applyFilter({ pop: "more-pop" })
-                                            setPopFilterButton(`: Piu' venduti`)
+                                            setPopFilterButton('more-pop')
                                         }}
                                     >
                                         Piu' venduti
@@ -274,7 +295,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                         type="button"
                                         onClick={() => {
                                             applyFilter({ pop: "less-pop" })
-                                            setPopFilterButton(`: Meno venduti`)
+                                            setPopFilterButton('less-pop')
                                         }}
                                     >
                                         Meno venduti
@@ -286,6 +307,12 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                         <button
                             type="button"
                             className="flex-shrink-0 ms-auto btn btn-danger rounded-2  overflow-hidden"
+                            onClick={() => {
+                                resetFiltersInLocalStorage()
+                                setNameFilterButton('')
+                                setPriceFilterButton('')
+                                setPopFilterButton('')
+                            }}
                         >
                             Reset
                         </button>

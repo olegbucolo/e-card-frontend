@@ -4,7 +4,7 @@ import { LuHeart } from "react-icons/lu";
 import { FaHeart } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
 
-import { addToLocalStorage, isPresentInStorage, removeFromLocalStorage } from '../utils/localStorage';
+import { addToLocalStorage, getFilterFromLocalStorage, isPresentInStorage, removeFromLocalStorage } from '../utils/localStorage';
 
 export default function ShopPage() {
     const {
@@ -17,10 +17,10 @@ export default function ShopPage() {
 
     const [searchParams] = useSearchParams();
 
-    const search = searchParams.get("search");
-    const priceFilter = searchParams.get("price");
-    const nameFilter = searchParams.get("name");
-    const popFilter = searchParams.get("pop");
+    const search = searchParams.get("search") || getFilterFromLocalStorage('search');
+    const priceFilter = searchParams.get("price") || getFilterFromLocalStorage('price');
+    const nameFilter = searchParams.get("name") || getFilterFromLocalStorage('name');
+    const popFilter = searchParams.get("pop") || getFilterFromLocalStorage('pop');
 
     let filteredProducts = indexProducts || [];
 
