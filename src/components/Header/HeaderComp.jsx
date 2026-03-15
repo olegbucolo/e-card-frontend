@@ -6,7 +6,7 @@ import { IoClose } from "react-icons/io5";
 import { LuHeart, LuMenu } from "react-icons/lu";
 import { FiShoppingCart } from "react-icons/fi";
 
-import {addSorterToLocalStorage, getSorterFromLocalStorage, resetFiltersInLocalStorage } from '../../utils/localStorage';
+import { addSorterToLocalStorage, getSorterFromLocalStorage, resetSortFiltersInLocalStorage } from '../../utils/localStorage';
 
 // OLEG TI HO MESSO IL LOGO PER L'HEADER NELLA CARTELLA IMMAGINI, NON TI VOGLIO TOCCARE IL CODICE, FAI PURE TU
 
@@ -18,25 +18,14 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
     const [isTyping, setIsTyping] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    const [priceFilterButton, setPriceFilterButton] =
-        useState(getSorterFromLocalStorage('price'));
-    const priceLabels = {
-        'low-to-high': ': Basso → Alto',
-        'high-to-low': ': Alto → Basso'
-    }
-
-    const [nameFilterButton, setNameFilterButton] =
-        useState(getSorterFromLocalStorage('name'))
-    const nameLabels = {
-        "a-to-z": ": A → Z",
-        "z-to-a": ": Z → A",
-    }
-
-    const [popFilterButton, setPopFilterButton] = useState(
-        getSorterFromLocalStorage('pop'));
-    const popLabels = {
-        'more-pop': `: Piu' venduti`,
-        'less-pop': ': Meno venduti'
+    const [sortButton, setSortButton] = useState(getSorterFromLocalStorage())
+    const sortLabels = {
+        'price-asc': `: Piu' Economico`,
+        'price-desc': ': Meno Ecomomico',
+        'name-asc': ': Alfabetico',
+        'name-desc': ': Analfabetico',
+        'pop-desc': `: Piu' venduti`,
+        'pop-asc': ': Meno venduti',
     }
 
     // function that handles change when searching a product
@@ -65,16 +54,27 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
 
     const applyFilter = (newFilter) => {
 
-        addSorterToLocalStorage(newFilter)
+        addFilterToLocalStorage(newFilter)
         const params = new URLSearchParams(location.search);
 
         Object.keys(newFilter).forEach(key => {
             params.set(key, newFilter[key]);
-            
+
         });
 
         navigate(`/shop?${params.toString()}`);
     };
+
+    const applySorter = (sortValue) => {
+
+        addSorterToLocalStorage(sortValue)
+
+        const params = new URLSearchParams(location.search)
+
+        params.set("sort", sortValue)
+
+        navigate(`/shop?${params.toString()}`)
+    }
 
     return (
         <>
@@ -200,7 +200,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                 aria-expanded="false"
                             >
 
-                                Prezzo{priceLabels[priceFilterButton] || ''}
+                                Ordine{sortLabels[sortButton] || ''}
                             </button>
                             <ul className="dropdown-menu dropdown-menu-dark" >
                                 <li>
@@ -209,12 +209,12 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                         className="dropdown-item"
                                         type="button"
                                         onClick={() => {
-                                            applyFilter({ price: "low-to-high" })
-                                            setPriceFilterButton('low-to-high')
+                                            applySorter('price-asc')
+                                            setSortButton('price-asc')
 
                                         }}
                                     >
-                                        Basso → Alto
+                                        Piu' Economico
                                     </button>
                                 </li>
                                 <li>
@@ -223,64 +223,40 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                         type="button"
                                         name='price-order'
                                         onClick={() => {
-                                            applyFilter({ price: "high-to-low" });
-                                            setPriceFilterButton('high-to-low')
+                                            applySorter('price-desc');
+                                            setSortButton('price-desc')
                                         }}
                                     >
-                                        Alto → Basso
+                                        Meno Economico
                                     </button>
                                 </li>
-                            </ul>
-                        </div>
-                        <div className="dropdown me-2">
-                            <button
-                                className=" border-0 btn btn-dark dropdown-toggle "
-                                type="button"
-                                onMouseDown={(e) => e.preventDefault()}
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Nome{nameLabels[nameFilterButton]}
-                            </button>
-                            <ul className="dropdown-menu dropdown-menu-dark">
                                 <li>
                                     <button
                                         className="dropdown-item"
                                         onClick={() => {
-                                            applyFilter({ name: "a-to-z" })
-                                            setNameFilterButton('a-to-z')
+                                            applySorter('name-asc')
+                                            setSortButton('name-asc')
                                         }}
-                                        type="button">A → Z
+                                        type="button">Ordine alfabetico
                                     </button>
                                 </li>
                                 <li>
                                     <button
                                         className="dropdown-item "
                                         onClick={() => {
-                                            applyFilter({ name: "z-to-a" })
-                                            setNameFilterButton('z-to-a')
+                                            applySorter('name-desc')
+                                            setSortButton('name-desc')
                                         }}
-                                        type="button">Z → A
+                                        type="button">Ordine analfabetico
                                     </button>
                                 </li>
-                            </ul>
-                        </div>
-                        <div className="dropdown me-2 ">
-                            <button
-                                className=" border-0 btn btn-dark dropdown-toggle "
-                                type="button"
-                                onMouseDown={(e) => e.preventDefault()}
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Popolari{popLabels[popFilterButton]}
-                            </button>
-                            <ul className="dropdown-menu dropdown-menu-dark ">
                                 <li>
                                     <button
                                         className="dropdown-item"
                                         type="button"
                                         onClick={() => {
-                                            applyFilter({ pop: "more-pop" })
-                                            setPopFilterButton('more-pop')
+                                            applySorter('pop-desc')
+                                            setSortButton('pop-desc')
                                         }}
                                     >
                                         Piu' venduti
@@ -291,8 +267,8 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                         className="dropdown-item"
                                         type="button"
                                         onClick={() => {
-                                            applyFilter({ pop: "less-pop" })
-                                            setPopFilterButton('less-pop')
+                                            applySorter('pop-asc')
+                                            setSortButton('pop-asc')
                                         }}
                                     >
                                         Meno venduti
@@ -301,14 +277,13 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                             </ul>
                         </div>
 
+
                         <button
                             type="button"
                             className="flex-shrink-0 ms-auto btn btn-danger rounded-2  overflow-hidden"
                             onClick={() => {
-                                resetFiltersInLocalStorage()
-                                setNameFilterButton('')
-                                setPriceFilterButton('')
-                                setPopFilterButton('')
+                                resetSortFiltersInLocalStorage()
+                                setSortButton('')
                             }}
                         >
                             Reset
