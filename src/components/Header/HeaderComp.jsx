@@ -136,7 +136,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                             </div>
                             {/* RIGHT */}
 
-                            <div className={`z-2 bg-light order-5 border-bottom order-md-3 collapse navbar-collapse justify-content-end flex-grow-1 ${isMobileMenuOpen && "show"}`} id="navbarSupportedContent">
+                            <div className={`z-2 bg-light order-5  order-md-3 collapse navbar-collapse justify-content-end flex-grow-1 ${isMobileMenuOpen && "show border-bottom"}`} id="navbarSupportedContent">
                                 <ul className="navbar-nav mb-2 mb-md-0  ms-2">
                                     <li className="nav-item">
                                         <NavLink

@@ -65,7 +65,7 @@ export default function ShopPage() {
         <>
             <div className="container-lg my-5 mt-4-rem py-5 position-relative">
                 <div className="col">
-                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-3">
                         {search ? filteredProducts.map(p => {
                             return (
                                 <div key={p.id} className="col">
@@ -84,7 +84,7 @@ export default function ShopPage() {
                                             <div className='mb-2'>
                                                 <h5 className='fw-semibold'>{p.price} €</h5>
                                             </div>
-                                            <div className="buttons d-flex justify-content-between mt-auto">
+                                            <div className=" d-flex justify-content-between">
                                                 {
                                                     p.is_featured ? <button
                                                         className="hover-button btn btn-success w-50 me-2 d-flex
