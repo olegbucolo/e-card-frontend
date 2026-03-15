@@ -174,7 +174,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                             <div className='container-lg d-flex flex-nowrap align-items-start px-3'>
                                 <div className="dropdown me-2">
                                     <button
-                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green my-1"
+                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green"
                                         type="button"
                                         data-bs-toggle="dropdown"
                                         aria-expanded="false">
@@ -211,7 +211,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                 </div>
                                 <div className="dropdown me-2">
                                     <button
-                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green my-1"
+                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green"
                                         type="button"
                                         onMouseDown={(e) => e.preventDefault()}
                                         data-bs-toggle="dropdown"
@@ -243,14 +243,14 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                 </div>
                                 <div className="dropdown me-2 ">
                                     <button
-                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green my-1"
+                                        className=" border-0 btn btn-secondary dropdown-toggle dropdown-hover-green"
                                         type="button"
                                         onMouseDown={(e) => e.preventDefault()}
                                         data-bs-toggle="dropdown"
                                         aria-expanded="false">
                                         Popolari{popFilterButton}
                                     </button>
-                                    <ul className="dropdown-menu  dropdown-menu my-2">
+                                    <ul className="dropdown-menu  dropdown-menu">
                                         <li>
                                             <button
                                                 className="dropdown-item"
