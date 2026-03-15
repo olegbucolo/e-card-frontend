@@ -3,10 +3,6 @@ nav {
     background-color: black !important;
 }
 
-.filters-header-styles {
-    background-color: rgb(56, 56, 56);
-    top: 0;
-}
 
 .hover-bg-red:hover {
     background-color: red;
@@ -14,18 +10,21 @@ nav {
     color: white
 }
 
-.dropdown-menu {
-  z-index: 3000 !important;
+.z-5{
+    z-index: 5 !important;
 }
 
-.top-custom{
+.dropdown-menu {
+    z-index: 3000 !important;
+}
+
+.top-custom {
     top: 3.4rem !important;
 }
 
 .top-filter {
     top: 3.4rem !important;
-    transform:translatex(-50%);
-    overflow: visible !important;
+    transform: translatex(-50%);
     left: 50%;
 }
 
