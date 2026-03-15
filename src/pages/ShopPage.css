@@ -1,5 +1,4 @@
 .hover-card:hover {
-    /* background-color: #efefef !important; */
     transition: all .2s ease;
     cursor: pointer;
     box-shadow: 0rem 0rem 1.5rem -1rem black;

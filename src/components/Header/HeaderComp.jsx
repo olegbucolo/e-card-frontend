@@ -176,8 +176,8 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
             </header>
 
             {location.pathname === "/shop" &&
-                <div className="z-3 overflow-x-auto scrollbar-hidden h-50 pe-none position-fixed bg-danger top-filter w-100  pt-1  mb-1 bg-transparent">
-                    <div className=' position-relative pe-auto container-lg d-flex flex-nowrap align-items-start px-3'>
+                <div className="z-3 overflow-x-auto scrollbar-hidden h-50 pe-none position-fixed bg-danger top-filter w-100  mb-1 bg-transparent">
+                    <div className=' position-relative pe-auto container-lg d-flex flex-nowrap align-items-start px-3 bg-light py-3 fit-content'>
                         <div className="dropdown me-2">
                             <button
                                 className=" border-0 btn btn-dark dropdown-toggle "

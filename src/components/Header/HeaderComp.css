@@ -18,12 +18,16 @@ nav {
     z-index: 3000 !important;
 }
 
+.fit-content{
+    min-width:fit-content !important;
+}
+
 .top-custom {
     top: 3.4rem !important;
 }
 
 .top-filter {
-    top: 3.4rem !important;
+    top: 3.2rem !important;
     transform: translatex(-50%);
     left: 50%;
 }
@@ -31,7 +35,7 @@ nav {
 /* 768 */
 @media screen and (max-width: 768px) {
     .top-filter {
-        top: 6.2rem !important
+        top: 6rem !important
     }
 
 }
