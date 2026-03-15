@@ -63,7 +63,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
 
     return (
         <>
-            <header className="z-5 w-100 top-0 position-fixed">
+            <header className="z-5 w-100 top-0 position-fixed ">
                 <div className='position-relative'>
                     <nav className="position-relative navbar navbar-expand-md bg-body-tertiary">
                         <div className="position-relative container-xxl d-flex align-items-center">
@@ -90,12 +90,11 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                     type="submit">Cerca</button>
                                 {isTyping && (
 
-                                    <div className=" position-fixed top-filter container-lg h-100 mx-2 search-dropdown-wrapper">
+                                    <div className={location.pathname === '/shop'
+                                        ? `position-fixed top-header container-lg h-100 mx-2 search-dropdown-wrapper pe-4`
+                                        : `position-fixed top-header-home container-lg h-100 mx-2 search-dropdown-wrapper pe-4`}>
                                         <div
-                                            className={
-                                                location.pathname === '/shop'
-                                                    ? `p-2 search-dropdown  bg-scroll bg-light mt-5 box-shadow-light border-0`
-                                                    : `p-2 search-dropdown bg-scroll bg-light box-shadow-light border-0`}
+                                            className="p-2 search-dropdown bg-scroll bg-light box-shadow-light border-0"
                                         >
                                             {indexProducts?.filter(p => p.title.toLowerCase().includes(query.toLowerCase())).map(p => (
                                                 <div
@@ -177,7 +176,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
 
             {location.pathname === "/shop" &&
                 <div className="z-3 overflow-x-auto scrollbar-hidden h-50 pe-none position-fixed bg-danger top-filter w-100  mb-1 bg-transparent">
-                    <div className=' position-relative pe-auto container-lg d-flex flex-nowrap align-items-start px-3 bg-light py-3 fit-content'>
+                    <div className='bottom-shadow-header position-relative pe-auto container-lg d-flex flex-nowrap align-items-start px-3 bg-light py-2 fit-content'>
                         <div className="dropdown me-2">
                             <button
                                 className=" border-0 btn btn-dark dropdown-toggle "

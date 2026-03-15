@@ -18,12 +18,28 @@ nav {
     z-index: 3000 !important;
 }
 
-.fit-content{
-    min-width:fit-content !important;
+.fit-content {
+    min-width: fit-content !important;
+}
+
+.bottom-shadow-header {
+    box-shadow: 0rem 1rem .5rem -1rem black
 }
 
 .top-custom {
     top: 3.4rem !important;
+}
+
+.top-header {
+    top: 6.8rem !important;
+    transform: translatex(-50%);
+    left: 50%;
+}
+
+.top-header-home {
+    top: 3.4rem !important;
+    transform: translatex(-50%);
+    left: 50%;
 }
 
 .top-filter {
@@ -34,13 +50,22 @@ nav {
 
 /* 768 */
 @media screen and (max-width: 768px) {
+    .top-header {
+        top: 9.6rem !important;
+    }
+
     .top-filter {
         top: 6rem !important
     }
 
+    .top-header-home {
+        top: 6.3rem !important;
+    }
+
 }
 
-.scrollbar-hidden::-webkit-scrollbar{
+
+.scrollbar-hidden::-webkit-scrollbar {
     display: none;
 }
 

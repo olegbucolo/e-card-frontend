@@ -118,7 +118,7 @@ export default function ShopPage() {
 
                                 </div>
                             )
-                        }) : <h4 className='text-center w-100 border-bottom'>Inserisci la carta che vuoi cercare nella barra di ricerca....</h4>}
+                        }) : <h4 className='text-center pt-5 mt-md-0 mt-5 pt-md-5 w-100 border-bottom'>Inserisci la carta che vuoi cercare nella barra di ricerca....</h4>}
                     </div>
                 </div>
             </div>
