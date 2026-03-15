@@ -45,14 +45,15 @@ export default function DetailPage() {
                         <p>Prezzo: {singleProduct.price}</p>
 
                         <div>
-                            <button className="btn-wishlist">Aggiungi ai preferiti</button>
+                            <button className="btn-wishlist">Add to wishlist</button>
                         </div>
                         <div className="mt-3">
                             <button
-                                className="btn-cart"
+                                className="btn btn-success"
+                                disabled={singleProduct.is_featured === 0}
                                 onClick={() => addToLocalStorage(setCartProducts, singleProduct.id, 1)}
                             >
-                                Aggiungi al carrello
+                                {singleProduct.is_featured ? "Add to cart" : "Not avaible"}
                             </button>
                         </div>
 
