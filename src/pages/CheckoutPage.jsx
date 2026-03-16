@@ -11,7 +11,6 @@ function CheckoutPage() {
     const firstproduct = "1";
     const secondProduct = "2";
 
-    // lasciare ordine pk è riferito al singolo ordine del cliente altrimenti poi nn funziona nel BE
     const endpoint = "http://localhost:3000/orders"
 
     const endpoint1 = "http://localhost:3000/orderproduct"
