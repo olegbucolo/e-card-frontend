@@ -12,6 +12,8 @@ function CheckoutPage() {
     const secondProduct = "2";
 
     const endpoint = "http://localhost:3000/orders"
+    const endpointMail = "http://localhost:3000/order"
+
 
     const endpoint1 = "http://localhost:3000/orderproduct"
 
@@ -63,16 +65,25 @@ function CheckoutPage() {
             return;
         }
 
-        alert("Form inviato correttamente!");
+        const products = cartProducts.map(item => {
+            const product = indexProducts.find(p => p.id == item.id)
+
+            if (!product) return null
+
+            return {
+                id: product.id,
+                title: product.title,
+                price: product.price,
+                quantity: item.quantity
+            }
+        }).filter(p => p !== null)
 
         try {
-            const res = await axios.post(endpoint, order)
+            const res = await axios.post(endpointMail, { order, products })
             // const res1 = await axios.post(endpoint1, orderData)
-            alert(`Ordine inviato! ID ordine: ${res.data.id}`);
+            alert(`Ordine inviato! ID ordine: ${res.data.ordineId}`);
 
-            setOrderId(`${res.data.id}`)
-
-
+            setOrderId(`${res.data.ordineId}`)
         }
         catch (err) {
             console.error(err)
@@ -161,7 +172,7 @@ function CheckoutPage() {
                     {/* campo nome utente */}
                     <div className="mb-3">
                         <label htmlFor="customer-name" className="form-label d-flex align-self-start">Inserisci il tuo nome: </label>
-                        <input name="customerName" type="text" className={`form-control ${submitted && !order.customerName ? "input-error" : "form-control"}`} id="customer-name" placeholder='inserisci il tuo nome: ' value={order.customerName} onChange={handleChange} required />
+                        <input name="customerName" type="text" className={submitted && !order.customerName ? "input-error" : "form-control"} id="customer-name" placeholder='inserisci il tuo nome: ' value={order.customerName} onChange={handleChange} required />
                     </div>
 
                     {/* campo cognome utente */}
