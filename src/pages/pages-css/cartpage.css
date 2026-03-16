@@ -30,3 +30,35 @@
     margin-left: 20px;
     line-height: 40px;
 }
+
+.quantity-btn {
+    margin: 0px 10px;
+    padding: 0px 5px;
+    font-size: 10px;
+}
+
+.product-disponible {
+    padding: 0 24px;
+    margin: 5px;
+    border: none;
+    border-radius: 999px;
+    background: rgba(25, 135, 84, 0.1);
+    color: #198754;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    width: 170px;
+}
+
+.product-not-disponible {
+    padding: 0 24px;
+    margin: 5px;
+    border: none;
+    border-radius: 999px;
+    background: rgba(255, 0, 0, 0.1);
+    color: #ff0000;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    width: 170px;
+}
