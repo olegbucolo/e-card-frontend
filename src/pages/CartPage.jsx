@@ -73,7 +73,7 @@ export default function CartPage() {
 
                                             <h3>{product.title}</h3>
 
-                                         
+
 
 
 
@@ -92,7 +92,7 @@ export default function CartPage() {
                                                 </button>
                                             </div>
 
-                                            <p>Prezzo: {product.price}€</p>
+                                            <p>Prezzo:  {product.price * item.quantity}€</p>
 
 
 
