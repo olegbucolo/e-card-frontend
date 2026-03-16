@@ -111,7 +111,7 @@ export default function CartPage() {
                     </div>
 
                     <div className="price-box container">
-                        <span className=""> <p className="fw-bold text-light mt-5">Prezzo totale: {totalPrice.toFixed(2)}€</p> </span>
+                        <span className=""> <p className="fw-bold text-light mt-md-5">Prezzo totale: {totalPrice.toFixed(2)}€</p> </span>
 
                         <button className="btn-cart" onClick={() => navigate(`/checkout_page`)}>
                             Procedi all'ordine</button>
