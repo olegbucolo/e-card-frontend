@@ -36,10 +36,15 @@ function CheckoutPage() {
         shippingCost: ""
     })
 
-    const [orderId, setOrderId] = useState();
+    const [newOrderId, setnewOrderId] = useState();
+
+
+    const products = cartProducts.map(item => {
+        return indexProducts.find(p => p.id == item.id)
+    })
 
     const [orderProductsBind, setOrderProductBind] = useState({
-        orderId: "",
+        newOrderId: "",
         productsId: "",
         unitQuantity: "",
         unitPrice: ""
@@ -79,30 +84,46 @@ function CheckoutPage() {
         }).filter(p => p !== null)
 
         try {
-            const res = await axios.post(endpointMail, { order, products })
-            // const res1 = await axios.post(endpoint1, orderData)
-            alert(`Ordine inviato! ID ordine: ${res.data.ordineId}`);
 
-            setOrderId(`${res.data.ordineId}`)
-        }
-        catch (err) {
+            const res = await axios.post(endpoint, order)
+
+            const orderId = res.data.id
+
+            alert(`Ordine inviato! ID ordine: ${orderId}`);
+
+            setnewOrderId(orderId)
+
+            if (cartProducts.length > 0) {
+
+                for (const item of cartProducts) {
+
+                    const product = indexProducts.find(p => p.id == item.id)
+
+                    if (!product) continue
+
+                    const orderProductData = {
+                        orderId: orderId,
+                        productId: product.id,
+                        unitQuantity: item.quantity,
+                        unitPrice: product.price
+                    }
+
+                    await axios.post(endpoint1, orderProductData)
+
+                    console.log(orderProductData)
+                }
+            }
+
+            console.log(orderId)
+
+        } catch (err) {
             console.error(err)
             alert("Errore di invio ordine")
         }
-
     }
 
-    console.log(orderId);
+    console.log(newOrderId);
 
-    const singleProduct = cartProducts.map(item => {
-        return indexProducts.find(p => p.id == item.id)
-    })
-
-    // console.log('singleproduct', singleProduct)
-
-    if (singleProduct[0]) {
-        console.log('singleproduct', singleProduct[0].price)
-    }
 
     const totalPrice = cartProducts.reduce((total, item) => {
         const product = indexProducts.find(
