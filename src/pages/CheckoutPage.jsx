@@ -36,12 +36,12 @@ function CheckoutPage() {
 
     const [orderId, setOrderId] = useState();
 
-    const orderData = {
-        orderId: "2",
-        productId: "12",
-        unitQuantity: "3",
-        unitPrice: "5"
-    }
+    const [orderProductsBind, setOrderProductBind] = useState({
+        orderId: "",
+        productsId: "",
+        unitQuantity: "",
+        unitPrice: ""
+    })
 
     function handleChange(e) {
 
@@ -76,17 +76,30 @@ function CheckoutPage() {
             }
         }).filter(p => p !== null)
 
+
         try {
             const res = await axios.post(endpoint, order)
             // const res1 = await axios.post(endpoint1, orderData)
             alert(`Ordine inviato! ID ordine: ${res.data.id}`);
 
-            console.log(res.data);
-
             setOrderId(`${res.data.id}`)
 
 
         }
+
+
+        catch (err) {
+            console.error(err)
+            alert("Errore di invio ordine")
+        }
+
+
+        try {
+
+
+
+        }
+
         catch (err) {
             console.error(err)
             alert("Errore di invio ordine")
@@ -94,6 +107,26 @@ function CheckoutPage() {
     }
 
     console.log(orderId);
+
+    const [singleProduct, setSingleProduct] = useState(cartProducts.map(item => {
+
+        const product = indexProducts.find(
+            p => p.id == item.id
+        )
+
+
+        return product;
+
+    }))
+
+
+
+    console.log(singleProduct);
+
+
+
+
+
 
     const totalPrice = cartProducts.reduce((total, item) => {
         const product = indexProducts.find(
