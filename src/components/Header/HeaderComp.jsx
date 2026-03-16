@@ -6,9 +6,8 @@ import { IoClose } from "react-icons/io5";
 import { LuHeart, LuMenu } from "react-icons/lu";
 import { FiShoppingCart } from "react-icons/fi";
 
-import { addSearchToLocalStorage, addSorterToLocalStorage, getSorterFromLocalStorage, resetSortFiltersInLocalStorage } from '../../utils/localStorage';
 
-// OLEG TI HO MESSO IL LOGO PER L'HEADER NELLA CARTELLA IMMAGINI, NON TI VOGLIO TOCCARE IL CODICE, FAI PURE TU
+import { addSearchToLocalStorage, addSorterToLocalStorage, getSorterFromLocalStorage, resetSortFiltersInLocalStorage } from '../../utils/localStorage';
 
 export default function HeaderComp({ indexProducts, wishlistProducts, cartProducts }) {
 

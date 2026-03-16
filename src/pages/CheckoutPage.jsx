@@ -1,10 +1,11 @@
 import axios from "axios";
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Outlet, useOutletContext } from "react-router-dom";
 
 function CheckoutPage() {
-
     const { indexProducts, cartProducts, setCartProducts } = useOutletContext()
+
+    // useEffect(() => {console.log('index products" ', indexProducts)}, [indexProducts])
     const [submitted, setSubmitted] = useState(false);
 
     const firstproduct = "1";
@@ -35,12 +36,12 @@ function CheckoutPage() {
 
     const [orderId, setOrderId] = useState();
 
-    const orderData = {
-        orderId: "2",
-        productId: "12",
-        unitQuantity: "3",
-        unitPrice: "5"
-    }
+    const [orderProductsBind, setOrderProductBind] = useState({
+        orderId: "",
+        productsId: "",
+        unitQuantity: "",
+        unitPrice: ""
+    })
 
     function handleChange(e) {
 
@@ -54,7 +55,6 @@ function CheckoutPage() {
     }
 
     async function handleSubmit(e) {
-
         e.preventDefault();
         setSubmitted(true);
 
@@ -65,22 +65,10 @@ function CheckoutPage() {
 
         alert("Form inviato correttamente!");
 
-        const products = cartProducts.map(item => {
-            const product = indexProducts.find(p => p.id == item.id)
-            if (!product) return null
-            return {
-                title: product.title,
-                price: product.price,
-                quantity: item.quantity
-            }
-        }).filter(p => p !== null)
-
         try {
             const res = await axios.post(endpoint, order)
             // const res1 = await axios.post(endpoint1, orderData)
             alert(`Ordine inviato! ID ordine: ${res.data.id}`);
-
-            console.log(res.data);
 
             setOrderId(`${res.data.id}`)
 
@@ -90,9 +78,16 @@ function CheckoutPage() {
             console.error(err)
             alert("Errore di invio ordine")
         }
+
     }
 
     console.log(orderId);
+
+    const singleProduct = cartProducts.map(item => {
+        return indexProducts.find(p => p.id == item.id)
+    })
+
+    console.log('singleproduct', singleProduct);
 
     const totalPrice = cartProducts.reduce((total, item) => {
         const product = indexProducts.find(
@@ -111,15 +106,10 @@ function CheckoutPage() {
 
                         {
                             cartProducts.map(item => {
-
                                 const product = indexProducts.find(
                                     p => p.id == item.id
-
-
                                 )
-
-
-                                if (!product) return null
+                                if (!product) return
                                 return (
 
                                     <div className="d-flex border-cart my-5" key={item.id}>

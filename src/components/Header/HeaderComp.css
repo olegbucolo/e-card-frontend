@@ -69,24 +69,6 @@ nav {
     display: none;
 }
 
-/* .btn:focus {
-    background-color: white;
-    color: black
-} */
-
-/* .btn:focus-visible {
-    background-color: rgb(52, 255, 160);
-    color: black
-} */
-
-/* .dropdown-hover-green:hover {
-    background-color: white;
-    color: black;
-}
-
-.dropdown-hover-green:focus-visible {
-    background-color: white;
-} */
 
 .overflow-auto {
     overflow: auto;
@@ -125,7 +107,7 @@ nav {
     background-size: 180%;
     background-repeat: no-repeat;
     background-position: 50% 45%;
-    filter: brightness(1%);
+    /* filter: brightness(1%); */
     width: 6rem;
     height: 2.5rem;
     display: flex;
