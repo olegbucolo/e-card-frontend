@@ -9,7 +9,7 @@ import Toast from "../components/Toast/Toast";
 const indexProductsAPI = 'http://localhost:3000/products/'
 
 export default function DefaultLayout() {
-    // setFirstVisit()
+    setFirstVisit()
     const [isFirstVisit, setIsFirstVisit] = useState(JSON.parse(localStorage.getItem('isFirstVisit')))
     console.log(isFirstVisit)
     // state for the cart from localStorage
