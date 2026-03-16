@@ -76,7 +76,6 @@ function CheckoutPage() {
             }
         }).filter(p => p !== null)
 
-
         try {
             const res = await axios.post(endpoint, order)
             // const res1 = await axios.post(endpoint1, orderData)
@@ -96,6 +95,7 @@ function CheckoutPage() {
 
         try {
 
+            console.log(cartProducts);
 
 
         }
@@ -108,24 +108,7 @@ function CheckoutPage() {
 
     console.log(orderId);
 
-    const [singleProduct, setSingleProduct] = useState(cartProducts.map(item => {
-
-        const product = indexProducts.find(
-            p => p.id == item.id
-        )
-
-
-        return product;
-
-    }))
-
-
-
-    console.log(singleProduct);
-
-
-
-
+    console.log(cartProducts);
 
 
     const totalPrice = cartProducts.reduce((total, item) => {
