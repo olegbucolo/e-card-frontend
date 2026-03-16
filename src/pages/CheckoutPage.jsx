@@ -8,17 +8,34 @@ function CheckoutPage() {
     // useEffect(() => {console.log('index products" ', indexProducts)}, [indexProducts])
     const [submitted, setSubmitted] = useState(false);
 
+    const [newOrderId, setnewOrderId] = useState();
+
     const firstproduct = "1";
     const secondProduct = "2";
 
     const endpoint = "http://localhost:3000/orders"
     const endpointMail = "http://localhost:3000/order"
 
+    let orderShippingCost;
+
 
     const endpoint1 = "http://localhost:3000/orderproduct"
 
+    const totalPrice = cartProducts.reduce((total, item) => {
+        const product = indexProducts.find(
+            p => p.id == item.id);
+        if (!product) return total;
+        return total + (product.price * item.quantity);
+    }, 0)
+
+    if (totalPrice > 40) {
+        orderShippingCost = 0;
+    } else {
+        orderShippingCost = 5;
+    }
+
     const [order, setOrder] = useState({
-        orderSlug: "",
+        orderSlug: `ordine-pokemon-${newOrderId}`,
         customerName: "",
         customerSurname: "",
         customerMail: "",
@@ -33,10 +50,8 @@ function CheckoutPage() {
         provinceBilling: "",
         country: "",
         countryBilling: "",
-        shippingCost: ""
+        shippingCost: orderShippingCost
     })
-
-    const [newOrderId, setnewOrderId] = useState();
 
 
     const products = cartProducts.map(item => {
@@ -124,13 +139,10 @@ function CheckoutPage() {
 
     console.log(newOrderId);
 
+    console.log(orderShippingCost);
 
-    const totalPrice = cartProducts.reduce((total, item) => {
-        const product = indexProducts.find(
-            p => p.id == item.id);
-        if (!product) return total;
-        return total + (product.price * item.quantity);
-    }, 0)
+
+
 
     return (
         <>
@@ -179,7 +191,7 @@ function CheckoutPage() {
                     </div>
 
                     <div className="price-box container my-5">
-
+                        <p>Shipping cost: {orderShippingCost} €</p>
                         <button className="btn-checkout-page">Total Price: {totalPrice} €</button>
                     </div>
 
@@ -275,11 +287,6 @@ function CheckoutPage() {
                     <div className="mb-3">
                         <label htmlFor="country-billing" className="form-label d-flex align-self-start">Inserisci il tuo indirizzo di fatturazione: </label>
                         <input name="countryBilling" type="text" className="form-control" id="country-billing" placeholder='Inserisci il tuo indirizzo di fatturazione: ' value={order.countryBilling} onChange={handleChange} />
-                    </div>
-
-                    <div className="mb-3">
-                        <label htmlFor="shipping-cost" className="form-label d-flex align-self-start">Inserisci il costo di spedizione: </label>
-                        <input name="shippingCost" type="text" className="form-control" id="shipping-cost" placeholder='Inserisci il costo di spedizione: ' value={order.shippingCost} onChange={handleChange} />
                     </div>
 
                     <button type="submit" className="btn btn-checkout-page d-flex align-self-start">Procedi con l'ordine</button>
