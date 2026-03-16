@@ -85,7 +85,8 @@ export function resetSortFiltersInLocalStorage() {
 }
 
 export function setFirstVisit(){
-    localStorage.setItem('isFirstVisit', 'true')
+    const valueVisit = localStorage.getItem('isFirstVisit')
+    return !valueVisit && localStorage.setItem('isFirstVisit', 'true')
 }
 
 export function updateFirstVisit(){
