@@ -12,16 +12,19 @@
 .order-container-left {
     width: 60%;
     height: 600px;
-    background-color: #e7eaec;
+    background-color: #0f172a;
     border-radius: 50px;
     padding: 10px 0;
     overflow: scroll;
-
+    scrollbar-width: thin;
 }
+
 
 .price-box {
     width: 40%;
     margin-left: 40px;
+    background-color: #1e293b;
+    border-radius: 30px;
 }
 
 .border-cart {
@@ -31,6 +34,7 @@
 .product-detail {
     margin-left: 20px;
     line-height: 40px;
+    margin-top: 40px;
 }
 
 .quantity-btn {
@@ -63,4 +67,28 @@
     font-weight: 600;
     text-align: center;
     width: 170px;
+}
+
+/* RESPONSIVE CART */
+
+
+
+@media (max-width:768px) {
+    .price-box {
+        width: 80%;
+        text-align: center;
+        margin-left: auto;
+        margin-top: 30px;
+    }
+
+    .order-container-left {
+        width: 100%;
+    }
+
+    .responsive {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }
