@@ -88,7 +88,11 @@ function CheckoutPage() {
         return indexProducts.find(p => p.id == item.id)
     })
 
-    console.log('singleproduct', singleProduct);
+    // console.log('singleproduct', singleProduct)
+
+    if (singleProduct[0]) {
+        console.log('singleproduct', singleProduct[0].price)
+    }
 
     const totalPrice = cartProducts.reduce((total, item) => {
         const product = indexProducts.find(
