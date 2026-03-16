@@ -3,6 +3,8 @@ import { NavLink, useNavigate, useOutletContext, useSearchParams } from 'react-r
 import { LuHeart } from "react-icons/lu";
 import { FaHeart } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
+import Toast from '../components/Toast/Toast';
+import { FaCartPlus } from "react-icons/fa";
 
 import { addToLocalStorage, getSearchFromLocalStorage, getSorterFromLocalStorage, isPresentInStorage, removeFromLocalStorage } from '../utils/localStorage';
 import { useEffect } from 'react';
@@ -17,7 +19,6 @@ const sorters = {
 };
 
 export default function ShopPage() {
-
     const navigate = useNavigate();
 
     const {
@@ -106,7 +107,7 @@ export default function ShopPage() {
                                                     justify-content-center align-items-center"
                                                         onClick={() => addToLocalStorage(setCartProducts, p.id)}>
                                                         Carrello
-                                                        <FiShoppingCart className='ms-1' />
+                                                        <FaCartPlus className='ms-1' />
                                                     </button>
                                                         :
                                                         <button

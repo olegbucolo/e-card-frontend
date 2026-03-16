@@ -83,3 +83,12 @@ export function resetSortFiltersInLocalStorage() {
     localStorage.setItem('filters', '')
     localStorage.setItem('sorter', '')
 }
+
+export function setFirstVisit(){
+    localStorage.setItem('isFirstVisit', 'true')
+}
+
+export function updateFirstVisit(){
+    const currVisitState = localStorage.getItem('isFirstVisit')
+    return currVisitState === 'true' && localStorage.setItem('isFirstVisit', 'false')
+}
