@@ -1,4 +1,3 @@
-
 export function isPresentInStorage(state, productId) {
     return state.some(s => s.id === productId);
 }
@@ -66,7 +65,6 @@ export function getFilterFromLocalStorage(name) {
 
 export function getSorterFromLocalStorage() {
     return localStorage.getItem('sorter') ? localStorage.getItem('sorter') : ''
-    
 }
 
 export function addSearchToLocalStorage(data) {
