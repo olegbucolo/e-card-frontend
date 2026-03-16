@@ -92,7 +92,7 @@ export default function CartPage() {
                                                 </button>
                                             </div>
 
-                                            <p>Prezzo:  {product.price * item.quantity}€</p>
+                                            <p className="fw-bold">Prezzo: {(product.price * item.quantity).toFixed(2)}€</p>
 
 
 
@@ -111,7 +111,7 @@ export default function CartPage() {
                     </div>
 
                     <div className="price-box container my-5">
-                        <p>Total Price: {totalPrice}€</p>
+                        <p className="fw-bold">Total Price: {totalPrice.toFixed(2)}€</p>
 
                         <button className="btn-cart" onClick={() => navigate(`/checkout_page`)}>
                             Procedi all'ordine</button>
