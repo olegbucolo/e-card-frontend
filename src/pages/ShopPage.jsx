@@ -1,12 +1,25 @@
 import './ShopPage.css';
-import { NavLink, useOutletContext, useSearchParams } from 'react-router-dom'
+import { NavLink, useNavigate, useOutletContext, useSearchParams } from 'react-router-dom'
 import { LuHeart } from "react-icons/lu";
 import { FaHeart } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
 
-import { addToLocalStorage, getSorterFromLocalStorage, isPresentInStorage, removeFromLocalStorage } from '../utils/localStorage';
+import { addToLocalStorage, getSearchFromLocalStorage, getSorterFromLocalStorage, isPresentInStorage, removeFromLocalStorage } from '../utils/localStorage';
+import { useEffect } from 'react';
+
+const sorters = {
+    "price-asc": (a, b) => a.price - b.price,
+    "price-desc": (a, b) => b.price - a.price,
+    "name-asc": (a, b) => a.title.localeCompare(b.title),
+    "name-desc": (a, b) => b.title.localeCompare(a.title),
+    "pop-asc": (a, b) => a.sold_quantity - b.sold_quantity,
+    "pop-desc": (a, b) => b.sold_quantity - a.sold_quantity
+};
 
 export default function ShopPage() {
+
+    const navigate = useNavigate();
+
     const {
         indexProducts,
         cartProducts,
@@ -17,39 +30,41 @@ export default function ShopPage() {
 
     const [searchParams] = useSearchParams();
 
-    const search = searchParams.get("search") || getSorterFromLocalStorage('search');
-    const priceFilter = searchParams.get("price") || getSorterFromLocalStorage('price');
-    const nameFilter = searchParams.get("name") || getSorterFromLocalStorage('name');
-    const popFilter = searchParams.get("pop") || getSorterFromLocalStorage('pop');
+    const search = searchParams.get("search");
+    const sort = searchParams.get("sort") || getSorterFromLocalStorage();
 
     let filteredProducts = indexProducts || [];
 
     if (search) {
+
         filteredProducts = filteredProducts.filter(p =>
             p.title.toLowerCase().includes(search.toLowerCase())
         );
     }
 
-    if (priceFilter) {
-        filteredProducts = [...filteredProducts].sort((a, b) =>
-            priceFilter === "low-to-high" ? a.price - b.price : b.price - a.price
-        );
-    }
+    useEffect(() => {
+        const savedSearch = getSearchFromLocalStorage();
+        const savedSort = getSorterFromLocalStorage();
 
-    if (nameFilter) {
-        filteredProducts = [...filteredProducts].sort((a, b) =>
-            nameFilter === "a-to-z"
-                ? a.title.localeCompare(b.title)
-                : b.title.localeCompare(a.title)
-        );
-    }
+        const params = new URLSearchParams(searchParams);
 
-    if (popFilter) {
-        filteredProducts = [...filteredProducts].sort((a, b) =>
-            popFilter === "more-pop"
-                ? b.sold_quantity - a.sold_quantity   // most sold first
-                : a.sold_quantity - b.sold_quantity   // least sold first
-        );
+        if (!params.get("search") && savedSearch) {
+            params.set("search", savedSearch);
+        }
+
+        if (!params.get("sort") && savedSort) {
+            params.set("sort", savedSort);
+        }
+
+        if (params.toString() !== searchParams.toString()) {
+            navigate(`/shop?${params.toString()}`, { replace: true });
+        }
+
+    }, [searchParams, navigate]);
+
+
+    if (sort && sorters[sort]) {
+        filteredProducts = [...filteredProducts].sort(sorters[sort]);
     }
 
     const handleWishlist = (id) => {

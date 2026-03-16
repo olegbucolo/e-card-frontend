@@ -69,6 +69,14 @@ export function getSorterFromLocalStorage() {
     return stored ? stored : ''
 }
 
+export function addSearchToLocalStorage(data) {
+    return localStorage.setItem('search', data) ;
+}
+
+export function getSearchFromLocalStorage() {
+    return localStorage.getItem('search') ? localStorage.getItem('search') : '';
+}
+
 export function resetSortFiltersInLocalStorage() {
     const storedFilters = localStorage.getItem('filters')
     const storedSorters = localStorage.getItem('sorter')

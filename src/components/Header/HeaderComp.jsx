@@ -6,7 +6,7 @@ import { IoClose } from "react-icons/io5";
 import { LuHeart, LuMenu } from "react-icons/lu";
 import { FiShoppingCart } from "react-icons/fi";
 
-import { addSorterToLocalStorage, getSorterFromLocalStorage, resetSortFiltersInLocalStorage } from '../../utils/localStorage';
+import { addSearchToLocalStorage, addSorterToLocalStorage, getSorterFromLocalStorage, resetSortFiltersInLocalStorage } from '../../utils/localStorage';
 
 // OLEG TI HO MESSO IL LOGO PER L'HEADER NELLA CARTELLA IMMAGINI, NON TI VOGLIO TOCCARE IL CODICE, FAI PURE TU
 
@@ -36,6 +36,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
 
     // function that handles submit when searching a product
     const handleSubmit = (e) => {
+        addSearchToLocalStorage(query)
         e.preventDefault();
         // at the press of the search button, we navigate to shop?search=${query}
         navigate(`/shop?search=${query}`)
@@ -84,7 +85,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                         <div className="position-relative container-xxl d-flex align-items-center">
                             {/* LEFT */}
                             <div className="order-0 order-md-0 flex-grow-1 me-2">
-                                <NavLink to="/" className="navbar-brand logo-style me-0" ></NavLink>
+                                <NavLink to="/" onClick={() => setQuery('')} className="navbar-brand logo-style me-0" ></NavLink>
                             </div>
                             {/* CENTER */}
                             <form onSubmit={handleSubmit} className="order-4 order-md-1 w-100 mt-2 mt-md-0 d-flex position-relative" role="search">
@@ -94,13 +95,17 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                     value={query}
                                     onChange={handleChange}
                                     onFocus={() => { setIsTyping(true); }}
-                                    onBlur={() => setIsTyping(false)}
+                                    onBlur={() => {
+                                        setIsTyping(false)
+                                    }}
                                     type="search"
                                     placeholder="Cerca..."
                                     aria-label="Search" />
                                 <button
                                     className="btn btn-outline-dark "
-                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    onClick={() => setIsMobileMenuOpen(false)
+
+                                    }
 
                                     type="submit">Cerca</button>
                                 {isTyping && (
@@ -156,7 +161,10 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                         <NavLink
                                             to="/"
                                             className="nav-link active"
-                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            onClick={() => {
+                                                setIsMobileMenuOpen(false)
+                                                setQuery('')
+                                            }}
 
                                         >Home</NavLink>
                                     </li>
