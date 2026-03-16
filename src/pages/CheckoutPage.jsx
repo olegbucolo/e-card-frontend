@@ -140,11 +140,11 @@ function CheckoutPage() {
 
                                             <h3>{product.title}</h3>
 
-                                            <p className="avaible-text">{product.is_featured === 1 ? "Available" : "Not avaible"}</p>
+                                            <p className="avaible-text">{product.is_featured === 1 ? "Disponibile" : "Non Disponibile"}</p>
 
-                                            <p>Quantity: {item.quantity}</p>
+                                            <p>Quantità: {item.quantity}</p>
 
-                                            <p>Price: {product.price}</p>
+                                            <p>Prezzo: {product.price}</p>
 
 
                                         </div>
@@ -159,7 +159,7 @@ function CheckoutPage() {
 
                     <div className="price-box container my-5">
 
-                        <button className="btn-checkout-page">Total Price: {totalPrice} €</button>
+                        <button className="btn-checkout-page">Prezzo Totale: {totalPrice} €</button>
                     </div>
 
                 </div>
