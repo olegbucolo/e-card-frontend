@@ -215,12 +215,6 @@ function CheckoutPage() {
                 <div className="checkout-container d-flex justify-content-around">
                     <form onSubmit={handleSubmit} className="checkout-form w-70 mt-5 py-4 px-3 needs-validation" noValidate>
 
-                        <div className="mt-3 payment-method-container d-flex justify-content-around">
-                            <button className="w-90 h-100">
-                                <Link to="/add_payment_method_page">Aggiungi metodo di pagamento</Link>
-                            </button>
-                        </div>
-
                         {/* campo cognome utente */}
                         <div className="mb-3">
                             <label htmlFor="customer-surname" className="form-label d-flex align-self-start">Inserisci il tuo cognome: </label>
