@@ -34,8 +34,15 @@ function CheckoutPage() {
         orderShippingCost = 5;
     }
 
+    useEffect(() => {
+        setOrder(prev => ({
+            ...prev,
+            shippingCost: orderShippingCost
+        }))
+    }, [orderShippingCost])
+
     const [order, setOrder] = useState({
-        orderSlug: `ordine-pokemon-${newOrderId}`,
+        orderSlug: `ordine-pokemon-${Number(newOrderId) + 1}`,
         customerName: "",
         customerSurname: "",
         customerMail: "",
@@ -56,13 +63,6 @@ function CheckoutPage() {
 
     const products = cartProducts.map(item => {
         return indexProducts.find(p => p.id == item.id)
-    })
-
-    const [orderProductsBind, setOrderProductBind] = useState({
-        newOrderId: "",
-        productsId: "",
-        unitQuantity: "",
-        unitPrice: ""
     })
 
     function handleChange(e) {
@@ -198,13 +198,13 @@ function CheckoutPage() {
                 </div>
 
             </div>
-            <div className="w-30 mt-5 py-4 px-3 checkout-container">
-                <form onSubmit={handleSubmit} className="checkout-form">
 
-                    <div className="mb-3">
-                        <label htmlFor="order-slug" className="form-label d-flex align-self-start">Slug dell'ordine: </label>
-                        <input name="orderSlug" type="text" className="form-control" id="order-slug" placeholder='Inserire slug ordine' value={order.orderSlug} onChange={handleChange} />
-                    </div>
+            <div className="mt-3 d-flex justify-content-around h-100">
+                <button className="w-90">Wilky</button>
+            </div>
+
+            <div className="checkout-container d-flex justify-content-around">
+                <form onSubmit={handleSubmit} className="checkout-form w-70 mt-5 py-4 px-3 ">
 
                     {/* campo nome utente */}
                     <div className="mb-3">
@@ -279,14 +279,14 @@ function CheckoutPage() {
 
                     {/* campo Paese/Nazione utente */}
                     <div className="mb-3">
-                        <label htmlFor="country" className="form-label d-flex align-self-start">Inserisci il paese in cui abiti: </label>
-                        <input name="country" type="text" className="form-control" id="country" placeholder='Inserisci il paese in cui abiti: ' value={order.country} onChange={handleChange} />
+                        <label htmlFor="country" className="form-label d-flex align-self-start">Inserisci la nazione in cui abiti: </label>
+                        <input name="country" type="text" className="form-control" id="country" placeholder='Inserisci la nazione in cui abiti: ' value={order.country} onChange={handleChange} />
                     </div>
 
                     {/* campo indirizzo di fatturazione */}
                     <div className="mb-3">
-                        <label htmlFor="country-billing" className="form-label d-flex align-self-start">Inserisci il tuo indirizzo di fatturazione: </label>
-                        <input name="countryBilling" type="text" className="form-control" id="country-billing" placeholder='Inserisci il tuo indirizzo di fatturazione: ' value={order.countryBilling} onChange={handleChange} />
+                        <label htmlFor="country-billing" className="form-label d-flex align-self-start">Inserisci la tua nazione di riferimento per la fatturazione: </label>
+                        <input name="countryBilling" type="text" className="form-control" id="country-billing" placeholder='Inserisci la nazione in cui abiti: ' value={order.countryBilling} onChange={handleChange} />
                     </div>
 
                     <button type="submit" className="btn btn-checkout-page d-flex align-self-start">Procedi con l'ordine</button>
