@@ -25,7 +25,7 @@ export default function WishlistPage() {
                     if (!product) return null
                     return (
 
-                        <div className="d-flex border mb-2 p-2" key={item.id}>
+                        <div className="checkout-product-card d-flex mb-4 p-2" key={item.id}>
 
                             <div className="card" style={{ width: "10rem" }}>
 
