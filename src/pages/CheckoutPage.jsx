@@ -210,7 +210,7 @@ function CheckoutPage() {
                         {/* campo nome utente */}
                         <div className="mb-3">
                             <label htmlFor="customer-name" className="form-label d-flex align-self-start">Inserisci il tuo nome: </label>
-                            <input name="customerName" type="text" className={`form-control ${submitted && !order.customerName ? "is-invalid" : ""}`} id="customer-name" placeholder='inserisci il tuo nome: ' value={order.customerName} onChange={handleChange} required />
+                            <input name="customerName" type="text" className="form-control" id="customer-name" placeholder='inserisci il tuo nome: ' value={order.customerName} onChange={handleChange} required />
                             <div className="invalid-feedback">
                                 Questo campo è obbligatorio *
                             </div>
