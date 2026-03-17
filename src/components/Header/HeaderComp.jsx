@@ -21,7 +21,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
         'price-asc': `: Piu' Economico`,
         'price-desc': ': Meno Ecomomico',
         'name-asc': ': Alfabetico',
-        'name-desc': ': Analfabetico',
+        'name-desc': ': Anti Alfabetico',
         'pop-desc': `: Piu' venduti`,
         'pop-asc': ': Meno venduti',
     }
@@ -250,7 +250,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                             applySorter('name-desc')
                                             setSortButton('name-desc')
                                         }}
-                                        type="button">Ordine analfabetico
+                                        type="button">Ordine Anti Alfabetico
                                     </button>
                                 </li>
                                 <li>
