@@ -12,12 +12,40 @@
 .order-container-left {
     width: 60%;
     height: 600px;
-    background-color: #0f172a;
-    border-radius: 50px;
-    padding: 10px 0;
-    overflow: scroll;
-    scrollbar-width: thin;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 20px 10px 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    margin-bottom: 30px;
 }
+
+.order-container-left::-webkit-scrollbar {
+    width: 0;
+}
+
+.order-container-left:hover::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* niente sfondo (track) */
+.order-container-left::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* solo parte grigia */
+.order-container-left::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+
+
+
+
+
+
 
 
 
@@ -27,11 +55,14 @@
     background-color: #1e293b;
     border-radius: 30px;
     margin-bottom: 30px;
+    align-self: flex-start;
+    height: auto;
 }
 
 
 .border-cart {
-    border-style: outset;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
 }
 
 .product-detail {
@@ -82,10 +113,12 @@
         text-align: center;
         margin-left: auto;
         margin-top: 30px;
+        order: -1;
     }
 
     .order-container-left {
         width: 100%;
+        order: 1;
     }
 
     .responsive {
@@ -93,5 +126,9 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+
+    .order-container-left {
+        height: auto
     }
 }
