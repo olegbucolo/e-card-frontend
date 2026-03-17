@@ -200,7 +200,7 @@ function CheckoutPage() {
 
                 </div>
                 <div className="w-30 mt-5 py-4 px-3 checkout-container">
-                    <form onSubmit={handleSubmit} className="checkout-form">
+                    <form onSubmit={handleSubmit} className="checkout-form needs-validation" noValidate>
 
                         <div className="mb-3">
                             <label htmlFor="order-slug" className="form-label d-flex align-self-start">Slug dell'ordine: </label>
@@ -210,10 +210,7 @@ function CheckoutPage() {
                         {/* campo nome utente */}
                         <div className="mb-3">
                             <label htmlFor="customer-name" className="form-label d-flex align-self-start">Inserisci il tuo nome: </label>
-                            <input name="customerName" type="text" className="form-control" id="customer-name" placeholder='inserisci il tuo nome: ' value={order.customerName} onChange={handleChange} required />
-                            <div className="invalid-feedback">
-                                Questo campo è obbligatorio *
-                            </div>
+                            <input name="customerName" type="text" className={submitted && !order.customerSurname ? "input-error form-control" : "form-control"} id="customer-name" placeholder='inserisci il tuo nome: ' value={order.customerName} onChange={handleChange} required />
                         </div>
 
                         {/* campo cognome utente */}
