@@ -101,10 +101,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                     aria-label="Search" />
                                 <button
                                     className="btn btn-outline-dark "
-                                    onClick={() => setIsMobileMenuOpen(false)
-
-                                    }
-
+                                    onClick={() => setIsMobileMenuOpen(false)}
                                     type="submit">Cerca</button>
                                 {isTyping && (
 

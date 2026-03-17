@@ -14,7 +14,7 @@ export default function Toast() {
                         <div className="modal-dialog">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h1 className="modal-title fs-5" id="staticBackdropLabel">Povero = ricco</h1>
+                                    <h1 className="modal-title fs-5" id="staticBackdropLabel">Benvenuto!</h1>
                                     <button
                                         type="button"
                                         onClick={() => {
@@ -26,20 +26,74 @@ export default function Toast() {
                                         aria-label="Close"></button>
                                 </div>
                                 <div className="modal-body">
-                                    Tu povero. Povero Entra email. Povero ricco.
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At molestiae ullam ratione eos esse accusantium?</p>
                                 </div>
-                                <div className="input-group px-3 mb-3">
-                                    <input type="text" className="form-control" placeholder="Recipient’s username" aria-label="Recipient’s username" aria-describedby="basic-addon2" />
-                                    <span className="input-group-text" id="basic-addon2">@gmail.com</span>
-                                </div>
+
+                                {/* <div class="col-md-4 w-100 p-3 pt-0">
+                                    <form class="row g-3 needs-validation" novalidate>
+                                    <label for="validationCustomUsername" class="form-label">Email:</label>
+                                    <div class="input-group has-validation">
+                                        <input type="text" class="form-control" placeholder='example@gmail.com' id="validationCustomUsername" aria-describedby="inputGroupPrepend" required />
+                                        <div class="invalid-feedback">
+                                            Please choose a username.
+                                        </div>
+                                        <span class="input-group-text" id="inputGroupPrepend">@gmail.com</span>
+                                    </div>
+                                    </form>
+                                </div> */}
                                 <div className="modal-footer">
-                                    <button
-                                        onClick={() => {
-                                            setModalOpen(prev => !prev)
-                                            updateFirstVisit()
+                                    <form
+                                        onSubmit={(e) => {
+                                            e.preventDefault();
+
+                                            const form = e.currentTarget;
+
+                                            if (!form.checkValidity()) {
+                                                e.stopPropagation();
+                                            } else {
+                                                updateFirstVisit();
+                                                setModalOpen(prev => !prev);
+                                            }
+
+                                            // form.classList.add("was-validated");
                                         }}
-                                        type="button"
-                                        className="btn btn-primary">Iscriviti alla newsletter!</button>
+                                        class="row g-3 needs-validation"
+                                        novalidate>
+
+                                        <div class="col-md-4 w-100 mt-0">
+                                            <label for="validationCustomUsername" class="form-label">Email</label>
+                                            <div class="input-group has-validation">
+                                                <input type="text"
+                                                    class="form-control"
+                                                    id="validationCustomUsername"
+                                                    placeholder='esempio@gmail.com'
+                                                    aria-describedby="inputGroupPrepend"
+                                                    required />
+                                                <div class="invalid-feedback">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required />
+                                                <label class="form-check-label" for="invalidCheck">
+                                                    Accetta Info e Privacy
+                                                </label>
+                                                <div class="invalid-feedback">
+                                                    You must agree before submitting.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button
+                                                class="btn btn-primary"
+                                                type="submit"
+                                               
+                                            >Submit form</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
