@@ -38,7 +38,7 @@ export default function CartPage() {
     return (
         <>
             <div className="cart-page-title">
-                <h2 className="cart-title-text">Cart</h2>
+                <h2 className="cart-title-text">Prodotti nel carrello</h2>
             </div>
 
 
@@ -79,12 +79,14 @@ export default function CartPage() {
 
                                             <div className="d-flex">
 
+                                                <p className="text-light">Quantità:</p>
+
                                                 <button onClick={() => removeFromLocalStorage(setCartProducts, item.id, 1)}
                                                     className="btn btn-outline-danger quantity-btn">
                                                     <FiMinus />
                                                 </button>
 
-                                                <p className="text-light">Quantità: {item.quantity}</p>
+                                                <p className="text-light"> {item.quantity}</p>
 
                                                 <button onClick={() => addToLocalStorage(setCartProducts, item.id, 1)}
                                                     className=" btn btn-outline-success quantity-btn">
@@ -92,7 +94,7 @@ export default function CartPage() {
                                                 </button>
                                             </div>
 
-                                            <p className="fw-bold text-light">Prezzo: {(product.price * item.quantity).toFixed(2)}€</p>
+                                            <p className="fw-bold text-light fs-5">{(product.price * item.quantity).toFixed(2)}€</p>
 
 
 
