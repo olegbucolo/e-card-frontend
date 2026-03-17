@@ -190,7 +190,7 @@ function CheckoutPage() {
 
                                             <div className="product-detail-checkout">
                                                 <h3>{product.title}</h3>
-                                                <p className="avaible-text">{product.is_featured === 1 ? "Disponibile" : "Non Disponibile"}</p>
+                                                <p className="avaible-text is-disponible">{product.is_featured === 1 ? "Disponibile" : "Non Disponibile"}</p>
                                                 <p>Quantità: {item.quantity}</p>
                                                 <p>Prezzo: {product.price}</p>
                                             </div>
