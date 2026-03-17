@@ -286,7 +286,9 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                             className="flex-shrink-0 ms-auto btn btn-danger rounded-2  overflow-hidden"
                             onClick={() => {
                                 resetSortFiltersInLocalStorage()
+                                resetSortFiltersInLocalStorage()
                                 setSortButton('')
+                                navigate('/shop')
                             }}
                         >
                             Reset

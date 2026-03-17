@@ -4,20 +4,34 @@
     box-shadow: 0rem 0rem 1.5rem -1rem black;
 }
 
-.shop-top-space{
+.shop-top-space {
     margin-top: 4rem !important;
 }
 
-@media screen and (max-width: 768px){
-.shop-top-space{
-    margin-top: 6.8rem !important;
-}
+@media screen and (max-width: 768px) {
+    .shop-top-space {
+        margin-top: 6.8rem !important;
+    }
 }
 
-.mt-4-rem{
+.mt-4-rem {
     margin-top: 4rem !important;
 }
 
 .hover-card {
     border: none !important;
+}
+
+@media (min-width: 992px) {
+    .fs-lg-4 button {
+        font-size: .8rem !important;
+
+    }
+}
+
+.fs-lg-4 button:active {
+    transform: scale(95%);
+    border:none;
+    transition: all .1s ease-out;
+    box-shadow: .2rem  .2rem .6rem -.2rem black, inset -.2rem  -.2rem .6rem -.2rem black;
 }

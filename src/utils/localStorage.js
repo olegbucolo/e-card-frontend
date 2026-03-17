@@ -76,13 +76,15 @@ export function getSearchFromLocalStorage() {
 }
 
 export function resetSortFiltersInLocalStorage() {
-    const storedFilters = localStorage.getItem('filters')
+    const storedFilters = localStorage.getItem('search')
     const storedSorters = localStorage.getItem('sorter')
 
     if (!storedFilters && !storedSorters) return
-    localStorage.setItem('filters', '')
+    localStorage.setItem('search', '')
     localStorage.setItem('sorter', '')
 }
+
+
 
 export function setFirstVisit(){
     const valueVisit = localStorage.getItem('isFirstVisit')
