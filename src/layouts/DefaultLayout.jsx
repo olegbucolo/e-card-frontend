@@ -11,7 +11,6 @@ const indexProductsAPI = 'http://localhost:3000/products/'
 export default function DefaultLayout() {
     setFirstVisit()
     const [isFirstVisit, setIsFirstVisit] = useState(JSON.parse(localStorage.getItem('isFirstVisit')))
-    console.log(isFirstVisit)
     // state for the cart from localStorage
     const [cartProducts, setCartProducts] = useState(() => {
         const stored = localStorage.getItem('cart');

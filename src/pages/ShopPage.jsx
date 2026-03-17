@@ -6,7 +6,13 @@ import { FiShoppingCart } from "react-icons/fi";
 import Toast from '../components/Toast/Toast';
 import { FaCartPlus } from "react-icons/fa";
 
-import { addToLocalStorage, getSearchFromLocalStorage, getSorterFromLocalStorage, isPresentInStorage, removeFromLocalStorage } from '../utils/localStorage';
+import {
+    addToLocalStorage,
+    getSearchFromLocalStorage,
+    getSorterFromLocalStorage,
+    isPresentInStorage,
+    removeFromLocalStorage
+} from '../utils/localStorage';
 import { useEffect } from 'react';
 
 const sorters = {
@@ -90,6 +96,7 @@ export default function ShopPage() {
 
                                         <NavLink to={`/detailpage/${p.slug}`} className="text-decoration-none text-dark">
                                             <img src={p.image} className="card-img-top" alt="" />
+                                            {console.log('immagine loppata: ', p.image)}
 
                                             <div className="card-body px-0">
                                                 <h5 className="card-title fs-5">{p.title}</h5>
