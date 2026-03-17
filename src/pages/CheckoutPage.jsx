@@ -190,7 +190,7 @@ function CheckoutPage() {
                                             <h3>{product.title}</h3>
                                             <p className="avaible-text is-disponible">{product.is_featured === 1 ? "Disponibile" : "Non Disponibile"}</p>
                                             <p>Quantità: {item.quantity}</p>
-                                            <p>Prezzo: {product.price}</p>
+                                            <p className="fw-bold">Prezzo: {product.price}</p>
                                         </div>
                                     </div>
                                 )
@@ -201,7 +201,7 @@ function CheckoutPage() {
 
                     <div className="container my-5">
                         <p className="costo-spedizione">Costo di Spedizione: € {orderShippingCost}</p>
-                        <p className="btn-checkout-page">Prezzo Totale: €{totalPrice}.toFixed(2)</p>
+                        <p className="btn-checkout-page">Prezzo Totale: €{totalPrice.toFixed(2)}</p>
                     </div>
 
                     {/* Metodo di pagamento */}
@@ -314,7 +314,7 @@ function CheckoutPage() {
                             </div>
                         </div>
 
-                        <button type="submit" className="btn btn-checkout-page d-flex align-self-start">Procedi con l'ordine</button>
+                        <button type="submit" className="btn-checkout-page">Procedi con l'ordine</button>
                     </form>
                 </div>
             </div>
