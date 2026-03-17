@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react"
 import { Outlet, useOutletContext } from "react-router-dom";
+import { Link } from "react-router-dom"
+import './CheckoutPage.css'
 
 function CheckoutPage() {
     const { indexProducts, cartProducts, setCartProducts } = useOutletContext()
@@ -199,8 +201,10 @@ function CheckoutPage() {
 
             </div>
 
-            <div className="mt-3 d-flex justify-content-around h-100">
-                <button className="w-90">Wilky</button>
+            <div className="mt-3 payment-method-container d-flex justify-content-around">
+                <button className="w-90 h-100">
+                    <Link to="/addpaymentmethod">Aggiungi metodo di pagamento</Link>
+                </button>
             </div>
 
             <div className="checkout-container d-flex justify-content-around">
