@@ -30,22 +30,22 @@ function AddPaymentMethodPage() {
 
             <div className="mb-3">
                 <label htmlFor="card-owner-name-and-surname" className="form-label d-flex align-self-start">Inserisci nome e cognome del proprietario della carta: </label>
-                <input name="cardOwnerNameAndSurname" type="text" className="form-control" id="customer-name-and-surname" placeholder='Inserisci nome e cognome del proprietario della carta:' value={order.customerName} onChange={handleChange} required />
+                <input name="cardOwnerNameAndSurname" type="text" className="form-control" id="customer-name-and-surname" placeholder='Inserisci nome e cognome del proprietario della carta:' value={creditCardData.cardOwnerNameAndSurname} onChange={handleChange} required />
             </div>
 
             <div className="mb-3">
                 <label htmlFor="card-number" className="form-label d-flex align-self-start">Inserisci numero carta: </label>
-                <input name="cardNumber" type="text" className="form-control" id="phone" placeholder='Inserisci numero carta: ' value={order.phone} onChange={handleChange} />
+                <input name="cardNumber" type="text" className="form-control" id="phone" placeholder='Inserisci numero carta: ' value={creditCardData.cardNumber} onChange={handleChange} />
             </div>
 
             <div className="mb-3">
                 <label htmlFor="card-expiry" className="form-label d-flex align-self-start">Inserisci mese e anno di scadenza della carta: </label>
-                <input name="cardExpiry" type="text" className="form-control" id="card-expiry" placeholder='Inserisci mese e anno di scadenza della carta: ' value={order.customerSurname} onChange={handleChange} required />
+                <input name="cardExpiry" type="text" className="form-control" id="card-expiry" placeholder='Inserisci mese e anno di scadenza della carta: ' value={creditCardData.cardExpiry} onChange={handleChange} required />
             </div>
 
             <div className="mb-3">
                 <label htmlFor="card-CVV" className="form-label d-flex align-self-start">Inserisci il CVV della carta: </label>
-                <input name="cardCVV" type="text" className="form-control" id="card-CVV" placeholder='Inserisci il CVV della carta: ' value={order.customerMail} onChange={handleChange} required />
+                <input name="cardCVV" type="text" className="form-control" id="card-CVV" placeholder='Inserisci il CVV della carta: ' value={creditCardData.cardCVV} onChange={handleChange} required />
             </div>
 
         </>
