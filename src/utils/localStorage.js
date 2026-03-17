@@ -30,6 +30,10 @@ export function removeFromLocalStorage(setterFunction, productId, quantity = 1) 
     });
 }
 
+export function saveCreditCardToLocalStorage(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
 export function addSorterToLocalStorage(data) {
     localStorage.setItem('sorter', data);
 }
@@ -68,7 +72,7 @@ export function getSorterFromLocalStorage() {
 }
 
 export function addSearchToLocalStorage(data) {
-    return localStorage.setItem('search', data) ;
+    return localStorage.setItem('search', data);
 }
 
 export function getSearchFromLocalStorage() {
@@ -84,14 +88,12 @@ export function resetSortFiltersInLocalStorage() {
     localStorage.setItem('sorter', '')
 }
 
-
-
 export function setFirstVisit(){
     const valueVisit = localStorage.getItem('isFirstVisit')
     return !valueVisit && localStorage.setItem('isFirstVisit', 'true')
 }
 
-export function updateFirstVisit(){
+export function updateFirstVisit() {
     const currVisitState = localStorage.getItem('isFirstVisit')
     return currVisitState === 'true' && localStorage.setItem('isFirstVisit', 'false')
 }
