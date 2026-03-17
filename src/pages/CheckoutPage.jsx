@@ -209,9 +209,10 @@ function CheckoutPage() {
                         <p>{stored.cardNumber}</p><p>{stored.cardExpiry}</p>
                     </div>
                     <div className="mt-4 payment-method-container d-flex justify-content-around">
-                        <button className="w-90 h-70 pay-method">
-                            <Link to="/add_payment_method_page">Aggiungi metodo di pagamento</Link>
+                        <Link to="/add_payment_method_page"><button className="w-90 h-70 pay-method">
+                            Aggiungi metodo di pagamento
                         </button>
+                        </Link>
                     </div>
                 </div>
 
