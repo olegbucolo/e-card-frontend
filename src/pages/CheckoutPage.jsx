@@ -215,6 +215,12 @@ function CheckoutPage() {
                 <div className="checkout-container d-flex justify-content-around">
                     <form onSubmit={handleSubmit} className="checkout-form w-70 mt-5 py-4 px-3 needs-validation" noValidate>
 
+                        {/* campo nome utente */}
+                        <div className="mb-3">
+                            <label htmlFor="customer-name" className="form-label d-flex align-self-start">Inserisci il tuo nome: </label>
+                            <input name="customerName" type="text" className={submitted && !order.customerName ? "input-error form-control" : "form-control"} id="customer-name" placeholder='inserisci il tuo nome: ' value={order.customerName} onChange={handleChange} required />
+                        </div>
+
                         {/* campo cognome utente */}
                         <div className="mb-3">
                             <label htmlFor="customer-surname" className="form-label d-flex align-self-start">Inserisci il tuo cognome: </label>
