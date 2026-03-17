@@ -203,7 +203,7 @@ function CheckoutPage() {
 
             <div className="mt-3 payment-method-container d-flex justify-content-around">
                 <button className="w-90 h-100">
-                    <Link to="/addpaymentmethod">Aggiungi metodo di pagamento</Link>
+                    <Link to="/add_payment_method_page">Aggiungi metodo di pagamento</Link>
                 </button>
             </div>
 
