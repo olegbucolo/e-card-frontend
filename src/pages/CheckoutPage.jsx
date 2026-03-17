@@ -190,7 +190,7 @@ function CheckoutPage() {
                                             <h3>{product.title}</h3>
                                             <p className="avaible-text is-disponible">{product.is_featured === 1 ? "Disponibile" : "Non Disponibile"}</p>
                                             <p>Quantità: {item.quantity}</p>
-                                            <p>Prezzo: {product.price}</p>
+                                            <p className="fw-bold">Prezzo: {product.price}</p>
                                         </div>
                                     </div>
                                 )
@@ -201,7 +201,7 @@ function CheckoutPage() {
 
                     <div className="container my-5">
                         <p className="costo-spedizione">Costo di Spedizione: € {orderShippingCost}</p>
-                        <p className="btn-checkout-page">Prezzo Totale: €{totalPrice}.toFixed(2)</p>
+                        <p className="btn-checkout-page">Prezzo Totale: €{totalPrice.toFixed(2)}</p>
                     </div>
 
                     {/* Metodo di pagamento */}
@@ -214,12 +214,6 @@ function CheckoutPage() {
 
                 <div className="checkout-container d-flex justify-content-around">
                     <form onSubmit={handleSubmit} className="checkout-form w-70 mt-5 py-4 px-3 needs-validation" noValidate>
-
-                        <div className="mt-3 payment-method-container d-flex justify-content-around">
-                            <button className="w-90 h-100">
-                                <Link to="/add_payment_method_page">Aggiungi metodo di pagamento</Link>
-                            </button>
-                        </div>
 
                         {/* campo cognome utente */}
                         <div className="mb-3">
@@ -314,7 +308,7 @@ function CheckoutPage() {
                             </div>
                         </div>
 
-                        <button type="submit" className="btn btn-checkout-page d-flex align-self-start">Procedi con l'ordine</button>
+                        <button type="submit" className="btn-checkout-page">Procedi con l'ordine</button>
                     </form>
                 </div>
             </div>
