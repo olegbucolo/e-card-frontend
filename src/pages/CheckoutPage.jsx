@@ -133,36 +133,52 @@ function CheckoutPage() {
 
             console.log(orderId)
 
+            await axios.post(endpointMail, {
+                order,
+                products
+            })
         } catch (err) {
             console.error(err)
             alert("Errore di invio ordine")
         }
     }
 
+
     console.log(newOrderId);
+
 
     console.log(orderShippingCost);
 
 
 
+    const forms = document.querySelectorAll(".needs-validation");
+
+    Array.from(forms).forEach(form => {
+        form.addEventListener("submit", event => {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add("was-validated");
+        });
+    });
 
     return (
         <>
-
-            <div className="container pt-3">
-
-                <div className="d-flex">
-                    <div className="order-container-left">
+            <div className="main-container-checkout">
+                <div className="p-container-checkout pt-3">
+                    <div className="order-container-checkout-left">
 
                         {
                             cartProducts.map(item => {
                                 const product = indexProducts.find(
                                     p => p.id == item.id
                                 )
-                                if (!product) return
+                                if (!product) return null
+
                                 return (
 
-                                    <div className="d-flex border-cart my-5" key={item.id}>
+                                    <div className="d-flex checkout-product-card my-5" key={item.id}>
 
                                         <div className="card" style={{ width: "10rem" }}>
 
@@ -170,131 +186,137 @@ function CheckoutPage() {
 
                                         </div>
 
-                                        <div className="product-detail">
-
-
+                                        <div className="product-detail-checkout">
                                             <h3>{product.title}</h3>
-
-                                            <p className="avaible-text">{product.is_featured === 1 ? "Available" : "Not avaible"}</p>
-
-                                            <p>Quantity: {item.quantity}</p>
-
-                                            <p>Price: {product.price}</p>
-
-
+                                            <p className="avaible-text is-disponible">{product.is_featured === 1 ? "Disponibile" : "Non Disponibile"}</p>
+                                            <p>Quantità: {item.quantity}</p>
+                                            <p>Prezzo: {product.price}</p>
                                         </div>
                                     </div>
                                 )
                             }
                             )
-
                         }
-
                     </div>
 
-                    <div className="price-box container my-5">
-                        <p>Shipping cost: {orderShippingCost} €</p>
-                        <button className="btn-checkout-page">Total Price: {totalPrice} €</button>
+                    <div className="container my-5">
+                        <p className="costo-spedizione">Costo di Spedizione: € {orderShippingCost}</p>
+                        <p className="btn-checkout-page">Prezzo Totale: €{totalPrice}.toFixed(2)</p>
                     </div>
 
+                    {/* Metodo di pagamento */}
+                    <div className="mt-3 payment-method-container d-flex justify-content-around">
+                        <button className="w-90 h-100 pay-method">
+                            <Link to="/addpaymentmethod">Aggiungi metodo di pagamento</Link>
+                        </button>
+                    </div>
                 </div>
 
-            </div>
+                <div className="checkout-container d-flex justify-content-around">
+                    <form onSubmit={handleSubmit} className="checkout-form w-70 mt-5 py-4 px-3 needs-validation" noValidate>
 
-            <div className="mt-3 payment-method-container d-flex justify-content-around">
-                <button className="w-90 h-100">
-                    <Link to="/add_payment_method_page">Aggiungi metodo di pagamento</Link>
-                </button>
-            </div>
+                        <div className="mt-3 payment-method-container d-flex justify-content-around">
+                            <button className="w-90 h-100">
+                                <Link to="/add_payment_method_page">Aggiungi metodo di pagamento</Link>
+                            </button>
+                        </div>
 
-            <div className="checkout-container d-flex justify-content-around">
-                <form onSubmit={handleSubmit} className="checkout-form w-70 mt-5 py-4 px-3 ">
+                        {/* campo cognome utente */}
+                        <div className="mb-3">
+                            <label htmlFor="customer-surname" className="form-label d-flex align-self-start">Inserisci il tuo cognome: </label>
+                            <input name="customerSurname" type="text" className={submitted && !order.customerSurname ? "input-error form-control" : "form-control"} id="customer-surname" placeholder='inserisci il tuo cognome: ' value={order.customerSurname} onChange={handleChange} required />
+                        </div>
 
-                    {/* campo nome utente */}
-                    <div className="mb-3">
-                        <label htmlFor="customer-name" className="form-label d-flex align-self-start">Inserisci il tuo nome: </label>
-                        <input name="customerName" type="text" className={submitted && !order.customerName ? "input-error" : "form-control"} id="customer-name" placeholder='inserisci il tuo nome: ' value={order.customerName} onChange={handleChange} required />
-                    </div>
+                        {/* campo mail */}
+                        <div className="mb-3">
+                            <label htmlFor="customer-mail" className="form-label d-flex align-self-start">Inserisci la tua Email: </label>
+                            <input name="customerMail" type="text" className={submitted && !order.customerMail ? "input-error form-control" : "form-control"} id="customer-mail" placeholder='Inserisci la tua Email: ' value={order.customerMail} onChange={handleChange} required />
+                        </div>
 
-                    {/* campo cognome utente */}
-                    <div className="mb-3">
-                        <label htmlFor="customer-surname" className="form-label d-flex align-self-start">Inserisci il tuo cognome: </label>
-                        <input name="customerSurname" type="text" className={submitted && !order.customerSurname ? "input-error form-control" : "form-control"} id="customer-surname" placeholder='inserisci il tuo cognome: ' value={order.customerSurname} onChange={handleChange} required />
-                    </div>
+                        {/* campo numero telefono utente */}
+                        <div className="mb-3">
+                            <label htmlFor="phone" className="form-label d-flex align-self-start">Inserisci il tuo numero di telefono: </label>
+                            <input name="phone" type="text" className="form-control" id="phone" placeholder='Inserisci il tuo numero di telefono: ' value={order.phone} onChange={handleChange} />
+                        </div>
 
-                    {/* campo mail */}
-                    <div className="mb-3">
-                        <label htmlFor="customer-mail" className="form-label d-flex align-self-start">Inserisci la tua Email: </label>
-                        <input name="customerMail" type="text" className={submitted && !order.customerMail ? "input-error form-control" : "form-control"} id="customer-mail" placeholder='Inserisci la tua Email: ' value={order.customerMail} onChange={handleChange} required />
-                    </div>
+                        {/* campo nome via utente */}
+                        <div className="mb-3">
+                            <label htmlFor="street-name" className="form-label d-flex align-self-start">Inserisci il tuo indirizzo di residenza: </label>
+                            <input name="streetName" type="text" className={submitted && !order.streetName ? "input-error form-control" : "form-control"} id="street-name" placeholder='Inserisci il tuo indirizzo di residenza: ' value={order.streetName} onChange={handleChange} required />
+                        </div>
 
-                    {/* campo numero telefono utente */}
-                    <div className="mb-3">
-                        <label htmlFor="phone" className="form-label d-flex align-self-start">Inserisci il tuo numero di telefono: </label>
-                        <input name="phone" type="text" className="form-control" id="phone" placeholder='Inserisci il tuo numero di telefono: ' value={order.phone} onChange={handleChange} />
-                    </div>
+                        {/* campo numero civico utente */}
+                        <div className="mb-3">
+                            <label htmlFor="street-name-billing" className="form-label d-flex align-self-start">Inserisci il tuo indirizzo di fatturazione: </label>
+                            <input name="streetNameBilling" type="text" className="form-control" id="street-name-billing" placeholder='Inserisci il tuo indirizzo di fatturazione: ' value={order.streetNameBilling} onChange={handleChange} />
+                        </div>
 
-                    {/* campo nome via utente */}
-                    <div className="mb-3">
-                        <label htmlFor="street-name" className="form-label d-flex align-self-start">Inserisci il tuo indirizzo di residenza: </label>
-                        <input name="streetName" type="text" className={submitted && !order.streetName ? "input-error form-control" : "form-control"} id="street-name" placeholder='Inserisci il tuo indirizzo di residenza: ' value={order.streetName} onChange={handleChange} required />
-                    </div>
+                        {/* campo nome città utente */}
+                        <div className="mb-3">
+                            <label htmlFor="city" className="form-label d-flex align-self-start">Inserisci la tua città di residenza: </label>
+                            <input name="city" type="text" className={submitted && !order.city ? "input-error form-control" : "form-control"} id="city" placeholder='Inserisci la tua città di residenza: ' value={order.city} onChange={handleChange} required />
+                        </div>
 
-                    {/* campo numero civico utente */}
-                    <div className="mb-3">
-                        <label htmlFor="street-name-billing" className="form-label d-flex align-self-start">Inserisci il tuo indirizzo di fatturazione: </label>
-                        <input name="streetNameBilling" type="text" className="form-control" id="street-name-billing" placeholder='Inserisci il tuo indirizzo di fatturazione: ' value={order.streetNameBilling} onChange={handleChange} />
-                    </div>
+                        {/* campo CAP utente */}
+                        <div className="mb-3">
+                            <label htmlFor="city-billing" className="form-label d-flex align-self-start">Inserisci la città di fatturazione: </label>
+                            <input name="cityBilling" type="text" className="form-control" id="city-billing" placeholder='Inserisci la città di fatturazione: ' value={order.cityBilling} onChange={handleChange} />
+                        </div>
 
-                    {/* campo nome città utente */}
-                    <div className="mb-3">
-                        <label htmlFor="city" className="form-label d-flex align-self-start">Inserisci la tua città di residenza: </label>
-                        <input name="city" type="text" className={submitted && !order.city ? "input-error form-control" : "form-control"} id="city" placeholder='Inserisci la tua città di residenza: ' value={order.city} onChange={handleChange} required />
-                    </div>
+                        {/* campo codice postale utente */}
+                        <div className="mb-3">
+                            <label htmlFor="postal-code" className="form-label d-flex align-self-start">Inserisci il tuo codice postale: </label>
+                            <input name="postalCode" type="text" className="form-control" id="postal-code" placeholder='Inserisci il tuo codice postale: ' value={order.postalCode} onChange={handleChange} />
+                        </div>
 
-                    {/* campo CAP utente */}
-                    <div className="mb-3">
-                        <label htmlFor="city-billing" className="form-label d-flex align-self-start">Inserisci la città di fatturazione: </label>
-                        <input name="cityBilling" type="text" className="form-control" id="city-billing" placeholder='Inserisci la città di fatturazione: ' value={order.cityBilling} onChange={handleChange} />
-                    </div>
+                        {/* campo numero codice postale utente */}
+                        <div className="mb-3">
+                            <label htmlFor="postal-code-billing" className="form-label d-flex align-self-start">Inserisci il tuo codice postale di fatturazione: </label>
+                            <input name="postalCodeBilling" type="text" className="form-control" id="postal-code-billing" placeholder='Inserisci il tuo codice postale di fatturazione: ' value={order.postalCodeBilling} onChange={handleChange} />
+                        </div>
 
-                    {/* campo codice postale utente */}
-                    <div className="mb-3">
-                        <label htmlFor="postal-code" className="form-label d-flex align-self-start">Inserisci il tuo codice postale: </label>
-                        <input name="postalCode" type="text" className="form-control" id="postal-code" placeholder='Inserisci il tuo codice postale: ' value={order.postalCode} onChange={handleChange} />
-                    </div>
+                        {/* campo provincia utente */}
+                        <div className="mb-3">
+                            <label htmlFor="province" className="form-label d-flex align-self-start">Inserisci la provincia in cui abiti: </label>
+                            <input name="province" type="text" className="form-control" id="province" placeholder='Inserisci la provincia in cui abiti: ' value={order.province} onChange={handleChange} />
+                        </div>
 
-                    {/* campo numero codice postale utente */}
-                    <div className="mb-3">
-                        <label htmlFor="postal-code-billing" className="form-label d-flex align-self-start">Inserisci il tuo codice postale di fatturazione: </label>
-                        <input name="postalCodeBilling" type="text" className="form-control" id="postal-code-billing" placeholder='Inserisci il tuo codice postale di fatturazione: ' value={order.postalCodeBilling} onChange={handleChange} />
-                    </div>
+                        <div className="mb-3">
+                            <label htmlFor="province" className="form-label d-flex align-self-start">Inserisci la tua provincia di fatturazione: </label>
+                            <input name="provinceBilling" type="text" className="form-control" id="province" placeholder='Inserisci la tua provincia di fatturazione: ' value={order.provinceBilling} onChange={handleChange} />
+                        </div>
 
-                    {/* campo provincia utente */}
-                    <div className="mb-3">
-                        <label htmlFor="province" className="form-label d-flex align-self-start">Inserisci la provincia in cui abiti: </label>
-                        <input name="province" type="text" className="form-control" id="province" placeholder='Inserisci la provincia in cui abiti: ' value={order.province} onChange={handleChange} />
-                    </div>
+                        {/* campo Paese/Nazione utente */}
+                        <div className="mb-3">
+                            <label htmlFor="country" className="form-label d-flex align-self-start">Inserisci la nazione in cui abiti: </label>
+                            <input name="country" type="text" className="form-control" id="country" placeholder='Inserisci la nazione in cui abiti: ' value={order.country} onChange={handleChange} />
+                        </div>
 
-                    <div className="mb-3">
-                        <label htmlFor="province" className="form-label d-flex align-self-start">Inserisci la tua provincia di fatturazione: </label>
-                        <input name="provinceBilling" type="text" className="form-control" id="province" placeholder='Inserisci la tua provincia di fatturazione: ' value={order.provinceBilling} onChange={handleChange} />
-                    </div>
+                        {/* campo indirizzo di fatturazione */}
+                        <div className="mb-3">
+                            <label htmlFor="country-billing" className="form-label d-flex align-self-start">Inserisci la tua nazione di riferimento per la fatturazione: </label>
+                            <input name="countryBilling" type="text" className="form-control" id="country-billing" placeholder='Inserisci la nazione in cui abiti: ' value={order.countryBilling} onChange={handleChange} />
+                        </div>
 
-                    {/* campo Paese/Nazione utente */}
-                    <div className="mb-3">
-                        <label htmlFor="country" className="form-label d-flex align-self-start">Inserisci la nazione in cui abiti: </label>
-                        <input name="country" type="text" className="form-control" id="country" placeholder='Inserisci la nazione in cui abiti: ' value={order.country} onChange={handleChange} />
-                    </div>
+                        {/* Termini e condizioni */}
+                        <div className="mb-3 form-check">
+                            <input
+                                type="checkbox"
+                                className="form-check-input"
+                                id="terms"
+                                required
+                            />
+                            <label className="form-check-label" htmlFor="terms">
+                                Accetto i termini e condizioni
+                            </label>
+                            <div className="invalid-feedback">
+                                Devi accettare i termini e condizioni per procedere
+                            </div>
+                        </div>
 
-                    {/* campo indirizzo di fatturazione */}
-                    <div className="mb-3">
-                        <label htmlFor="country-billing" className="form-label d-flex align-self-start">Inserisci la tua nazione di riferimento per la fatturazione: </label>
-                        <input name="countryBilling" type="text" className="form-control" id="country-billing" placeholder='Inserisci la nazione in cui abiti: ' value={order.countryBilling} onChange={handleChange} />
-                    </div>
-
-                    <button type="submit" className="btn btn-checkout-page d-flex align-self-start">Procedi con l'ordine</button>
-                </form>
+                        <button type="submit" className="btn btn-checkout-page d-flex align-self-start">Procedi con l'ordine</button>
+                    </form>
+                </div>
             </div>
         </>
     )
