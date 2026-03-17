@@ -146,7 +146,17 @@ function CheckoutPage() {
 
     console.log(orderShippingCost);
 
+    const forms = document.querySelectorAll(".needs-validation");
 
+    Array.from(forms).forEach(form => {
+        form.addEventListener("submit", event => {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add("was-validated");
+        }, false);
+    });
 
 
     return (
@@ -288,6 +298,22 @@ function CheckoutPage() {
                         <div className="mb-3">
                             <label htmlFor="country-billing" className="form-label d-flex align-self-start">Inserisci il tuo indirizzo di fatturazione: </label>
                             <input name="countryBilling" type="text" className="form-control" id="country-billing" placeholder='Inserisci il tuo indirizzo di fatturazione: ' value={order.countryBilling} onChange={handleChange} />
+                        </div>
+
+                        {/* Termini e condizioni */}
+                        <div className="mb-3 form-check">
+                            <input
+                                type="checkbox"
+                                className="form-check-input"
+                                id="terms"
+                                required
+                            />
+                            <label className="form-check-label" htmlFor="terms">
+                                Accetto i termini e condizioni
+                            </label>
+                            <div className="invalid-feedback">
+                                Devi accettare i termini e condizioni per procedere
+                            </div>
                         </div>
 
                         <button type="submit" className="btn btn-checkout-page d-flex align-self-start">Procedi con l'ordine</button>
