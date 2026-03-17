@@ -51,21 +51,6 @@ export default function DetailPage() {
 
                         <h4>{singleProduct.title}</h4>
 
-                        
-
-                        {singleProduct.is_featured
-                            ? <div>
-                                <p className="product-disponible">Disponibile</p>
-                                <p className="">Quantita' disponibile: {singleProduct.quantity}</p>
-
-                            </div>
-                            : <div>
-                                <p className="product-not-disponible">Non Disponibile</p>
-
-
-                            </div>
-                        }
-
                         <div>
                             <p className=''>Descrizione: {singleProduct.description} </p>
 
@@ -88,13 +73,31 @@ export default function DetailPage() {
 
 
                         <div className="mt-3">
-                            <button
-                                className="btn btn-success"
-                                disabled={singleProduct.is_featured === 0}
-                                onClick={() => addToLocalStorage(setCartProducts, singleProduct.id, 1)}
-                            >
-                                {singleProduct.is_featured ? "Aggiungi al carrello" : "Non disponibile"}
-                            </button>
+
+
+                            {singleProduct.is_featured !== 0 && (
+                                <button
+                                    className="btn btn-success"
+                                    onClick={() => addToLocalStorage(setCartProducts, singleProduct.id, 1)}
+                                >
+                                    Aggiungi al carrello
+                                </button>
+                            )}
+
+
+                            {singleProduct.is_featured
+                                ? <div>
+                                    <p className="product-disponible">Disponibile</p>
+                                    <p className="">Quantita' disponibile: {singleProduct.quantity}</p>
+
+                                </div>
+                                : <div>
+                                    <p className="product-not-disponible">Non Disponibile</p>
+
+
+                                </div>
+                            }
+
                         </div>
 
 
