@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react"
 import { Outlet, useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom"
+import { FaCreditCard } from "react-icons/fa";
 import './CheckoutPage.css'
 
 function CheckoutPage() {
@@ -18,10 +19,11 @@ function CheckoutPage() {
     const endpoint = "http://localhost:3000/orders"
     const endpointMail = "http://localhost:3000/order"
 
+    const endpointForBind = "http://localhost:3000/orderproduct"
+
     let orderShippingCost;
 
 
-    const endpoint1 = "http://localhost:3000/orderproduct"
 
     const totalPrice = cartProducts.reduce((total, item) => {
         const product = indexProducts.find(
@@ -44,7 +46,7 @@ function CheckoutPage() {
     }, [orderShippingCost])
 
     const [order, setOrder] = useState({
-        orderSlug: `ordine-pokemon-`,
+        orderSlug: `ordine-`,
         customerName: "",
         customerSurname: "",
         customerMail: "",
@@ -82,7 +84,10 @@ function CheckoutPage() {
         e.preventDefault();
         setSubmitted(true);
 
-        if (!order.customerName || !order.customerSurname || !order.customerMail || !order.streetName || !order.city) {
+        if (!order.customerName || !order.customerSurname || !order.customerMail || !order.phone || !order.streetName ||
+            !order.streetNameBilling || !order.city || !order.cityBilling || !order.postalCode || !order.postalCodeBilling ||
+            !order.province || !order.provinceBilling || !order.country || !order.countryBilling
+        ) {
             alert("Compila tutti i campi obbligatori!");
             return;
         }
@@ -108,8 +113,6 @@ function CheckoutPage() {
 
             alert(`Ordine inviato! ID ordine: ${orderId}`);
 
-            setnewOrderId(orderId)
-
             if (cartProducts.length > 0) {
 
                 for (const item of cartProducts) {
@@ -125,9 +128,7 @@ function CheckoutPage() {
                         unitPrice: product.price
                     }
 
-                    await axios.post(endpoint1, orderProductData)
-
-                    console.log(orderProductData)
+                    await axios.post(endpointForBind, orderProductData)
                 }
             }
 
@@ -144,7 +145,6 @@ function CheckoutPage() {
     }
 
 
-    console.log(newOrderId);
 
 
     const stored = JSON.parse(localStorage.getItem('creditCardData')) || {};
@@ -205,8 +205,20 @@ function CheckoutPage() {
                     </div>
 
                     {/* Metodo di pagamento */}
-                    <div className="mt-3">
-                        <p>{stored.cardNumber}</p><p>{stored.cardExpiry}</p>
+                    <div className="mt-3 btn-checkout-page w-100 d-flex justify-content-between">
+
+                        <div className="w-20">
+                            <FaCreditCard />
+                        </div>
+                        <div className="w-70 d-flex flex-nowrap">
+                            <div className="w-50">
+                                <p>{stored.cardNumber}</p>
+                            </div>
+                            <div className="w-50">
+                                <p>{stored.cardExpiry}</p>
+                            </div>
+
+                        </div>
                     </div>
                     <div className="mt-4 payment-method-container d-flex justify-content-around">
                         <Link to="/add_payment_method_page"><button className="w-90 h-70 pay-method">

@@ -1,7 +1,10 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 import { addToLocalStorage, getSearchFromLocalStorage, getSorterFromLocalStorage, isPresentInStorage, removeFromLocalStorage, saveCreditCardToLocalStorage } from '../utils/localStorage';
 
 function AddPaymentMethodPage() {
+
+    const navigate = useNavigate();
 
     const [creditCardData, setCreditCardData] = useState({
         cardOwnerNameAndSurname: "",
@@ -26,6 +29,8 @@ function AddPaymentMethodPage() {
         e.preventDefault();
 
         saveCreditCardToLocalStorage("creditCardData", creditCardData);
+
+        navigate("/checkout_page")
     }
 
     console.log(creditCardData);
