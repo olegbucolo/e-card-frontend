@@ -61,12 +61,12 @@ export default function WishlistPage() {
                                         Rimuovi
                                     </button>
 
-                                    <button
+                                    {product.is_featured ? <button
                                         className="btn-cart hover-button btn btn-success me-2 d-flex justify-content-center align-items-center"
-                                        onClick={() => p.is_featured && addToLocalStorage(setCartProducts, product.id)}>
+                                        onClick={() => product.is_featured && addToLocalStorage(setCartProducts, product.id)}>
                                         Carrello
                                         <FiShoppingCart className='ms-1' />
-                                    </button>
+                                    </button> : <div></div>}
                                 </div>
 
 
