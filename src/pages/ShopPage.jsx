@@ -1,14 +1,32 @@
 import './ShopPage.css';
-import { NavLink } from 'react-router-dom'
-import { useSearchParams } from 'react-router-dom'
-import { useOutletContext } from 'react-router-dom'
+import { NavLink, useNavigate, useOutletContext, useSearchParams } from 'react-router-dom'
 import { LuHeart } from "react-icons/lu";
 import { FaHeart } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
+import Toast from '../components/Toast/Toast';
+import { FaCartPlus } from "react-icons/fa";
 
-import { addToLocalStorage, isPresentInStorage, removeFromLocalStorage } from '../utils/localStorage';
+import {
+    addToLocalStorage,
+    getSearchFromLocalStorage,
+    getSorterFromLocalStorage,
+    isPresentInStorage,
+    removeFromLocalStorage
+} from '../utils/localStorage';
+import { useEffect } from 'react';
+
+const sorters = {
+    "price-asc": (a, b) => a.price - b.price,
+    "price-desc": (a, b) => b.price - a.price,
+    "name-asc": (a, b) => a.title.localeCompare(b.title),
+    "name-desc": (a, b) => b.title.localeCompare(a.title),
+    "pop-asc": (a, b) => a.sold_quantity - b.sold_quantity,
+    "pop-desc": (a, b) => b.sold_quantity - a.sold_quantity
+};
 
 export default function ShopPage() {
+    const navigate = useNavigate();
+
     const {
         indexProducts,
         cartProducts,
@@ -20,38 +38,40 @@ export default function ShopPage() {
     const [searchParams] = useSearchParams();
 
     const search = searchParams.get("search");
-    const priceFilter = searchParams.get("price");
-    const nameFilter = searchParams.get("name");
-    const popFilter = searchParams.get("pop");
+    const sort = searchParams.get("sort") || getSorterFromLocalStorage();
 
     let filteredProducts = indexProducts || [];
 
     if (search) {
+
         filteredProducts = filteredProducts.filter(p =>
             p.title.toLowerCase().includes(search.toLowerCase())
         );
     }
 
-    if (priceFilter) {
-        filteredProducts = [...filteredProducts].sort((a, b) =>
-            priceFilter === "low-to-high" ? a.price - b.price : b.price - a.price
-        );
-    }
+    useEffect(() => {
+        const savedSearch = getSearchFromLocalStorage();
+        const savedSort = getSorterFromLocalStorage();
 
-    if (nameFilter) {
-        filteredProducts = [...filteredProducts].sort((a, b) =>
-            nameFilter === "a-to-z"
-                ? a.title.localeCompare(b.title)
-                : b.title.localeCompare(a.title)
-        );
-    }
+        const params = new URLSearchParams(searchParams);
 
-    if (popFilter) {
-        filteredProducts = [...filteredProducts].sort((a, b) =>
-            popFilter === "more-popular"
-                ? b.sold_quantity - a.sold_quantity   // most sold first
-                : a.sold_quantity - b.sold_quantity   // least sold first
-        );
+        if (!params.get("search") && savedSearch) {
+            params.set("search", savedSearch);
+        }
+
+        if (!params.get("sort") && savedSort) {
+            params.set("sort", savedSort);
+        }
+
+        if (params.toString() !== searchParams.toString()) {
+            navigate(`/shop?${params.toString()}`, { replace: true });
+        }
+
+    }, [searchParams, navigate]);
+
+
+    if (sort && sorters[sort]) {
+        filteredProducts = [...filteredProducts].sort(sorters[sort]);
     }
 
     const handleWishlist = (id) => {
@@ -65,9 +85,9 @@ export default function ShopPage() {
 
     return (
         <>
-            <div className="container-lg my-5 py-5">
+            <div className="container-lg my-5 py-5 shop-top-space position-relative">
                 <div className="col">
-                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-3">
                         {search ? filteredProducts.map(p => {
                             return (
                                 <div key={p.id} className="col">
@@ -76,6 +96,7 @@ export default function ShopPage() {
 
                                         <NavLink to={`/detailpage/${p.slug}`} className="text-decoration-none text-dark">
                                             <img src={p.image} className="card-img-top" alt="" />
+                                            {console.log('immagine loppata: ', p.image)}
 
                                             <div className="card-body px-0">
                                                 <h5 className="card-title fs-5">{p.title}</h5>
@@ -86,14 +107,24 @@ export default function ShopPage() {
                                             <div className='mb-2'>
                                                 <h5 className='fw-semibold'>{p.price} €</h5>
                                             </div>
-                                            <div className="buttons d-flex justify-content-between mt-auto">
-                                                <button
-                                                    className="hover-button btn btn-success w-50 me-2 d-flex
+                                            <div className=" d-flex justify-content-between fs-lg-4">
+                                                {
+                                                    p.is_featured ? <button
+                                                        className="hover-button btn btn-success w-50 me-2 d-flex
                                                     justify-content-center align-items-center"
-                                                    onClick={() => addToLocalStorage(setCartProducts, p.id)}>
-                                                    Carrello
-                                                    <FiShoppingCart className='ms-1' />
-                                                </button>
+                                                        onClick={() => addToLocalStorage(setCartProducts, p.id)}>
+                                                        Carrello
+                                                        <FaCartPlus className='ms-1' />
+                                                    </button>
+                                                        :
+                                                        <button
+                                                            className="hover-button btn  w-50 me-2 d-flex
+                                                    justify-content-center align-items-center"
+                                                        >
+                                                            <del>Carrello</del>
+                                                            <FiShoppingCart className='ms-1' />
+                                                        </button>
+                                                }
                                                 <button
                                                     className="hover-button btn btn-warning w-50 d-flex bg-light
                                                     justify-content-center align-items-center"
@@ -110,7 +141,7 @@ export default function ShopPage() {
 
                                 </div>
                             )
-                        }) : <h4 className='text-center w-100 border-bottom'>Inserisci la carta che vuoi cercare nella barra di ricerca....</h4>}
+                        }) : <h4 className='text-center pt-5 mt-md-0 mt-5 pt-md-5 w-100 border-bottom'>Inserisci la carta che vuoi cercare nella barra di ricerca....</h4>}
                     </div>
                 </div>
             </div>

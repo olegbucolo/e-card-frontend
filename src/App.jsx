@@ -6,12 +6,14 @@ import ShopPage from "./pages/ShopPage";
 import DetailPage from "./pages/DetailPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import AddPaymentMethodPage from "./pages/AddPaymentMethodPage.jsx"
 import WishlistPage from "./pages/WishListPage";
 
 
 function App() {
   return (
     <Routes>
+      <Route path="add_payment_method_page" element={<AddPaymentMethodPage />}></Route>
       <Route element={<DefaultLayout />}>
         <Route index element={<HomePage />} />
         <Route path="shop" element={<ShopPage />} />

@@ -25,7 +25,7 @@ export default function WishlistPage() {
                     if (!product) return null
                     return (
 
-                        <div className="d-flex border mb-2 p-2" key={item.id}>
+                        <div className="checkout-product-card d-flex mb-4 p-2" key={item.id}>
 
                             <div className="card" style={{ width: "10rem" }}>
 
@@ -61,12 +61,12 @@ export default function WishlistPage() {
                                         Rimuovi
                                     </button>
 
-                                    <button
+                                    {product.is_featured ? <button
                                         className="btn-cart hover-button btn btn-success me-2 d-flex justify-content-center align-items-center"
-                                        onClick={() => addToLocalStorage(setCartProducts, product.id)}>
+                                        onClick={() => product.is_featured && addToLocalStorage(setCartProducts, product.id)}>
                                         Carrello
                                         <FiShoppingCart className='ms-1' />
-                                    </button>
+                                    </button> : <div></div>}
                                 </div>
 
 

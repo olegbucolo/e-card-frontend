@@ -1,5 +1,4 @@
-
-export function isPresentInStorage(state, productId){
+export function isPresentInStorage(state, productId) {
     return state.some(s => s.id === productId);
 }
 
@@ -29,4 +28,72 @@ export function removeFromLocalStorage(setterFunction, productId, quantity = 1) 
                 : p
         );
     });
+}
+
+export function saveCreditCardToLocalStorage(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
+export function addSorterToLocalStorage(data) {
+    localStorage.setItem('sorter', data);
+}
+
+// TODO:
+
+export function addFilterToLocalStorage(data) {
+    let stored = JSON.parse(localStorage.getItem('filters')) || [];
+
+    const filterName = Object.keys(data)[0];
+    const filterValue = data[filterName];
+
+    const index = stored.findIndex(obj => obj.hasOwnProperty(filterName));
+
+    if (index >= 0) {
+        stored[index][filterName] = filterValue;
+    } else {
+        stored.push(data);
+    }
+
+    localStorage.setItem('filters', JSON.stringify(stored));
+}
+
+export function getFilterFromLocalStorage(name) {
+    const stored = JSON.parse(localStorage.getItem('filterss'))
+    if (!stored) {
+        return ''
+    }
+
+    const found = stored.find(obj => obj.hasOwnProperty(name))
+    return found ? found[name] : ''
+}
+
+export function getSorterFromLocalStorage() {
+    return localStorage.getItem('sorter') ? localStorage.getItem('sorter') : ''
+}
+
+export function addSearchToLocalStorage(data) {
+    return localStorage.setItem('search', data);
+}
+
+export function getSearchFromLocalStorage() {
+    return localStorage.getItem('search') ? localStorage.getItem('search') : '';
+}
+
+export function resetSortFiltersInLocalStorage() {
+    const storedFilters = localStorage.getItem('search')
+    const storedSorters = localStorage.getItem('sorter')
+
+    if (!storedFilters && !storedSorters) return
+    localStorage.setItem('search', '')
+    localStorage.setItem('sorter', '')
+}
+
+export function setFirstVisit(){
+    const valueVisit = localStorage.getItem('isFirstVisit')
+    return !valueVisit && localStorage.setItem('isFirstVisit', 'true')
+}
+
+export function updateFirstVisit() {
+    const currVisitState = localStorage.getItem('isFirstVisit')
+    return currVisitState === 'true' && localStorage.setItem('isFirstVisit', 'false')
 }

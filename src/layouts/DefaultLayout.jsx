@@ -3,11 +3,14 @@ import HeaderComp from "../components/Header/HeaderComp";
 import FooterComp from "../components/Footer/FooterComp";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { setFirstVisit } from "../utils/localStorage";
+import Toast from "../components/Toast/Toast";
 
 const indexProductsAPI = 'http://localhost:3000/products/'
 
 export default function DefaultLayout() {
-
+    setFirstVisit()
+    const [isFirstVisit, setIsFirstVisit] = useState(JSON.parse(localStorage.getItem('isFirstVisit')))
     // state for the cart from localStorage
     const [cartProducts, setCartProducts] = useState(() => {
         const stored = localStorage.getItem('cart');
@@ -50,6 +53,7 @@ export default function DefaultLayout() {
 
     return (
         <>
+            {isFirstVisit && <Toast />}
             <HeaderComp
                 indexProducts={indexProducts}
                 wishlistProducts={wishlistProducts}
