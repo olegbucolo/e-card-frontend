@@ -69,7 +69,7 @@ export default function DetailPage() {
                         <div>
                             <p className=''>Descrizione: {singleProduct.description} </p>
 
-                            <p className='detail-text'>Prezzo: {singleProduct.price}</p>
+                            <p className='detail-text'>Prezzo: {singleProduct.price}€</p>
                         </div>
 
 
