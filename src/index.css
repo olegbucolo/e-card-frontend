@@ -465,7 +465,6 @@ button {
     font-size: 0.95rem;
     font-weight: 600;
     text-align: center;
-    cursor: pointer;
 }
 
 .btn-checkout-page:hover {
@@ -879,4 +878,92 @@ input:-webkit-autofill:active {
         width: 28px;
         height: 28px;
     }
+}
+
+/* RESPONSIVE CHECKOUT */
+
+@media (max-width: 768px) {
+
+  .main-container-checkout {
+    padding: 10px;
+    flex-direction: column;
+  }
+
+  .p-container-checkout {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* lista prodotti */
+  .order-container-checkout-left {
+    width: 100%;
+  }
+
+  .checkout-product-card {
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .checkout-product-card .card {
+    width: 100px !important;
+  }
+
+  .product-detail-checkout h3 {
+    font-size: 18px;
+  }
+
+  .product-detail-checkout p {
+    font-size: 14px;
+  }
+
+  /* riepilogo prezzo */
+  .costo-spedizione {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .btn-checkout-page {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center !important; 
+  }
+
+  /* bottone pagamento */
+  .payment-method-container {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .pay-method {
+    width: 100%;
+  }
+
+  .pay-method a {
+    display: block;
+    padding: 10px;
+  }
+
+  /* FORM */
+
+  .checkout-container {
+    width: 100%;
+  }
+
+  .checkout-form {
+    width: 100% !important;
+    padding: 20px;
+  }
+
+  .checkout-form input {
+    font-size: 14px;
+  }
+
+  .checkout-form label {
+    font-size: 14px;
+  }
+
 }
