@@ -201,7 +201,7 @@ function CheckoutPage() {
 
                     <div className="container my-5">
                         <p className="costo-spedizione">Costo di Spedizione: € {orderShippingCost}</p>
-                        <button className="btn-checkout-page">Prezzo Totale: €{totalPrice}</button>
+                        <p className="btn-checkout-page">Prezzo Totale: €{totalPrice}.toFixed(2)</p>
                     </div>
 
                     {/* Metodo di pagamento */}
