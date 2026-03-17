@@ -6,7 +6,6 @@ import { IoClose } from "react-icons/io5";
 import { LuHeart, LuMenu } from "react-icons/lu";
 import { FiShoppingCart } from "react-icons/fi";
 
-
 import { addSearchToLocalStorage, addSorterToLocalStorage, getSorterFromLocalStorage, resetSortFiltersInLocalStorage } from '../../utils/localStorage';
 
 export default function HeaderComp({ indexProducts, wishlistProducts, cartProducts }) {
@@ -115,7 +114,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                         <div
                                             className="p-2 search-dropdown bg-scroll bg-light box-shadow-light border-0"
                                         >
-                                            {indexProducts?.filter(p => p.title.toLowerCase().includes(query.toLowerCase())).map(p => (
+                                            {query.length > 3 &&  indexProducts?.filter(p => p.title.toLowerCase().includes(query.toLowerCase())).map(p => (
                                                 <div
                                                     key={p.id}
                                                     className="p-2 hover-card bg-light d-flex border-bottom"

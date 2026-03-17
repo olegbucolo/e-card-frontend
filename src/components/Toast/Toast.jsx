@@ -10,7 +10,6 @@ export default function Toast() {
             <div className="position-relative h-100 w-100">
                 <div className=" position-absolute w-100 h-100 top-50 start-50 translate-middle show" >
 
-
                     <div className={`modal fade ${modalOpen && 'show d-block'}`} >
                         <div className="modal-dialog">
                             <div className="modal-content">
@@ -46,7 +45,6 @@ export default function Toast() {
                         </div>
                     </div>
                 </div>
-
 
             </div>
 
