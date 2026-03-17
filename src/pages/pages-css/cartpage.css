@@ -9,8 +9,7 @@
 }
 
 .cart-title-text {
-    font-family: cursive;
-    font-family: 'Montserrat', sans-serif;
+    font-family: Arial;
     font-weight: 600;
     font-size: 2rem;
     letter-spacing: 1px;
@@ -49,13 +48,6 @@
     background-color: rgba(0, 0, 0, 0.4);
     border-radius: 10px;
 }
-
-
-
-
-
-
-
 
 
 .price-box {
