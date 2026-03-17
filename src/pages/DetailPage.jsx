@@ -3,7 +3,6 @@ import { addToLocalStorage, isPresentInStorage, removeFromLocalStorage } from ".
 import { useOutletContext, useParams } from "react-router-dom";
 import { LuHeart } from "react-icons/lu";
 import { FaHeart } from "react-icons/fa6";
-import { FiShoppingCart } from "react-icons/fi";
 
 
 export default function DetailPage() {
@@ -41,9 +40,9 @@ export default function DetailPage() {
 
 
             <div className="container margin-card">
-                <div className="d-flex bg-detail-color">
+                <div className="d-flex flex-column flex-md-row responsive mt-3 mb-md-0">
 
-                    <div className="l-box-d">
+                    <div className="l-box-d mb-3 mb-md-0">
                         <img src={singleProduct.image} alt="" className="img-dectail-page" />
 
                     </div>
@@ -52,7 +51,7 @@ export default function DetailPage() {
 
                         <h4>{singleProduct.title}</h4>
 
-                        {/* <p>Disponibilità: {availability}</p> */}
+                        
 
                         {singleProduct.is_featured
                             ? <div>
@@ -94,7 +93,7 @@ export default function DetailPage() {
                                 disabled={singleProduct.is_featured === 0}
                                 onClick={() => addToLocalStorage(setCartProducts, singleProduct.id, 1)}
                             >
-                                {singleProduct.is_featured ? "Add to cart" : "Not avaible"}
+                                {singleProduct.is_featured ? "Aggiungi al carrello" : "Non disponibile"}
                             </button>
                         </div>
 
