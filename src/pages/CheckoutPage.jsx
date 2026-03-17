@@ -150,7 +150,7 @@ function CheckoutPage() {
     console.log(orderShippingCost);
 
 
-    useEffect(() => {
+   
         const forms = document.querySelectorAll(".needs-validation");
 
         Array.from(forms).forEach(form => {
@@ -162,57 +162,54 @@ function CheckoutPage() {
                 form.classList.add("was-validated");
             });
         });
-    }, []);
 
     return (
         <>
             <div className="main-container-checkout">
-                <div className="container pt-3">
-                    <div className="p-container-checkout pt-3">
-                        <div className="order-containercheckout-left">
+                <div className="p-container-checkout pt-3">
+                    <div className="order-container-checkout-left">
 
-                            {
-                                cartProducts.map(item => {
-                                    const product = indexProducts.find(
-                                        p => p.id == item.id
-                                    )
-                                    if (!product) return null
+                        {
+                            cartProducts.map(item => {
+                                const product = indexProducts.find(
+                                    p => p.id == item.id
+                                )
+                                if (!product) return null
 
-                                    return (
+                                return (
 
-                                        <div className="d-flex checkout-product-card my-5" key={item.id}>
+                                    <div className="d-flex checkout-product-card my-5" key={item.id}>
 
-                                            <div className="card" style={{ width: "10rem" }}>
+                                        <div className="card" style={{ width: "10rem" }}>
 
-                                                <img src={product.image} className="card-img-top" alt="" />
+                                            <img src={product.image} className="card-img-top" alt="" />
 
-                                            </div>
-
-                                            <div className="product-detail-checkout">
-                                                <h3>{product.title}</h3>
-                                                <p className="avaible-text is-disponible">{product.is_featured === 1 ? "Disponibile" : "Non Disponibile"}</p>
-                                                <p>Quantità: {item.quantity}</p>
-                                                <p>Prezzo: {product.price}</p>
-                                            </div>
                                         </div>
-                                    )
-                                }
+
+                                        <div className="product-detail-checkout">
+                                            <h3>{product.title}</h3>
+                                            <p className="avaible-text is-disponible">{product.is_featured === 1 ? "Disponibile" : "Non Disponibile"}</p>
+                                            <p>Quantità: {item.quantity}</p>
+                                            <p>Prezzo: {product.price}</p>
+                                        </div>
+                                    </div>
                                 )
                             }
-                        </div>
-
-                        <div className="price-box container my-5">
-                            <p>Costo di Spedizione: € {orderShippingCost}</p>
-                            <button className="btn-checkout-page">Prezzo Totale: €{totalPrice}</button>
-                        </div>
-
+                            )
+                        }
                     </div>
-                </div>
 
-                <div className="mt-3 payment-method-container d-flex justify-content-around">
-                    <button className="w-90 h-100">
-                        <Link to="/addpaymentmethod">Aggiungi metodo di pagamento</Link>
-                    </button>
+                    <div className="container my-5">
+                        <p className="costo-spedizione">Costo di Spedizione: € {orderShippingCost}</p>
+                        <button className="btn-checkout-page">Prezzo Totale: €{totalPrice}</button>
+                    </div>
+
+                    {/* Metodo di pagamento */}
+                    <div className="mt-3 payment-method-container d-flex justify-content-around">
+                        <button className="w-90 h-100 pay-method">
+                            <Link to="/addpaymentmethod">Aggiungi metodo di pagamento</Link>
+                        </button>
+                    </div>
                 </div>
 
                 <div className="checkout-container d-flex justify-content-around">
