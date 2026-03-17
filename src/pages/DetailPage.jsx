@@ -54,6 +54,10 @@ export default function DetailPage() {
                         <div>
                             <p className=''>Descrizione: {singleProduct.description} </p>
 
+                            {singleProduct.is_featured !== 0 && (
+                                <p className="">Quantità disponibile: {singleProduct.quantity}</p>
+                            )}
+
                             <p className='detail-text'>Prezzo: {singleProduct.price}€</p>
                         </div>
 
@@ -85,20 +89,14 @@ export default function DetailPage() {
                             )}
 
 
-                            {singleProduct.is_featured
-                                ? <div>
-                                    <p className="product-disponible">Disponibile</p>
-                                    <p className="">Quantita' disponibile: {singleProduct.quantity}</p>
-
-                                </div>
-                                : <div>
+                            {singleProduct.is_featured === 0 && (
+                                <div>
                                     <p className="product-not-disponible">Non Disponibile</p>
-
-
                                 </div>
-                            }
+                            )}
 
                         </div>
+
 
 
                     </div>
