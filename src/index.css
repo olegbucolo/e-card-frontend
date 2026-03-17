@@ -44,6 +44,10 @@ button {
 .hero {
     padding: 110px 0 60px;
     background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+    background-image: url(./imgs/boolshop-hero-bg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hero-content {
