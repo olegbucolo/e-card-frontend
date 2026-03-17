@@ -25,22 +25,10 @@ export default function Toast() {
                                         data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <div className="modal-body">
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At molestiae ullam ratione eos esse accusantium?</p>
+                                <div className="modal-body text-center">
+                                    <p>Non perderti le ultime carte in arrivo! <br/>Iscriviti e ti aggiorniamo noi!</p>
                                 </div>
 
-                                {/* <div class="col-md-4 w-100 p-3 pt-0">
-                                    <form class="row g-3 needs-validation" novalidate>
-                                    <label for="validationCustomUsername" class="form-label">Email:</label>
-                                    <div class="input-group has-validation">
-                                        <input type="text" class="form-control" placeholder='example@gmail.com' id="validationCustomUsername" aria-describedby="inputGroupPrepend" required />
-                                        <div class="invalid-feedback">
-                                            Please choose a username.
-                                        </div>
-                                        <span class="input-group-text" id="inputGroupPrepend">@gmail.com</span>
-                                    </div>
-                                    </form>
-                                </div> */}
                                 <div className="modal-footer">
                                     <form
                                         onSubmit={(e) => {
@@ -55,7 +43,6 @@ export default function Toast() {
                                                 setModalOpen(prev => !prev);
                                             }
 
-                                            // form.classList.add("was-validated");
                                         }}
                                         class="row g-3 needs-validation"
                                         novalidate>
