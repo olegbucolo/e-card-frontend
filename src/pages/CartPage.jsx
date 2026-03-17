@@ -38,7 +38,7 @@ export default function CartPage() {
     return (
         <>
             <div className="cart-page-title">
-                <h2 className="cart-title-text">Prodotti nel carrello</h2>
+                <h2 className="cart-title-text container">Prodotti nel carrello</h2>
             </div>
 
 
