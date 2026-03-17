@@ -400,6 +400,7 @@ button {
     font-size: 0.95rem;
     font-weight: 600;
     text-align: center;
+    cursor: pointer;
 }
 
 .btn-checkout-page:hover {
@@ -413,6 +414,15 @@ button {
     border-color: rgba(25, 135, 84, 0.3);
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.1);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px white inset; 
+    -webkit-text-fill-color: #212529;
+    transition: background-color 5000s ease-in-out;
 }
 
 .input-error {
