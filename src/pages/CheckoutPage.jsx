@@ -44,7 +44,7 @@ function CheckoutPage() {
     }, [orderShippingCost])
 
     const [order, setOrder] = useState({
-        orderSlug: `ordine-pokemon-${Number(newOrderId) + 1}`,
+        orderSlug: `ordine-pokemon-`,
         customerName: "",
         customerSurname: "",
         customerMail: "",
@@ -147,7 +147,7 @@ function CheckoutPage() {
     console.log(newOrderId);
 
 
-    console.log(orderShippingCost);
+    const stored = JSON.parse(localStorage.getItem('creditCardData')) || {};
 
 
 
@@ -205,9 +205,12 @@ function CheckoutPage() {
                     </div>
 
                     {/* Metodo di pagamento */}
-                    <div className="mt-3 payment-method-container d-flex justify-content-around">
-                        <button className="w-90 h-100 pay-method">
-                            <Link to="/addpaymentmethod">Aggiungi metodo di pagamento</Link>
+                    <div className="mt-3">
+                        <p>{stored.cardNumber}</p><p>{stored.cardExpiry}</p>
+                    </div>
+                    <div className="mt-4 payment-method-container d-flex justify-content-around">
+                        <button className="w-90 h-70 pay-method">
+                            <Link to="/add_payment_method_page">Aggiungi metodo di pagamento</Link>
                         </button>
                     </div>
                 </div>
@@ -320,6 +323,7 @@ function CheckoutPage() {
             </div>
         </>
     )
+
 
 }
 
