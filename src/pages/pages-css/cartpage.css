@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+
 .cart-page-title {
     padding-top: 60px;
     background-color: #f6f9fb;
@@ -7,7 +10,13 @@
 
 .cart-title-text {
     font-family: cursive;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    color: #222;
 }
+
 
 .order-container-left {
     width: 60%;
