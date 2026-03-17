@@ -190,7 +190,7 @@ function CheckoutPage() {
                                             <h3>{product.title}</h3>
                                             <p className="avaible-text is-disponible">{product.is_featured === 1 ? "Disponibile" : "Non Disponibile"}</p>
                                             <p>Quantità: {item.quantity}</p>
-                                            <p className="fw-bold">Prezzo: {product.price}</p>
+                                            <p className="fw-bold">Prezzo: {(product.price * item.quantity).toFixed(2)}</p>
                                         </div>
                                     </div>
                                 )
