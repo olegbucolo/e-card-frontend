@@ -276,7 +276,7 @@ function CheckoutPage() {
                         {/* campo numero telefono utente */}
                         <div className="mb-3">
                             <label htmlFor="phone" className="form-label d-flex align-self-start">Telefono: </label>
-                            <input name="phone" type="tel" pattern="[0-9]{10}" className={submitted && !order.phone ? "input-error form-control" : "form-control"} id="phone" placeholder='Inserisci il tuo numero di telefono: ' value={order.phone} onChange={handleChange} />
+                            <input name="phone" type="tel" pattern="^\+?[0-9]{8,15}$" className={submitted && !order.phone ? "input-error form-control" : "form-control"} id="phone" placeholder='Inserisci il tuo numero di telefono: ' value={order.phone} onChange={handleChange} />
                         </div>
 
                         {/* campo nome via utente */}
