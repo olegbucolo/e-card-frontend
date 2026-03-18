@@ -176,7 +176,7 @@ function CheckoutPage() {
     return (
         <>
             <div className="main-container-checkout">
-                <div className="p-container-checkout pt-3">
+                <div className="p-container-checkout pt-3 mh-100vh">
 
 
                     <section className="free-shipping-banner">
@@ -200,7 +200,7 @@ function CheckoutPage() {
 
                                 return (
 
-                                    <div className="d-flex checkout-product-card my-5" key={item.id}>
+                                    <div className="d-flex checkout-product-card mb-2" key={item.id}>
 
                                         <div className="card" style={{ width: "10rem" }}>
 
@@ -221,13 +221,10 @@ function CheckoutPage() {
                         }
                     </div>
 
-                    <div className="container my-5">
-                        <p className="costo-spedizione">Costo di Spedizione: € {orderShippingCost}</p>
-                        <p className="btn-checkout-page max-min-checkout">Prezzo Totale: €{totalPrice.toFixed(2)}</p>
-                    </div>
+                    <p className="container btn-checkout-page max-min-checkout mb-0">Prezzo Totale: €{totalPrice.toFixed(2)}</p>
 
                     {/* Metodo di pagamento */}
-                    <div className="mt-3 w-100 d-flex justify-content-between btn-checkout-page btn-card-register">
+                    <div className="container mt-3 d-flex justify-content-between btn-checkout-page btn-card-register mb-0">
 
 
                         <div className="w-20">
@@ -244,8 +241,8 @@ function CheckoutPage() {
 
 
                     </div>
-                    <div className="mt-4 payment-method-container d-flex justify-content-around">
-                        <Link to="/add_payment_method_page"><button className="w-90 h-70 pay-method">
+                    <div className="mt-4 payment-method-container  d-flex justify-content-around container p-0 ">
+                        <Link className="w-100" to="/add_payment_method_page"><button className="w-100 pay-method bg-primary text-light py-3">
                             Aggiungi metodo di pagamento
                         </button>
                         </Link>
@@ -368,7 +365,7 @@ function CheckoutPage() {
                             </div>
                         </div>
 
-                        <button type="submit" className="pay-method">Procedi con l'ordine</button>
+                        <button type="submit" className="pay-method bg-success text-light py-3">Procedi con l'ordine</button>
                     </form>
                 </div>
             </div>
