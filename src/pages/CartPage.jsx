@@ -11,8 +11,17 @@ import "../pages/pages-css/cartpage.css"
 
 export default function CartPage() {
 
-
     const { indexProducts, cartProducts, setCartProducts } = useOutletContext()
+
+
+    const removeItemCompletely = (id) => {
+        setCartProducts(prev => {
+            const updated = prev.filter(item => item.id !== id);
+            localStorage.setItem("cart", JSON.stringify(updated));
+            return updated;
+        });
+    }
+
 
     const navigate = useNavigate();
 
@@ -92,6 +101,14 @@ export default function CartPage() {
                                                     className=" btn btn-outline-success quantity-btn">
                                                     <FaPlus />
                                                 </button>
+
+                                                <button
+                                                    className="btn btn-danger mt-2"
+                                                    onClick={() => removeItemCompletely(item.id)}
+                                                >
+                                                    Rimuovi
+                                                </button>
+                                                
                                             </div>
 
                                             <p className="fw-bold fs-5">{(product.price * item.quantity).toFixed(2)}€</p>
