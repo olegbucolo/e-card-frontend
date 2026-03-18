@@ -254,7 +254,7 @@ function CheckoutPage() {
                 </div>
 
                 <div className="checkout-container d-flex justify-content-around">
-                    <form onSubmit={handleSubmit} className="checkout-form w-70 mt-5 py-4 px-3">
+                    <form onSubmit={handleSubmit} className="checkout-form w-70 mt-5 py-4 px-3 d-block d-sm-grid">
 
                         {/* campo nome utente */}
                         <div className="mb-3">
