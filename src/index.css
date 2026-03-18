@@ -122,6 +122,30 @@ button {
     color: #198754;
 }
 
+/* FREE SHIPPING */
+.free-shipping-banner {
+    padding: 22px 0 8px;
+}
+
+.free-shipping-box {
+    background: linear-gradient(135deg, rgba(25, 135, 84, 0.12), rgba(25, 135, 84, 0.06));
+    color: #198754;
+    border: 1px solid rgba(25, 135, 84, 0.15);
+    border-radius: 18px;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.shipping-icon {
+    font-size: 1.2rem;
+}
+
 /* CATEGORIES */
 .section-title {
     text-align: center;
