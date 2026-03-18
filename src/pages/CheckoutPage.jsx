@@ -221,7 +221,7 @@ function CheckoutPage() {
                     </div>
 
                     {/* Metodo di pagamento */}
-                    <div className="mt-3 btn-checkout-page w-100 d-flex justify-content-between pay-method btn-card-register">
+                    <div className="mt-3 w-100 d-flex justify-content-between btn-checkout-page btn-card-register">
 
 
                         <div className="w-20">
@@ -349,7 +349,7 @@ function CheckoutPage() {
                             </div>
                         </div>
 
-                        <button type="submit" className="btn-checkout-page pay-method">Procedi con l'ordine</button>
+                        <button type="submit" className="pay-method">Procedi con l'ordine</button>
                     </form>
                 </div>
             </div>
