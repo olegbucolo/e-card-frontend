@@ -6,6 +6,7 @@ import { addToLocalStorage, removeFromLocalStorage } from "../utils/localStorage
 import { FaPlus } from "react-icons/fa6";
 import { FiMinus } from "react-icons/fi";
 import { IoTrashBinSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 import "../pages/pages-css/cartpage.css"
 
@@ -128,10 +129,12 @@ export default function CartPage() {
                                     if (!product) return null
 
                                     return (
-                                        <div className="d-flex border-cart mb-5 responsive-card" key={item.id}>
 
+                                        <div className="d-flex border-cart mb-5 responsive-card" key={item.id}>
                                             <div className="card" style={{ width: "10rem" }}>
-                                                <img src={product.image} className="card-img-top" alt="" />
+                                                <Link to={`/detailpage/${product.slug}`}>
+                                                    <img src={product.image} className="card-img-top" alt="" />
+                                                </Link>
                                             </div>
 
                                             <div className="product-detail">
@@ -172,6 +175,7 @@ export default function CartPage() {
                                             </div>
 
                                         </div>
+
                                     )
                                 })
                             )
