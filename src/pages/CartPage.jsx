@@ -102,9 +102,9 @@ export default function CartPage() {
                 <h2 className="cart-title-text container">Prodotti nel carrello</h2>
             </div >
 
-                <div className="free-shipping-box container mb-2">
-                    🚚 Spedizione gratuita per ordini superiori a 50€
-                </div>
+            <div className="free-shipping-box container mb-2">
+                🚚 Spedizione gratuita per ordini superiori a 50€
+            </div>
 
             {/* CONTAINER CARD E DETTAGLI PRODOTTI NEL CARRELLO */}
 
