@@ -111,7 +111,7 @@ export default function CartPage() {
                                 if (!product) return null
                                 return (
 
-                                    <div className="d-flex border-cart mb-5" key={item.id}>
+                                    <div className="d-flex border-cart mb-5 " key={item.id}>
 
                                         <div className="card" style={{ width: "10rem" }}>
 
@@ -144,18 +144,27 @@ export default function CartPage() {
                                                     <FaPlus />
                                                 </button>
 
-                                                <button
-                                                    className="btn btn-danger click-effect bin-padding"
-                                                    onClick={() => removeItemCompletely(item.id)}
-                                                >
-                                                    <IoTrashBinSharp className="bin-size"/>
-                                                </button>
+
 
                                             </div>
 
                                             <p className="fw-bold fs-5">{(product.price * item.quantity).toFixed(2)}€</p>
 
                                         </div>
+
+
+                                        <div className="bin-container">
+                                            <button
+                                                className="btn btn-danger click-effect bin-padding"
+                                                onClick={() => removeItemCompletely(item.id)}
+                                            >
+                                                <IoTrashBinSharp className="bin-size" />
+                                            </button>
+                                        </div>
+
+
+
+
                                     </div>
                                 )
                             }
