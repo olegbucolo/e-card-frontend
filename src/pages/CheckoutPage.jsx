@@ -251,19 +251,19 @@ function CheckoutPage() {
 
                         {/* campo nome utente */}
                         <div className="mb-3">
-                            <label htmlFor="customer-name" className="form-label d-flex align-self-start">Nome: * </label>
-                            <input name="customerName" type="text" minlength="2" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.customerName ? "input-error form-control" : "form-control"} id="customer-name" placeholder='inserisci il tuo nome: ' value={order.customerName} onChange={handleChange} />
+                            <label htmlFor="customer-name" className="form-label d-flex align-self-start">Nome: </label>
+                            <input name="customerName" type="text" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.customerName ? "input-error form-control" : "form-control"} id="customer-name" placeholder='inserisci il tuo nome: ' value={order.customerName} onChange={handleChange} />
                         </div>
 
                         {/* campo cognome utente */}
                         <div className="mb-3">
-                            <label htmlFor="customer-surname" className="form-label d-flex align-self-start">Cognome: * </label>
-                            <input name="customerSurname" type="text" minlength="2" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.customerSurname ? "input-error form-control" : "form-control"} id="customer-surname" placeholder='inserisci il tuo cognome: ' value={order.customerSurname} onChange={handleChange} />
+                            <label htmlFor="customer-surname" className="form-label d-flex align-self-start">Cognome: </label>
+                            <input name="customerSurname" type="text" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.customerSurname ? "input-error form-control" : "form-control"} id="customer-surname" placeholder='inserisci il tuo cognome: ' value={order.customerSurname} onChange={handleChange} />
                         </div>
 
                         {/* campo mail */}
                         <div className="mb-3">
-                            <label htmlFor="customer-mail" className="form-label d-flex align-self-start">Email: * </label>
+                            <label htmlFor="customer-mail" className="form-label d-flex align-self-start">Email: </label>
                             <input name="customerMail" type="email" className={submitted && !order.customerMail ? "input-error form-control" : "form-control"} id="customer-mail" placeholder='Inserisci la tua Email: ' value={order.customerMail} onChange={handleChange} />
                         </div>
 
@@ -275,7 +275,7 @@ function CheckoutPage() {
 
                         {/* campo nome via utente */}
                         <div className="mb-3">
-                            <label htmlFor="street-name" className="form-label d-flex align-self-start">Residenza: * </label>
+                            <label htmlFor="street-name" className="form-label d-flex align-self-start">Residenza: </label>
                             <input name="streetName" type="text" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.streetName ? "input-error form-control" : "form-control"} id="street-name" placeholder='Inserisci il tuo indirizzo di residenza: ' value={order.streetName} onChange={handleChange} />
                         </div>
 
@@ -287,7 +287,7 @@ function CheckoutPage() {
 
                         {/* campo nome città utente */}
                         <div className="mb-3">
-                            <label htmlFor="city" className="form-label d-flex align-self-start">Città di residenza: *</label>
+                            <label htmlFor="city" className="form-label d-flex align-self-start">Città di residenza: </label>
                             <input name="city" type="text" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.city ? "input-error form-control" : "form-control"} id="city" placeholder='Inserisci la tua città di residenza: ' value={order.city} onChange={handleChange} />
                         </div>
 
