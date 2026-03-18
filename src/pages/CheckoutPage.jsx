@@ -111,7 +111,7 @@ function CheckoutPage() {
         }).filter(p => p !== null)
 
         try {
-
+            console.log("ORDINE INVIATO:", order)
             const res = await axios.post(endpoint, order)
 
             const orderId = res.data.id
