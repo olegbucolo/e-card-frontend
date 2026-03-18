@@ -124,7 +124,7 @@ export default function CartPage() {
                                 if (!product) return null
                                 return (
 
-                                    <div className="d-flex border-cart mb-5 " key={item.id}>
+                                    <div className="d-flex border-cart mb-5 responsive-card" key={item.id}>
 
                                         <div className="card" style={{ width: "10rem" }}>
 
