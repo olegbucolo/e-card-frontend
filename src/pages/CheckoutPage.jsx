@@ -168,8 +168,20 @@ function CheckoutPage() {
         <>
             <div className="main-container-checkout">
                 <div className="p-container-checkout pt-3">
+
+
+<section className="free-shipping-banner">
+                <div className="container">
+                    <div className="free-shipping-box">
+                        🚚 Spedizione gratuita per ordini superiori a 50€
+                    </div>
+                </div>
+            </section>
+
+
                     <div className="order-container-checkout-left">
 
+                        
                         {
                             cartProducts.map(item => {
                                 const product = indexProducts.find(
