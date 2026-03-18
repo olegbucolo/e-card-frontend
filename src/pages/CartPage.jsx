@@ -36,11 +36,11 @@ export default function CartPage() {
         return total + (product.price * item.quantity);
     }, 0)
 
-    if (cartTotalPrice > 0.000001 && cartTotalPrice < 50) {
-        orderShippingCost = 5;
+    if (cartTotalPrice > 50) {
+        orderShippingCost = 0;
         totalPrice = cartTotalPrice + orderShippingCost;
     } else {
-        orderShippingCost = 0;
+        orderShippingCost = 5;
         totalPrice = cartTotalPrice + orderShippingCost;
     }
 
