@@ -1,8 +1,11 @@
+import './WishListPage.css'
 import { useOutletContext } from "react-router-dom";
 import { addToLocalStorage, removeFromLocalStorage } from "../utils/localStorage";
 import { FiShoppingCart } from "react-icons/fi";
 
 import "../pages/pages-css/cartpage.css"
+import { FaCartPlus } from 'react-icons/fa6';
+import { BsCartDashFill } from "react-icons/bs";
 
 export default function WishlistPage() {
 
@@ -33,14 +36,14 @@ export default function WishlistPage() {
 
                             </div>
 
-                            <div className="product-detail d-flex flex-grow-1 flex-column">
+                            <div className="detail-card-wishlist d-flex flex-grow-1 flex-column ms-4">
 
 
                                 <h3>{product.title}</h3>
 
                                 {product.is_featured
-                                    ? <div>
-                                        <button className="is-disponible">Disponibile</button>
+                                    ? <div className='mb-2'>
+                                        <button className="is-available">Disponibile</button>
                                         <p className="">Quantita' disponibile: {product.quantity}</p>
 
                                     </div>
@@ -57,15 +60,19 @@ export default function WishlistPage() {
 
 
                                     <button onClick={() => removeFromLocalStorage(setWishlistProducts, item.id, 1)}
-                                        className="btn-remove hover-button btn">
+                                        className="hover-button btn btn-danger me-2 d-flex
+                                                    justify-content-center align-items-center">
                                         Rimuovi
+                                        <BsCartDashFill className='ms-1'/>
                                     </button>
 
                                     {product.is_featured ? <button
-                                        className="btn-cart hover-button btn btn-success me-2 d-flex justify-content-center align-items-center"
-                                        onClick={() => product.is_featured && addToLocalStorage(setCartProducts, product.id)}>
+                                        className="hover-button btn btn-success me-2 d-flex
+                                                    justify-content-center align-items-center"
+                                        onClick={() => product.is_featured
+                                            && addToLocalStorage(setCartProducts, product.id)}>
                                         Carrello
-                                        <FiShoppingCart className='ms-1' />
+                                        <FaCartPlus className='ms-1' />
                                     </button> : <div></div>}
                                 </div>
 

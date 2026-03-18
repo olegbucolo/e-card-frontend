@@ -1,0 +1,13 @@
+.detail-card-wishlist {}
+
+.is-available {
+    padding: 0 24px;
+    border: none;
+    border-radius: 999px;
+    background: rgba(25, 135, 84, 0.1);
+    color: #198754;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    margin: .5rem 0 ;
+}
