@@ -70,6 +70,14 @@ export default function HomePage() {
                 </div>
             </section>
 
+            <section className="free-shipping-banner">
+                <div className="container">
+                    <div className="free-shipping-box">
+                        🚚 Spedizione gratuita per ordini superiori a 50€
+                    </div>
+                </div>
+            </section>
+
             <section className="categories">
                 <div className="container">
                     <h2 className="section-title">Categorie</h2>
