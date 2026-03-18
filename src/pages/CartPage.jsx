@@ -36,13 +36,15 @@ export default function CartPage() {
         return total + (product.price * item.quantity);
     }, 0)
 
-    if (cartTotalPrice > 50) {
+    if (cartProducts.length === 0) {
         orderShippingCost = 0;
-        totalPrice = cartTotalPrice + orderShippingCost;
+    } else if (cartTotalPrice > 50) {
+        orderShippingCost = 0;
     } else {
         orderShippingCost = 5;
-        totalPrice = cartTotalPrice + orderShippingCost;
     }
+
+    totalPrice = cartTotalPrice + orderShippingCost;
 
     function clearCart() {
         setCartProducts([]);
@@ -102,9 +104,9 @@ export default function CartPage() {
                 <h2 className="cart-title-text container">Prodotti nel carrello</h2>
             </div >
 
-                <div className="free-shipping-box container mb-2">
-                    🚚 Spedizione gratuita per ordini superiori a 50€
-                </div>
+            <div className="free-shipping-box container mb-2">
+                🚚 Spedizione gratuita per ordini superiori a 50€
+            </div>
 
             {/* CONTAINER CARD E DETTAGLI PRODOTTI NEL CARRELLO */}
 
@@ -114,81 +116,84 @@ export default function CartPage() {
                     <div className="order-container-left">
 
                         {
-                            cartProducts.map(item => {
+                            cartProducts.length === 0 ? (
+                                <p className="empty-cart-text">Il tuo carrello è vuoto</p>
+                            ) : (
+                                cartProducts.map(item => {
 
-                                const product = indexProducts.find(
-                                    p => p.id == item.id
-                                )
+                                    const product = indexProducts.find(
+                                        p => p.id == item.id
+                                    )
 
+                                    if (!product) return null
 
-                                if (!product) return null
-                                return (
+                                    return (
+                                        <div className="d-flex border-cart mb-5 responsive-card" key={item.id}>
 
-                                    <div className="d-flex border-cart mb-5 responsive-card" key={item.id}>
-
-                                        <div className="card" style={{ width: "10rem" }}>
-
-                                            <img src={product.image} className="card-img-top" alt="" />
-
-                                        </div>
-
-                                        <div className="product-detail">
-
-
-                                            <h3 className="">{product.title}</h3>
-
-
-
-
-
-                                            <div className="d-flex">
-
-                                                <p className="">Quantità:</p>
-
-                                                <button onClick={() => removeFromLocalStorage(setCartProducts, item.id, 1)}
-                                                    className="btn btn-outline-danger quantity-btn">
-                                                    <FiMinus />
-                                                </button>
-
-                                                <p className=""> {item.quantity}</p>
-
-                                                <button onClick={() => addToLocalStorage(setCartProducts, item.id, 1)}
-                                                    className=" btn btn-outline-success quantity-btn">
-                                                    <FaPlus />
-                                                </button>
-
-
-
+                                            <div className="card" style={{ width: "10rem" }}>
+                                                <img src={product.image} className="card-img-top" alt="" />
                                             </div>
 
-                                            <p className="fw-bold fs-5">{(product.price * item.quantity).toFixed(2)}€</p>
+                                            <div className="product-detail">
+                                                <h3>{product.title}</h3>
+
+                                                <div className="d-flex">
+                                                    <p>Quantità:</p>
+
+                                                    <button
+                                                        onClick={() => removeFromLocalStorage(setCartProducts, item.id, 1)}
+                                                        className="btn btn-outline-danger quantity-btn"
+                                                    >
+                                                        <FiMinus />
+                                                    </button>
+
+                                                    <p>{item.quantity}</p>
+
+                                                    <button
+                                                        onClick={() => addToLocalStorage(setCartProducts, item.id, 1)}
+                                                        className="btn btn-outline-success quantity-btn"
+                                                    >
+                                                        <FaPlus />
+                                                    </button>
+                                                </div>
+
+                                                <p className="fw-bold fs-5">
+                                                    {(product.price * item.quantity).toFixed(2)}€
+                                                </p>
+                                            </div>
+
+                                            <div className="bin-container">
+                                                <button
+                                                    className="btn btn-danger click-effect bin-padding"
+                                                    onClick={() => removeItemCompletely(item.id)}
+                                                >
+                                                    <IoTrashBinSharp className="bin-size" />
+                                                </button>
+                                            </div>
 
                                         </div>
-
-
-                                        <div className="bin-container">
-                                            <button
-                                                className="btn btn-danger click-effect bin-padding"
-                                                onClick={() => removeItemCompletely(item.id)}
-                                            >
-                                                <IoTrashBinSharp className="bin-size" />
-                                            </button>
-                                        </div>
-
-
-
-
-                                    </div>
-                                )
-                            }
+                                    )
+                                })
                             )
-
                         }
 
                     </div>
 
                     <div className="price-box container">
-                        <span className=""> <p className="fw-bold mt-2 text-light">Prezzo totale: {totalPrice.toFixed(2)}€</p> </span>
+
+                        <p className="text-light text-bg">
+                            Subtotale: {cartTotalPrice.toFixed(2)}€
+                        </p>
+
+                        {orderShippingCost > 0 && (
+                            <p className="text-light text-bg">
+                                Spedizione: {orderShippingCost.toFixed(2)}€
+                            </p>
+                        )}
+
+                        <p className="fw-bold mt-2 text-light text-bg">
+                            Totale: {totalPrice.toFixed(2)}€
+                        </p>
 
 
 
