@@ -36,11 +36,11 @@ export default function CartPage() {
         return total + (product.price * item.quantity);
     }, 0)
 
-    if (cartTotalPrice > 50) {
-        orderShippingCost = 0;
+    if (cartTotalPrice > 0.000001 && cartTotalPrice < 50) {
+        orderShippingCost = 5;
         totalPrice = cartTotalPrice + orderShippingCost;
     } else {
-        orderShippingCost = 5;
+        orderShippingCost = 0;
         totalPrice = cartTotalPrice + orderShippingCost;
     }
 
@@ -102,9 +102,9 @@ export default function CartPage() {
                 <h2 className="cart-title-text container">Prodotti nel carrello</h2>
             </div >
 
-                <div className="free-shipping-box container mb-2">
-                    🚚 Spedizione gratuita per ordini superiori a 50€
-                </div>
+            <div className="free-shipping-box container mb-2">
+                🚚 Spedizione gratuita per ordini superiori a 50€
+            </div>
 
             {/* CONTAINER CARD E DETTAGLI PRODOTTI NEL CARRELLO */}
 
