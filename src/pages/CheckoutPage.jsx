@@ -369,7 +369,7 @@ function CheckoutPage() {
                             </div>
                         </div>
 
-                        <button type="submit" className="pay-method bg-success text-light py-3">Procedi con l'ordine</button>
+                        <button type="submit" className="pay-method bg-success text-light py-3 grid-col-span-2">Procedi con l'ordine</button>
                     </form>
                 </div>
             </div>

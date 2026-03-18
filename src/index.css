@@ -1005,10 +1005,6 @@ input:-webkit-autofill:active {
     }
 
     /* bottone pagamento */
-    .payment-method-container {
-        width: 100%;
-        margin-top: 20px;
-    }
 
     .pay-method {
         width: 100%;
@@ -1044,4 +1040,8 @@ input:-webkit-autofill:active {
         font-size: 14px;
     }
 
+}
+
+.grid-col-span-2{
+    grid-column: span 2;
 }
