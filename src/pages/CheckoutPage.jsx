@@ -334,11 +334,7 @@ function CheckoutPage() {
                             </div>
                         </div>
 
-<<<<<<< HEAD
-                        <button type="submit" className="btn-checkout-page" onClick={() => clearOrders()} > Procedi con l'ordine</button>
-=======
                         <button type="submit" className="btn-checkout-page pay-method">Procedi con l'ordine</button>
->>>>>>> c2f05ab2c4fd3c9584bfad63bc169d7a5eb5fa9e
                     </form>
                 </div>
             </div>
