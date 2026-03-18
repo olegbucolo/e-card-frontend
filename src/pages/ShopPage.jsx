@@ -124,7 +124,7 @@ export default function ShopPage() {
                                                     </button>
                                                         :
                                                         <button
-                                                            className="hover-button btn  w-50 me-2 d-flex
+                                                            className="hover-button btn w-50 me-2 d-flex
                                                     justify-content-center align-items-center"
                                                         >
                                                             <del>Carrello</del>

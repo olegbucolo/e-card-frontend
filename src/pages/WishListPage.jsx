@@ -5,7 +5,8 @@ import { FiShoppingCart } from "react-icons/fi";
 
 import "../pages/pages-css/cartpage.css"
 import { FaCartPlus } from 'react-icons/fa6';
-import { BsCartDashFill } from "react-icons/bs";
+import { IoIosRemoveCircle } from "react-icons/io";
+
 
 export default function WishlistPage() {
 
@@ -28,7 +29,7 @@ export default function WishlistPage() {
                     if (!product) return null
                     return (
 
-                        <div className="checkout-product-card d-flex mb-4 p-2" key={item.id}>
+                        <div className="d-sm-flex d-block mb-4 p-2" key={item.id}>
 
                             <div className="card" style={{ width: "10rem" }}>
 
@@ -36,25 +37,25 @@ export default function WishlistPage() {
 
                             </div>
 
-                            <div className="detail-card-wishlist d-flex flex-grow-1 flex-column ms-4">
+                            <div className="detail-card-wishlist d-flex flex-grow-1 flex-column ms-0 ms-sm-4">
 
 
-                                <h3>{product.title}</h3>
+                                <h3 className='mt-sm-0 mt-3'>{product.title}</h3>
 
                                 {product.is_featured
                                     ? <div className='mb-2'>
-                                        <button className="is-available">Disponibile</button>
+                                        <button className="badge is-available">Disponibile</button>
                                         <p className="">Quantita' disponibile: {product.quantity}</p>
 
                                     </div>
                                     : <div>
-                                        <button className="not-disponible">Non Disponibile</button>
+                                        <button className="badge not-disponible">Non Disponibile</button>
                                         <p className="">Quantita' disponibile: 0</p>
 
                                     </div>
                                 }
 
-                                <p>Prezzo: {product.price} €</p>
+                                <p className='mb-4'>Prezzo: {product.price} €</p>
 
                                 <div className="mt-auto d-flex">
 
@@ -63,7 +64,7 @@ export default function WishlistPage() {
                                         className="hover-button btn btn-danger me-2 d-flex
                                                     justify-content-center align-items-center">
                                         Rimuovi
-                                        <BsCartDashFill className='ms-1'/>
+                                        <IoIosRemoveCircle className='ms-1'/>
                                     </button>
 
                                     {product.is_featured ? <button
