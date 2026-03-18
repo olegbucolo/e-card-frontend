@@ -231,8 +231,3 @@ export default function CartPage() {
         </>
     )
 }
-
-
-
-
-

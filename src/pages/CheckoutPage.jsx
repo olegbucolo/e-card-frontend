@@ -14,6 +14,7 @@ function CheckoutPage() {
 
     const [newOrderId, setnewOrderId] = useState();
 
+    const [sameBilling, setSameBilling] = useState(false);
 
     const firstproduct = "1";
     const secondProduct = "2";
@@ -285,7 +286,7 @@ function CheckoutPage() {
                         </div>
 
                         {/* campo numero civico utente */}
-                        <div className="mb-3">
+                        <div className={`mb-3 ${sameBilling ? "d-none" : ""}`}>
                             <label htmlFor="street-name-billing" className="form-label d-flex align-self-start">Indirizzo di fatturazione: </label>
                             <input name="streetNameBilling" type="text" className={submitted && !order.streetNameBilling ? "input-error form-control" : "form-control"} id="street-name-billing" placeholder='Inserisci il tuo indirizzo di fatturazione: ' value={order.streetNameBilling} onChange={handleChange} />
                         </div>
@@ -297,7 +298,7 @@ function CheckoutPage() {
                         </div>
 
                         {/* campo città di fatturazione utente */}
-                        <div className="mb-3">
+                        <div className={`mb-3 ${sameBilling ? "d-none" : ""}`}>
                             <label htmlFor="city-billing" className="form-label d-flex align-self-start">Città di fatturazione: </label>
                             <input name="cityBilling" type="text" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.cityBilling ? "input-error form-control" : "form-control"} id="city-billing" placeholder='Inserisci la città di fatturazione: ' value={order.cityBilling} onChange={handleChange} />
                         </div>
@@ -309,7 +310,7 @@ function CheckoutPage() {
                         </div>
 
                         {/* campo numero codice postale utente */}
-                        <div className="mb-3">
+                        <div className={`mb-3 ${sameBilling ? "d-none" : ""}`}>
                             <label htmlFor="postal-code-billing" className="form-label d-flex align-self-start">CAP di fatturazione: </label>
                             <input name="postalCodeBilling" type="text" pattern="[0-9]{5}" className={submitted && !order.postalCodeBilling ? "input-error form-control" : "form-control"} id="postal-code-billing" placeholder='Inserisci il tuo codice postale di fatturazione: ' value={order.postalCodeBilling} onChange={handleChange} />
                         </div>
@@ -321,7 +322,7 @@ function CheckoutPage() {
                         </div>
 
                         {/* campo provincia di fatturazione utente */}
-                        <div className="mb-3">
+                        <div className={`mb-3 ${sameBilling ? "d-none" : ""}`}>
                             <label htmlFor="province" className="form-label d-flex align-self-start">Provincia di fatturazione: </label>
                             <input name="provinceBilling" type="text" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.provinceBilling ? "input-error form-control" : "form-control"} id="provinceBilling" placeholder='Inserisci la tua provincia di fatturazione: ' value={order.provinceBilling} onChange={handleChange} />
                         </div>
@@ -333,11 +334,24 @@ function CheckoutPage() {
                         </div>
 
                         {/* campo indirizzo di fatturazione */}
-                        <div className="mb-3">
+                        <div className={`mb-3 ${sameBilling ? "d-none" : ""}`}>
                             <label htmlFor="country-billing" className="form-label d-flex align-self-start">Paese di fatturazione: </label>
                             <input name="countryBilling" type="text" className={submitted && !order.countryBilling ? "input-error form-control" : "form-control"} id="country-billing" placeholder='Inserisci la nazione in cui abiti: ' value={order.countryBilling} onChange={handleChange} />
                         </div>
 
+
+                        <div className="mb-3 form-check">
+                            <input
+                                type="checkbox"
+                                className="form-check-input"
+                                id="sameBilling"
+                                checked={sameBilling}
+                                onChange={(e) => setSameBilling(e.target.checked)}
+                            />
+                            <label className="form-check-label" htmlFor="sameBilling">
+                                I dati di fatturazione corrispondono a quelli di spedizione
+                            </label>
+                        </div>
                         {/* Termini e condizioni */}
                         <div className="mb-3 form-check">
                             <input
