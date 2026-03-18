@@ -108,7 +108,7 @@ export default function CartPage() {
                                                 >
                                                     Rimuovi
                                                 </button>
-                                                
+
                                             </div>
 
                                             <p className="fw-bold fs-5">{(product.price * item.quantity).toFixed(2)}€</p>
@@ -132,13 +132,31 @@ export default function CartPage() {
                     <div className="price-box container">
                         <span className=""> <p className="fw-bold mt-2 text-light">Prezzo totale: {totalPrice.toFixed(2)}€</p> </span>
 
-                        <button className="btn-cart text-light" onClick={() => navigate(`/checkout_page`)}>
-                            Procedi all'ordine</button>
+                        {/* <button className="btn-cart text-light" onClick={() => navigate(`/checkout_page`)}>
+                            Procedi all'ordine</button> */}
+
+                        {cartProducts.length > 0 && (
+                            <button
+                                className="btn-cart text-light"
+                                onClick={() => navigate(`/checkout_page`)}
+                            >
+                                Procedi all'ordine
+                            </button>
+                        )}
 
 
-                        <button onClick={clearCart} className="btn-remove mb-3 text-light">
+                        {/* <button onClick={clearCart} className="btn-remove mb-3 text-light">
                             Svuota carrello
-                        </button>
+                        </button> */}
+
+                        {cartProducts.length > 0 && (
+                            <button
+                                onClick={clearCart}
+                                className="btn-remove mb-3 text-light"
+                            >
+                                Svuota carrello
+                            </button>
+                        )}
 
                     </div>
 

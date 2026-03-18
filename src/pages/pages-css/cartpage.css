@@ -57,7 +57,7 @@
     border-radius: 30px;
     margin-bottom: 30px;
     align-self: flex-start;
-    height: auto;
+    min-height: 100px;
 }
 
 
