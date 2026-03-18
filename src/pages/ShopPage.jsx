@@ -113,7 +113,7 @@ export default function ShopPage() {
                                             <div className='mb-2'>
                                                 <h5 className='fw-semibold'>{p.price} €</h5>
                                             </div>
-                                            <div className=" d-flex justify-content-between fs-lg-4">
+                                            <div className=" d-flex justify-content-between fs-lg-dot-8">
                                                 {
                                                     p.is_featured ? <button
                                                         className="hover-button btn btn-success w-50 me-2 d-flex

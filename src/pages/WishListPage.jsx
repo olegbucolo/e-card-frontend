@@ -57,7 +57,7 @@ export default function WishlistPage() {
 
                                 <p className='mb-4'>Prezzo: {product.price} €</p>
 
-                                <div className="mt-auto d-flex">
+                                <div className="mt-auto d-flex fs-lg-dot-8 button">
 
 
                                     <button onClick={() => removeFromLocalStorage(setWishlistProducts, item.id, 1)}
