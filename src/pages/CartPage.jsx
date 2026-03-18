@@ -5,14 +5,24 @@ import { useEffect, useState } from "react";
 import { addToLocalStorage, removeFromLocalStorage } from "../utils/localStorage";
 import { FaPlus } from "react-icons/fa6";
 import { FiMinus } from "react-icons/fi";
+import { IoTrashBinSharp } from "react-icons/io5";
 
 import "../pages/pages-css/cartpage.css"
 
 
 export default function CartPage() {
 
-
     const { indexProducts, cartProducts, setCartProducts } = useOutletContext()
+
+
+    const removeItemCompletely = (id) => {
+        setCartProducts(prev => {
+            const updated = prev.filter(item => item.id !== id);
+            localStorage.setItem("cart", JSON.stringify(updated));
+            return updated;
+        });
+    }
+
 
     const navigate = useNavigate();
 
@@ -23,29 +33,70 @@ export default function CartPage() {
         return total + (product.price * item.quantity);
     }, 0)
 
+
     function clearCart() {
-
-        const confirmClear = confirm("Sei sicuro di voler svuotare il carrello?");
-
-
-        if (confirmClear) {
-            setCartProducts([]);
-        }
-
+        setCartProducts([]);
     }
 
+    const [showModal, setShowModal] = useState(false);
 
     return (
         <>
-            <div className="cart-page-title">
+            {/* MODALE CON CONFERMA SVUOTA CARRELLO */}
+            {showModal && (
+                <>
+                    <div className="modal d-block" tabIndex="-1">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+
+                                <div className="modal-header">
+
+                                    <button
+                                        type="button"
+                                        className="btn-close"
+                                        onClick={() => setShowModal(false)}
+                                    ></button>
+                                </div>
+
+                                <div className="modal-body">
+                                    <p>Sei sicuro di voler svuotare il carrello?</p>
+                                </div>
+
+                                <div className="modal-footer">
+                                    <button
+                                        className="btn btn-secondary click-effect"
+                                        onClick={() => setShowModal(false)}
+                                    >
+                                        Annulla
+                                    </button>
+
+                                    <button
+                                        className="btn btn-danger click-effect"
+                                        onClick={() => {
+                                            clearCart();
+                                            setShowModal(false);
+                                        }}
+                                    >
+                                        Conferma
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div className="modal-backdrop fade show"></div>
+                </>
+            )}
+
+            < div className="cart-page-title">
                 <h2 className="cart-title-text container">Prodotti nel carrello</h2>
-            </div>
+            </div >
 
 
             {/* CONTAINER CARD E DETTAGLI PRODOTTI NEL CARRELLO */}
 
 
-            <div className="container">
+            < div className="container" >
                 <div className="d-flex responsive">
                     <div className="order-container-left">
 
@@ -60,7 +111,7 @@ export default function CartPage() {
                                 if (!product) return null
                                 return (
 
-                                    <div className="d-flex border-cart mb-5" key={item.id}>
+                                    <div className="d-flex border-cart mb-5 " key={item.id}>
 
                                         <div className="card" style={{ width: "10rem" }}>
 
@@ -92,17 +143,28 @@ export default function CartPage() {
                                                     className=" btn btn-outline-success quantity-btn">
                                                     <FaPlus />
                                                 </button>
+
+
+
                                             </div>
 
                                             <p className="fw-bold fs-5">{(product.price * item.quantity).toFixed(2)}€</p>
 
-
-
-
-
-
-
                                         </div>
+
+
+                                        <div className="bin-container">
+                                            <button
+                                                className="btn btn-danger click-effect bin-padding"
+                                                onClick={() => removeItemCompletely(item.id)}
+                                            >
+                                                <IoTrashBinSharp className="bin-size" />
+                                            </button>
+                                        </div>
+
+
+
+
                                     </div>
                                 )
                             }
@@ -115,22 +177,42 @@ export default function CartPage() {
                     <div className="price-box container">
                         <span className=""> <p className="fw-bold mt-2 text-light">Prezzo totale: {totalPrice.toFixed(2)}€</p> </span>
 
-                        <button className="btn-cart text-light" onClick={() => navigate(`/checkout_page`)}>
-                            Procedi all'ordine</button>
 
 
-                        <button onClick={clearCart} className="btn-remove mb-3 text-light">
-                            Svuota carrello
-                        </button>
+                        {cartProducts.length > 0 && (
+                            <button
+                                className="btn btn-success mt-3 me-2 click-effect"
+                                onClick={() => navigate(`/checkout_page`)}
+                            >
+                                Procedi all'ordine
+                            </button>
+                        )}
+
+
+
+
+                        {cartProducts.length > 0 && (
+                            <button
+                                onClick={() => setShowModal(true)}
+                                className="btn btn-danger mt-3 click-effect"
+                            >
+                                Svuota carrello
+                            </button>
+                        )}
 
                     </div>
 
                 </div>
 
-            </div>
+            </div >
 
 
 
         </>
     )
 }
+
+
+
+
+

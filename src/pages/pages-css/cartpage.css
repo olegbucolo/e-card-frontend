@@ -57,7 +57,7 @@
     border-radius: 30px;
     margin-bottom: 30px;
     align-self: flex-start;
-    height: auto;
+    min-height: 100px;
 }
 
 
@@ -132,4 +132,26 @@
     .order-container-left {
         height: auto
     }
+}
+
+
+.bin-container {
+    width: 48%;
+    display: flex;
+    justify-content: end;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+
+.border-cart:hover .bin-container {
+    opacity: 1;
+}
+
+
+.click-effect:active {
+    transform: scale(95%);
+    border: none;
+    transition: all .1s ease-out;
+    box-shadow: .2rem .2rem .6rem -.2rem black, inset -.2rem -.2rem .6rem -.2rem black;
 }
