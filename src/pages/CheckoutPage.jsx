@@ -4,6 +4,7 @@ import { Outlet, useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom"
 import { FaCreditCard } from "react-icons/fa";
 import './CheckoutPage.css'
+import { clearOrders } from "../utils/localStorage";
 
 function CheckoutPage() {
     const { indexProducts, cartProducts, setCartProducts } = useOutletContext()
@@ -330,7 +331,7 @@ function CheckoutPage() {
                             </div>
                         </div>
 
-                        <button type="submit" className="btn-checkout-page">Procedi con l'ordine</button>
+                        <button type="submit" className="btn-checkout-page" onClick={() => clearOrders()} > Procedi con l'ordine</button>
                     </form>
                 </div>
             </div>
