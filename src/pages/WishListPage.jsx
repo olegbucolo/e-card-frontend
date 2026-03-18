@@ -1,8 +1,12 @@
+import './WishListPage.css'
 import { useOutletContext } from "react-router-dom";
 import { addToLocalStorage, removeFromLocalStorage } from "../utils/localStorage";
 import { FiShoppingCart } from "react-icons/fi";
 
 import "../pages/pages-css/cartpage.css"
+import { FaCartPlus } from 'react-icons/fa6';
+import { IoIosRemoveCircle } from "react-icons/io";
+
 
 export default function WishlistPage() {
 
@@ -25,7 +29,7 @@ export default function WishlistPage() {
                     if (!product) return null
                     return (
 
-                        <div className="checkout-product-card d-flex mb-4 p-2" key={item.id}>
+                        <div className="d-sm-flex d-block mb-4 p-2 border-bottom pb-4" key={item.id}>
 
                             <div className="card" style={{ width: "10rem" }}>
 
@@ -33,39 +37,43 @@ export default function WishlistPage() {
 
                             </div>
 
-                            <div className="product-detail d-flex flex-grow-1 flex-column">
+                            <div className="detail-card-wishlist d-flex flex-grow-1 flex-column ms-0 ms-sm-4">
 
 
-                                <h3>{product.title}</h3>
+                                <h3 className='mt-sm-0 mt-3'>{product.title}</h3>
 
                                 {product.is_featured
-                                    ? <div>
-                                        <button className="is-disponible">Disponibile</button>
+                                    ? <div className='mb-2'>
+                                        <button className="badge is-available">Disponibile</button>
                                         <p className="">Quantita' disponibile: {product.quantity}</p>
 
                                     </div>
                                     : <div>
-                                        <button className="not-disponible">Non Disponibile</button>
+                                        <button className="badge not-disponible">Non Disponibile</button>
                                         <p className="">Quantita' disponibile: 0</p>
 
                                     </div>
                                 }
 
-                                <p>Prezzo: {product.price} €</p>
+                                <p className='mb-4'>Prezzo: {product.price} €</p>
 
                                 <div className="mt-auto d-flex">
 
 
                                     <button onClick={() => removeFromLocalStorage(setWishlistProducts, item.id, 1)}
-                                        className="btn-remove hover-button btn">
+                                        className="hover-button btn btn-danger me-2 d-flex
+                                                    justify-content-center align-items-center">
                                         Rimuovi
+                                        <IoIosRemoveCircle className='ms-1'/>
                                     </button>
 
                                     {product.is_featured ? <button
-                                        className="btn-cart hover-button btn btn-success me-2 d-flex justify-content-center align-items-center"
-                                        onClick={() => product.is_featured && addToLocalStorage(setCartProducts, product.id)}>
+                                        className="hover-button btn btn-success me-2 d-flex
+                                                    justify-content-center align-items-center"
+                                        onClick={() => product.is_featured
+                                            && addToLocalStorage(setCartProducts, product.id)}>
                                         Carrello
-                                        <FiShoppingCart className='ms-1' />
+                                        <FaCartPlus className='ms-1' />
                                     </button> : <div></div>}
                                 </div>
 

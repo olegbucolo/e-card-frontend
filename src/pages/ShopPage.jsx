@@ -95,8 +95,14 @@ export default function ShopPage() {
                                     <div className="card hover-card h-100 p-2 d-flex flex-column">
 
                                         <NavLink to={`/detailpage/${p.slug}`} className="text-decoration-none text-dark">
-                                            <img src={p.image} className="card-img-top" alt="" />
-                                            {console.log('immagine loppata: ', p.image)}
+                                            <img
+                                                src={p.image}
+                                                className="card-img-top"
+                                                onError={(e) => {
+                                                    e.target.onerror = null; // prevent infinite loop
+                                                    e.target.src = "/No_Image_Available.jpg"; // your fallback image (put in /public)
+                                                }}
+                                                alt="" />
 
                                             <div className="card-body px-0">
                                                 <h5 className="card-title fs-5">{p.title}</h5>
@@ -118,7 +124,7 @@ export default function ShopPage() {
                                                     </button>
                                                         :
                                                         <button
-                                                            className="hover-button btn  w-50 me-2 d-flex
+                                                            className="hover-button btn w-50 me-2 d-flex
                                                     justify-content-center align-items-center"
                                                         >
                                                             <del>Carrello</del>
