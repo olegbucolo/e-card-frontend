@@ -1,26 +1,25 @@
 .detail-card-wishlist {}
 
 
-.badge{
+.badge {
     padding: .4rem 2rem;
     border: none;
     border-radius: 999px;
     font-size: 0.95rem;
     font-weight: 600;
-    margin: .5rem 0 ;
+    margin: .5rem 0;
     text-align: center;
 }
 
 
 .is-available {
     background: rgba(25, 135, 84, 0.1);
-    color:green
-
+    color: green
 }
 
 .is-unavailable {
-   background-color: rgba(255, 0, 0, 0.313);
-   color:red;
+    background-color: rgba(255, 0, 0, 0.313);
+    color: red;
 }
 
 /* buttons with container fs-lg-dot-8 */
@@ -32,13 +31,25 @@
     }
 }
 
-.fs-lg-dot-8 button{
+.border-after::after {
+    position:absolute;
+    content: "";
+    border-radius: 999px;
+    width:100%;
+    height: 2px;
+    background-color: #198754;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+}
+
+.fs-lg-dot-8 button {
     border: none;
-    box-shadow: .2rem  .2rem .4rem -.3rem black;
+    box-shadow: .2rem .2rem .4rem -.3rem black;
 }
 
 .fs-lg-dot-8 button:active {
     transform: scale(95%);
-    border:none;
-    box-shadow: .2rem  .2rem .6rem -.8rem black;
+    border: none;
+    box-shadow: .2rem .2rem .6rem -.8rem black;
 }
