@@ -4,6 +4,9 @@ import { LuHeart } from "react-icons/lu";
 import { FaHeart } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
 import Toast from '../components/Toast/Toast';
+import { FaCircleCheck } from "react-icons/fa6";
+
+
 import { FaCartPlus } from "react-icons/fa";
 
 import {
@@ -118,9 +121,14 @@ export default function ShopPage() {
                                                     p.is_featured ? <button
                                                         className="hover-button btn btn-success w-50 me-2 d-flex
                                                     justify-content-center align-items-center"
-                                                        onClick={() => addToLocalStorage(setCartProducts, p.id)}>
+                                                        onClick={() => {
+                                                            addToLocalStorage(setCartProducts, p.id)
+                                                            
+                                                        }}>
                                                         Carrello
-                                                        <FaCartPlus className='ms-1' />
+                                                        {isPresentInStorage(cartProducts, p.id)
+                                                        ? <FaCircleCheck  className=' ms-1' />
+                                                        : <FaCartPlus className=' ms-1' />}
                                                     </button>
                                                         :
                                                         <button
