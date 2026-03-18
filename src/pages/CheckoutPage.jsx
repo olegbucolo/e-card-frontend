@@ -13,6 +13,7 @@ function CheckoutPage() {
 
     const [newOrderId, setnewOrderId] = useState();
 
+
     const firstproduct = "1";
     const secondProduct = "2";
 
@@ -22,20 +23,21 @@ function CheckoutPage() {
     const endpointForBind = "http://localhost:3000/orderproduct"
 
     let orderShippingCost;
+    let totalPrice;
 
-
-
-    const totalPrice = cartProducts.reduce((total, item) => {
+    const orderPrice = cartProducts.reduce((total, item) => {
         const product = indexProducts.find(
             p => p.id == item.id);
         if (!product) return total;
         return total + (product.price * item.quantity);
     }, 0)
 
-    if (totalPrice > 40) {
+    if (orderPrice > 50) {
         orderShippingCost = 0;
+        totalPrice = orderPrice + orderShippingCost;
     } else {
         orderShippingCost = 5;
+        totalPrice = orderPrice + orderShippingCost;
     }
 
     useEffect(() => {
@@ -46,7 +48,6 @@ function CheckoutPage() {
     }, [orderShippingCost])
 
     const [order, setOrder] = useState({
-        orderSlug: `ordine-`,
         customerName: "",
         customerSurname: "",
         customerMail: "",

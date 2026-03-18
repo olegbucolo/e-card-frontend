@@ -16,12 +16,23 @@ export default function CartPage() {
 
     const navigate = useNavigate();
 
-    const totalPrice = cartProducts.reduce((total, item) => {
+    let orderShippingCost;
+    let totalPrice;
+
+    const cartTotalPrice = cartProducts.reduce((total, item) => {
         const product = indexProducts.find(
             p => p.id == item.id);
         if (!product) return total;
         return total + (product.price * item.quantity);
     }, 0)
+
+    if (cartTotalPrice > 50) {
+        orderShippingCost = 0;
+        totalPrice = cartTotalPrice + orderShippingCost;
+    } else {
+        orderShippingCost = 5;
+        totalPrice = cartTotalPrice + orderShippingCost;
+    }
 
     function clearCart() {
 
