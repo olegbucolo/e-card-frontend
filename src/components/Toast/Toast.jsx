@@ -69,7 +69,7 @@ export default function Toast() {
                                                     Accetta Info e Privacy
                                                 </label>
                                                 <div class="invalid-feedback">
-                                                    You must agree before submitting.
+                                                    I termini e condizioni sono obbligatori.
                                                 </div>
                                             </div>
                                         </div>
@@ -78,7 +78,7 @@ export default function Toast() {
                                                 class="btn btn-primary"
                                                 type="submit"
                                                
-                                            >Submit form</button>
+                                            >Invia</button>
                                         </div>
                                     </form>
                                 </div>

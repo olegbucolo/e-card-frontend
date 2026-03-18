@@ -20,8 +20,8 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
     const sortLabels = {
         'price-asc': `: Piu' Economico`,
         'price-desc': ': Meno Ecomomico',
-        'name-asc': ': Alfabetico',
-        'name-desc': ': Anti Alfabetico',
+        'name-asc': ': A -> Z',
+        'name-desc': ': Z -> A',
         'pop-desc': `: Piu' venduti`,
         'pop-asc': ': Meno venduti',
     }
@@ -240,7 +240,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                             applySorter('name-asc')
                                             setSortButton('name-asc')
                                         }}
-                                        type="button">Ordine alfabetico
+                                        type="button">{`A -> Z`}
                                     </button>
                                 </li>
                                 <li>
@@ -250,7 +250,7 @@ export default function HeaderComp({ indexProducts, wishlistProducts, cartProduc
                                             applySorter('name-desc')
                                             setSortButton('name-desc')
                                         }}
-                                        type="button">Ordine Anti Alfabetico
+                                        type="button">{`Z -> A`}
                                     </button>
                                 </li>
                                 <li>
