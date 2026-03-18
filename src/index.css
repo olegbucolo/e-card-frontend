@@ -573,7 +573,7 @@ input:-webkit-autofill:active {
 
 .pay-method {
     display: block;
-    margin: 0 auto 20px auto;
+    margin: 0 auto ;
     padding: 10px 38px;
     border: none;
     border-radius: 999px;
@@ -664,6 +664,11 @@ input:-webkit-autofill:active {
 @media screen and (max-width: 992px) {
     .container {
         width: 92%;
+    }
+
+    .main-container-checkout {
+        padding: 10px;
+        flex-direction: column;
     }
 
     .hero {
@@ -955,10 +960,7 @@ input:-webkit-autofill:active {
 
 @media (max-width: 768px) {
 
-    .main-container-checkout {
-        padding: 10px;
-        flex-direction: column;
-    }
+    
 
     .p-container-checkout {
         flex-direction: column;
