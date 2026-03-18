@@ -35,11 +35,11 @@ function CheckoutPage() {
         return total + (product.price * item.quantity);
     }, 0)
 
-    if (orderPrice > 50) {
-        orderShippingCost = 0;
+    if (orderPrice > 0.000001 && orderPrice < 50) {
+        orderShippingCost = 5;
         totalPrice = orderPrice + orderShippingCost;
     } else {
-        orderShippingCost = 5;
+        orderShippingCost = 0;
         totalPrice = orderPrice + orderShippingCost;
     }
 
@@ -170,7 +170,7 @@ function CheckoutPage() {
     //     });
     // });
 
-    
+
 
     return (
         <>

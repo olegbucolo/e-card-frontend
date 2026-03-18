@@ -92,10 +92,14 @@
     transition: opacity 0.3s ease;
 }
 
+.empty-cart-text {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 40px;
+    color: #666;
+}
 
-/* .border-cart:hover .bin-container {
-    opacity: 1;
-} */
 
 
 .click-effect:active {
@@ -103,6 +107,12 @@
     border: none;
     transition: all .1s ease-out;
     box-shadow: .2rem .2rem .6rem -.2rem black, inset -.2rem -.2rem .6rem -.2rem black;
+}
+
+.text-bg {
+    background: linear-gradient(42deg, #24324a 0%, #212b3c 100%);
+    margin: 10px;
+    border-radius: 10px;
 }
 
 /* RESPONSIVE CART */
