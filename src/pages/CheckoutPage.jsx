@@ -75,14 +75,18 @@ function CheckoutPage() {
     })
 
     function handleChange(e) {
-
         const { name, value } = e.target;
 
-        setOrder(arrayTemp => ({
-            ...arrayTemp,
-            [name]: value
-        }))
-
+        setOrder(prev => ({
+            ...prev,
+            [name]: value,
+            // Se sameBilling è true, aggiorna automaticamente i campi di fatturazione
+            ...(sameBilling && name === "streetName" ? { streetNameBilling: value } : {}),
+            ...(sameBilling && name === "city" ? { cityBilling: value } : {}),
+            ...(sameBilling && name === "postalCode" ? { postalCodeBilling: value } : {}),
+            ...(sameBilling && name === "province" ? { provinceBilling: value } : {}),
+            ...(sameBilling && name === "country" ? { countryBilling: value } : {})
+        }));
     }
 
     async function handleSubmit(e) {
