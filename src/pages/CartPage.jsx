@@ -32,29 +32,70 @@ export default function CartPage() {
         return total + (product.price * item.quantity);
     }, 0)
 
+
     function clearCart() {
-
-        const confirmClear = confirm("Sei sicuro di voler svuotare il carrello?");
-
-
-        if (confirmClear) {
-            setCartProducts([]);
-        }
-
+        setCartProducts([]);
     }
 
+    const [showModal, setShowModal] = useState(false);
 
     return (
         <>
-            <div className="cart-page-title">
+            {/* MODALE CON CONFERMA SVUOTA CARRELLO */}
+            {showModal && (
+                <>
+                    <div className="modal d-block" tabIndex="-1">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+
+                                <div className="modal-header">
+
+                                    <button
+                                        type="button"
+                                        className="btn-close"
+                                        onClick={() => setShowModal(false)}
+                                    ></button>
+                                </div>
+
+                                <div className="modal-body">
+                                    <p>Sei sicuro di voler svuotare il carrello?</p>
+                                </div>
+
+                                <div className="modal-footer">
+                                    <button
+                                        className="btn btn-secondary"
+                                        onClick={() => setShowModal(false)}
+                                    >
+                                        Annulla
+                                    </button>
+
+                                    <button
+                                        className="btn btn-danger"
+                                        onClick={() => {
+                                            clearCart();
+                                            setShowModal(false);
+                                        }}
+                                    >
+                                        Conferma
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div className="modal-backdrop fade show"></div>
+                </>
+            )}
+
+            < div className="cart-page-title">
                 <h2 className="cart-title-text container">Prodotti nel carrello</h2>
-            </div>
+            </div >
 
 
             {/* CONTAINER CARD E DETTAGLI PRODOTTI NEL CARRELLO */}
 
 
-            <div className="container">
+            < div className="container" >
                 <div className="d-flex responsive">
                     <div className="order-container-left">
 
@@ -113,12 +154,6 @@ export default function CartPage() {
 
                                             <p className="fw-bold fs-5">{(product.price * item.quantity).toFixed(2)}€</p>
 
-
-
-
-
-
-
                                         </div>
                                     </div>
                                 )
@@ -132,8 +167,7 @@ export default function CartPage() {
                     <div className="price-box container">
                         <span className=""> <p className="fw-bold mt-2 text-light">Prezzo totale: {totalPrice.toFixed(2)}€</p> </span>
 
-                        {/* <button className="btn-cart text-light" onClick={() => navigate(`/checkout_page`)}>
-                            Procedi all'ordine</button> */}
+
 
                         {cartProducts.length > 0 && (
                             <button
@@ -145,13 +179,11 @@ export default function CartPage() {
                         )}
 
 
-                        {/* <button onClick={clearCart} className="btn-remove mb-3 text-light">
-                            Svuota carrello
-                        </button> */}
+
 
                         {cartProducts.length > 0 && (
                             <button
-                                onClick={clearCart}
+                                onClick={() => setShowModal(true)}
                                 className="btn-remove mb-3 text-light"
                             >
                                 Svuota carrello
@@ -162,10 +194,15 @@ export default function CartPage() {
 
                 </div>
 
-            </div>
+            </div >
 
 
 
         </>
     )
 }
+
+
+
+
+
