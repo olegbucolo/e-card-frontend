@@ -134,3 +134,30 @@
         height: auto
     }
 }
+
+@media (max-width:576px) {
+    .responsive-card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .bin-container {
+        width: auto;
+    }
+
+    .bin-size {
+        width: 100%;
+        height: auto;
+        /* mantiene proporzioni verticali */
+    }
+
+    .bin-padding {
+        padding: 5px 110px;
+        margin-bottom: 10px;
+    }
+
+    .card {
+        margin-top: 10px;
+    }
+}
