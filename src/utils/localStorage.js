@@ -97,3 +97,7 @@ export function updateFirstVisit() {
     const currVisitState = localStorage.getItem('isFirstVisit')
     return currVisitState === 'true' && localStorage.setItem('isFirstVisit', 'false')
 }
+
+export function clearOrders(){
+    return localStorage.setItem('cart', '')
+}
