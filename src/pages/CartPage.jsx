@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { addToLocalStorage, removeFromLocalStorage } from "../utils/localStorage";
 import { FaPlus } from "react-icons/fa6";
 import { FiMinus } from "react-icons/fi";
+import { IoTrashBinSharp } from "react-icons/io5";
 
 import "../pages/pages-css/cartpage.css"
 
@@ -63,14 +64,14 @@ export default function CartPage() {
 
                                 <div className="modal-footer">
                                     <button
-                                        className="btn btn-secondary"
+                                        className="btn btn-secondary click-effect"
                                         onClick={() => setShowModal(false)}
                                     >
                                         Annulla
                                     </button>
 
                                     <button
-                                        className="btn btn-danger"
+                                        className="btn btn-danger click-effect"
                                         onClick={() => {
                                             clearCart();
                                             setShowModal(false);
@@ -144,10 +145,10 @@ export default function CartPage() {
                                                 </button>
 
                                                 <button
-                                                    className="btn btn-danger mt-2"
+                                                    className="btn btn-danger click-effect bin-padding"
                                                     onClick={() => removeItemCompletely(item.id)}
                                                 >
-                                                    Rimuovi
+                                                    <IoTrashBinSharp className="bin-size"/>
                                                 </button>
 
                                             </div>
@@ -171,7 +172,7 @@ export default function CartPage() {
 
                         {cartProducts.length > 0 && (
                             <button
-                                className="btn-cart text-light"
+                                className="btn btn-success mt-3 me-2 click-effect"
                                 onClick={() => navigate(`/checkout_page`)}
                             >
                                 Procedi all'ordine
@@ -184,7 +185,7 @@ export default function CartPage() {
                         {cartProducts.length > 0 && (
                             <button
                                 onClick={() => setShowModal(true)}
-                                className="btn-remove mb-3 text-light"
+                                className="btn btn-danger mt-3 click-effect"
                             >
                                 Svuota carrello
                             </button>

@@ -133,3 +133,19 @@
         height: auto
     }
 }
+
+/* .bin-padding {
+
+} */
+
+.bin-size{
+
+}
+
+
+.click-effect:active {
+    transform: scale(95%);
+    border:none;
+    transition: all .1s ease-out;
+    box-shadow: .2rem  .2rem .6rem -.2rem black, inset -.2rem  -.2rem .6rem -.2rem black;
+}
