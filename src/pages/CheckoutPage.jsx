@@ -323,7 +323,7 @@ function CheckoutPage() {
                         {/* campo provincia di fatturazione utente */}
                         <div className="mb-3">
                             <label htmlFor="province" className="form-label d-flex align-self-start">Provincia di fatturazione: </label>
-                            <input name="provinceBilling" type="text" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.provinceBilling ? "input-error form-control" : "form-control"} id="province" placeholder='Inserisci la tua provincia di fatturazione: ' value={order.provinceBilling} onChange={handleChange} />
+                            <input name="provinceBilling" type="text" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.provinceBilling ? "input-error form-control" : "form-control"} id="provinceBilling" placeholder='Inserisci la tua provincia di fatturazione: ' value={order.provinceBilling} onChange={handleChange} />
                         </div>
 
                         {/* campo Paese/Nazione utente */}
