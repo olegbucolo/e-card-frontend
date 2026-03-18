@@ -171,18 +171,18 @@ function CheckoutPage() {
                 <div className="p-container-checkout pt-3">
 
 
-<section className="free-shipping-banner">
-                <div className="container">
-                    <div className="free-shipping-box">
-                        🚚 Spedizione gratuita per ordini superiori a 50€
-                    </div>
-                </div>
-            </section>
+                    <section className="free-shipping-banner">
+                        <div className="container">
+                            <div className="free-shipping-box">
+                                🚚 Spedizione gratuita per ordini superiori a 50€
+                            </div>
+                        </div>
+                    </section>
 
 
                     <div className="order-container-checkout-left">
 
-                        
+
                         {
                             cartProducts.map(item => {
                                 const product = indexProducts.find(
@@ -221,7 +221,7 @@ function CheckoutPage() {
                     {/* Metodo di pagamento */}
                     <div className="mt-3 btn-checkout-page w-100 d-flex justify-content-between pay-method btn-card-register">
 
-                        
+
                         <div className="w-20">
                             <FaCreditCard />
                         </div>
@@ -233,7 +233,7 @@ function CheckoutPage() {
                                 <p>{stored.cardExpiry}</p>
                             </div>
                         </div>
-                    
+
 
                     </div>
                     <div className="mt-4 payment-method-container d-flex justify-content-around">
