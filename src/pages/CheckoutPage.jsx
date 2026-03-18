@@ -280,13 +280,13 @@ function CheckoutPage() {
                         {/* campo numero telefono utente */}
                         <div className="mb-3">
                             <label htmlFor="phone" className="form-label d-flex align-self-start">Telefono: </label>
-                            <input name="phone" type="tel" pattern="[0-9]{10}" className={submitted && !order.phone ? "input-error form-control" : "form-control"} id="phone" placeholder='Inserisci il tuo numero di telefono: ' value={order.phone} onChange={handleChange} />
+                            <input name="phone" type="tel" pattern="^\+?[0-9]{8,15}$" className={submitted && !order.phone ? "input-error form-control" : "form-control"} id="phone" placeholder='Inserisci il tuo numero di telefono: ' value={order.phone} onChange={handleChange} />
                         </div>
 
                         {/* campo nome via utente */}
                         <div className="mb-3">
                             <label htmlFor="street-name" className="form-label d-flex align-self-start">Residenza: </label>
-                            <input name="streetName" type="text" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.streetName ? "input-error form-control" : "form-control"} id="street-name" placeholder='Inserisci il tuo indirizzo di residenza: ' value={order.streetName} onChange={handleChange} />
+                            <input name="streetName" type="text" className={submitted && !order.streetName ? "input-error form-control" : "form-control"} id="street-name" placeholder='Inserisci il tuo indirizzo di residenza: ' value={order.streetName} onChange={handleChange} />
                         </div>
 
                         {/* campo numero civico utente */}
@@ -298,13 +298,13 @@ function CheckoutPage() {
                         {/* campo nome città utente */}
                         <div className="mb-3">
                             <label htmlFor="city" className="form-label d-flex align-self-start">Città di residenza: </label>
-                            <input name="city" type="text" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.city ? "input-error form-control" : "form-control"} id="city" placeholder='Inserisci la tua città di residenza: ' value={order.city} onChange={handleChange} />
+                            <input name="city" type="text" className={submitted && !order.city ? "input-error form-control" : "form-control"} id="city" placeholder='Inserisci la tua città di residenza: ' value={order.city} onChange={handleChange} />
                         </div>
 
                         {/* campo città di fatturazione utente */}
                         <div className={`mb-3 ${sameBilling ? "d-none" : ""}`}>
                             <label htmlFor="city-billing" className="form-label d-flex align-self-start">Città di fatturazione: </label>
-                            <input name="cityBilling" type="text" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.cityBilling ? "input-error form-control" : "form-control"} id="city-billing" placeholder='Inserisci la città di fatturazione: ' value={order.cityBilling} onChange={handleChange} />
+                            <input name="cityBilling" type="text" className={submitted && !order.cityBilling ? "input-error form-control" : "form-control"} id="city-billing" placeholder='Inserisci la città di fatturazione: ' value={order.cityBilling} onChange={handleChange} />
                         </div>
 
                         {/* campo codice postale utente */}
@@ -328,7 +328,7 @@ function CheckoutPage() {
                         {/* campo provincia di fatturazione utente */}
                         <div className={`mb-3 ${sameBilling ? "d-none" : ""}`}>
                             <label htmlFor="province" className="form-label d-flex align-self-start">Provincia di fatturazione: </label>
-                            <input name="provinceBilling" type="text" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.provinceBilling ? "input-error form-control" : "form-control"} id="provinceBilling" placeholder='Inserisci la tua provincia di fatturazione: ' value={order.provinceBilling} onChange={handleChange} />
+                            <input name="provinceBilling" type="text" className={submitted && !order.provinceBilling ? "input-error form-control" : "form-control"} id="provinceBilling" placeholder='Inserisci la tua provincia di fatturazione: ' value={order.provinceBilling} onChange={handleChange} />
                         </div>
 
                         {/* campo Paese/Nazione utente */}
