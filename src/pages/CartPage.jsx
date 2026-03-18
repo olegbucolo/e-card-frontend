@@ -98,10 +98,13 @@ export default function CartPage() {
                 </>
             )}
 
-            < div className="cart-page-title">
+            < div className="cart-page-title ">
                 <h2 className="cart-title-text container">Prodotti nel carrello</h2>
             </div >
 
+                <div className="free-shipping-box container mb-2">
+                    🚚 Spedizione gratuita per ordini superiori a 50€
+                </div>
 
             {/* CONTAINER CARD E DETTAGLI PRODOTTI NEL CARRELLO */}
 
@@ -191,7 +194,7 @@ export default function CartPage() {
 
                         {cartProducts.length > 0 && (
                             <button
-                                className="btn btn-success mt-3 me-2 click-effect"
+                                className="btn btn-success mt-3 me-2 click-effect mb-3"
                                 onClick={() => navigate(`/checkout_page`)}
                             >
                                 Procedi all'ordine
@@ -204,13 +207,15 @@ export default function CartPage() {
                         {cartProducts.length > 0 && (
                             <button
                                 onClick={() => setShowModal(true)}
-                                className="btn btn-danger mt-3 click-effect"
+                                className="btn btn-danger mt-3 click-effect mb-3"
                             >
                                 Svuota carrello
                             </button>
                         )}
 
+
                     </div>
+
 
                 </div>
 
