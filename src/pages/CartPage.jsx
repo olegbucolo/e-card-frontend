@@ -36,8 +36,6 @@ export default function CartPage() {
         return total + (product.price * item.quantity);
     }, 0)
 
-<<<<<<< HEAD
-=======
     if (cartTotalPrice > 50) {
         orderShippingCost = 0;
         totalPrice = cartTotalPrice + orderShippingCost;
@@ -45,7 +43,6 @@ export default function CartPage() {
         orderShippingCost = 5;
         totalPrice = cartTotalPrice + orderShippingCost;
     }
->>>>>>> maurizio-branch
 
     function clearCart() {
         setCartProducts([]);
