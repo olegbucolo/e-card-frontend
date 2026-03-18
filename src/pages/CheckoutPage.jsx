@@ -226,7 +226,7 @@ function CheckoutPage() {
                     </div>
 
                     {/* Metodo di pagamento */}
-                    <div className="mt-3 btn-checkout-page w-100 d-flex justify-content-between pay-method btn-card-register">
+                    <div className="mt-3 w-100 d-flex justify-content-between btn-checkout-page btn-card-register">
 
 
                         <div className="w-20">
@@ -257,13 +257,13 @@ function CheckoutPage() {
                         {/* campo nome utente */}
                         <div className="mb-3">
                             <label htmlFor="customer-name" className="form-label d-flex align-self-start">Nome: </label>
-                            <input name="customerName" type="text" minlength="2" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.customerName ? "input-error form-control" : "form-control"} id="customer-name" placeholder='inserisci il tuo nome: ' value={order.customerName} onChange={handleChange} />
+                            <input name="customerName" type="text" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.customerName ? "input-error form-control" : "form-control"} id="customer-name" placeholder='inserisci il tuo nome: ' value={order.customerName} onChange={handleChange} />
                         </div>
 
                         {/* campo cognome utente */}
                         <div className="mb-3">
                             <label htmlFor="customer-surname" className="form-label d-flex align-self-start">Cognome: </label>
-                            <input name="customerSurname" type="text" minlength="2" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.customerSurname ? "input-error form-control" : "form-control"} id="customer-surname" placeholder='inserisci il tuo cognome: ' value={order.customerSurname} onChange={handleChange} />
+                            <input name="customerSurname" type="text" pattern="[A-Za-zÀ-ÿ\s]+" className={submitted && !order.customerSurname ? "input-error form-control" : "form-control"} id="customer-surname" placeholder='inserisci il tuo cognome: ' value={order.customerSurname} onChange={handleChange} />
                         </div>
 
                         {/* campo mail */}
@@ -354,7 +354,7 @@ function CheckoutPage() {
                             </div>
                         </div>
 
-                        <button type="submit" className="btn-checkout-page pay-method">Procedi con l'ordine</button>
+                        <button type="submit" className="pay-method">Procedi con l'ordine</button>
                     </form>
                 </div>
             </div>
