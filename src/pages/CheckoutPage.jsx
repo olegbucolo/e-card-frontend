@@ -86,7 +86,7 @@ function CheckoutPage() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        // setSubmitted(true);
+        setSubmitted(true);
 
         if (!order.customerName || !order.customerSurname || !order.customerMail || !order.phone || !order.streetName ||
             !order.streetNameBilling || !order.city || !order.cityBilling || !order.postalCode || !order.postalCodeBilling ||
