@@ -6,9 +6,8 @@ export default function Toast() {
     const [modalOpen, setModalOpen] = useState(true);
     return (
         <div className={`position-fixed z-10 start-0 end-0 top-0 bottom-0 bg-transparent-1-2 ${!modalOpen && 'd-none'}`}>
-
             <div className="position-relative h-100 w-100">
-                <div className=" position-absolute w-100 h-100 top-50 start-50 translate-middle show" >
+                <div className="position-absolute w-100 h-100 top-50 start-50 translate-middle show" >
 
                     <div className={`modal fade ${modalOpen && 'show d-block'}`} >
                         <div className="modal-dialog">
